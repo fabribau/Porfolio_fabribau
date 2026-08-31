@@ -1,0 +1,28 @@
+---
+import { languages, type Lang } from '@i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '@i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(currentLang);
+---
+
+<div class="flex items-center gap-1 bg-white dark:bg-zinc-800 border-2 border-black dark:border-white p-0.5 shadow-brutal-sm">
+  {
+    (Object.keys(languages) as Lang[]).map((lang) => {
+      const isActive = lang === currentLang;
+      const targetUrl = translatePath(Astro.url.pathname, lang);
+      return (
+        <a
+          href={targetUrl}
+          class={`px-2.5 py-1 text-xs font-bold transition-colors ${
+            isActive
+              ? 'bg-accent-yellow text-black border-2 border-black shadow-[1px_1px_0px_0px_#000]'
+              : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700'
+          }`}
+        >
+          {lang.toUpperCase()}
+        </a>
+      );
+    })
+  }
+</div>

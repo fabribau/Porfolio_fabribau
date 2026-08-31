@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #F5F0E8;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0D0D0D;
+  --text-muted: #4B5563;
+  --border-color: #0D0D0D;
+  --shadow-color: #0D0D0D;
+  --accent-yellow: #FFE400;
+  --accent-pink: #FF3D8A;
+  --accent-lime: #B4FF39;
+  --accent-cyan: #00F0FF;
+}
+
+.dark {
+  --bg-primary: #0D0D0D;
+  --bg-surface: #181818;
+  --text-primary: #F5F0E8;
+  --text-muted: #9CA3AF;
+  --border-color: #F5F0E8;
+  --shadow-color: #000000;
+  --accent-yellow: #FFE400;
+  --accent-pink: #FF3D8A;
+  --accent-lime: #B4FF39;
+  --accent-cyan: #00F0FF;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Neobrutalist focus styles */
+  :focus-visible {
+    outline: 3px solid var(--accent-pink);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Neobrutalist box base */
+  .brutal-box {
+    background-color: var(--bg-surface);
+    border: 3px solid var(--border-color);
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+  }
+
+  .brutal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border: 3px solid var(--border-color);
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+
+  .brutal-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--shadow-color);
+  }
+
+  .brutal-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px var(--shadow-color);
+  }
+}
