@@ -1,0 +1,331 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/Button.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<BaseLayout
+  title="Neobrutalist UI Kit — Style Guide | Fabrizio Bauer"
+  description="Component catalog, design tokens, and neobrutalist micro-interactions for fabribau.tech."
+>
+  <!-- Page Header -->
+  <div class="mb-12">
+    <div class="inline-block mb-3">
+      <Badge color="yellow" pulse={true} size="md">
+        UI Kit v1.0 • Spec_T9
+      </Badge>
+    </div>
+    <h1 class="font-display font-black text-4xl md:text-6xl tracking-tight leading-none mb-3 text-black dark:text-white">
+      {t('styleguide.title')}
+    </h1>
+    <p class="font-mono text-base md:text-lg text-fg-muted-light dark:text-fg-muted-dark max-w-3xl mb-6">
+      {t('styleguide.subtitle')}
+    </p>
+    <div>
+      <Button href={translatePath('/')} variant="secondary" size="sm">
+        <span slot="prefix">←</span>
+        {t('styleguide.back_home')}
+      </Button>
+    </div>
+  </div>
+
+  <div class="space-y-16">
+    <!-- 01. COLOR PALETTE -->
+    <section>
+      <SectionHeader
+        number="01"
+        title="Color Palette & Tokens"
+        subtitle="Semantic surfaces and high-contrast saturated accents for light and dark mode."
+        highlightColor="yellow"
+      />
+
+      <!-- Color Swatches: Accents -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-6">
+        <div class="p-4 bg-accent-yellow text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">YELLOW</p>
+          <p class="font-mono text-xs font-bold mt-1">#FFE400</p>
+        </div>
+        <div class="p-4 bg-accent-pink text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">MAGENTA</p>
+          <p class="font-mono text-xs font-bold mt-1">#FF3D8A</p>
+        </div>
+        <div class="p-4 bg-accent-lime text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">LIME</p>
+          <p class="font-mono text-xs font-bold mt-1">#B4FF39</p>
+        </div>
+        <div class="p-4 bg-accent-cyan text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">CYAN</p>
+          <p class="font-mono text-xs font-bold mt-1">#00F0FF</p>
+        </div>
+        <div class="p-4 bg-accent-orange text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">ORANGE</p>
+          <p class="font-mono text-xs font-bold mt-1">#FF6B00</p>
+        </div>
+        <div class="p-4 bg-accent-purple text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-display font-black text-sm">PURPLE</p>
+          <p class="font-mono text-xs font-bold mt-1">#8B5CF6</p>
+        </div>
+      </div>
+
+      <!-- Color Swatches: Base & Surface -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-4 bg-[#F5F0E8] text-[#0D0D0D] text-center border-3 border-black shadow-brutal-sm">
+          <p class="font-mono text-xs font-bold uppercase text-zinc-600">Light Base</p>
+          <p class="font-display font-black text-lg">#F5F0E8</p>
+        </div>
+        <div class="p-4 bg-[#FFFFFF] text-[#0D0D0D] text-center border-3 border-black shadow-brutal-sm">
+          <p class="font-mono text-xs font-bold uppercase text-zinc-600">Light Surface</p>
+          <p class="font-display font-black text-lg">#FFFFFF</p>
+        </div>
+        <div class="p-4 bg-[#0D0D0D] text-[#F5F0E8] text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-mono text-xs font-bold uppercase text-zinc-400">Dark Base</p>
+          <p class="font-display font-black text-lg">#0D0D0D</p>
+        </div>
+        <div class="p-4 bg-[#181818] text-[#F5F0E8] text-center border-3 border-black dark:border-white shadow-brutal-sm">
+          <p class="font-mono text-xs font-bold uppercase text-zinc-400">Dark Surface</p>
+          <p class="font-display font-black text-lg">#181818</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. TYPOGRAPHY & HIGHLIGHTERS -->
+    <section>
+      <SectionHeader
+        number="02"
+        title="Typography & Highlighters"
+        subtitle="Pairing Space Grotesk, Inter, and JetBrains Mono with neobrutalist highlighter effects."
+        highlightColor="pink"
+      />
+
+      <div class="space-y-6">
+        <Card variant="default">
+          <div class="space-y-4">
+            <div>
+              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Display 900 (Space Grotesk)</p>
+              <h3 class="font-display font-black text-3xl md:text-5xl tracking-tight leading-tight text-black dark:text-white">
+                INFORMATICS ENGINEER & <span class="highlighter-yellow">FULLSTACK</span>
+              </h3>
+            </div>
+            <div>
+              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Highlighter Variants</p>
+              <div class="flex flex-wrap gap-3 font-display font-black text-xl md:text-2xl text-black dark:text-white">
+                <span>Highlight <span class="highlighter-yellow">Yellow</span></span>
+                <span>Highlight <span class="highlighter-pink">Magenta</span></span>
+                <span>Highlight <span class="highlighter-lime">Lime</span></span>
+                <span>Highlight <span class="highlighter-cyan">Cyan</span></span>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Body Text (Inter)</p>
+              <p class="text-sm md:text-base leading-relaxed text-fg-light dark:text-fg-dark max-w-3xl font-medium">
+                Software engineering focused on robust architecture, conversational AI agents with RAG, and modern interactive web experiences.
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Monospace (JetBrains Mono)</p>
+              <p class="font-mono text-xs md:text-sm bg-black/5 dark:bg-white/5 p-3 border-2 border-black dark:border-white text-black dark:text-white">
+                const profile = &#123; role: "Software Engineer", focus: ["FullStack", "RAG", "Teaching"] &#125;;
+              </p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- 03. BUTTONS & ACTIONS -->
+    <section>
+      <SectionHeader
+        number="03"
+        title="Buttons & Actions"
+        subtitle="Color variants, size tiers, and tactile click response (physical button press mechanics)."
+        highlightColor="lime"
+      />
+
+      <div class="space-y-6">
+        <!-- Button Variants -->
+        <Card variant="default">
+          <p class="font-mono text-xs font-bold mb-3 uppercase tracking-wider text-black dark:text-white">Color Variants</p>
+          <div class="flex flex-wrap gap-4 items-center">
+            <Button variant="primary">Primary (Yellow)</Button>
+            <Button variant="pink">Pink</Button>
+            <Button variant="lime">Lime</Button>
+            <Button variant="cyan">Cyan</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="ghost">Ghost</Button>
+          </div>
+        </Card>
+
+        <!-- Button Sizes & States -->
+        <Card variant="default">
+          <p class="font-mono text-xs font-bold mb-3 uppercase tracking-wider text-black dark:text-white">Sizes & States</p>
+          <div class="flex flex-wrap gap-4 items-center mb-6">
+            <Button size="sm" variant="primary">Small (sm)</Button>
+            <Button size="md" variant="primary">Medium (md)</Button>
+            <Button size="lg" variant="primary">Large (lg)</Button>
+          </div>
+          <div class="flex flex-wrap gap-4 items-center">
+            <Button variant="primary" disabled={true}>Disabled</Button>
+            <Button variant="pink">
+              <span slot="prefix">⚡</span>
+              Prefix Icon
+            </Button>
+            <Button variant="lime">
+              Suffix Icon
+              <span slot="suffix">↗</span>
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- 04. CARDS & CONTAINERS -->
+    <section>
+      <SectionHeader
+        number="04"
+        title="Cards & Containers"
+        subtitle="Heavy borders, customizable offset shadows, reactive micro-tilt, and structured slots."
+        highlightColor="cyan"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card variant="default" shadow="md">
+          <div slot="header" class="flex items-center justify-between">
+            <span class="text-black dark:text-white">Card Default</span>
+            <Badge color="yellow">Base</Badge>
+          </div>
+          <p class="text-sm leading-relaxed mb-4 text-fg-light dark:text-fg-dark">
+            Standard container with white/charcoal surface, 3px border, and 4px hard offset shadow.
+          </p>
+          <Button variant="secondary" size="sm">Action</Button>
+        </Card>
+
+        <Card variant="yellow" shadow="lg" hoverTilt="left">
+          <div slot="header" class="flex items-center justify-between">
+            <span class="text-black">Card Yellow Tilt</span>
+            <Badge color="dark">Tilt Left</Badge>
+          </div>
+          <p class="text-sm leading-relaxed text-black mb-4 font-medium">
+            Hover over this card to witness dynamic micro-rotation to the left with a 6px deep shadow.
+          </p>
+          <Button variant="secondary" size="sm">Explore</Button>
+        </Card>
+
+        <Card variant="pink" shadow="lg" hoverTilt="right">
+          <div slot="header" class="flex items-center justify-between text-white">
+            <span>Card Pink Tilt</span>
+            <Badge color="lime">Tilt Right</Badge>
+          </div>
+          <p class="text-sm leading-relaxed text-white mb-4 font-medium">
+            Dynamic right-leaning micro-tilt with high-energy neon magenta background and bold contrast.
+          </p>
+          <Button variant="secondary" size="sm">View More</Button>
+        </Card>
+      </div>
+    </section>
+
+    <!-- 05. BADGES & TAGS -->
+    <section>
+      <SectionHeader
+        number="05"
+        title="Badges & Tags"
+        subtitle="Status labels with animated radar-pulse and monospaced tech chips."
+        highlightColor="yellow"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card variant="default">
+          <p class="font-mono text-xs font-bold mb-4 uppercase tracking-wider text-black dark:text-white">
+            Badges with & without Radar Pulse
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <Badge color="lime" pulse={true}>In progress</Badge>
+            <Badge color="yellow" pulse={true}>Available</Badge>
+            <Badge color="pink">Research</Badge>
+            <Badge color="cyan">Completed</Badge>
+            <Badge color="purple">Academic</Badge>
+            <Badge color="dark">Backend</Badge>
+            <Badge color="white">Frontend</Badge>
+          </div>
+        </Card>
+
+        <Card variant="default">
+          <p class="font-mono text-xs font-bold mb-4 uppercase tracking-wider text-black dark:text-white">
+            Technology Tags (Interactive)
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <Tag active={true}>#Astro</Tag>
+            <Tag interactive={true}>#TypeScript</Tag>
+            <Tag interactive={true}>#TailwindCSS</Tag>
+            <Tag interactive={true}>#Cloudflare</Tag>
+            <Tag interactive={true}>#Python</Tag>
+            <Tag interactive={true}>#RAG</Tag>
+            <Tag interactive={true}>#Java</Tag>
+            <Tag interactive={true}>#Spring</Tag>
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- 06. DIFFERENTIATING SIGNATURES -->
+    <section>
+      <SectionHeader
+        number="06"
+        title="Micro-interactions & Signatures"
+        subtitle="The 4 core visual pillars of the fabribau.tech design system."
+        highlightColor="pink"
+      />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="brutal-box p-5">
+          <div class="w-8 h-8 bg-accent-yellow border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+            01
+          </div>
+          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Tactile Press</h4>
+          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+            Buttons translate diagonally on click while reducing shadow to 0px, simulating mechanical keys.
+          </p>
+        </div>
+
+        <div class="brutal-box p-5">
+          <div class="w-8 h-8 bg-accent-pink border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-white text-sm">
+            02
+          </div>
+          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Highlighter Mark</h4>
+          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+            Fluorescent marker effects over key concepts for immediate visual impact and hierarchy.
+          </p>
+        </div>
+
+        <div class="brutal-box p-5">
+          <div class="w-8 h-8 bg-accent-lime border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+            03
+          </div>
+          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Dynamic Tilt</h4>
+          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+            Subtle ±1 degree tilt on project cards during cursor hover, bringing the grid to life.
+          </p>
+        </div>
+
+        <div class="brutal-box p-5">
+          <div class="w-8 h-8 bg-accent-cyan border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+            04
+          </div>
+          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Radar Status</h4>
+          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+            Continuous pulse animation on badges signaling live availability and ongoing projects.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

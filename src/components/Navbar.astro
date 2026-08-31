@@ -1,0 +1,145 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import LanguagePicker from '@components/LanguagePicker.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: translatePath('/'), label: t('nav.home'), key: 'home' },
+  { href: translatePath('/#proyectos'), label: t('nav.projects'), key: 'projects' },
+  { href: translatePath('/#blog'), label: t('nav.blog'), key: 'blog' },
+  { href: translatePath('/style-guide'), label: t('nav.style_guide'), key: 'style_guide' },
+];
+
+const isCurrentPath = (href: string) => {
+  if (href === translatePath('/') && (pathname === `/${lang}` || pathname === `/${lang}/`)) {
+    return true;
+  }
+  return pathname === href || pathname === `${href}/`;
+};
+---
+
+<header class="sticky top-0 z-50 bg-bg-surface-light dark:bg-bg-surface-dark border-b-4 border-black dark:border-white transition-colors duration-200">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <!-- Brand Logo -->
+    <a
+      href={translatePath('/')}
+      class="group flex items-center gap-1.5 font-display font-black text-xl md:text-2xl tracking-tighter hover:opacity-90 transition-transform active:scale-95"
+      aria-label="Fabrizio Bauer - Home"
+    >
+      <span class="bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)]">
+        F
+      </span>
+      <span class="tracking-tight text-black dark:text-white">
+        FABRI<span class="text-accent-pink dark:text-accent-yellow">BAU</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-1 font-display font-bold text-xs uppercase tracking-wider">
+      {
+        navItems.map((item) => {
+          const active = isCurrentPath(item.href);
+          return (
+            <a
+              href={item.href}
+              class={`px-3 py-1.5 transition-all border-2 ${
+                active
+                  ? 'bg-accent-yellow text-black border-black shadow-[2px_2px_0px_0px_var(--shadow-color)] -translate-y-0.5'
+                  : 'border-transparent text-zinc-700 dark:text-zinc-300 hover:border-black dark:hover:border-white hover:bg-black/5 dark:hover:bg-white/5'
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <!-- Controls (Language, Theme & Mobile Toggle) -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <LanguagePicker />
+      <ThemeToggle />
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label={t('nav.menu')}
+        aria-expanded="false"
+        class="md:hidden brutal-btn bg-white dark:bg-zinc-800 text-black dark:text-white p-2 border-2 border-black dark:border-white shadow-brutal-sm"
+      >
+        <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t-3 border-black dark:border-white bg-bg-surface-light dark:bg-bg-surface-dark px-4 py-4 space-y-2 shadow-brutal-lg"
+  >
+    {
+      navItems.map((item) => {
+        const active = isCurrentPath(item.href);
+        return (
+          <a
+            href={item.href}
+            class={`block px-4 py-2.5 font-display font-black text-sm uppercase tracking-wider border-2 border-black dark:border-white ${
+              active
+                ? 'bg-accent-yellow text-black shadow-brutal-sm'
+                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-accent-pink hover:text-white'
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </div>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (!toggleBtn || !menu || !hamburgerIcon || !closeIcon) return;
+
+    const toggle = () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      menu.classList.toggle('hidden');
+      hamburgerIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    };
+
+    // Clean previous listener if reloaded
+    toggleBtn.onclick = toggle;
+
+    // Close when clicking any menu link
+    menu.querySelectorAll('a').forEach((link) => {
+      link.onclick = () => {
+        if (!menu.classList.contains('hidden')) {
+          toggle();
+        }
+      };
+    });
+  }
+
+  // Initialize on first load and on View Transitions page swap
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

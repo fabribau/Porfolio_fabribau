@@ -1,0 +1,96 @@
+---
+interface Props {
+  variant?: 'default' | 'yellow' | 'pink' | 'lime' | 'cyan' | 'dark';
+  shadow?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
+  hoverTilt?: 'left' | 'right' | 'none';
+  borderWidth?: '2' | '3' | '4';
+  as?: 'div' | 'article' | 'section' | 'a';
+  href?: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = 'default',
+  shadow = 'md',
+  hoverTilt = 'none',
+  borderWidth = '3',
+  as,
+  href,
+  target,
+  rel,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const Component = as || (href ? 'a' : 'div');
+
+// Variant background & text styles
+const variantStyles: Record<string, string> = {
+  default: 'bg-white dark:bg-zinc-900 text-black dark:text-white',
+  yellow: 'bg-accent-yellow text-black',
+  pink: 'bg-accent-pink text-white',
+  lime: 'bg-accent-lime text-black',
+  cyan: 'bg-accent-cyan text-black',
+  dark: 'bg-black text-white dark:bg-zinc-950',
+};
+
+// Shadow styles
+const shadowStyles: Record<string, string> = {
+  none: 'shadow-none',
+  sm: 'shadow-brutal-sm',
+  md: 'shadow-brutal',
+  lg: 'shadow-brutal-lg',
+  xl: 'shadow-brutal-xl',
+};
+
+// Border width
+const borderStyles: Record<string, string> = {
+  '2': 'border-2',
+  '3': 'border-3',
+  '4': 'border-4',
+};
+
+// Tilt on hover
+const tiltStyles: Record<string, string> = {
+  none: '',
+  left: 'tilt-hover-left',
+  right: 'tilt-hover-right',
+};
+
+const baseStyles = [
+  'block border-black dark:border-white transition-all duration-200 relative overflow-hidden',
+  variantStyles[variant] || variantStyles.default,
+  shadowStyles[shadow] || shadowStyles.md,
+  borderStyles[borderWidth] || borderStyles['3'],
+  tiltStyles[hoverTilt],
+  href ? 'cursor-pointer brutal-btn-press' : '',
+  className,
+].filter(Boolean).join(' ');
+---
+
+<Component
+  href={href}
+  target={target}
+  rel={target === '_blank' ? (rel || 'noopener noreferrer') : rel}
+  class={baseStyles}
+  {...rest}
+>
+  {Astro.slots.has('header') && (
+    <div class="border-b-3 border-black dark:border-white p-4 font-display font-bold">
+      <slot name="header" />
+    </div>
+  )}
+
+  <div class="p-6">
+    <slot />
+  </div>
+
+  {Astro.slots.has('footer') && (
+    <div class="border-t-3 border-black dark:border-white p-4 bg-black/5 dark:bg-white/5">
+      <slot name="footer" />
+    </div>
+  )}
+</Component>

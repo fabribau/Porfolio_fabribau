@@ -1,176 +1,170 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/Button.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import SectionHeader from '@components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
-// Get projects for English
+// Get projects and blog posts for English
 const allProjects = await getCollection('proyectos', ({ id }) => id.startsWith('en/'));
 const allPosts = await getCollection('blog', ({ id }) => id.startsWith('en/'));
 ---
 
-<BaseLayout title="Fabrizio José Riera Bauer — Portfolio">
+<BaseLayout title="Fabrizio José Riera Bauer — Informatics Engineer & FullStack">
   <!-- Hero Section -->
-  <section class="mb-12">
-    <div class="brutal-box p-6 md:p-8 bg-accent-yellow text-black border-4 border-black shadow-brutal-lg">
-      <div class="inline-block px-3 py-1 bg-black text-white font-mono text-xs font-bold mb-4 uppercase tracking-wider">
-        {t('hero.badge')}
+  <section class="mb-16">
+    <div class="p-6 md:p-10 bg-accent-yellow text-black border-4 border-black dark:border-white shadow-brutal-xl">
+      <div class="mb-4">
+        <Badge color="dark" pulse={true} size="md">
+          {t('hero.badge')}
+        </Badge>
       </div>
-      <h1 class="font-display font-black text-4xl md:text-6xl tracking-tight leading-none mb-3">
+
+      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-7xl tracking-tight leading-none mb-4 text-black">
         {t('hero.title')}
       </h1>
-      <p class="font-mono text-lg md:text-xl font-bold mb-4 text-zinc-900">
+
+      <p class="font-mono text-base md:text-xl font-bold mb-4 text-black">
         {t('hero.role')}
       </p>
-      <p class="text-base md:text-lg max-w-2xl text-zinc-800 leading-relaxed mb-6 font-medium">
+
+      <p class="text-base md:text-lg max-w-2xl text-zinc-900 leading-relaxed mb-8 font-medium">
         {t('hero.desc')}
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a
-          href="#proyectos"
-          class="brutal-btn bg-accent-pink text-white px-6 py-3 font-display font-black text-sm uppercase tracking-wider"
-        >
+        <Button href="#proyectos" variant="pink" size="lg">
+          <span slot="prefix">⚡</span>
           {t('hero.cta_projects')}
-        </a>
-        <a
-          href="#tokens"
-          class="brutal-btn bg-white text-black px-6 py-3 font-display font-black text-sm uppercase tracking-wider"
-        >
-          Design Tokens
-        </a>
+        </Button>
+        <Button href={translatePath('/style-guide')} variant="secondary" size="lg">
+          {t('nav.style_guide')}
+          <span slot="suffix">↗</span>
+        </Button>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section (Spec_T5 Content Collections Test) -->
-  <section id="proyectos" class="mb-12">
-    <h2 class="font-display font-black text-2xl md:text-3xl mb-6 flex items-center gap-3">
-      <span class="w-4 h-4 bg-accent-pink inline-block border-2 border-black dark:border-white"></span>
-      {t('nav.projects')} (Content Collections)
-    </h2>
+  <!-- Projects Section (Content Collections) -->
+  <section id="proyectos" class="mb-16">
+    <SectionHeader
+      number="01"
+      title={t('nav.projects')}
+      subtitle="Featured software engineering projects, conversational RAG agents, and bespoke platforms."
+      highlightColor="pink"
+    />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {
         allProjects.map((project) => (
-          <div class="brutal-box p-6 flex flex-col justify-between">
+          <Card
+            variant="default"
+            shadow="lg"
+            hoverTilt="left"
+            class="flex flex-col justify-between"
+          >
             <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class={`text-xs font-mono font-bold px-2 py-1 border-2 border-black dark:border-white ${
-                  project.data.status === 'en-desarrollo' ? 'bg-accent-lime text-black' : 'bg-accent-cyan text-black'
-                }`}>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <Badge
+                  color={project.data.status === 'en-desarrollo' ? 'lime' : 'cyan'}
+                  pulse={project.data.status === 'en-desarrollo'}
+                  size="sm"
+                >
                   {project.data.status === 'en-desarrollo' ? t('project.status.in_progress') : t('project.status.completed')}
-                </span>
-                <span class="text-xs font-mono text-fg-muted-light dark:text-fg-muted-dark">
+                </Badge>
+                <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
                   {project.data.pubDate.toLocaleDateString('en-US')}
                 </span>
               </div>
-              <h3 class="font-display font-black text-xl mb-2">{project.data.title}</h3>
-              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-4 leading-relaxed">
+
+              <h3 class="font-display font-black text-2xl mb-3 tracking-tight">
+                {project.data.title}
+              </h3>
+
+              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
                 {project.data.description}
               </p>
             </div>
 
             <div>
-              <div class="flex flex-wrap gap-1.5 mb-4">
+              <div class="flex flex-wrap gap-2 mb-6">
                 {project.data.tags.map((tag) => (
-                  <span class="text-xs font-mono font-bold bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 border border-black dark:border-white">
-                    #{tag}
-                  </span>
+                  <Tag interactive={true}>{tag}</Tag>
                 ))}
               </div>
+
               <div class="flex items-center gap-3">
                 {project.data.liveUrl && (
-                  <a
-                    href={project.data.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="brutal-btn bg-accent-yellow text-black px-3 py-1.5 text-xs"
-                  >
+                  <Button href={project.data.liveUrl} target="_blank" variant="primary" size="sm">
                     {t('common.view_project')}
-                  </a>
+                    <span slot="suffix">↗</span>
+                  </Button>
                 )}
                 {project.data.repositoryUrl && (
-                  <a
-                    href={project.data.repositoryUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="brutal-btn bg-white dark:bg-zinc-700 text-black dark:text-white px-3 py-1.5 text-xs"
-                  >
+                  <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="sm">
                     {t('common.view_code')}
-                  </a>
+                  </Button>
                 )}
               </div>
             </div>
-          </div>
+          </Card>
         ))
       }
     </div>
   </section>
 
-  <!-- Blog Section (Spec_T5 Content Collections Test) -->
-  <section id="blog" class="mb-12">
-    <h2 class="font-display font-black text-2xl md:text-3xl mb-6 flex items-center gap-3">
-      <span class="w-4 h-4 bg-accent-yellow inline-block border-2 border-black dark:border-white"></span>
-      {t('nav.blog')} (Content Collections)
-    </h2>
+  <!-- Blog Section (Content Collections) -->
+  <section id="blog" class="mb-16">
+    <SectionHeader
+      number="02"
+      title={t('nav.blog')}
+      subtitle="Engineering insights, university lecturing reflections, and AI experiments."
+      highlightColor="yellow"
+    />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {
         allPosts.map((post) => (
-          <div class="brutal-box p-6 flex flex-col justify-between">
+          <Card
+            variant="default"
+            shadow="lg"
+            hoverTilt="right"
+            class="flex flex-col justify-between"
+          >
             <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="text-xs font-mono font-bold px-2 py-1 bg-accent-pink text-white border-2 border-black dark:border-white">
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <Badge color="pink" size="sm">
                   BLOG
-                </span>
-                <span class="text-xs font-mono text-fg-muted-light dark:text-fg-muted-dark">
+                </Badge>
+                <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
                   {post.data.pubDate.toLocaleDateString('en-US')}
                 </span>
               </div>
-              <h3 class="font-display font-black text-xl mb-2">{post.data.title}</h3>
-              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-4 leading-relaxed">
+
+              <h3 class="font-display font-black text-2xl mb-3 tracking-tight">
+                {post.data.title}
+              </h3>
+
+              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
                 {post.data.description}
               </p>
             </div>
-            <div class="flex flex-wrap gap-1.5">
+
+            <div class="flex flex-wrap gap-2">
               {post.data.tags.map((tag) => (
-                <span class="text-xs font-mono font-bold bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 border border-black dark:border-white">
-                  #{tag}
-                </span>
+                <Tag interactive={true}>{tag}</Tag>
               ))}
             </div>
-          </div>
+          </Card>
         ))
       }
-    </div>
-  </section>
-
-  <!-- Design Tokens Showcase (Spec_T3 Test) -->
-  <section id="tokens" class="brutal-box p-6">
-    <h2 class="font-display font-black text-2xl mb-4 flex items-center gap-3">
-      <span class="w-4 h-4 bg-accent-lime inline-block border-2 border-black dark:border-white"></span>
-      Neobrutalist Tokens & Theming (Spec_T3 / Spec_T6)
-    </h2>
-    <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6">
-      Verification of vivid color palette, contrast in light/dark mode, and hard offset shadows.
-    </p>
-
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-      <div class="p-4 bg-accent-yellow text-black font-mono font-bold text-xs border-2 border-black shadow-brutal-sm text-center">
-        YELLOW<br />#FFE400
-      </div>
-      <div class="p-4 bg-accent-pink text-white font-mono font-bold text-xs border-2 border-black shadow-brutal-sm text-center">
-        MAGENTA<br />#FF3D8A
-      </div>
-      <div class="p-4 bg-accent-lime text-black font-mono font-bold text-xs border-2 border-black shadow-brutal-sm text-center">
-        LIME<br />#B4FF39
-      </div>
-      <div class="p-4 bg-accent-cyan text-black font-mono font-bold text-xs border-2 border-black shadow-brutal-sm text-center">
-        CYAN<br />#00F0FF
-      </div>
     </div>
   </section>
 </BaseLayout>

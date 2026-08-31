@@ -1,0 +1,102 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import Badge from '@components/Badge.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/fabribau', icon: 'github' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/fabribau', icon: 'linkedin' },
+  { label: 'Email', href: 'mailto:fabribau@gmail.com', icon: 'mail' },
+];
+
+const quickLinks = [
+  { label: t('nav.home'), href: translatePath('/') },
+  { label: t('nav.projects'), href: translatePath('/#proyectos') },
+  { label: t('nav.blog'), href: translatePath('/#blog') },
+  { label: t('nav.style_guide'), href: translatePath('/style-guide') },
+];
+---
+
+<footer class="border-t-4 border-black dark:border-white bg-bg-surface-light dark:bg-bg-surface-dark transition-colors duration-200 mt-20">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b-2 border-black/20 dark:border-white/20">
+      <!-- Col 1: Brand & Status -->
+      <div class="space-y-4">
+        <a
+          href={translatePath('/')}
+          class="inline-block font-display font-black text-2xl tracking-tight text-black dark:text-white hover:text-accent-pink transition-colors"
+        >
+          FABRI<span class="text-accent-pink dark:text-accent-yellow">BAU</span>.TECH
+        </a>
+        <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed font-sans max-w-sm">
+          {t('hero.role')} — {t('hero.desc')}
+        </p>
+        <div>
+          <Badge color="lime" pulse={true} size="sm">
+            {t('footer.status')}
+          </Badge>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="space-y-3">
+        <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-accent-yellow inline-block border border-black dark:border-white"></span>
+          {t('footer.quick_links')}
+        </h3>
+        <ul class="space-y-1.5 font-mono text-xs">
+          {
+            quickLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="inline-block text-fg-muted-light dark:text-fg-muted-dark hover:text-black dark:hover:text-white hover:translate-x-1 transition-transform"
+                >
+                  → {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Col 3: Social / Contact -->
+      <div class="space-y-3">
+        <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-accent-pink inline-block border border-black dark:border-white"></span>
+          {t('footer.social')}
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {
+            socialLinks.map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-xs font-bold px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-white shadow-brutal-sm hover:bg-accent-yellow hover:text-black hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+              >
+                {social.label} ↗
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+      <p>© {currentYear} Fabrizio José Riera Bauer. {t('footer.rights')}</p>
+      <div class="flex items-center gap-2">
+        <span>{t('footer.built_with')}</span>
+        <span class="bg-black text-white dark:bg-white dark:text-black px-1.5 py-0.5 font-bold">Astro 5</span>
+        <span class="bg-accent-cyan text-black px-1.5 py-0.5 font-bold">Tailwind</span>
+        <span class="bg-accent-yellow text-black px-1.5 py-0.5 font-bold">Cloudflare</span>
+      </div>
+    </div>
+  </div>
+</footer>

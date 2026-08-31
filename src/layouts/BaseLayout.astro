@@ -1,103 +1,91 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
-import ThemeToggle from '@components/ThemeToggle.astro';
-import LanguagePicker from '@components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
 import '@styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 
 const {
   title = 'Fabrizio José Riera Bauer — Portfolio',
   description = t('hero.desc'),
+  image = '/favicon.svg',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fabribau.tech');
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO & Open Graph -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Space Grotesk (Display) & JetBrains Mono (Code/Labels) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;900&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Zero-FOUC Theme Script -->
+    <!-- Zero-FOUC Inline Theme Script -->
     <script is:inline>
       function applyTheme() {
-        const theme = (() => {
-          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-            return localStorage.getItem('theme');
-          }
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-          }
-          return 'light';
-        })();
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored ? stored : (prefersDark ? 'dark' : 'light');
 
-        if (theme === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else {
-          document.documentElement.classList.add('dark');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          localStorage.setItem('theme', theme);
+        } catch (e) {
+          // Fallback if localStorage is inaccessible
         }
-        window.localStorage.setItem('theme', theme);
       }
 
       applyTheme();
       document.addEventListener('astro:after-swap', applyTheme);
     </script>
 
+    <!-- Astro View Transitions -->
     <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col font-sans selection:bg-accent-yellow selection:text-black">
-    <!-- Top banner / Navigation -->
-    <header class="sticky top-0 z-50 bg-bg-surface-light dark:bg-bg-surface-dark border-b-4 border-black dark:border-white">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <!-- Logo -->
-        <a
-          href={translatePath('/')}
-          class="font-display font-black text-xl md:text-2xl tracking-tighter hover:text-accent-pink transition-colors"
-        >
-          FABRI<span class="text-accent-pink dark:text-accent-yellow">BAU</span>
-        </a>
+  <body class="min-h-screen flex flex-col font-sans bg-bg-light dark:bg-bg-dark text-fg-light dark:text-fg-dark transition-colors duration-200">
+    <!-- Navbar Component -->
+    <Navbar />
 
-        <!-- Actions -->
-        <div class="flex items-center gap-3">
-          <LanguagePicker />
-          <ThemeToggle />
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-8 md:py-12">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t-4 border-black dark:border-white bg-bg-surface-light dark:bg-bg-surface-dark py-6 mt-12">
-      <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-        <p>© {new Date().getFullYear()} Fabrizio José Riera Bauer</p>
-        <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Built with <span class="text-accent-pink font-bold">Astro</span> & <span class="text-accent-yellow font-bold">Tailwind</span>
-        </p>
-      </div>
-    </footer>
+    <!-- Footer Component -->
+    <Footer />
   </body>
 </html>

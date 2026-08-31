@@ -1,0 +1,37 @@
+---
+interface Props {
+  prefix?: string;
+  interactive?: boolean;
+  active?: boolean;
+  href?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  prefix = '#',
+  interactive = false,
+  active = false,
+  href,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const Component = href ? 'a' : 'span';
+
+const baseStyles = [
+  'inline-flex items-center font-mono text-xs font-bold px-2.5 py-0.5 border border-black dark:border-white transition-all select-none',
+  active
+    ? 'bg-accent-yellow text-black border-2 border-black shadow-[1px_1px_0px_0px_var(--shadow-color)]'
+    : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200',
+  interactive || href
+    ? 'hover:bg-accent-yellow hover:text-black hover:border-black dark:hover:border-white cursor-pointer hover:shadow-brutal-sm hover:-translate-y-0.5'
+    : '',
+  className,
+].filter(Boolean).join(' ');
+---
+
+<Component href={href} class={baseStyles} {...rest}>
+  {prefix && <span class="opacity-60 mr-0.5">{prefix}</span>}
+  <slot />
+</Component>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  color?: 'yellow' | 'pink' | 'lime' | 'cyan' | 'purple' | 'orange' | 'dark' | 'white';
+  size?: 'sm' | 'md';
+  pulse?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  color = 'lime',
+  size = 'sm',
+  pulse = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+// Color styles
+const colorStyles: Record<string, string> = {
+  yellow: 'bg-accent-yellow text-black',
+  pink: 'bg-accent-pink text-white',
+  lime: 'bg-accent-lime text-black',
+  cyan: 'bg-accent-cyan text-black',
+  purple: 'bg-accent-purple text-white',
+  orange: 'bg-accent-orange text-white',
+  dark: 'bg-black text-white dark:bg-zinc-800',
+  white: 'bg-white text-black dark:bg-zinc-100',
+};
+
+// Size styles
+const sizeStyles: Record<string, string> = {
+  sm: 'px-2 py-0.5 text-xs',
+  md: 'px-3 py-1 text-xs md:text-sm',
+};
+
+const baseStyles = [
+  'inline-flex items-center gap-1.5 font-mono font-bold uppercase tracking-wider border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)] select-none',
+  colorStyles[color] || colorStyles.lime,
+  sizeStyles[size] || sizeStyles.sm,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<span class={baseStyles} {...rest}>
+  {pulse && (
+    <span class="relative flex h-2 w-2 shrink-0">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-current"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
+    </span>
+  )}
+  <slot />
+</span>
