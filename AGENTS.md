@@ -166,10 +166,10 @@
   - [x] `Spec_T17`: Contenido de About Me desde CVs.
   - [x] `Spec_T18`: Contenido de los 3 proyectos (FabRiBau con status "en-desarrollo", Asistente IA Apuestas, Olimpiadas Atletismo).
   - [x] `Spec_T19`: Foto profesional integrada con estilo neobrutalista.
-- [ ] **ETAPA 4 — Formulario de contacto (Resend + Turnstile)**
-  - [ ] `Spec_T20`: Endpoint de envío con Resend.
-  - [ ] `Spec_T21`: Anti-bot con Cloudflare Turnstile.
-  - [ ] `Spec_T22`: Validación y UX de formulario.
+- [x] **ETAPA 4 — Formulario de contacto (Resend + Turnstile)**
+  - [x] `Spec_T20`: Endpoint de envío con Resend (`/api/contact`, doble despacho: notificación + autoresponder bilingüe).
+  - [x] `Spec_T21`: Anti-bot con Cloudflare Turnstile (verificación client + server con soporte local).
+  - [x] `Spec_T22`: Validación y UX de formulario (Zod, feedback neobrutalista y 32 tests automatizados con Vitest).
 - [ ] **ETAPA 5 — Performance, SEO y QA final**
   - [ ] `Spec_T23`: SEO técnico, sitemap, Open Graph, hreflang.
   - [ ] `Spec_T24`: Optimización de performance (Lighthouse > 90).
