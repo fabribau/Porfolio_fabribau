@@ -11,14 +11,18 @@ const pathname = Astro.url.pathname;
 
 const navItems = [
   { href: translatePath('/'), label: t('nav.home'), key: 'home' },
-  { href: translatePath('/#proyectos'), label: t('nav.projects'), key: 'projects' },
-  { href: translatePath('/#blog'), label: t('nav.blog'), key: 'blog' },
-  { href: translatePath('/style-guide'), label: t('nav.style_guide'), key: 'style_guide' },
+  { href: translatePath('/about'), label: t('nav.about'), key: 'about' },
+  { href: translatePath('/proyectos'), label: t('nav.projects'), key: 'projects' },
+  { href: translatePath('/blog'), label: t('nav.blog'), key: 'blog' },
+  { href: translatePath('/contact'), label: t('nav.contact'), key: 'contact' },
 ];
 
 const isCurrentPath = (href: string) => {
   if (href === translatePath('/') && (pathname === `/${lang}` || pathname === `/${lang}/`)) {
     return true;
+  }
+  if (href !== translatePath('/')) {
+    return pathname.startsWith(href);
   }
   return pathname === href || pathname === `${href}/`;
 };

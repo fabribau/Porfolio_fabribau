@@ -1,0 +1,215 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import Card from "@components/Card.astro";
+import Button from "@components/Button.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t("contact.title")} — Fabrizio Bauer`}
+  description={t("contact.subtitle")}
+>
+  <div class="space-y-12">
+    <!-- Header -->
+    <SectionHeader
+      number="03"
+      title={t("contact.title")}
+      subtitle={t("contact.subtitle")}
+      highlightColor="cyan"
+    />
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Contact Form (7 cols) -->
+      <div class="lg:col-span-7">
+        <Card variant="default" shadow="xl">
+          <form id="contact-form" class="space-y-5">
+            <div>
+              <label for="name" class="block font-mono text-xs font-bold uppercase tracking-wider mb-2">
+                {t("contact.form_name")} <span class="text-accent-pink">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder={t("contact.form_name_placeholder")}
+                class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block font-mono text-xs font-bold uppercase tracking-wider mb-2">
+                {t("contact.form_email")} <span class="text-accent-pink">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder={t("contact.form_email_placeholder")}
+                class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="subject" class="block font-mono text-xs font-bold uppercase tracking-wider mb-2">
+                {t("contact.form_subject")} <span class="text-accent-pink">*</span>
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                placeholder={t("contact.form_subject_placeholder")}
+                class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block font-mono text-xs font-bold uppercase tracking-wider mb-2">
+                {t("contact.form_message")} <span class="text-accent-pink">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder={t("contact.form_message_placeholder")}
+                class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Anti-bot turnstile placeholder box -->
+            <div class="p-3 bg-zinc-100 dark:bg-zinc-800 border-2 border-dashed border-black dark:border-white flex items-center justify-between text-xs font-mono">
+              <span class="flex items-center gap-2">
+                <span class="w-3 h-3 bg-accent-lime inline-block border border-black"></span>
+                {t("contact.form_security")}
+              </span>
+              <span class="text-fg-muted-light dark:text-fg-muted-dark font-bold">Cloudflare</span>
+            </div>
+
+            <Button
+              type="submit"
+              variant="pink"
+              size="lg"
+              class="w-full justify-center"
+            >
+              <span slot="prefix">✉</span>
+              {t("contact.form_submit")}
+            </Button>
+          </form>
+
+          <div id="form-feedback" class="mt-4 hidden p-4 border-3 border-black dark:border-white font-mono text-sm font-bold"></div>
+        </Card>
+      </div>
+
+      <!-- Direct Channels (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Email Direct Card -->
+        <Card variant="yellow" shadow="lg">
+          <div class="space-y-3 text-black">
+            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
+              📬 {t("contact.email_label")}
+            </span>
+            <p class="font-display font-black text-xl sm:text-2xl break-all">
+              fabribau@gmail.com
+            </p>
+            <div class="pt-2">
+              <button
+                id="copy-email-btn"
+                type="button"
+                data-email="fabribau@gmail.com"
+                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all"
+              >
+                📋 {t("common.copy")}
+              </button>
+            </div>
+          </div>
+        </Card>
+
+        <!-- Social Channels -->
+        <Card variant="default" shadow="md">
+          <h3 class="font-display font-black text-lg mb-4 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 bg-accent-pink inline-block"></span>
+            {t("contact.direct_channels")}
+          </h3>
+
+          <div class="space-y-3">
+            <a
+              href="https://linkedin.com/in/fabribau"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-3 border-2 border-black dark:border-white bg-zinc-50 dark:bg-zinc-800 hover:bg-accent-cyan hover:text-black transition-colors"
+            >
+              <span class="font-display font-bold text-sm">LinkedIn</span>
+              <span class="font-mono text-xs font-bold">in/fabribau ↗</span>
+            </a>
+
+            <a
+              href="https://github.com/fabribau"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-3 border-2 border-black dark:border-white bg-zinc-50 dark:bg-zinc-800 hover:bg-accent-lime hover:text-black transition-colors"
+            >
+              <span class="font-display font-bold text-sm">GitHub</span>
+              <span class="font-mono text-xs font-bold">@fabribau ↗</span>
+            </a>
+          </div>
+        </Card>
+
+        <!-- Status & Availability -->
+        <Card variant="cyan" shadow="md">
+          <div class="space-y-2 text-black">
+            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
+              ⚡ {t("contact.status_label")}
+            </span>
+            <p class="font-display font-black text-lg">
+              {t("contact.status_value")}
+            </p>
+            <p class="font-mono text-xs font-medium">
+              {t("about.location_desc")}
+            </p>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function setupContactPage() {
+    const copyBtn = document.getElementById("copy-email-btn");
+    if (copyBtn) {
+      copyBtn.onclick = () => {
+        const email = copyBtn.getAttribute("data-email") || "fabribau@gmail.com";
+        navigator.clipboard.writeText(email).then(() => {
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = "✓ ¡Copiado!";
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+          }, 2000);
+        });
+      };
+    }
+
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const feedback = document.getElementById("form-feedback");
+    if (form && feedback) {
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        feedback.classList.remove("hidden", "bg-accent-pink", "text-white");
+        feedback.classList.add("bg-accent-lime", "text-black");
+        feedback.innerHTML = "✓ ¡Mensaje recibido! Gracias por contactarme.";
+        form.reset();
+      };
+    }
+  }
+
+  setupContactPage();
+  document.addEventListener("astro:page-load", setupContactPage);
+</script>

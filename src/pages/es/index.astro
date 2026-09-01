@@ -1,170 +1,296 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Button from '@components/Button.astro';
-import Card from '@components/Card.astro';
-import Badge from '@components/Badge.astro';
-import Tag from '@components/Tag.astro';
-import SectionHeader from '@components/SectionHeader.astro';
-import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Badge from "@components/Badge.astro";
+import Tag from "@components/Tag.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 // Get projects and blog posts for Spanish
-const allProjects = await getCollection('proyectos', ({ id }) => id.startsWith('es/'));
-const allPosts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
+const allProjects = await getCollection("proyectos", ({ id }) => id.startsWith("es/"));
+allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const featuredProjects = allProjects.slice(0, 2);
+
+const allPosts = await getCollection("blog", ({ id, data }) => id.startsWith("es/") && !data.draft);
+allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const latestPosts = allPosts.slice(0, 2);
 ---
 
-<BaseLayout title="Fabrizio José Riera Bauer — Ingeniero en Informática & FullStack">
-  <!-- Hero Section -->
-  <section class="mb-16">
-    <div class="p-6 md:p-10 bg-accent-yellow text-black border-4 border-black dark:border-white shadow-brutal-xl">
-      <div class="mb-4">
-        <Badge color="dark" pulse={true} size="md">
-          {t('hero.badge')}
-        </Badge>
+<BaseLayout
+  title="Fabrizio José Riera Bauer — Ingeniero en Informática & FullStack"
+  description={t("hero.desc")}
+>
+  <div class="space-y-16">
+    <!-- Hero Section -->
+    <section>
+      <div class="p-6 md:p-12 bg-accent-yellow text-black border-4 border-black dark:border-white shadow-brutal-xl space-y-6">
+        <div>
+          <Badge color="dark" pulse={true} size="md">
+            {t("hero.badge")}
+          </Badge>
+        </div>
+
+        <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none text-black">
+          {t("hero.title")}
+        </h1>
+
+        <p class="font-mono text-base sm:text-xl font-bold text-black">
+          {t("hero.role")}
+        </p>
+
+        <p class="text-base sm:text-lg max-w-2xl text-zinc-900 leading-relaxed font-medium">
+          {t("hero.desc")}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <Button href={translatePath("/proyectos")} variant="pink" size="lg">
+            <span slot="prefix">⚡</span>
+            {t("hero.cta_projects")}
+          </Button>
+          <Button href={translatePath("/about")} variant="secondary" size="lg">
+            {t("hero.cta_about")}
+            <span slot="suffix">→</span>
+          </Button>
+          <Button href={translatePath("/contact")} variant="cyan" size="lg">
+            {t("hero.cta_contact")}
+            <span slot="suffix">✉</span>
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Snippet Section -->
+    <section>
+      <Card variant="default" shadow="lg">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-8 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 bg-accent-lime inline-block border border-black dark:border-white"></span>
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-fg-muted-light dark:text-fg-muted-dark">
+                Ingeniería & Docencia Universitaria
+              </span>
+            </div>
+            <h2 class="font-display font-black text-2xl md:text-3xl tracking-tight">
+              {t("about.title")}
+            </h2>
+            <p class="text-sm md:text-base text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+              {t("home.about_summary")}
+            </p>
+            <div class="pt-2">
+              <Button href={translatePath("/about")} variant="primary" size="sm">
+                Conocer más sobre mi perfil
+                <span slot="suffix">→</span>
+              </Button>
+            </div>
+          </div>
+
+          <div class="md:col-span-4 p-4 bg-zinc-100 dark:bg-zinc-800 border-2 border-black dark:border-white space-y-3">
+            <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white">
+              Puntos Destacados
+            </h3>
+            <ul class="font-mono text-xs space-y-2 text-fg-muted-light dark:text-fg-muted-dark">
+              <li>🎓 <strong>Ing. en Informática</strong> (UNSL)</li>
+              <li>🏛️ <strong>Docente Universitario</strong></li>
+              <li>🤖 <strong>Especialista en IA & RAG</strong></li>
+              <li>🌐 <strong>FullStack Web Architect</strong></li>
+            </ul>
+          </div>
+        </div>
+      </Card>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="space-y-8">
+      <SectionHeader
+        number="01"
+        title={t("project.featured")}
+        subtitle="Sistemas en producción, agentes de inteligencia artificial y proyectos destacados."
+        highlightColor="pink"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          featuredProjects.map((project) => {
+            const slug = project.id.replace(/^es\//, "");
+            const isDev = project.data.status === "en-desarrollo";
+
+            return (
+              <Card
+                variant="default"
+                shadow="lg"
+                hoverTilt="left"
+                class="flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-4">
+                    <Badge
+                      color={isDev ? "lime" : "cyan"}
+                      pulse={isDev}
+                      size="sm"
+                    >
+                      {isDev ? t("project.status.in_progress") : t("project.status.completed")}
+                    </Badge>
+                    <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
+                      {project.data.pubDate.toLocaleDateString("es-AR", { year: "numeric", month: "short" })}
+                    </span>
+                  </div>
+
+                  <a
+                    href={translatePath(`/proyectos/${slug}`)}
+                    class="group inline-block mb-3"
+                  >
+                    <h3 class="font-display font-black text-2xl tracking-tight group-hover:text-accent-pink transition-colors">
+                      {project.data.title}
+                    </h3>
+                  </a>
+
+                  <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
+                    {project.data.description}
+                  </p>
+                </div>
+
+                <div>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {project.data.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
+                  </div>
+
+                  <div class="flex items-center gap-3 pt-4 border-t-2 border-black/10 dark:border-white/10">
+                    <Button
+                      href={translatePath(`/proyectos/${slug}`)}
+                      variant="primary"
+                      size="sm"
+                    >
+                      {t("common.view_project")}
+                      <span slot="suffix">→</span>
+                    </Button>
+                    {project.data.liveUrl && (
+                      <Button
+                        href={project.data.liveUrl}
+                        target="_blank"
+                        variant="secondary"
+                        size="sm"
+                      >
+                        {t("project.live_demo")}
+                        <span slot="suffix">↗</span>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </Card>
+            );
+          })
+        }
       </div>
 
-      <h1 class="font-display font-black text-4xl sm:text-5xl md:text-7xl tracking-tight leading-none mb-4 text-black">
-        {t('hero.title')}
-      </h1>
+      <div class="text-center pt-4">
+        <Button href={translatePath("/proyectos")} variant="secondary" size="md">
+          {t("project.view_all")} ({allProjects.length})
+          <span slot="suffix">→</span>
+        </Button>
+      </div>
+    </section>
 
-      <p class="font-mono text-base md:text-xl font-bold mb-4 text-black">
-        {t('hero.role')}
-      </p>
+    <!-- Latest Blog Posts Section -->
+    <section class="space-y-8">
+      <SectionHeader
+        number="02"
+        title={t("home.latest_articles")}
+        subtitle={t("home.latest_articles_desc")}
+        highlightColor="yellow"
+      />
 
-      <p class="text-base md:text-lg max-w-2xl text-zinc-900 leading-relaxed mb-8 font-medium">
-        {t('hero.desc')}
-      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          latestPosts.map((post) => {
+            const slug = post.id.replace(/^es\//, "");
+            return (
+              <Card
+                variant="default"
+                shadow="lg"
+                hoverTilt="right"
+                class="flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-4">
+                    <Badge color="pink" size="sm">
+                      BLOG
+                    </Badge>
+                    <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
+                      {post.data.pubDate.toLocaleDateString("es-AR", { year: "numeric", month: "short", day: "numeric" })}
+                    </span>
+                  </div>
 
-      <div class="flex flex-wrap gap-4">
-        <Button href="#proyectos" variant="pink" size="lg">
+                  <a
+                    href={translatePath(`/blog/${slug}`)}
+                    class="group inline-block mb-3"
+                  >
+                    <h3 class="font-display font-black text-2xl tracking-tight group-hover:text-accent-pink transition-colors">
+                      {post.data.title}
+                    </h3>
+                  </a>
+
+                  <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
+                    {post.data.description}
+                  </p>
+                </div>
+
+                <div>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {post.data.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
+                  </div>
+
+                  <div class="pt-4 border-t-2 border-black/10 dark:border-white/10 flex justify-end">
+                    <Button
+                      href={translatePath(`/blog/${slug}`)}
+                      variant="primary"
+                      size="sm"
+                    >
+                      {t("common.read_more")}
+                      <span slot="suffix">→</span>
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            );
+          })
+        }
+      </div>
+
+      <div class="text-center pt-4">
+        <Button href={translatePath("/blog")} variant="secondary" size="md">
+          {t("home.view_all_posts")}
+          <span slot="suffix">→</span>
+        </Button>
+      </div>
+    </section>
+
+    <!-- Contact CTA Banner -->
+    <section>
+      <div class="p-8 md:p-12 bg-accent-cyan text-black border-4 border-black dark:border-white shadow-brutal-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="font-display font-black text-3xl md:text-4xl text-black">
+            {t("common.get_in_touch")}
+          </h2>
+          <p class="text-base text-zinc-900 font-medium max-w-xl">
+            {t("contact.subtitle")}
+          </p>
+        </div>
+
+        <Button href={translatePath("/contact")} variant="pink" size="lg">
           <span slot="prefix">⚡</span>
-          {t('hero.cta_projects')}
-        </Button>
-        <Button href={translatePath('/style-guide')} variant="secondary" size="lg">
-          {t('nav.style_guide')}
-          <span slot="suffix">↗</span>
+          {t("hero.cta_contact")}
         </Button>
       </div>
-    </div>
-  </section>
-
-  <!-- Projects Section (Content Collections) -->
-  <section id="proyectos" class="mb-16">
-    <SectionHeader
-      number="01"
-      title={t('nav.projects')}
-      subtitle="Proyectos destacados de software, agentes con RAG y plataformas a medida."
-      highlightColor="pink"
-    />
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {
-        allProjects.map((project) => (
-          <Card
-            variant="default"
-            shadow="lg"
-            hoverTilt="left"
-            class="flex flex-col justify-between"
-          >
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <Badge
-                  color={project.data.status === 'en-desarrollo' ? 'lime' : 'cyan'}
-                  pulse={project.data.status === 'en-desarrollo'}
-                  size="sm"
-                >
-                  {project.data.status === 'en-desarrollo' ? t('project.status.in_progress') : t('project.status.completed')}
-                </Badge>
-                <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                  {project.data.pubDate.toLocaleDateString('es-AR')}
-                </span>
-              </div>
-
-              <h3 class="font-display font-black text-2xl mb-3 tracking-tight">
-                {project.data.title}
-              </h3>
-
-              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
-                {project.data.description}
-              </p>
-            </div>
-
-            <div>
-              <div class="flex flex-wrap gap-2 mb-6">
-                {project.data.tags.map((tag) => (
-                  <Tag interactive={true}>{tag}</Tag>
-                ))}
-              </div>
-
-              <div class="flex items-center gap-3">
-                {project.data.liveUrl && (
-                  <Button href={project.data.liveUrl} target="_blank" variant="primary" size="sm">
-                    {t('common.view_project')}
-                    <span slot="suffix">↗</span>
-                  </Button>
-                )}
-                {project.data.repositoryUrl && (
-                  <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="sm">
-                    {t('common.view_code')}
-                  </Button>
-                )}
-              </div>
-            </div>
-          </Card>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- Blog Section (Content Collections) -->
-  <section id="blog" class="mb-16">
-    <SectionHeader
-      number="02"
-      title={t('nav.blog')}
-      subtitle="Reflexiones sobre ingeniería, docencia universitaria y desarrollo en IA."
-      highlightColor="yellow"
-    />
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {
-        allPosts.map((post) => (
-          <Card
-            variant="default"
-            shadow="lg"
-            hoverTilt="right"
-            class="flex flex-col justify-between"
-          >
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <Badge color="pink" size="sm">
-                  BLOG
-                </Badge>
-                <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                  {post.data.pubDate.toLocaleDateString('es-AR')}
-                </span>
-              </div>
-
-              <h3 class="font-display font-black text-2xl mb-3 tracking-tight">
-                {post.data.title}
-              </h3>
-
-              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
-                {post.data.description}
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              {post.data.tags.map((tag) => (
-                <Tag interactive={true}>{tag}</Tag>
-              ))}
-            </div>
-          </Card>
-        ))
-      }
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>

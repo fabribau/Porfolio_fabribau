@@ -1,0 +1,80 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+import Badge from "@components/Badge.astro";
+import Tag from "@components/Tag.astro";
+import { getCollection, render } from "astro:content";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ id }) => id.startsWith("en/"));
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/^en\//, "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<BaseLayout
+  title={`${post.data.title} — Blog`}
+  description={post.data.description}
+>
+  <article class="space-y-8">
+    <!-- Back button -->
+    <div>
+      <Button href={translatePath("/blog")} variant="secondary" size="sm">
+        {t("common.back_blog")}
+      </Button>
+    </div>
+
+    <!-- Post Header Box -->
+    <header class="p-6 md:p-10 bg-bg-surface-light dark:bg-bg-surface-dark border-4 border-black dark:border-white shadow-brutal-xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <Badge color="pink" size="md">
+          BLOG
+        </Badge>
+        <span class="font-mono text-sm font-bold text-fg-muted-light dark:text-fg-muted-dark">
+          {t("common.published_on")} {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+        </span>
+      </div>
+
+      <h1 class="font-display font-black text-3xl sm:text-4xl md:text-6xl tracking-tight leading-tight">
+        {post.data.title}
+      </h1>
+
+      <p class="text-base sm:text-lg text-fg-muted-light dark:text-fg-muted-dark max-w-3xl leading-relaxed font-medium">
+        {post.data.description}
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 pt-2">
+        {post.data.tags.map((tag) => (
+          <Tag>{tag}</Tag>
+        ))}
+      </div>
+    </header>
+
+    <!-- Markdown Content Container -->
+    <div class="p-6 md:p-10 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-brutal-lg prose dark:prose-invert max-w-none font-sans prose-headings:font-display prose-headings:font-black prose-a:text-accent-pink dark:prose-a:text-accent-yellow prose-code:font-mono">
+      <Content />
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="pt-6 flex justify-between items-center">
+      <Button href={translatePath("/blog")} variant="secondary" size="md">
+        {t("common.back_blog")}
+      </Button>
+      <Button href={translatePath("/contact")} variant="primary" size="md">
+        {t("hero.cta_contact")}
+        <span slot="suffix">✉</span>
+      </Button>
+    </div>
+  </article>
+</BaseLayout>

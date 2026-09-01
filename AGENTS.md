@@ -47,7 +47,27 @@
 │   ├── layouts/                # Plantillas y layouts globales (BaseLayout.astro)
 │   ├── pages/                  # Rutas del sitio
 │   │   ├── es/                 # Páginas en Español (/es/...)
+│   │   │   ├── index.astro     # Home
+│   │   │   ├── about.astro     # Sobre mí
+│   │   │   ├── proyectos/      # Grid e índice de proyectos
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro # Detalle dinámico de proyecto
+│   │   │   ├── blog/           # Grid e índice de artículos
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro # Detalle dinámico de post
+│   │   │   ├── contact.astro   # Contacto y formulario
+│   │   │   └── style-guide.astro
 │   │   ├── en/                 # Páginas en Inglés (/en/...)
+│   │   │   ├── index.astro     # Home
+│   │   │   ├── about.astro     # About me
+│   │   │   ├── proyectos/      # Projects grid and dynamic details
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro
+│   │   │   ├── blog/           # Blog grid and dynamic details
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro
+│   │   │   ├── contact.astro   # Contact and form
+│   │   │   └── style-guide.astro
 │   │   ├── api/                # Endpoints del servidor (ej. /api/contact)
 │   │   ├── style-guide.astro   # Redirección a /es/style-guide
 │   │   └── index.astro         # Redirección raíz a /es/
@@ -136,12 +156,12 @@
   - [x] `Spec_T9`: Componentes base (Button, Card, Badge, Tag, SectionHeader, Navbar, Footer) y `/style-guide` (ES/EN).
   - [x] `Spec_T10`: Sistema de animaciones, micro-interacciones y View Transitions.
   - [x] `Spec_T11`: `BaseLayout.astro` responsive y completo.
-- [ ] **ETAPA 2 — Páginas principales (estructura placeholder)**
-  - [ ] `Spec_T12`: Página Home (`/es/` y `/en/`).
-  - [ ] `Spec_T13`: Página About Me.
-  - [ ] `Spec_T14`: Página Proyectos (grid y `/proyectos/[slug]`).
-  - [ ] `Spec_T15`: Página Blog (grid y `/blog/[slug]`).
-  - [ ] `Spec_T16`: Página Contacto.
+- [x] **ETAPA 2 — Páginas principales (estructura placeholder)**
+  - [x] `Spec_T12`: Página Home (`/es/` y `/en/`).
+  - [x] `Spec_T13`: Página About Me (`/es/about` y `/en/about`).
+  - [x] `Spec_T14`: Página Proyectos (grid `/proyectos` y rutas dinámicas `/proyectos/[slug]`).
+  - [x] `Spec_T15`: Página Blog (grid `/blog` y rutas dinámicas `/blog/[slug]`).
+  - [x] `Spec_T16`: Página Contacto (`/es/contact` y `/en/contact`).
 - [ ] **ETAPA 3 — Contenido real**
   - [ ] `Spec_T17`: Contenido de About Me desde CVs.
   - [ ] `Spec_T18`: Contenido de los 3 proyectos (FabRiBau con status "en-desarrollo", Asistente IA Apuestas, Olimpiadas Atletismo).
