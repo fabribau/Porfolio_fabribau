@@ -14,8 +14,12 @@ const translatePath = useTranslatedPath(lang);
 
 // Get projects and blog posts for English
 const allProjects = await getCollection("proyectos", ({ id }) => id.startsWith("en/"));
-allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const featuredProjects = allProjects.slice(0, 2);
+allProjects.sort((a, b) => {
+  if (a.data.status === "en-desarrollo" && b.data.status !== "en-desarrollo") return -1;
+  if (a.data.status !== "en-desarrollo" && b.data.status === "en-desarrollo") return 1;
+  return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+});
+const featuredProjects = allProjects.filter((p) => p.data.featured);
 
 const allPosts = await getCollection("blog", ({ id, data }) => id.startsWith("en/") && !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -114,7 +118,7 @@ const latestPosts = allPosts.slice(0, 2);
         highlightColor="pink"
       />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           featuredProjects.map((project) => {
             const slug = project.id.replace(/^en\//, "");

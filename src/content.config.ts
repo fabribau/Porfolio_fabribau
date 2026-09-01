@@ -13,6 +13,7 @@ const proyectos = defineCollection({
     order: z.number().default(0),
     repositoryUrl: z.string().url().optional(),
     liveUrl: z.string().url().optional(),
+    thesisUrl: z.string().optional(),
     image: z.string().optional(),
   }),
 });

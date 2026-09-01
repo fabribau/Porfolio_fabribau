@@ -73,6 +73,12 @@ const isDev = project.data.status === "en-desarrollo";
             <span slot="suffix">↗</span>
           </Button>
         )}
+        {project.data.thesisUrl && (
+          <Button href={project.data.thesisUrl} target="_blank" variant="purple" size="md">
+            {t("project.thesis_pdf")}
+            <span slot="suffix">📄</span>
+          </Button>
+        )}
         {project.data.repositoryUrl && (
           <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="md">
             {t("project.source_code")}

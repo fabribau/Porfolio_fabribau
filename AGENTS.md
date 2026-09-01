@@ -162,10 +162,10 @@
   - [x] `Spec_T14`: Página Proyectos (grid `/proyectos` y rutas dinámicas `/proyectos/[slug]`).
   - [x] `Spec_T15`: Página Blog (grid `/blog` y rutas dinámicas `/blog/[slug]`).
   - [x] `Spec_T16`: Página Contacto (`/es/contact` y `/en/contact`).
-- [ ] **ETAPA 3 — Contenido real**
-  - [ ] `Spec_T17`: Contenido de About Me desde CVs.
-  - [ ] `Spec_T18`: Contenido de los 3 proyectos (FabRiBau con status "en-desarrollo", Asistente IA Apuestas, Olimpiadas Atletismo).
-  - [ ] `Spec_T19`: Foto profesional integrada con estilo neobrutalista.
+- [x] **ETAPA 3 — Contenido real**
+  - [x] `Spec_T17`: Contenido de About Me desde CVs.
+  - [x] `Spec_T18`: Contenido de los 3 proyectos (FabRiBau con status "en-desarrollo", Asistente IA Apuestas, Olimpiadas Atletismo).
+  - [x] `Spec_T19`: Foto profesional integrada con estilo neobrutalista.
 - [ ] **ETAPA 4 — Formulario de contacto (Resend + Turnstile)**
   - [ ] `Spec_T20`: Endpoint de envío con Resend.
   - [ ] `Spec_T21`: Anti-bot con Cloudflare Turnstile.

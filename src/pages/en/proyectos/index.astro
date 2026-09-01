@@ -13,7 +13,11 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const allProjects = await getCollection("proyectos", ({ id }) => id.startsWith("en/"));
-allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+allProjects.sort((a, b) => {
+  if (a.data.status === "en-desarrollo" && b.data.status !== "en-desarrollo") return -1;
+  if (a.data.status !== "en-desarrollo" && b.data.status === "en-desarrollo") return 1;
+  return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+});
 ---
 
 <BaseLayout

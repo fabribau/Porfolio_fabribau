@@ -117,16 +117,52 @@ const t = useTranslations(lang);
               📬 {t("contact.email_label")}
             </span>
             <p class="font-display font-black text-xl sm:text-2xl break-all">
-              fabribau@gmail.com
+              fabriziojriera@gmail.com
             </p>
-            <div class="pt-2">
+            <div class="pt-2 flex flex-wrap gap-2">
+              <a
+                href="mailto:fabriziojriera@gmail.com"
+                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all inline-block"
+              >
+                ✉ Send Email
+              </a>
               <button
                 id="copy-email-btn"
                 type="button"
-                data-email="fabribau@gmail.com"
-                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all"
+                data-email="fabriziojriera@gmail.com"
+                class="brutal-btn px-3 py-1.5 bg-white text-black font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-black hover:text-white transition-all"
               >
                 📋 {t("common.copy")}
+              </button>
+            </div>
+          </div>
+        </Card>
+
+        <!-- WhatsApp Direct Card -->
+        <Card variant="lime" shadow="lg">
+          <div class="space-y-3 text-black">
+            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
+              💬 {t("contact.whatsapp_label")}
+            </span>
+            <p class="font-display font-black text-xl sm:text-2xl">
+              +54 9 2664 02-4353
+            </p>
+            <div class="pt-2 flex flex-wrap gap-2">
+              <a
+                href="https://wa.me/5492664024353"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all inline-block"
+              >
+                💬 {t("contact.whatsapp_cta")} ↗
+              </a>
+              <button
+                id="copy-phone-btn"
+                type="button"
+                data-phone="+5492664024353"
+                class="brutal-btn px-3 py-1.5 bg-white text-black font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-black hover:text-white transition-all"
+              >
+                📋 Copy Number
               </button>
             </div>
           </div>
@@ -141,13 +177,13 @@ const t = useTranslations(lang);
 
           <div class="space-y-3">
             <a
-              href="https://linkedin.com/in/fabribau"
+              href="https://linkedin.com/in/fabrizio-bauer"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center justify-between p-3 border-2 border-black dark:border-white bg-zinc-50 dark:bg-zinc-800 hover:bg-accent-cyan hover:text-black transition-colors"
             >
               <span class="font-display font-bold text-sm">LinkedIn</span>
-              <span class="font-mono text-xs font-bold">in/fabribau ↗</span>
+              <span class="font-mono text-xs font-bold">in/fabrizio-bauer ↗</span>
             </a>
 
             <a
@@ -168,11 +204,11 @@ const t = useTranslations(lang);
             <span class="font-mono text-xs font-bold uppercase tracking-wider block">
               ⚡ {t("contact.status_label")}
             </span>
-            <p class="font-display font-black text-lg">
+            <p class="font-display font-black text-base sm:text-lg">
               {t("contact.status_value")}
             </p>
             <p class="font-mono text-xs font-medium">
-              {t("about.location_desc")}
+              📍 {t("about.location_desc")}
             </p>
           </div>
         </Card>
@@ -183,15 +219,29 @@ const t = useTranslations(lang);
 
 <script>
   function setupContactPage() {
-    const copyBtn = document.getElementById("copy-email-btn");
-    if (copyBtn) {
-      copyBtn.onclick = () => {
-        const email = copyBtn.getAttribute("data-email") || "fabribau@gmail.com";
+    const copyEmailBtn = document.getElementById("copy-email-btn");
+    if (copyEmailBtn) {
+      copyEmailBtn.onclick = () => {
+        const email = copyEmailBtn.getAttribute("data-email") || "fabriziojriera@gmail.com";
         navigator.clipboard.writeText(email).then(() => {
-          const originalText = copyBtn.innerHTML;
-          copyBtn.innerHTML = "✓ Copied!";
+          const originalText = copyEmailBtn.innerHTML;
+          copyEmailBtn.innerHTML = "✓ Copied!";
           setTimeout(() => {
-            copyBtn.innerHTML = originalText;
+            copyEmailBtn.innerHTML = originalText;
+          }, 2000);
+        });
+      };
+    }
+
+    const copyPhoneBtn = document.getElementById("copy-phone-btn");
+    if (copyPhoneBtn) {
+      copyPhoneBtn.onclick = () => {
+        const phone = copyPhoneBtn.getAttribute("data-phone") || "+5492664024353";
+        navigator.clipboard.writeText(phone).then(() => {
+          const originalText = copyPhoneBtn.innerHTML;
+          copyPhoneBtn.innerHTML = "✓ Copied!";
+          setTimeout(() => {
+            copyPhoneBtn.innerHTML = originalText;
           }, 2000);
         });
       };
