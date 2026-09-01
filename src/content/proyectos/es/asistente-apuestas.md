@@ -2,7 +2,8 @@
 title: 'Asistente IA para Prevención de Apuestas Online'
 description: 'Agente conversacional inteligente con arquitectura RAG para la detección temprana y prevención de problemáticas de apuestas online en jóvenes y adolescentes.'
 pubDate: 2025-12-12
-tags: ['Python', 'FastAPI', 'RAG', 'LLMs', 'Vercel AI SDK', 'Next.js', 'Vector DBs', 'Investigación']
+tags:
+  ['Python', 'FastAPI', 'RAG', 'LLMs', 'Vercel AI SDK', 'Next.js', 'Vector DBs', 'Investigación']
 status: 'completado'
 featured: true
 order: 1
@@ -43,8 +44,8 @@ El auge de los casinos online, billeteras virtuales y plataformas de apuestas de
 
 Los resultados y la metodología de este proyecto dieron lugar a publicaciones y ponencias en eventos científicos nacionales:
 
-- **CoNaIISI 2025 (Córdoba):** Autor de paper y expositor de póster *"Asistente Conversacional basado en Inteligencia Artificial para la prevención de Apuestas Online"* en el *13.º Congreso Nacional de Ingeniería Informática / Sistemas de Información* (Red RIISIC / UTN-FRC).
-- **Congreso de Salud Mental Mendoza 2025:** Autor de paper y póster *"Efectividad de un Asistente Virtual Basado en IA para Prevención de Juego Online"* en el congreso *Constructos: clínica, diagnóstico y abordajes terapéuticos* (Ministerio de Salud y Deportes de Mendoza).
+- **CoNaIISI 2025 (Córdoba):** Autor de paper y expositor de póster _"Asistente Conversacional basado en Inteligencia Artificial para la prevención de Apuestas Online"_ en el _13.º Congreso Nacional de Ingeniería Informática / Sistemas de Información_ (Red RIISIC / UTN-FRC).
+- **Congreso de Salud Mental Mendoza 2025:** Autor de paper y póster _"Efectividad de un Asistente Virtual Basado en IA para Prevención de Juego Online"_ en el congreso _Constructos: clínica, diagnóstico y abordajes terapéuticos_ (Ministerio de Salud y Deportes de Mendoza).
 - **Jornada de Salud y Consumos UNSL 2025:** Disertante en la 3.ª edición de la jornada universitaria de prevención de consumos problemáticos.
 
 ---

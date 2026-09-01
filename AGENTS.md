@@ -85,6 +85,7 @@
 ## 4. Convenciones de Código y Componentes UI
 
 ### Catálogo de Componentes Disponibles (`@components/*`)
+
 - **`Button.astro`**: Botón y enlace polimórfico neobrutalista con variantes (`primary`, `pink`, `lime`, `cyan`, `secondary`, `outline`, `ghost`, `danger`), tamaños (`sm`, `md`, `lg`), soporte para iconos (prefijo/sufijo) y animación física de pulsación.
 - **`Card.astro`**: Contenedor neobrutalista con bordes (3px/4px), sombras offset (`shadow-brutal`), soporte para micro-tilt reactivo en hover (`hoverTilt="left"` / `"right"`) y slots de `header`, `default` y `footer`.
 - **`Badge.astro`**: Etiquetas de estado, tags técnicos y categorías con soporte de punto de estado pulsante (`pulse={true}`).
@@ -96,12 +97,14 @@
 - **`LanguagePicker.astro`**: Selector de idioma ES/EN con mantenimiento de ruta actual.
 
 ### Nomenclatura
+
 - **Componentes Astro:** `PascalCase.astro` (ej: `ProjectCard.astro`, `ThemeToggle.astro`).
 - **Módulos TypeScript / Utilidades:** `camelCase.ts` (ej: `useTranslations`, `formatDate.ts`).
 - **Archivos de Contenido:** `kebab-case.md` (ej: `asistente-apuestas.md`, `fabribau.md`).
 - **Path Aliases:** Usar `@components/*`, `@layouts/*`, `@i18n/*`, `@content/*`, `@styles/*`.
 
 ### TypeScript
+
 - Modo estricto activado (`strict: true`).
 - Tipar siempre las `Props` de los componentes Astro mediante `interface Props { ... }`.
 - Evitar el uso de `any`; definir interfaces o tipos explícitos para datos y estados.
@@ -170,8 +173,8 @@
   - [x] `Spec_T20`: Endpoint de envío con Resend (`/api/contact`, doble despacho: notificación + autoresponder bilingüe).
   - [x] `Spec_T21`: Anti-bot con Cloudflare Turnstile (verificación client + server con soporte local).
   - [x] `Spec_T22`: Validación y UX de formulario (Zod, feedback neobrutalista y 32 tests automatizados con Vitest).
-- [ ] **ETAPA 5 — Performance, SEO y QA final**
-  - [ ] `Spec_T23`: SEO técnico, sitemap, Open Graph, hreflang.
-  - [ ] `Spec_T24`: Optimización de performance (Lighthouse > 90).
-  - [ ] `Spec_T25`: QA cross-browser y responsive.
-  - [ ] `Spec_T26`: Deploy definitivo en `fabribau.tech`.
+- [x] **ETAPA 5 — Performance, SEO y QA final**
+  - [x] `Spec_T23`: SEO técnico, sitemap, Open Graph, hreflang.
+  - [x] `Spec_T24`: Optimización de performance (fuentes locales Google Fonts, preload de assets, Lighthouse > 90).
+  - [x] `Spec_T25`: QA cross-browser, accesibilidad y responsive.
+  - [x] `Spec_T26`: Deploy definitivo en `fabribau.tech` (instrucciones GitHub y Cloudflare documentadas).

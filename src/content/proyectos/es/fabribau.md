@@ -40,4 +40,3 @@ Diseñado desde cero sin recurrir a plantillas genéricas, adopta una estética 
 5. **Infraestructura Serverless en Cloudflare Pages:**
    - Despliegue continuo global de baja latencia con el adaptador `@astrojs/cloudflare`.
    - Próxima integración de formulario seguro con **Resend** y validación anti-bot con **Cloudflare Turnstile**.
-

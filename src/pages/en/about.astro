@@ -1,13 +1,13 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import fabriProfile from "@assets/images/fabri-photo.jpg";
-import SectionHeader from "@components/SectionHeader.astro";
-import Card from "@components/Card.astro";
-import Badge from "@components/Badge.astro";
-import Tag from "@components/Tag.astro";
-import Button from "@components/Button.astro";
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import fabriProfile from '@assets/images/fabri-photo.jpg';
+import SectionHeader from '@components/SectionHeader.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import Button from '@components/Button.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,177 +15,226 @@ const translatePath = useTranslatedPath(lang);
 
 const skillCategories = [
   {
-    title: t("about.skills_frontend"),
-    skills: ["TypeScript", "JavaScript", "React", "Next.js", "Astro", "Tailwind CSS", "Material UI", "HTML5/CSS3"],
+    title: t('about.skills_frontend'),
+    skills: [
+      'TypeScript',
+      'JavaScript',
+      'React',
+      'Next.js',
+      'Astro',
+      'Tailwind CSS',
+      'Material UI',
+      'HTML5/CSS3',
+    ],
   },
   {
-    title: t("about.skills_backend"),
-    skills: ["Java", "Spring Boot", "Python", "FastAPI", "Go", "Gin", "Groovy", "Grails", "Node.js", "REST APIs"],
+    title: t('about.skills_backend'),
+    skills: [
+      'Java',
+      'Spring Boot',
+      'Python',
+      'FastAPI',
+      'Go',
+      'Gin',
+      'Groovy',
+      'Grails',
+      'Node.js',
+      'REST APIs',
+    ],
   },
   {
-    title: t("about.skills_ai"),
-    skills: ["RAG (Retrieval-Augmented Generation)", "LLMs", "Vector DBs", "Embeddings", "Vercel AI SDK", "Google AI", "Prompt Engineering"],
+    title: t('about.skills_ai'),
+    skills: [
+      'RAG (Retrieval-Augmented Generation)',
+      'LLMs',
+      'Vector DBs',
+      'Embeddings',
+      'Vercel AI SDK',
+      'Google AI',
+      'Prompt Engineering',
+    ],
   },
   {
-    title: t("about.skills_databases"),
-    skills: ["PostgreSQL", "MySQL", "Supabase", "Neon", "Spring Data JPA", "Hibernate", "Relational Databases"],
+    title: t('about.skills_databases'),
+    skills: [
+      'PostgreSQL',
+      'MySQL',
+      'Supabase',
+      'Neon',
+      'Spring Data JPA',
+      'Hibernate',
+      'Relational Databases',
+    ],
   },
   {
-    title: t("about.skills_tools"),
-    skills: ["Git", "GitHub", "Postman", "Vercel", "Cloudflare Pages", "Scrum", "Design Patterns", "Linux"],
+    title: t('about.skills_tools'),
+    skills: [
+      'Git',
+      'GitHub',
+      'Postman',
+      'Vercel',
+      'Cloudflare Pages',
+      'Scrum',
+      'Design Patterns',
+      'Linux',
+    ],
   },
 ];
 
 const industryExperience = [
   {
-    period: "March 2024 — October 2024",
-    role: "FullStack Software Developer & Systems Administrator",
-    org: "Sports Secretariat — Government of the Province of San Luis",
+    period: 'March 2024 — October 2024',
+    role: 'FullStack Software Developer & Systems Administrator',
+    org: 'Sports Secretariat — Government of the Province of San Luis',
     desc: "Domain analysis, requirements engineering, architecture, and full-stack implementation of the provincial system for the 'Track & Field School Olympics' (2024 and 2025 editions). Tournament orchestration, automated heat allocation, and real-time score tabulation for +5,000 competing student-athletes.",
-    tags: ["Java", "Spring Boot", "Next.js", "MySQL", "Spring Data JPA", "Hibernate", "MaterialUI"],
+    tags: ['Java', 'Spring Boot', 'Next.js', 'MySQL', 'Spring Data JPA', 'Hibernate', 'MaterialUI'],
   },
   {
-    period: "October 2024 — December 2024",
-    role: "FullStack Software Developer (Trainee-Junior)",
-    org: "RunaId — Supervised Professional Internships",
+    period: 'October 2024 — December 2024',
+    role: 'FullStack Software Developer (Trainee-Junior)',
+    org: 'RunaId — Supervised Professional Internships',
     desc: "Analysis, design, and full-stack development of production web applications: 'Agenda Médica' for the San Luis Medical Circle (appointment scheduling, medical history, and digital prescriptions) and 'GestionAR' agri-investment platform integrated with CRM and national identity verification (RENAPER).",
-    tags: ["Groovy", "Grails", "PostgreSQL", "JavaScript", "Bootstrap"],
+    tags: ['Groovy', 'Grails', 'PostgreSQL', 'JavaScript', 'Bootstrap'],
   },
   {
-    period: "2021 — 2023",
-    role: "Athletics Systems & Tournament Administrator",
-    org: "San Luis Athletic Federation & Sports Secretariat",
-    desc: "Technical systems administration and competition management using the official platform of the South American Athletics Confederation (ConSudAtle).",
-    tags: ["ConSudAtle", "Tournament Management", "Systems Administration"],
+    period: '2021 — 2023',
+    role: 'Athletics Systems & Tournament Administrator',
+    org: 'San Luis Athletic Federation & Sports Secretariat',
+    desc: 'Technical systems administration and competition management using the official platform of the South American Athletics Confederation (ConSudAtle).',
+    tags: ['ConSudAtle', 'Tournament Management', 'Systems Administration'],
   },
 ];
 
 const teachingExperience = [
   {
-    period: "2026 — Present",
-    role: "1st Category Assistant Professor (Tenured, Simple Dedication)",
-    org: "Universidad Nacional de San Luis (FCFMyN)",
-    desc: "Academic faculty in the Initial Informatics Training Area of the Department of Informatics. Course: Programming III.",
-    tags: ["University Lecturing", "Programming III", "Tenured"],
+    period: '2026 — Present',
+    role: '1st Category Assistant Professor (Tenured, Simple Dedication)',
+    org: 'Universidad Nacional de San Luis (FCFMyN)',
+    desc: 'Academic faculty in the Initial Informatics Training Area of the Department of Informatics. Course: Programming III.',
+    tags: ['University Lecturing', 'Programming III', 'Tenured'],
   },
   {
-    period: "2024 — 2026",
-    role: "2nd Category Student-Teaching Assistant (Interim)",
-    org: "Universidad Nacional de San Luis (FCFMyN)",
-    desc: "Academic faculty in the Initial Informatics Training Area. Courses taught: Programming II (2024), Problem Solving & Algorithms (2025/2026), and Programming III (2025).",
-    tags: ["Algorithms", "Programming II", "Programming III"],
+    period: '2024 — 2026',
+    role: '2nd Category Student-Teaching Assistant (Interim)',
+    org: 'Universidad Nacional de San Luis (FCFMyN)',
+    desc: 'Academic faculty in the Initial Informatics Training Area. Courses taught: Programming II (2024), Problem Solving & Algorithms (2025/2026), and Programming III (2025).',
+    tags: ['Algorithms', 'Programming II', 'Programming III'],
   },
   {
-    period: "2022 — 2026",
-    role: "2nd Category Student-Teaching Assistant (Interim)",
-    org: "Universidad Nacional de San Luis (FCFMyN)",
-    desc: "Academic faculty in the Services Area of the Department of Informatics. Courses: Fundamentals of Informatics & Introduction to Computer Science.",
-    tags: ["Computer Science Fundamentals", "Practical Lectures", "Exams"],
+    period: '2022 — 2026',
+    role: '2nd Category Student-Teaching Assistant (Interim)',
+    org: 'Universidad Nacional de San Luis (FCFMyN)',
+    desc: 'Academic faculty in the Services Area of the Department of Informatics. Courses: Fundamentals of Informatics & Introduction to Computer Science.',
+    tags: ['Computer Science Fundamentals', 'Practical Lectures', 'Exams'],
   },
 ];
 
 const researchPublications = [
   {
-    year: "2025 — 2026",
-    title: "Research Stimulus Scholarship (SecT - UNSL)",
-    org: "Secretariat of Science and Technology — Universidad Nacional de San Luis",
-    desc: "Competitive scholarship awarded to advanced university students to deepen research and development in R&D+i projects.",
-    badge: "R&D+i Grant",
+    year: '2025 — 2026',
+    title: 'Research Stimulus Scholarship (SecT - UNSL)',
+    org: 'Secretariat of Science and Technology — Universidad Nacional de San Luis',
+    desc: 'Competitive scholarship awarded to advanced university students to deepen research and development in R&D+i projects.',
+    badge: 'R&D+i Grant',
   },
   {
-    year: "2023 — 2026",
-    title: "Project Researcher — Software Quality & Engineering Laboratory",
-    org: "DIRINFO - FCFMyN - UNSL",
+    year: '2023 — 2026',
+    title: 'Project Researcher — Software Quality & Engineering Laboratory',
+    org: 'DIRINFO - FCFMyN - UNSL',
     desc: "Active researcher in PROICO 03-2020 project: 'Software Engineering: Development, Maintenance, and Cloud Migration Strategies'.",
-    badge: "Research",
+    badge: 'Research',
   },
   {
-    year: "November 2025",
-    title: "Paper Author & Poster Presenter — CoNaIISI 2025",
-    org: "13th National Congress on Informatics Engineering / Information Systems (UTN-FRC Córdoba)",
+    year: 'November 2025',
+    title: 'Paper Author & Poster Presenter — CoNaIISI 2025',
+    org: '13th National Congress on Informatics Engineering / Information Systems (UTN-FRC Córdoba)',
     desc: "Publication of the research paper 'AI-based Conversational Assistant for the Prevention of Online Gambling' (M. L. Loyola, F. J. Riera Bauer).",
-    badge: "Scientific Paper",
+    badge: 'Scientific Paper',
   },
   {
-    year: "October 2025",
-    title: "Paper Author & Presenter — Mendoza Mental Health Congress 2025",
-    org: "Ministry of Health and Sports — Government of Mendoza",
+    year: 'October 2025',
+    title: 'Paper Author & Presenter — Mendoza Mental Health Congress 2025',
+    org: 'Ministry of Health and Sports — Government of Mendoza',
     desc: "Presentation of research paper 'Effectiveness of an AI-Based Virtual Assistant for Online Gambling Prevention' in clinical and therapeutic sessions.",
-    badge: "Scientific Paper",
+    badge: 'Scientific Paper',
   },
   {
-    year: "October 2025",
-    title: "Organizing Committee — JADiCC 2025",
-    org: "Argentine Conference on Computer Science Education (UNSL)",
-    desc: "Member of the organizing committee for the hybrid academic conference held at FCFMyN.",
-    badge: "Organization",
+    year: 'October 2025',
+    title: 'Organizing Committee — JADiCC 2025',
+    org: 'Argentine Conference on Computer Science Education (UNSL)',
+    desc: 'Member of the organizing committee for the hybrid academic conference held at FCFMyN.',
+    badge: 'Organization',
   },
   {
-    year: "September 2025",
+    year: 'September 2025',
     title: "Keynote Speaker — International Programmers' Day",
-    org: "Honorable City Council of San Luis",
+    org: 'Honorable City Council of San Luis',
     desc: "Keynote speaker at the council session where Programmers' Day was declared of municipal interest, presenting on modern engineering workflows and university training.",
-    badge: "Outreach",
+    badge: 'Outreach',
   },
 ];
 
 const educationList = [
   {
-    period: "2018 — 2025",
-    title: "Informatics Engineering Degree",
-    institution: "Universidad Nacional de San Luis (UNSL) — FCFMyN",
+    period: '2018 — 2025',
+    title: 'Informatics Engineering Degree',
+    institution: 'Universidad Nacional de San Luis (UNSL) — FCFMyN',
     desc: "Graduated with Academic Honors. GPA without failed courses: 9.05 | GPA with failed courses: 8.91. 1st Provincial Flag Escort / Member of the FCFMyN Flag Bearer Corps (2024-2025). Capstone Thesis: 'Conversational AI Assistant for Online Gambling Prevention' (Graded 10/10 with Distinction).",
-    highlight: "GPA: 9.05",
+    highlight: 'GPA: 9.05',
   },
   {
-    period: "2012 — 2017",
-    title: "Bachelor in Computer Science",
-    institution: "School N° 5 Bartolomé Mitre",
-    desc: "Graduated with highest academic honors and Argentine National Flag Bearer. High school analytical GPA: 9.76.",
-    highlight: "National Flag Bearer",
+    period: '2012 — 2017',
+    title: 'Bachelor in Computer Science',
+    institution: 'School N° 5 Bartolomé Mitre',
+    desc: 'Graduated with highest academic honors and Argentine National Flag Bearer. High school analytical GPA: 9.76.',
+    highlight: 'National Flag Bearer',
   },
 ];
 
 const taughtCourses = [
   {
-    year: "2025",
-    title: "Git & GitHub Course — 8th InforSanLuis Computer Science School",
-    org: "Department of Informatics - FCFMyN - UNSL",
-    desc: "Teaching collaborator delivering hands-on instruction on distributed version control and collaborative workflows.",
+    year: '2025',
+    title: 'Git & GitHub Course — 8th InforSanLuis Computer Science School',
+    org: 'Department of Informatics - FCFMyN - UNSL',
+    desc: 'Teaching collaborator delivering hands-on instruction on distributed version control and collaborative workflows.',
   },
   {
-    year: "2025",
-    title: "Workshop: Supervised Internships & Capstone Projects",
-    org: "Department of Informatics - FCFMyN - UNSL",
-    desc: "20-hour academic workshop for advanced undergraduate Informatics Engineering students.",
+    year: '2025',
+    title: 'Workshop: Supervised Internships & Capstone Projects',
+    org: 'Department of Informatics - FCFMyN - UNSL',
+    desc: '20-hour academic workshop for advanced undergraduate Informatics Engineering students.',
   },
   {
-    year: "2024",
-    title: "Git & GitHub Course — 7th InforSanLuis Computer Science School",
-    org: "Department of Informatics - FCFMyN - UNSL",
-    desc: "Teaching collaborator lecturing on Git fundamentals, branching strategies, and repository collaboration.",
+    year: '2024',
+    title: 'Git & GitHub Course — 7th InforSanLuis Computer Science School',
+    org: 'Department of Informatics - FCFMyN - UNSL',
+    desc: 'Teaching collaborator lecturing on Git fundamentals, branching strategies, and repository collaboration.',
   },
 ];
 ---
 
 <BaseLayout
-  title={`${t("about.title")} — Fabrizio José Riera Bauer`}
-  description={t("about.subtitle")}
+  title={`${t('about.title')} — Fabrizio José Riera Bauer`}
+  description={t('about.subtitle')}
 >
   <div class="space-y-14">
     <!-- Header Section -->
     <SectionHeader
       number="01"
-      title={t("about.title")}
-      subtitle={t("about.subtitle")}
+      title={t('about.title')}
+      subtitle={t('about.subtitle')}
       highlightColor="lime"
     />
 
     <!-- Profile Hero Card -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+    <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
       <!-- Photo / Profile Card (4 cols) -->
-      <div class="lg:col-span-4 p-6 bg-accent-yellow border-4 border-black dark:border-white shadow-brutal-lg flex flex-col items-center justify-between text-center space-y-4">
-        <div class="relative w-48 h-48 sm:w-52 sm:h-52 border-4 border-black dark:border-white shadow-brutal overflow-hidden bg-zinc-900 group">
+      <div
+        class="flex flex-col items-center justify-between space-y-4 border-4 border-black bg-accent-yellow p-6 text-center shadow-brutal-lg dark:border-white lg:col-span-4"
+      >
+        <div
+          class="group relative h-48 w-48 overflow-hidden border-4 border-black bg-zinc-900 shadow-brutal dark:border-white sm:h-52 sm:w-52"
+        >
           <Image
             src={fabriProfile}
             alt="Fabrizio José Riera Bauer"
@@ -195,60 +244,75 @@ const taughtCourses = [
             quality="high"
             loading="eager"
             fetchpriority="high"
-            class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:grayscale-0 transition-all duration-300"
+            class="h-full w-full object-cover object-center contrast-125 grayscale transition-all duration-300 group-hover:grayscale-0"
           />
         </div>
         <div class="space-y-1">
-          <h2 class="font-display font-black text-2xl text-black">
-            Fabrizio Bauer
-          </h2>
-          <p class="font-mono text-xs font-bold text-zinc-900 uppercase">
+          <h2 class="font-display text-2xl font-black text-black">Fabrizio Bauer</h2>
+          <p class="font-mono text-xs font-bold uppercase text-zinc-900">
             Informatics Engineer · UNSL
           </p>
-          <p class="font-mono text-xs font-semibold text-zinc-800">
-            📍 San Luis, Argentina
-          </p>
+          <p class="font-mono text-xs font-semibold text-zinc-800">📍 San Luis, Argentina</p>
         </div>
         <Badge color="dark" pulse={true} size="sm">
-          {t("hero.badge")}
+          {t('hero.badge')}
         </Badge>
       </div>
 
       <!-- Bio Summary (8 cols) -->
-      <div class="lg:col-span-8 p-6 md:p-8 bg-bg-surface-light dark:bg-bg-surface-dark border-4 border-black dark:border-white shadow-brutal-lg flex flex-col justify-between space-y-6">
+      <div
+        class="flex flex-col justify-between space-y-6 border-4 border-black bg-bg-surface-light p-6 shadow-brutal-lg dark:border-white dark:bg-bg-surface-dark md:p-8 lg:col-span-8"
+      >
         <div class="space-y-4">
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 bg-accent-pink inline-block border border-black dark:border-white"></span>
-            <span class="font-mono text-xs font-bold uppercase tracking-wider text-accent-pink dark:text-accent-yellow">
+            <span class="inline-block h-3 w-3 border border-black bg-accent-pink dark:border-white"
+            ></span>
+            <span
+              class="font-mono text-xs font-bold uppercase tracking-wider text-accent-pink dark:text-accent-yellow"
+            >
               Professional Profile
             </span>
           </div>
-          <h3 class="font-display font-black text-2xl md:text-3xl tracking-tight">
-            {t("about.bio_title")}
+          <h3 class="font-display text-2xl font-black tracking-tight md:text-3xl">
+            {t('about.bio_title')}
           </h3>
-          <p class="text-base text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
-            {t("about.bio_p1")}
+          <p class="text-base leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+            {t('about.bio_p1')}
           </p>
-          <p class="text-base text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
-            {t("about.bio_p2")}
+          <p class="text-base leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+            {t('about.bio_p2')}
           </p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3 pt-4 border-t-2 border-black/10 dark:border-white/10">
-          <Button href={translatePath("/contact")} variant="pink" size="md">
-            {t("hero.cta_contact")}
+        <div
+          class="flex flex-wrap items-center gap-3 border-t-2 border-black/10 pt-4 dark:border-white/10"
+        >
+          <Button href={translatePath('/contact')} variant="pink" size="md">
+            {t('hero.cta_contact')}
             <span slot="suffix">✉</span>
           </Button>
           <Button href="https://wa.me/5492664024353" target="_blank" variant="lime" size="md">
             WhatsApp
             <span slot="suffix">💬</span>
           </Button>
-          <Button href="/docs/CV-Empresas.pdf" target="_blank" download="CV-Fabrizio-Riera-Bauer.pdf" variant="cyan" size="md">
-            {t("common.download_cv_companies")}
+          <Button
+            href="/docs/CV-Empresas.pdf"
+            target="_blank"
+            download="CV-Fabrizio-Riera-Bauer.pdf"
+            variant="cyan"
+            size="md"
+          >
+            {t('common.download_cv_companies')}
             <span slot="suffix">↓</span>
           </Button>
-          <Button href="/docs/CV-Academico.pdf" target="_blank" download="CV-Academico-Fabrizio-Riera-Bauer.pdf" variant="purple" size="md">
-            {t("common.download_cv_academic")}
+          <Button
+            href="/docs/CV-Academico.pdf"
+            target="_blank"
+            download="CV-Academico-Fabrizio-Riera-Bauer.pdf"
+            variant="purple"
+            size="md"
+          >
+            {t('common.download_cv_academic')}
             <span slot="suffix">🎓</span>
           </Button>
         </div>
@@ -257,18 +321,19 @@ const taughtCourses = [
 
     <!-- Experience Timeline (Industry / Professional) -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-pink inline-block border-2 border-black dark:border-white"></span>
-        {t("about.experience_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-pink dark:border-white"
+        ></span>
+        {t('about.experience_title')}
       </h3>
 
       <div class="space-y-6">
         {
           industryExperience.map((exp) => (
             <Card variant="default" shadow="md">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div class="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                 <div>
-                  <h4 class="font-display font-black text-xl text-black dark:text-white">
+                  <h4 class="font-display text-xl font-black text-black dark:text-white">
                     {exp.role}
                   </h4>
                   <p class="font-mono text-sm font-bold text-accent-pink dark:text-accent-yellow">
@@ -280,7 +345,7 @@ const taughtCourses = [
                 </Badge>
               </div>
 
-              <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark leading-relaxed mb-4">
+              <p class="mb-4 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                 {exp.desc}
               </p>
 
@@ -297,28 +362,27 @@ const taughtCourses = [
 
     <!-- University Teaching Experience -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-yellow inline-block border-2 border-black dark:border-white"></span>
-        {t("about.teaching_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-yellow dark:border-white"
+        ></span>
+        {t('about.teaching_title')}
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
           teachingExperience.map((teach) => (
             <Card variant="default" shadow="md" class="flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="mb-3 flex items-center justify-between gap-2">
                   <Badge color="yellow" size="sm">
                     {teach.period}
                   </Badge>
                 </div>
-                <h4 class="font-display font-black text-lg mb-1">
-                  {teach.role}
-                </h4>
-                <p class="font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow mb-3">
+                <h4 class="mb-1 font-display text-lg font-black">{teach.role}</h4>
+                <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
                   {teach.org}
                 </p>
-                <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                   {teach.desc}
                 </p>
               </div>
@@ -336,17 +400,18 @@ const taughtCourses = [
 
     <!-- Education & Achievements -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-cyan inline-block border-2 border-black dark:border-white"></span>
-        {t("about.education_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
+        ></span>
+        {t('about.education_title')}
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
           educationList.map((edu) => (
             <Card variant="default" shadow="md" class="flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="mb-3 flex items-center justify-between gap-2">
                   <Badge color="purple" size="sm">
                     {edu.period}
                   </Badge>
@@ -354,13 +419,11 @@ const taughtCourses = [
                     {edu.highlight}
                   </Badge>
                 </div>
-                <h4 class="font-display font-black text-xl mb-1">
-                  {edu.title}
-                </h4>
-                <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-3">
+                <h4 class="mb-1 font-display text-xl font-black">{edu.title}</h4>
+                <p class="mb-3 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
                   {edu.institution}
                 </p>
-                <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                   {edu.desc}
                 </p>
               </div>
@@ -372,17 +435,18 @@ const taughtCourses = [
 
     <!-- Research, Publications & Congresses -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-purple inline-block border-2 border-black dark:border-white"></span>
-        {t("about.research_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-purple dark:border-white"
+        ></span>
+        {t('about.research_title')}
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           researchPublications.map((item) => (
             <Card variant="default" shadow="md" class="flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="mb-3 flex items-center justify-between gap-2">
                   <Badge color="pink" size="sm">
                     {item.badge}
                   </Badge>
@@ -390,13 +454,11 @@ const taughtCourses = [
                     {item.year}
                   </span>
                 </div>
-                <h4 class="font-display font-black text-lg mb-2">
-                  {item.title}
-                </h4>
-                <p class="font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow mb-3">
+                <h4 class="mb-2 font-display text-lg font-black">{item.title}</h4>
+                <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
                   {item.org}
                 </p>
-                <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                   {item.desc}
                 </p>
               </div>
@@ -408,25 +470,24 @@ const taughtCourses = [
 
     <!-- Taught Extracurricular Courses -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-lime inline-block border-2 border-black dark:border-white"></span>
-        {t("about.courses_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-lime dark:border-white"
+        ></span>
+        {t('about.courses_title')}
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
           taughtCourses.map((course) => (
             <Card variant="default" shadow="md">
               <Badge color="lime" size="sm" class="mb-3">
                 {course.year}
               </Badge>
-              <h4 class="font-display font-black text-base mb-1">
-                {course.title}
-              </h4>
-              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-2">
+              <h4 class="mb-1 font-display text-base font-black">{course.title}</h4>
+              <p class="mb-2 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
                 {course.org}
               </p>
-              <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+              <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                 {course.desc}
               </p>
             </Card>
@@ -437,17 +498,18 @@ const taughtCourses = [
 
     <!-- Skills Categorized -->
     <section class="space-y-6">
-      <h3 class="font-display font-black text-2xl md:text-3xl flex items-center gap-3">
-        <span class="w-4 h-4 bg-accent-cyan inline-block border-2 border-black dark:border-white"></span>
-        {t("about.skills_title")}
+      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
+        ></span>
+        {t('about.skills_title')}
       </h3>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           skillCategories.map((cat) => (
             <Card variant="default" shadow="md">
-              <h4 class="font-display font-black text-lg mb-4 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 bg-black dark:bg-white inline-block"></span>
+              <h4 class="mb-4 flex items-center gap-2 font-display text-lg font-black">
+                <span class="inline-block h-2.5 w-2.5 bg-black dark:bg-white" />
                 {cat.title}
               </h4>
               <div class="flex flex-wrap gap-2">
@@ -462,23 +524,23 @@ const taughtCourses = [
     </section>
 
     <!-- Languages & Location -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <Card variant="yellow" shadow="md">
-        <h4 class="font-display font-black text-xl text-black mb-3">
-          🗣️ {t("about.languages_title")}
+        <h4 class="mb-3 font-display text-xl font-black text-black">
+          🗣️ {t('about.languages_title')}
         </h4>
-        <ul class="space-y-2 font-mono text-sm text-black font-medium">
-          <li>• <strong>{t("about.lang_es")}</strong></li>
-          <li>• <strong>{t("about.lang_en")}</strong></li>
+        <ul class="space-y-2 font-mono text-sm font-medium text-black">
+          <li>• <strong>{t('about.lang_es')}</strong></li>
+          <li>• <strong>{t('about.lang_en')}</strong></li>
         </ul>
       </Card>
 
       <Card variant="cyan" shadow="md">
-        <h4 class="font-display font-black text-xl text-black mb-3">
-          📍 {t("about.location_title")}
+        <h4 class="mb-3 font-display text-xl font-black text-black">
+          📍 {t('about.location_title')}
         </h4>
-        <p class="text-sm text-black font-medium leading-relaxed">
-          {t("about.location_desc")}
+        <p class="text-sm font-medium leading-relaxed text-black">
+          {t('about.location_desc')}
         </p>
       </Card>
     </section>

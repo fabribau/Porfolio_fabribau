@@ -25,30 +25,44 @@ const quickLinks = [
 ];
 ---
 
-<footer class="border-t-4 border-black dark:border-white bg-bg-surface-light dark:bg-bg-surface-dark transition-colors duration-200 mt-20">
-  <div class="max-w-6xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b-2 border-black/20 dark:border-white/20">
+<footer
+  class="mt-20 border-t-4 border-black bg-bg-surface-light transition-colors duration-200 dark:border-white dark:bg-bg-surface-dark"
+>
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div
+      class="grid grid-cols-1 gap-8 border-b-2 border-black/20 pb-10 dark:border-white/20 md:grid-cols-3"
+    >
       <!-- Col 1: Brand & Status -->
       <div class="space-y-4">
         <a
           href={translatePath('/')}
-          class="group inline-flex flex-wrap items-center cursor-pointer select-none py-1"
+          class="group inline-flex cursor-pointer select-none flex-wrap items-center py-1"
           aria-label="Fabrizio Bauer - Home"
         >
-          <span class="bg-accent-yellow text-black [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] px-3 py-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)] font-display font-black text-base md:text-lg transition-all duration-200 ease-out group-hover:-translate-x-2 group-hover:-rotate-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)]">
+          <span
+            class="border-2 border-black bg-accent-yellow px-3 py-1 font-display text-base font-black text-black shadow-[2px_2px_0px_0px_var(--shadow-color)] transition-all duration-200 ease-out [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] group-hover:-translate-x-2 group-hover:-rotate-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)] dark:border-white md:text-lg"
+          >
             FAB
           </span>
-          <span class="bg-accent-pink text-white [text-shadow:1.5px_1.5px_0px_#0D0D0D] px-3 py-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)] font-display font-black text-base md:text-lg -ml-[2px] group-hover:ml-1 transition-all duration-200 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)]">
+          <span
+            class="-ml-[2px] border-2 border-black bg-accent-pink px-3 py-1 font-display text-base font-black text-white shadow-[2px_2px_0px_0px_var(--shadow-color)] transition-all duration-200 ease-out [text-shadow:1.5px_1.5px_0px_#0D0D0D] group-hover:ml-1 group-hover:-translate-y-1.5 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)] dark:border-white md:text-lg"
+          >
             RI
           </span>
-          <span class="bg-accent-cyan text-black [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] px-3 py-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)] font-display font-black text-base md:text-lg -ml-[2px] group-hover:ml-1 transition-all duration-200 ease-out group-hover:translate-x-1.5 group-hover:rotate-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)]">
+          <span
+            class="-ml-[2px] border-2 border-black bg-accent-cyan px-3 py-1 font-display text-base font-black text-black shadow-[2px_2px_0px_0px_var(--shadow-color)] transition-all duration-200 ease-out [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] group-hover:ml-1 group-hover:translate-x-1.5 group-hover:rotate-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)] dark:border-white md:text-lg"
+          >
             BAU
           </span>
-          <span class="bg-accent-lime text-black [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] px-3 py-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_var(--shadow-color)] font-display font-black text-base md:text-lg -ml-[2px] group-hover:ml-2 transition-all duration-200 ease-out group-hover:translate-x-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)]">
+          <span
+            class="-ml-[2px] border-2 border-black bg-accent-lime px-3 py-1 font-display text-base font-black text-black shadow-[2px_2px_0px_0px_var(--shadow-color)] transition-all duration-200 ease-out [text-shadow:1px_1px_0px_rgba(0,0,0,0.3)] group-hover:ml-2 group-hover:translate-x-3 group-hover:shadow-[4px_4px_0px_0px_var(--shadow-color)] dark:border-white md:text-lg"
+          >
             .TECH
           </span>
         </a>
-        <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed font-sans max-w-sm">
+        <p
+          class="max-w-sm font-sans text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark"
+        >
           {t('hero.role')} — {t('hero.desc')}
         </p>
         <div>
@@ -60,8 +74,12 @@ const quickLinks = [
 
       <!-- Col 2: Quick Links -->
       <div class="space-y-3">
-        <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white flex items-center gap-2">
-          <span class="w-2.5 h-2.5 bg-accent-yellow inline-block border border-black dark:border-white"></span>
+        <h3
+          class="flex items-center gap-2 font-display text-sm font-black uppercase tracking-wider text-black dark:text-white"
+        >
+          <span
+            class="inline-block h-2.5 w-2.5 border border-black bg-accent-yellow dark:border-white"
+          ></span>
           {t('footer.quick_links')}
         </h3>
         <ul class="space-y-1.5 font-mono text-xs">
@@ -70,7 +88,7 @@ const quickLinks = [
               <li>
                 <a
                   href={link.href}
-                  class="inline-block text-fg-muted-light dark:text-fg-muted-dark hover:text-black dark:hover:text-white hover:translate-x-1 transition-transform"
+                  class="inline-block text-fg-muted-light transition-transform hover:translate-x-1 hover:text-black dark:text-fg-muted-dark dark:hover:text-white"
                 >
                   → {link.label}
                 </a>
@@ -82,8 +100,12 @@ const quickLinks = [
 
       <!-- Col 3: Social / Contact -->
       <div class="space-y-3">
-        <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white flex items-center gap-2">
-          <span class="w-2.5 h-2.5 bg-accent-pink inline-block border border-black dark:border-white"></span>
+        <h3
+          class="flex items-center gap-2 font-display text-sm font-black uppercase tracking-wider text-black dark:text-white"
+        >
+          <span
+            class="inline-block h-2.5 w-2.5 border border-black bg-accent-pink dark:border-white"
+          ></span>
           {t('footer.social')}
         </h3>
         <div class="flex flex-wrap gap-2">
@@ -93,7 +115,7 @@ const quickLinks = [
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-mono text-xs font-bold px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-black dark:border-white shadow-brutal-sm hover:bg-accent-yellow hover:text-black hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+                class="border-2 border-black bg-zinc-100 px-3 py-1.5 font-mono text-xs font-bold text-black shadow-brutal-sm transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-accent-yellow hover:text-black hover:shadow-none dark:border-white dark:bg-zinc-800 dark:text-white"
               >
                 {social.label} ↗
               </a>
@@ -104,13 +126,17 @@ const quickLinks = [
     </div>
 
     <!-- Bottom Bar -->
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+    <div
+      class="flex flex-col items-center justify-between gap-4 pt-6 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark sm:flex-row"
+    >
       <p>© {currentYear} Fabrizio José Riera Bauer. {t('footer.rights')}</p>
       <div class="flex items-center gap-2">
         <span>{t('footer.built_with')}</span>
-        <span class="bg-black text-white dark:bg-white dark:text-black px-1.5 py-0.5 font-bold">Astro 5</span>
-        <span class="bg-accent-cyan text-black px-1.5 py-0.5 font-bold">Tailwind</span>
-        <span class="bg-accent-yellow text-black px-1.5 py-0.5 font-bold">Cloudflare</span>
+        <span class="bg-black px-1.5 py-0.5 font-bold text-white dark:bg-white dark:text-black"
+          >Astro 5</span
+        >
+        <span class="bg-accent-cyan px-1.5 py-0.5 font-bold text-black">Tailwind</span>
+        <span class="bg-accent-yellow px-1.5 py-0.5 font-bold text-black">Cloudflare</span>
       </div>
     </div>
   </div>

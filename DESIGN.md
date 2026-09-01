@@ -1,4 +1,5 @@
 # Guía de Estilo y Sistema de Diseño — fabribau.tech
+
 **Autor:** Fabrizio José Riera Bauer  
 **Estilo:** Neobrutalismo Moderno / High-Impact Tech  
 **Fuente de verdad visual:** `DESIGN.md`
@@ -10,6 +11,7 @@
 El sistema visual de `fabribau.tech` fusiona la robustez y honestidad estructural del **Neobrutalismo** con la precisión de la **Ingeniería en Informática** y la energía de la innovación en **Inteligencia Artificial**.
 
 Se aleja de los gradientes sutiles y las sombras etéreas del minimalismo corporativo genérico, apostando por:
+
 - Bordes gruesos y geométricos (`3px` y `4px`).
 - Sombras offset "duras" (sin desenfoque gaussiano, color `#0D0D0D` en light y `#000000` en dark).
 - Paleta de colores vivos y saturados (Amarillo, Magenta, Verde Lima, Cyan) sobre fondos de alto contraste.
@@ -42,6 +44,7 @@ Para trascender el arquetipo de plantilla neobrutalista común, el diseño incor
 ## 3. Paleta Cromática
 
 ### Modo Claro (Light Mode)
+
 - **Fondo Base (`--bg-primary`):** Crema cálido `#F5F0E8` (más orgánico y legible que el blanco puro `#FFFFFF`).
 - **Superficie de Tarjetas (`--bg-surface`):** Blanco `#FFFFFF`.
 - **Texto Principal (`--text-primary`):** Negro carbón `#0D0D0D`.
@@ -49,6 +52,7 @@ Para trascender el arquetipo de plantilla neobrutalista común, el diseño incor
 - **Bordes y Sombras (`--border-color`, `--shadow-color`):** `#0D0D0D`.
 
 ### Modo Oscuro (Dark Mode — Inspiración Gumroad/Cyber)
+
 - **Fondo Base (`--bg-primary`):** Negro profundo `#0D0D0D`.
 - **Superficie de Tarjetas (`--bg-surface`):** Carbón `#181818` / `#1F1F1F`.
 - **Texto Principal (`--text-primary`):** Crema claro `#F5F0E8`.
@@ -57,14 +61,15 @@ Para trascender el arquetipo de plantilla neobrutalista común, el diseño incor
 - **Sombras (`--shadow-color`):** Negro absoluto `#000000`.
 
 ### Acentos Saturados (Comunes a ambos modos)
-| Nombre | Hex | Propósito Principal |
-| :--- | :--- | :--- |
-| **Amarillo Eléctrico** | `#FFE400` | Acento principal, CTAs hero, badges de advertencia/destacado |
+
+| Nombre                  | Hex       | Propósito Principal                                              |
+| :---------------------- | :-------- | :--------------------------------------------------------------- |
+| **Amarillo Eléctrico**  | `#FFE400` | Acento principal, CTAs hero, badges de advertencia/destacado     |
 | **Magenta / Rosa Neón** | `#FF3D8A` | Acento secundario, enlaces activos, badges de blog/investigación |
-| **Verde Lima** | `#B4FF39` | Estados activos ("En desarrollo", "Online", disponibilidad) |
-| **Cyan Futurista** | `#00F0FF` | Tags de IA/RAG, métricas, botones secundarios |
-| **Naranja Vibrante** | `#FF6B00` | Tags especiales, avisos |
-| **Púrpura / Violeta** | `#8B5CF6` | Badges académicos y universitarios |
+| **Verde Lima**          | `#B4FF39` | Estados activos ("En desarrollo", "Online", disponibilidad)      |
+| **Cyan Futurista**      | `#00F0FF` | Tags de IA/RAG, métricas, botones secundarios                    |
+| **Naranja Vibrante**    | `#FF6B00` | Tags especiales, avisos                                          |
+| **Púrpura / Violeta**   | `#8B5CF6` | Badges académicos y universitarios                               |
 
 ---
 
@@ -73,11 +78,11 @@ Para trascender el arquetipo de plantilla neobrutalista común, el diseño incor
 El sistema tipográfico combina una display geométrica audaz con una mono técnica estructurada:
 
 - **Títulos y Display:** `Space Grotesk` (Pesos: 700 Bold, 900 Black).  
-  *Uso:* Logotipo, encabezados H1-H3, cifras clave, botones principales.
+  _Uso:_ Logotipo, encabezados H1-H3, cifras clave, botones principales.
 - **Cuerpo y Lectura:** `Inter` / `system-ui` / `sans-serif` (Pesos: 400 Regular, 500 Medium, 600 SemiBold).  
-  *Uso:* Párrafos de proyectos, artículos de blog, descripciones.
+  _Uso:_ Párrafos de proyectos, artículos de blog, descripciones.
 - **Datos Técnicos y Metadatos:** `JetBrains Mono` (Pesos: 400 Regular, 700 Bold).  
-  *Uso:* Badges, tags `#tech`, fechas, snippets de código, métricas y breadcrumbs.
+  _Uso:_ Badges, tags `#tech`, fechas, snippets de código, métricas y breadcrumbs.
 
 ---
 

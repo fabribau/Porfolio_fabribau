@@ -1,68 +1,72 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Button from "@components/Button.astro";
-import Card from "@components/Card.astro";
-import Badge from "@components/Badge.astro";
-import Tag from "@components/Tag.astro";
-import SectionHeader from "@components/SectionHeader.astro";
-import { getCollection } from "astro:content";
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/Button.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 // Get projects and blog posts for Spanish
-const allProjects = await getCollection("proyectos", ({ id }) => id.startsWith("es/"));
+const allProjects = await getCollection('proyectos', ({ id }) => id.startsWith('es/'));
 allProjects.sort((a, b) => {
-  if (a.data.status === "en-desarrollo" && b.data.status !== "en-desarrollo") return -1;
-  if (a.data.status !== "en-desarrollo" && b.data.status === "en-desarrollo") return 1;
+  if (a.data.status === 'en-desarrollo' && b.data.status !== 'en-desarrollo') return -1;
+  if (a.data.status !== 'en-desarrollo' && b.data.status === 'en-desarrollo') return 1;
   return b.data.pubDate.getTime() - a.data.pubDate.getTime();
 });
 const featuredProjects = allProjects.filter((p) => p.data.featured);
 
-const allPosts = await getCollection("blog", ({ id, data }) => id.startsWith("es/") && !data.draft);
+const allPosts = await getCollection('blog', ({ id, data }) => id.startsWith('es/') && !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const latestPosts = allPosts.slice(0, 2);
 ---
 
 <BaseLayout
   title="Fabrizio José Riera Bauer — Ingeniero en Informática & FullStack"
-  description={t("hero.desc")}
+  description={t('hero.desc')}
 >
   <div class="space-y-16">
     <!-- Hero Section -->
     <section>
-      <div class="p-6 md:p-12 bg-accent-yellow text-black border-4 border-black dark:border-white shadow-brutal-xl space-y-6">
+      <div
+        class="space-y-6 border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl dark:border-white md:p-12"
+      >
         <div>
           <Badge color="dark" pulse={true} size="md">
-            {t("hero.badge")}
+            {t('hero.badge')}
           </Badge>
         </div>
 
-        <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none text-black">
-          {t("hero.title")}
+        <h1
+          class="font-display text-4xl font-black leading-none tracking-tight text-black sm:text-6xl md:text-7xl"
+        >
+          {t('hero.title')}
         </h1>
 
-        <p class="font-mono text-base sm:text-xl font-bold text-black">
-          {t("hero.role")}
+        <p class="font-mono text-base font-bold text-black sm:text-xl">
+          {t('hero.role')}
         </p>
 
-        <p class="text-base sm:text-lg max-w-2xl text-zinc-900 leading-relaxed font-medium">
-          {t("hero.desc")}
+        <p class="max-w-2xl text-base font-medium leading-relaxed text-zinc-900 sm:text-lg">
+          {t('hero.desc')}
         </p>
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <Button href={translatePath("/proyectos")} variant="pink" size="lg">
+          <Button href={translatePath('/proyectos')} variant="pink" size="lg">
             <span slot="prefix">⚡</span>
-            {t("hero.cta_projects")}
+            {t('hero.cta_projects')}
           </Button>
-          <Button href={translatePath("/about")} variant="secondary" size="lg">
-            {t("hero.cta_about")}
+          <Button href={translatePath('/about')} variant="secondary" size="lg">
+            {t('hero.cta_about')}
             <span slot="suffix">→</span>
           </Button>
-          <Button href={translatePath("/contact")} variant="cyan" size="lg">
-            {t("hero.cta_contact")}
+          <Button href={translatePath('/contact')} variant="cyan" size="lg">
+            {t('hero.cta_contact')}
             <span slot="suffix">✉</span>
           </Button>
         </div>
@@ -72,33 +76,43 @@ const latestPosts = allPosts.slice(0, 2);
     <!-- About Me Snippet Section -->
     <section>
       <Card variant="default" shadow="lg">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          <div class="md:col-span-8 space-y-4">
+        <div class="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
+          <div class="space-y-4 md:col-span-8">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 bg-accent-lime inline-block border border-black dark:border-white"></span>
-              <span class="font-mono text-xs font-bold uppercase tracking-wider text-fg-muted-light dark:text-fg-muted-dark">
+              <span
+                class="inline-block h-3 w-3 border border-black bg-accent-lime dark:border-white"
+              ></span>
+              <span
+                class="font-mono text-xs font-bold uppercase tracking-wider text-fg-muted-light dark:text-fg-muted-dark"
+              >
                 Ingeniería & Docencia Universitaria
               </span>
             </div>
-            <h2 class="font-display font-black text-2xl md:text-3xl tracking-tight">
-              {t("about.title")}
+            <h2 class="font-display text-2xl font-black tracking-tight md:text-3xl">
+              {t('about.title')}
             </h2>
-            <p class="text-sm md:text-base text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
-              {t("home.about_summary")}
+            <p
+              class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark md:text-base"
+            >
+              {t('home.about_summary')}
             </p>
             <div class="pt-2">
-              <Button href={translatePath("/about")} variant="primary" size="sm">
+              <Button href={translatePath('/about')} variant="primary" size="sm">
                 Conocer más sobre mi perfil
                 <span slot="suffix">→</span>
               </Button>
             </div>
           </div>
 
-          <div class="md:col-span-4 p-4 bg-zinc-100 dark:bg-zinc-800 border-2 border-black dark:border-white space-y-3">
-            <h3 class="font-display font-black text-sm uppercase tracking-wider text-black dark:text-white">
+          <div
+            class="space-y-3 border-2 border-black bg-zinc-100 p-4 dark:border-white dark:bg-zinc-800 md:col-span-4"
+          >
+            <h3
+              class="font-display text-sm font-black uppercase tracking-wider text-black dark:text-white"
+            >
               Puntos Destacados
             </h3>
-            <ul class="font-mono text-xs space-y-2 text-fg-muted-light dark:text-fg-muted-dark">
+            <ul class="space-y-2 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
               <li>🎓 <strong>Ing. en Informática</strong> (UNSL)</li>
               <li>🏛️ <strong>Docente Universitario</strong></li>
               <li>🤖 <strong>Especialista en IA & RAG</strong></li>
@@ -113,16 +127,16 @@ const latestPosts = allPosts.slice(0, 2);
     <section class="space-y-8">
       <SectionHeader
         number="01"
-        title={t("project.featured")}
+        title={t('project.featured')}
         subtitle="Sistemas en producción, agentes de inteligencia artificial y proyectos destacados."
         highlightColor="pink"
       />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           featuredProjects.map((project) => {
-            const slug = project.id.replace(/^es\//, "");
-            const isDev = project.data.status === "en-desarrollo";
+            const slug = project.id.replace(/^es\//, '');
+            const isDev = project.data.status === 'en-desarrollo';
 
             return (
               <Card
@@ -132,47 +146,39 @@ const latestPosts = allPosts.slice(0, 2);
                 class="flex flex-col justify-between"
               >
                 <div>
-                  <div class="flex items-center justify-between gap-2 mb-4">
-                    <Badge
-                      color={isDev ? "lime" : "cyan"}
-                      pulse={isDev}
-                      size="sm"
-                    >
-                      {isDev ? t("project.status.in_progress") : t("project.status.completed")}
+                  <div class="mb-4 flex items-center justify-between gap-2">
+                    <Badge color={isDev ? 'lime' : 'cyan'} pulse={isDev} size="sm">
+                      {isDev ? t('project.status.in_progress') : t('project.status.completed')}
                     </Badge>
-                    <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                      {project.data.pubDate.toLocaleDateString("es-AR", { year: "numeric", month: "short" })}
+                    <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                      {project.data.pubDate.toLocaleDateString('es-AR', {
+                        year: 'numeric',
+                        month: 'short',
+                      })}
                     </span>
                   </div>
 
-                  <a
-                    href={translatePath(`/proyectos/${slug}`)}
-                    class="group inline-block mb-3"
-                  >
-                    <h3 class="font-display font-black text-2xl tracking-tight group-hover:text-accent-pink transition-colors">
+                  <a href={translatePath(`/proyectos/${slug}`)} class="group mb-3 inline-block">
+                    <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
                       {project.data.title}
                     </h3>
                   </a>
 
-                  <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
+                  <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                     {project.data.description}
                   </p>
                 </div>
 
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-6">
+                  <div class="mb-6 flex flex-wrap gap-2">
                     {project.data.tags.map((tag) => (
                       <Tag>{tag}</Tag>
                     ))}
                   </div>
 
-                  <div class="flex items-center gap-3 pt-4 border-t-2 border-black/10 dark:border-white/10">
-                    <Button
-                      href={translatePath(`/proyectos/${slug}`)}
-                      variant="primary"
-                      size="sm"
-                    >
-                      {t("common.view_project")}
+                  <div class="flex items-center gap-3 border-t-2 border-black/10 pt-4 dark:border-white/10">
+                    <Button href={translatePath(`/proyectos/${slug}`)} variant="primary" size="sm">
+                      {t('common.view_project')}
                       <span slot="suffix">→</span>
                     </Button>
                     {project.data.liveUrl && (
@@ -182,7 +188,7 @@ const latestPosts = allPosts.slice(0, 2);
                         variant="secondary"
                         size="sm"
                       >
-                        {t("project.live_demo")}
+                        {t('project.live_demo')}
                         <span slot="suffix">↗</span>
                       </Button>
                     )}
@@ -194,9 +200,9 @@ const latestPosts = allPosts.slice(0, 2);
         }
       </div>
 
-      <div class="text-center pt-4">
-        <Button href={translatePath("/proyectos")} variant="secondary" size="md">
-          {t("project.view_all")} ({allProjects.length})
+      <div class="pt-4 text-center">
+        <Button href={translatePath('/proyectos')} variant="secondary" size="md">
+          {t('project.view_all')} ({allProjects.length})
           <span slot="suffix">→</span>
         </Button>
       </div>
@@ -206,15 +212,15 @@ const latestPosts = allPosts.slice(0, 2);
     <section class="space-y-8">
       <SectionHeader
         number="02"
-        title={t("home.latest_articles")}
-        subtitle={t("home.latest_articles_desc")}
+        title={t('home.latest_articles')}
+        subtitle={t('home.latest_articles_desc')}
         highlightColor="yellow"
       />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {
           latestPosts.map((post) => {
-            const slug = post.id.replace(/^es\//, "");
+            const slug = post.id.replace(/^es\//, '');
             return (
               <Card
                 variant="default"
@@ -223,43 +229,40 @@ const latestPosts = allPosts.slice(0, 2);
                 class="flex flex-col justify-between"
               >
                 <div>
-                  <div class="flex items-center justify-between gap-2 mb-4">
+                  <div class="mb-4 flex items-center justify-between gap-2">
                     <Badge color="pink" size="sm">
                       BLOG
                     </Badge>
-                    <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                      {post.data.pubDate.toLocaleDateString("es-AR", { year: "numeric", month: "short", day: "numeric" })}
+                    <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                      {post.data.pubDate.toLocaleDateString('es-AR', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
                     </span>
                   </div>
 
-                  <a
-                    href={translatePath(`/blog/${slug}`)}
-                    class="group inline-block mb-3"
-                  >
-                    <h3 class="font-display font-black text-2xl tracking-tight group-hover:text-accent-pink transition-colors">
+                  <a href={translatePath(`/blog/${slug}`)} class="group mb-3 inline-block">
+                    <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
                       {post.data.title}
                     </h3>
                   </a>
 
-                  <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
+                  <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                     {post.data.description}
                   </p>
                 </div>
 
                 <div>
-                  <div class="flex flex-wrap gap-2 mb-6">
+                  <div class="mb-6 flex flex-wrap gap-2">
                     {post.data.tags.map((tag) => (
                       <Tag>{tag}</Tag>
                     ))}
                   </div>
 
-                  <div class="pt-4 border-t-2 border-black/10 dark:border-white/10 flex justify-end">
-                    <Button
-                      href={translatePath(`/blog/${slug}`)}
-                      variant="primary"
-                      size="sm"
-                    >
-                      {t("common.read_more")}
+                  <div class="flex justify-end border-t-2 border-black/10 pt-4 dark:border-white/10">
+                    <Button href={translatePath(`/blog/${slug}`)} variant="primary" size="sm">
+                      {t('common.read_more')}
                       <span slot="suffix">→</span>
                     </Button>
                   </div>
@@ -270,9 +273,9 @@ const latestPosts = allPosts.slice(0, 2);
         }
       </div>
 
-      <div class="text-center pt-4">
-        <Button href={translatePath("/blog")} variant="secondary" size="md">
-          {t("home.view_all_posts")}
+      <div class="pt-4 text-center">
+        <Button href={translatePath('/blog')} variant="secondary" size="md">
+          {t('home.view_all_posts')}
           <span slot="suffix">→</span>
         </Button>
       </div>
@@ -280,19 +283,21 @@ const latestPosts = allPosts.slice(0, 2);
 
     <!-- Contact CTA Banner -->
     <section>
-      <div class="p-8 md:p-12 bg-accent-cyan text-black border-4 border-black dark:border-white shadow-brutal-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div
+        class="flex flex-col items-center justify-between gap-6 border-4 border-black bg-accent-cyan p-8 text-black shadow-brutal-xl dark:border-white md:flex-row md:p-12"
+      >
         <div class="space-y-2 text-center md:text-left">
-          <h2 class="font-display font-black text-3xl md:text-4xl text-black">
-            {t("common.get_in_touch")}
+          <h2 class="font-display text-3xl font-black text-black md:text-4xl">
+            {t('common.get_in_touch')}
           </h2>
-          <p class="text-base text-zinc-900 font-medium max-w-xl">
-            {t("contact.subtitle")}
+          <p class="max-w-xl text-base font-medium text-zinc-900">
+            {t('contact.subtitle')}
           </p>
         </div>
 
-        <Button href={translatePath("/contact")} variant="pink" size="lg">
+        <Button href={translatePath('/contact')} variant="pink" size="lg">
           <span slot="prefix">⚡</span>
-          {t("hero.cta_contact")}
+          {t('hero.cta_contact')}
         </Button>
       </div>
     </section>

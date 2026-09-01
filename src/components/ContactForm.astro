@@ -1,10 +1,10 @@
 ---
-import Button from "@components/Button.astro";
-import Card from "@components/Card.astro";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import Button from '@components/Button.astro';
+import Card from '@components/Card.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 interface Props {
-  lang?: "es" | "en";
+  lang?: 'es' | 'en';
 }
 
 const urlLang = getLangFromUrl(Astro.url);
@@ -12,8 +12,7 @@ const { lang = urlLang } = Astro.props;
 const t = useTranslations(lang);
 
 // Clave pública de Turnstile (por defecto la clave de test oficial de Cloudflare que siempre pasa en desarrollo)
-const turnstileSiteKey =
-  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 ---
 
 <Card variant="default" shadow="xl">
@@ -26,11 +25,9 @@ const turnstileSiteKey =
   >
     <!-- Campo Nombre -->
     <div>
-      <label
-        for="name"
-        class="block font-mono text-xs font-bold uppercase tracking-wider mb-2"
-      >
-        {t("contact.form_name")} <span class="text-accent-pink">*</span>
+      <label for="name" class="mb-2 block font-mono text-xs font-bold uppercase tracking-wider">
+        {t('contact.form_name')}
+        <span class="text-accent-pink">*</span>
       </label>
       <input
         type="text"
@@ -39,19 +36,17 @@ const turnstileSiteKey =
         required
         minlength="2"
         maxlength="100"
-        placeholder={t("contact.form_name_placeholder")}
-        class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+        placeholder={t('contact.form_name_placeholder')}
+        class="w-full border-3 border-black bg-zinc-50 px-4 py-3 font-sans text-black transition-colors focus:border-accent-pink focus:bg-accent-yellow/10 focus:outline-none dark:border-white dark:bg-zinc-800 dark:text-white"
       />
-      <p id="name-error" class="text-accent-pink font-mono text-xs mt-1.5 hidden"></p>
+      <p id="name-error" class="mt-1.5 hidden font-mono text-xs text-accent-pink"></p>
     </div>
 
     <!-- Campo Correo Electrónico -->
     <div>
-      <label
-        for="email"
-        class="block font-mono text-xs font-bold uppercase tracking-wider mb-2"
-      >
-        {t("contact.form_email")} <span class="text-accent-pink">*</span>
+      <label for="email" class="mb-2 block font-mono text-xs font-bold uppercase tracking-wider">
+        {t('contact.form_email')}
+        <span class="text-accent-pink">*</span>
       </label>
       <input
         type="email"
@@ -59,19 +54,17 @@ const turnstileSiteKey =
         name="email"
         required
         maxlength="255"
-        placeholder={t("contact.form_email_placeholder")}
-        class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+        placeholder={t('contact.form_email_placeholder')}
+        class="w-full border-3 border-black bg-zinc-50 px-4 py-3 font-sans text-black transition-colors focus:border-accent-pink focus:bg-accent-yellow/10 focus:outline-none dark:border-white dark:bg-zinc-800 dark:text-white"
       />
-      <p id="email-error" class="text-accent-pink font-mono text-xs mt-1.5 hidden"></p>
+      <p id="email-error" class="mt-1.5 hidden font-mono text-xs text-accent-pink"></p>
     </div>
 
     <!-- Campo Asunto -->
     <div>
-      <label
-        for="subject"
-        class="block font-mono text-xs font-bold uppercase tracking-wider mb-2"
-      >
-        {t("contact.form_subject")} <span class="text-accent-pink">*</span>
+      <label for="subject" class="mb-2 block font-mono text-xs font-bold uppercase tracking-wider">
+        {t('contact.form_subject')}
+        <span class="text-accent-pink">*</span>
       </label>
       <input
         type="text"
@@ -80,19 +73,17 @@ const turnstileSiteKey =
         required
         minlength="3"
         maxlength="150"
-        placeholder={t("contact.form_subject_placeholder")}
-        class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors"
+        placeholder={t('contact.form_subject_placeholder')}
+        class="w-full border-3 border-black bg-zinc-50 px-4 py-3 font-sans text-black transition-colors focus:border-accent-pink focus:bg-accent-yellow/10 focus:outline-none dark:border-white dark:bg-zinc-800 dark:text-white"
       />
-      <p id="subject-error" class="text-accent-pink font-mono text-xs mt-1.5 hidden"></p>
+      <p id="subject-error" class="mt-1.5 hidden font-mono text-xs text-accent-pink"></p>
     </div>
 
     <!-- Campo Mensaje -->
     <div>
-      <label
-        for="message"
-        class="block font-mono text-xs font-bold uppercase tracking-wider mb-2"
-      >
-        {t("contact.form_message")} <span class="text-accent-pink">*</span>
+      <label for="message" class="mb-2 block font-mono text-xs font-bold uppercase tracking-wider">
+        {t('contact.form_message')}
+        <span class="text-accent-pink">*</span>
       </label>
       <textarea
         id="message"
@@ -101,25 +92,27 @@ const turnstileSiteKey =
         required
         minlength="10"
         maxlength="3000"
-        placeholder={t("contact.form_message_placeholder")}
-        class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-800 text-black dark:text-white border-3 border-black dark:border-white font-sans focus:outline-none focus:bg-accent-yellow/10 focus:border-accent-pink transition-colors resize-y"
+        placeholder={t('contact.form_message_placeholder')}
+        class="w-full resize-y border-3 border-black bg-zinc-50 px-4 py-3 font-sans text-black transition-colors focus:border-accent-pink focus:bg-accent-yellow/10 focus:outline-none dark:border-white dark:bg-zinc-800 dark:text-white"
       ></textarea>
-      <p id="message-error" class="text-accent-pink font-mono text-xs mt-1.5 hidden"></p>
+      <p id="message-error" class="mt-1.5 hidden font-mono text-xs text-accent-pink"></p>
     </div>
 
     <!-- Turnstile Anti-bot Protection -->
-    <div class="p-3 bg-zinc-100 dark:bg-zinc-800 border-2 border-dashed border-black dark:border-white">
-      <div class="flex items-center justify-between text-xs font-mono mb-2">
+    <div
+      class="border-2 border-dashed border-black bg-zinc-100 p-3 dark:border-white dark:bg-zinc-800"
+    >
+      <div class="mb-2 flex items-center justify-between font-mono text-xs">
         <span class="flex items-center gap-2">
-          <span class="w-3 h-3 bg-accent-lime inline-block border border-black"></span>
-          {t("contact.form_security")}
+          <span class="inline-block h-3 w-3 border border-black bg-accent-lime"></span>
+          {t('contact.form_security')}
         </span>
-        <span class="text-fg-muted-light dark:text-fg-muted-dark font-bold">Cloudflare</span>
+        <span class="font-bold text-fg-muted-light dark:text-fg-muted-dark">Cloudflare</span>
       </div>
 
-      <div id="turnstile-container" class="min-h-[65px] flex items-center justify-start"></div>
+      <div id="turnstile-container" class="flex min-h-[65px] items-center justify-start"></div>
       <input type="hidden" id="turnstile-token" name="turnstileToken" value="" />
-      <p id="turnstile-error" class="text-accent-pink font-mono text-xs mt-1.5 hidden"></p>
+      <p id="turnstile-error" class="mt-1.5 hidden font-mono text-xs text-accent-pink"></p>
     </div>
 
     <!-- Botón de Envío -->
@@ -128,20 +121,21 @@ const turnstileSiteKey =
       variant="pink"
       size="lg"
       id="submit-btn"
-      class="w-full justify-center select-none"
+      class="w-full select-none justify-center"
     >
       <span id="btn-icon" slot="prefix">✉</span>
-      <span id="btn-text">{t("contact.form_submit")}</span>
+      <span id="btn-text">{t('contact.form_submit')}</span>
     </Button>
   </form>
 
   <!-- Banner de Respuesta / Feedback -->
   <div
     id="form-feedback"
-    class="mt-4 hidden p-4 border-3 border-black dark:border-white font-mono text-sm font-bold"
+    class="mt-4 hidden border-3 border-black p-4 font-mono text-sm font-bold dark:border-white"
     role="alert"
     aria-live="polite"
-  ></div>
+  >
+  </div>
 </Card>
 
 <script>
@@ -153,9 +147,9 @@ const turnstileSiteKey =
           options: {
             sitekey: string;
             callback?: (token: string) => void;
-            "expired-callback"?: () => void;
-            "error-callback"?: () => void;
-            theme?: "light" | "dark" | "auto";
+            'expired-callback'?: () => void;
+            'error-callback'?: () => void;
+            theme?: 'light' | 'dark' | 'auto';
           }
         ) => string;
         reset: (widgetId?: string) => void;
@@ -166,33 +160,35 @@ const turnstileSiteKey =
   }
 
   function setupContactForm() {
-    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
     if (!form) return;
 
-    const siteKey = form.getAttribute("data-sitekey") || "1x00000000000000000000AA";
-    const lang = form.getAttribute("data-lang") || "es";
-    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
-    const btnText = document.getElementById("btn-text");
-    const btnIcon = document.getElementById("btn-icon");
-    const feedback = document.getElementById("form-feedback");
-    const turnstileTokenInput = document.getElementById("turnstile-token") as HTMLInputElement | null;
-    const turnstileContainer = document.getElementById("turnstile-container");
+    const siteKey = form.getAttribute('data-sitekey') || '1x00000000000000000000AA';
+    const lang = form.getAttribute('data-lang') || 'es';
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const feedback = document.getElementById('form-feedback');
+    const turnstileTokenInput = document.getElementById(
+      'turnstile-token'
+    ) as HTMLInputElement | null;
+    const turnstileContainer = document.getElementById('turnstile-container');
 
-    const fields = ["name", "email", "subject", "message"] as const;
+    const fields = ['name', 'email', 'subject', 'message'] as const;
 
     // Helper para limpiar mensajes de error
     function clearErrors() {
       fields.forEach((f) => {
         const errorEl = document.getElementById(`${f}-error`);
         if (errorEl) {
-          errorEl.textContent = "";
-          errorEl.classList.add("hidden");
+          errorEl.textContent = '';
+          errorEl.classList.add('hidden');
         }
       });
-      const turnstileError = document.getElementById("turnstile-error");
+      const turnstileError = document.getElementById('turnstile-error');
       if (turnstileError) {
-        turnstileError.textContent = "";
-        turnstileError.classList.add("hidden");
+        turnstileError.textContent = '';
+        turnstileError.classList.add('hidden');
       }
     }
 
@@ -201,44 +197,44 @@ const turnstileSiteKey =
       const errorEl = document.getElementById(`${field}-error`);
       if (errorEl) {
         errorEl.textContent = message;
-        errorEl.classList.remove("hidden");
+        errorEl.classList.remove('hidden');
       }
     }
 
     // Inicializar Turnstile
     function renderTurnstile() {
       if (!turnstileContainer) return;
-      turnstileContainer.innerHTML = "";
+      turnstileContainer.innerHTML = '';
 
       if (window.turnstile) {
         try {
-          const isDark = document.documentElement.classList.contains("dark");
+          const isDark = document.documentElement.classList.contains('dark');
           window.turnstileWidgetId = window.turnstile.render(turnstileContainer, {
             sitekey: siteKey,
-            theme: isDark ? "dark" : "light",
+            theme: isDark ? 'dark' : 'light',
             callback: (token: string) => {
               if (turnstileTokenInput) turnstileTokenInput.value = token;
-              const turnstileError = document.getElementById("turnstile-error");
-              if (turnstileError) turnstileError.classList.add("hidden");
+              const turnstileError = document.getElementById('turnstile-error');
+              if (turnstileError) turnstileError.classList.add('hidden');
             },
-            "expired-callback": () => {
-              if (turnstileTokenInput) turnstileTokenInput.value = "";
+            'expired-callback': () => {
+              if (turnstileTokenInput) turnstileTokenInput.value = '';
             },
-            "error-callback": () => {
-              if (turnstileTokenInput) turnstileTokenInput.value = "";
+            'error-callback': () => {
+              if (turnstileTokenInput) turnstileTokenInput.value = '';
             },
           });
         } catch (e) {
-          console.warn("[Turnstile] Render error:", e);
+          console.warn('[Turnstile] Render error:', e);
         }
       }
     }
 
     // Cargar script de Turnstile si no existe aún
-    if (!document.getElementById("turnstile-script")) {
-      const script = document.createElement("script");
-      script.id = "turnstile-script";
-      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    if (!document.getElementById('turnstile-script')) {
+      const script = document.createElement('script');
+      script.id = 'turnstile-script';
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
       script.async = true;
       script.defer = true;
       script.onload = () => renderTurnstile();
@@ -252,16 +248,18 @@ const turnstileSiteKey =
       clearErrors();
       let isValid = true;
 
-      const nameVal = (form?.elements.namedItem("name") as HTMLInputElement)?.value.trim();
-      const emailVal = (form?.elements.namedItem("email") as HTMLInputElement)?.value.trim();
-      const subjectVal = (form?.elements.namedItem("subject") as HTMLInputElement)?.value.trim();
-      const messageVal = (form?.elements.namedItem("message") as HTMLTextAreaElement)?.value.trim();
+      const nameVal = (form?.elements.namedItem('name') as HTMLInputElement)?.value.trim();
+      const emailVal = (form?.elements.namedItem('email') as HTMLInputElement)?.value.trim();
+      const subjectVal = (form?.elements.namedItem('subject') as HTMLInputElement)?.value.trim();
+      const messageVal = (form?.elements.namedItem('message') as HTMLTextAreaElement)?.value.trim();
       const token = turnstileTokenInput?.value.trim();
 
       if (!nameVal || nameVal.length < 2) {
         setFieldError(
-          "name",
-          lang === "en" ? "Name must be at least 2 characters." : "El nombre debe tener al menos 2 caracteres."
+          'name',
+          lang === 'en'
+            ? 'Name must be at least 2 characters.'
+            : 'El nombre debe tener al menos 2 caracteres.'
         );
         isValid = false;
       }
@@ -269,34 +267,40 @@ const turnstileSiteKey =
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailVal || !emailRegex.test(emailVal)) {
         setFieldError(
-          "email",
-          lang === "en" ? "Please enter a valid email address." : "Ingresa un correo electrónico válido."
+          'email',
+          lang === 'en'
+            ? 'Please enter a valid email address.'
+            : 'Ingresa un correo electrónico válido.'
         );
         isValid = false;
       }
 
       if (!subjectVal || subjectVal.length < 3) {
         setFieldError(
-          "subject",
-          lang === "en" ? "Subject must be at least 3 characters." : "El asunto debe tener al menos 3 caracteres."
+          'subject',
+          lang === 'en'
+            ? 'Subject must be at least 3 characters.'
+            : 'El asunto debe tener al menos 3 caracteres.'
         );
         isValid = false;
       }
 
       if (!messageVal || messageVal.length < 10) {
         setFieldError(
-          "message",
-          lang === "en" ? "Message must be at least 10 characters." : "El mensaje debe tener al menos 10 caracteres."
+          'message',
+          lang === 'en'
+            ? 'Message must be at least 10 characters.'
+            : 'El mensaje debe tener al menos 10 caracteres.'
         );
         isValid = false;
       }
 
       if (!token) {
         setFieldError(
-          "turnstile",
-          lang === "en"
-            ? "Please complete the security check before submitting."
-            : "Por favor completa la verificación de seguridad antes de enviar."
+          'turnstile',
+          lang === 'en'
+            ? 'Please complete the security check before submitting.'
+            : 'Por favor completa la verificación de seguridad antes de enviar.'
         );
         isValid = false;
       }
@@ -312,27 +316,29 @@ const turnstileSiteKey =
 
       const formData = new FormData(form);
       const payload = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        subject: formData.get("subject"),
-        message: formData.get("message"),
-        turnstileToken: turnstileTokenInput?.value || "",
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+        turnstileToken: turnstileTokenInput?.value || '',
         lang,
       };
 
       // Estado Enviando
       if (submitBtn) submitBtn.disabled = true;
-      if (btnText) btnText.textContent = lang === "en" ? "Sending message..." : "Enviando mensaje...";
-      if (btnIcon) btnIcon.textContent = "⏳";
+      if (btnText)
+        btnText.textContent = lang === 'en' ? 'Sending message...' : 'Enviando mensaje...';
+      if (btnIcon) btnIcon.textContent = '⏳';
       if (feedback) {
-        feedback.classList.add("hidden");
-        feedback.className = "mt-4 hidden p-4 border-3 border-black dark:border-white font-mono text-sm font-bold";
+        feedback.classList.add('hidden');
+        feedback.className =
+          'mt-4 hidden p-4 border-3 border-black dark:border-white font-mono text-sm font-bold';
       }
 
       try {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
 
@@ -341,21 +347,21 @@ const turnstileSiteKey =
         if (response.ok && data.success) {
           // Éxito
           if (feedback) {
-            feedback.classList.remove("hidden");
-            feedback.classList.add("bg-accent-lime", "text-black");
-            feedback.innerHTML = `✓ ${data.message || (lang === "en" ? "Message received successfully!" : "¡Mensaje recibido con éxito!")}`;
+            feedback.classList.remove('hidden');
+            feedback.classList.add('bg-accent-lime', 'text-black');
+            feedback.innerHTML = `✓ ${data.message || (lang === 'en' ? 'Message received successfully!' : '¡Mensaje recibido con éxito!')}`;
           }
           form.reset();
-          if (turnstileTokenInput) turnstileTokenInput.value = "";
+          if (turnstileTokenInput) turnstileTokenInput.value = '';
           if (window.turnstile && window.turnstileWidgetId) {
             window.turnstile.reset(window.turnstileWidgetId);
           }
         } else {
           // Error desde el servidor
           if (feedback) {
-            feedback.classList.remove("hidden");
-            feedback.classList.add("bg-accent-pink", "text-white");
-            feedback.innerHTML = `✗ ${data.message || (lang === "en" ? "An error occurred while sending." : "Ocurrió un error al enviar el mensaje.")}`;
+            feedback.classList.remove('hidden');
+            feedback.classList.add('bg-accent-pink', 'text-white');
+            feedback.innerHTML = `✗ ${data.message || (lang === 'en' ? 'An error occurred while sending.' : 'Ocurrió un error al enviar el mensaje.')}`;
           }
 
           if (data.errors) {
@@ -371,19 +377,19 @@ const turnstileSiteKey =
       } catch {
         // Error de red
         if (feedback) {
-          feedback.classList.remove("hidden");
-          feedback.classList.add("bg-accent-pink", "text-white");
-          feedback.innerHTML = `✗ ${lang === "en" ? "Network error. Please check your internet connection." : "Error de conexión. Verifica tu internet e inténtalo nuevamente."}`;
+          feedback.classList.remove('hidden');
+          feedback.classList.add('bg-accent-pink', 'text-white');
+          feedback.innerHTML = `✗ ${lang === 'en' ? 'Network error. Please check your internet connection.' : 'Error de conexión. Verifica tu internet e inténtalo nuevamente.'}`;
         }
       } finally {
         if (submitBtn) submitBtn.disabled = false;
-        if (btnText) btnText.textContent = lang === "en" ? "Send Message" : "Enviar Mensaje";
-        if (btnIcon) btnIcon.textContent = "✉";
+        if (btnText) btnText.textContent = lang === 'en' ? 'Send Message' : 'Enviar Mensaje';
+        if (btnIcon) btnIcon.textContent = '✉';
       }
     };
   }
 
   // Inicializar al cargar y en View Transitions
   setupContactForm();
-  document.addEventListener("astro:page-load", setupContactForm);
+  document.addEventListener('astro:page-load', setupContactForm);
 </script>

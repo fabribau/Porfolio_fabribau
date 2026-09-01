@@ -1,15 +1,15 @@
-import type { ContactFormData } from "./schema";
+import type { ContactFormData } from './schema';
 
 /**
  * Escapa caracteres HTML para evitar inyecciones XSS en clientes de correo.
  */
 export function escapeHtml(str: string): string {
   return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 /**
@@ -19,9 +19,9 @@ export function generateNotificationEmail(data: ContactFormData) {
   const safeName = escapeHtml(data.name);
   const safeEmail = escapeHtml(data.email);
   const safeSubject = escapeHtml(data.subject);
-  const safeMessage = escapeHtml(data.message).replace(/\n/g, "<br/>");
-  const dateStr = new Date().toLocaleString("es-AR", {
-    timeZone: "America/Argentina/San_Luis",
+  const safeMessage = escapeHtml(data.message).replace(/\n/g, '<br/>');
+  const dateStr = new Date().toLocaleString('es-AR', {
+    timeZone: 'America/Argentina/San_Luis',
   });
 
   const subject = `[Portfolio fabribau.tech] ${data.subject} — De: ${data.name}`;
@@ -97,7 +97,7 @@ Puedes responder directamente a este correo para escribirle a ${data.email}.
 export function generateAutoresponderEmail(data: ContactFormData) {
   const safeName = escapeHtml(data.name);
   const safeSubject = escapeHtml(data.subject);
-  const isSpanish = data.lang === "es";
+  const isSpanish = data.lang === 'es';
 
   const subject = isSpanish
     ? `¡Gracias por contactarme! — Fabrizio Bauer`
@@ -154,7 +154,7 @@ export function generateAutoresponderEmail(data: ContactFormData) {
       <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8;">
         <li><a href="https://linkedin.com/in/fabrizio-bauer" style="color: #0D0D0D; font-weight: bold;">LinkedIn: in/fabrizio-bauer</a></li>
         <li><a href="https://github.com/fabribau" style="color: #0D0D0D; font-weight: bold;">GitHub: @fabribau</a></li>
-        <li><a href="https://fabribau.tech/${data.lang}/proyectos" style="color: #0D0D0D; font-weight: bold;">${isSpanish ? "Ver Proyectos" : "Explore Projects"}</a></li>
+        <li><a href="https://fabribau.tech/${data.lang}/proyectos" style="color: #0D0D0D; font-weight: bold;">${isSpanish ? 'Ver Proyectos' : 'Explore Projects'}</a></li>
       </ul>
     </div>
 
@@ -162,7 +162,7 @@ export function generateAutoresponderEmail(data: ContactFormData) {
     <div style="border-top: 2px solid #0D0D0D; padding-top: 16px; margin-bottom: 16px;">
       <p style="margin: 0; font-size: 15px; font-weight: bold;">Fabrizio José Riera Bauer</p>
       <p style="margin: 4px 0 0 0; font-size: 13px; color: #555555;">
-        ${isSpanish ? "Ingeniero en Informática & Desarrollador FullStack" : "Informatics Engineer & FullStack Developer"}
+        ${isSpanish ? 'Ingeniero en Informática & Desarrollador FullStack' : 'Informatics Engineer & FullStack Developer'}
       </p>
     </div>
 

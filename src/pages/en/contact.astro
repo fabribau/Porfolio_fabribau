@@ -1,49 +1,46 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionHeader from "@components/SectionHeader.astro";
-import Card from "@components/Card.astro";
-import ContactForm from "@components/ContactForm.astro";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import Card from '@components/Card.astro';
+import ContactForm from '@components/ContactForm.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<BaseLayout
-  title={`${t("contact.title")} — Fabrizio Bauer`}
-  description={t("contact.subtitle")}
->
+<BaseLayout title={`${t('contact.title')} — Fabrizio Bauer`} description={t('contact.subtitle')}>
   <div class="space-y-12">
     <!-- Header -->
     <SectionHeader
       number="03"
-      title={t("contact.title")}
-      subtitle={t("contact.subtitle")}
+      title={t('contact.title')}
+      subtitle={t('contact.subtitle')}
       highlightColor="cyan"
     />
 
     <!-- Main Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
       <!-- Contact Form (7 cols) -->
       <div class="lg:col-span-7">
         <ContactForm lang="en" />
       </div>
 
       <!-- Direct Channels (5 cols) -->
-      <div class="lg:col-span-5 space-y-6">
+      <div class="space-y-6 lg:col-span-5">
         <!-- Email Direct Card -->
         <Card variant="yellow" shadow="lg">
           <div class="space-y-3 text-black">
-            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
-              📬 {t("contact.email_label")}
+            <span class="block font-mono text-xs font-bold uppercase tracking-wider">
+              📬 {t('contact.email_label')}
             </span>
-            <p class="font-display font-black text-xl sm:text-2xl break-all">
+            <p class="break-all font-display text-xl font-black sm:text-2xl">
               fabriziojriera@gmail.com
             </p>
-            <div class="pt-2 flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 pt-2">
               <a
                 href="mailto:fabriziojriera@gmail.com"
-                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all inline-block"
+                class="brutal-btn inline-block border-2 border-black bg-black px-3 py-1.5 font-mono text-xs font-bold text-white shadow-brutal-sm transition-all hover:bg-white hover:text-black"
               >
                 ✉ Send Email
               </a>
@@ -51,9 +48,9 @@ const t = useTranslations(lang);
                 id="copy-email-btn"
                 type="button"
                 data-email="fabriziojriera@gmail.com"
-                class="brutal-btn px-3 py-1.5 bg-white text-black font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-black hover:text-white transition-all"
+                class="brutal-btn border-2 border-black bg-white px-3 py-1.5 font-mono text-xs font-bold text-black shadow-brutal-sm transition-all hover:bg-black hover:text-white"
               >
-                📋 {t("common.copy")}
+                📋 {t('common.copy')}
               </button>
             </div>
           </div>
@@ -62,26 +59,24 @@ const t = useTranslations(lang);
         <!-- WhatsApp Direct Card -->
         <Card variant="lime" shadow="lg">
           <div class="space-y-3 text-black">
-            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
-              💬 {t("contact.whatsapp_label")}
+            <span class="block font-mono text-xs font-bold uppercase tracking-wider">
+              💬 {t('contact.whatsapp_label')}
             </span>
-            <p class="font-display font-black text-xl sm:text-2xl">
-              +54 9 2664 02-4353
-            </p>
-            <div class="pt-2 flex flex-wrap gap-2">
+            <p class="font-display text-xl font-black sm:text-2xl">+54 9 2664 02-4353</p>
+            <div class="flex flex-wrap gap-2 pt-2">
               <a
                 href="https://wa.me/5492664024353"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="brutal-btn px-3 py-1.5 bg-black text-white font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-white hover:text-black transition-all inline-block"
+                class="brutal-btn inline-block border-2 border-black bg-black px-3 py-1.5 font-mono text-xs font-bold text-white shadow-brutal-sm transition-all hover:bg-white hover:text-black"
               >
-                💬 {t("contact.whatsapp_cta")} ↗
+                💬 {t('contact.whatsapp_cta')} ↗
               </a>
               <button
                 id="copy-phone-btn"
                 type="button"
                 data-phone="+5492664024353"
-                class="brutal-btn px-3 py-1.5 bg-white text-black font-mono text-xs font-bold border-2 border-black shadow-brutal-sm hover:bg-black hover:text-white transition-all"
+                class="brutal-btn border-2 border-black bg-white px-3 py-1.5 font-mono text-xs font-bold text-black shadow-brutal-sm transition-all hover:bg-black hover:text-white"
               >
                 📋 Copy Number
               </button>
@@ -91,9 +86,9 @@ const t = useTranslations(lang);
 
         <!-- Social Channels -->
         <Card variant="default" shadow="md">
-          <h3 class="font-display font-black text-lg mb-4 flex items-center gap-2">
-            <span class="w-2.5 h-2.5 bg-accent-pink inline-block"></span>
-            {t("contact.direct_channels")}
+          <h3 class="mb-4 flex items-center gap-2 font-display text-lg font-black">
+            <span class="inline-block h-2.5 w-2.5 bg-accent-pink"></span>
+            {t('contact.direct_channels')}
           </h3>
 
           <div class="space-y-3">
@@ -101,9 +96,9 @@ const t = useTranslations(lang);
               href="https://linkedin.com/in/fabrizio-bauer"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-between p-3 border-2 border-black dark:border-white bg-zinc-50 dark:bg-zinc-800 hover:bg-accent-cyan hover:text-black transition-colors"
+              class="flex items-center justify-between border-2 border-black bg-zinc-50 p-3 transition-colors hover:bg-accent-cyan hover:text-black dark:border-white dark:bg-zinc-800"
             >
-              <span class="font-display font-bold text-sm">LinkedIn</span>
+              <span class="font-display text-sm font-bold">LinkedIn</span>
               <span class="font-mono text-xs font-bold">in/fabrizio-bauer ↗</span>
             </a>
 
@@ -111,9 +106,9 @@ const t = useTranslations(lang);
               href="https://github.com/fabribau"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-between p-3 border-2 border-black dark:border-white bg-zinc-50 dark:bg-zinc-800 hover:bg-accent-lime hover:text-black transition-colors"
+              class="flex items-center justify-between border-2 border-black bg-zinc-50 p-3 transition-colors hover:bg-accent-lime hover:text-black dark:border-white dark:bg-zinc-800"
             >
-              <span class="font-display font-bold text-sm">GitHub</span>
+              <span class="font-display text-sm font-bold">GitHub</span>
               <span class="font-mono text-xs font-bold">@fabribau ↗</span>
             </a>
           </div>
@@ -122,14 +117,14 @@ const t = useTranslations(lang);
         <!-- Status & Availability -->
         <Card variant="cyan" shadow="md">
           <div class="space-y-2 text-black">
-            <span class="font-mono text-xs font-bold uppercase tracking-wider block">
-              ⚡ {t("contact.status_label")}
+            <span class="block font-mono text-xs font-bold uppercase tracking-wider">
+              ⚡ {t('contact.status_label')}
             </span>
-            <p class="font-display font-black text-base sm:text-lg">
-              {t("contact.status_value")}
+            <p class="font-display text-base font-black sm:text-lg">
+              {t('contact.status_value')}
             </p>
             <p class="font-mono text-xs font-medium">
-              📍 {t("about.location_desc")}
+              📍 {t('about.location_desc')}
             </p>
           </div>
         </Card>
@@ -140,13 +135,13 @@ const t = useTranslations(lang);
 
 <script>
   function setupContactPage() {
-    const copyEmailBtn = document.getElementById("copy-email-btn");
+    const copyEmailBtn = document.getElementById('copy-email-btn');
     if (copyEmailBtn) {
       copyEmailBtn.onclick = () => {
-        const email = copyEmailBtn.getAttribute("data-email") || "fabriziojriera@gmail.com";
+        const email = copyEmailBtn.getAttribute('data-email') || 'fabriziojriera@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
           const originalText = copyEmailBtn.innerHTML;
-          copyEmailBtn.innerHTML = "✓ Copied!";
+          copyEmailBtn.innerHTML = '✓ Copied!';
           setTimeout(() => {
             copyEmailBtn.innerHTML = originalText;
           }, 2000);
@@ -154,13 +149,13 @@ const t = useTranslations(lang);
       };
     }
 
-    const copyPhoneBtn = document.getElementById("copy-phone-btn");
+    const copyPhoneBtn = document.getElementById('copy-phone-btn');
     if (copyPhoneBtn) {
       copyPhoneBtn.onclick = () => {
-        const phone = copyPhoneBtn.getAttribute("data-phone") || "+5492664024353";
+        const phone = copyPhoneBtn.getAttribute('data-phone') || '+5492664024353';
         navigator.clipboard.writeText(phone).then(() => {
           const originalText = copyPhoneBtn.innerHTML;
-          copyPhoneBtn.innerHTML = "✓ Copied!";
+          copyPhoneBtn.innerHTML = '✓ Copied!';
           setTimeout(() => {
             copyPhoneBtn.innerHTML = originalText;
           }, 2000);
@@ -170,5 +165,5 @@ const t = useTranslations(lang);
   }
 
   setupContactPage();
-  document.addEventListener("astro:page-load", setupContactPage);
+  document.addEventListener('astro:page-load', setupContactPage);
 </script>

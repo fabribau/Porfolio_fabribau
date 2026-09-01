@@ -15,18 +15,21 @@ const translatePath = useTranslatedPath(lang);
 <BaseLayout
   title="Neobrutalist UI Kit — Style Guide | Fabrizio Bauer"
   description="Component catalog, design tokens, and neobrutalist micro-interactions for fabribau.tech."
+  noIndex={true}
 >
   <!-- Page Header -->
   <div class="mb-12">
-    <div class="inline-block mb-3">
-      <Badge color="yellow" pulse={true} size="md">
-        UI Kit v1.0 • Spec_T9
-      </Badge>
+    <div class="mb-3 inline-block">
+      <Badge color="yellow" pulse={true} size="md"> UI Kit </Badge>
     </div>
-    <h1 class="font-display font-black text-4xl md:text-6xl tracking-tight leading-none mb-3 text-black dark:text-white">
+    <h1
+      class="mb-3 font-display text-4xl font-black leading-none tracking-tight text-black dark:text-white md:text-6xl"
+    >
       {t('styleguide.title')}
     </h1>
-    <p class="font-mono text-base md:text-lg text-fg-muted-light dark:text-fg-muted-dark max-w-3xl mb-6">
+    <p
+      class="mb-6 max-w-3xl font-mono text-base text-fg-muted-light dark:text-fg-muted-dark md:text-lg"
+    >
       {t('styleguide.subtitle')}
     </p>
     <div>
@@ -48,50 +51,70 @@ const translatePath = useTranslatedPath(lang);
       />
 
       <!-- Color Swatches: Accents -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-6">
-        <div class="p-4 bg-accent-yellow text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">YELLOW</p>
-          <p class="font-mono text-xs font-bold mt-1">#FFE400</p>
+      <div class="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+        <div
+          class="border-3 border-black bg-accent-yellow p-4 text-center text-black shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">YELLOW</p>
+          <p class="mt-1 font-mono text-xs font-bold">#FFE400</p>
         </div>
-        <div class="p-4 bg-accent-pink text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">MAGENTA</p>
-          <p class="font-mono text-xs font-bold mt-1">#FF3D8A</p>
+        <div
+          class="border-3 border-black bg-accent-pink p-4 text-center text-white shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">MAGENTA</p>
+          <p class="mt-1 font-mono text-xs font-bold">#FF3D8A</p>
         </div>
-        <div class="p-4 bg-accent-lime text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">LIME</p>
-          <p class="font-mono text-xs font-bold mt-1">#B4FF39</p>
+        <div
+          class="border-3 border-black bg-accent-lime p-4 text-center text-black shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">LIME</p>
+          <p class="mt-1 font-mono text-xs font-bold">#B4FF39</p>
         </div>
-        <div class="p-4 bg-accent-cyan text-black text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">CYAN</p>
-          <p class="font-mono text-xs font-bold mt-1">#00F0FF</p>
+        <div
+          class="border-3 border-black bg-accent-cyan p-4 text-center text-black shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">CYAN</p>
+          <p class="mt-1 font-mono text-xs font-bold">#00F0FF</p>
         </div>
-        <div class="p-4 bg-accent-orange text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">ORANGE</p>
-          <p class="font-mono text-xs font-bold mt-1">#FF6B00</p>
+        <div
+          class="border-3 border-black bg-accent-orange p-4 text-center text-white shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">ORANGE</p>
+          <p class="mt-1 font-mono text-xs font-bold">#FF6B00</p>
         </div>
-        <div class="p-4 bg-accent-purple text-white text-center border-3 border-black dark:border-white shadow-brutal-sm">
-          <p class="font-display font-black text-sm">PURPLE</p>
-          <p class="font-mono text-xs font-bold mt-1">#8B5CF6</p>
+        <div
+          class="border-3 border-black bg-accent-purple p-4 text-center text-white shadow-brutal-sm dark:border-white"
+        >
+          <p class="font-display text-sm font-black">PURPLE</p>
+          <p class="mt-1 font-mono text-xs font-bold">#8B5CF6</p>
         </div>
       </div>
 
       <!-- Color Swatches: Base & Surface -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="p-4 bg-[#F5F0E8] text-[#0D0D0D] text-center border-3 border-black shadow-brutal-sm">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+        <div
+          class="border-3 border-black bg-[#F5F0E8] p-4 text-center text-[#0D0D0D] shadow-brutal-sm"
+        >
           <p class="font-mono text-xs font-bold uppercase text-zinc-600">Light Base</p>
-          <p class="font-display font-black text-lg">#F5F0E8</p>
+          <p class="font-display text-lg font-black">#F5F0E8</p>
         </div>
-        <div class="p-4 bg-[#FFFFFF] text-[#0D0D0D] text-center border-3 border-black shadow-brutal-sm">
+        <div
+          class="border-3 border-black bg-[#FFFFFF] p-4 text-center text-[#0D0D0D] shadow-brutal-sm"
+        >
           <p class="font-mono text-xs font-bold uppercase text-zinc-600">Light Surface</p>
-          <p class="font-display font-black text-lg">#FFFFFF</p>
+          <p class="font-display text-lg font-black">#FFFFFF</p>
         </div>
-        <div class="p-4 bg-[#0D0D0D] text-[#F5F0E8] text-center border-3 border-black dark:border-white shadow-brutal-sm">
+        <div
+          class="border-3 border-black bg-[#0D0D0D] p-4 text-center text-[#F5F0E8] shadow-brutal-sm dark:border-white"
+        >
           <p class="font-mono text-xs font-bold uppercase text-zinc-400">Dark Base</p>
-          <p class="font-display font-black text-lg">#0D0D0D</p>
+          <p class="font-display text-lg font-black">#0D0D0D</p>
         </div>
-        <div class="p-4 bg-[#181818] text-[#F5F0E8] text-center border-3 border-black dark:border-white shadow-brutal-sm">
+        <div
+          class="border-3 border-black bg-[#181818] p-4 text-center text-[#F5F0E8] shadow-brutal-sm dark:border-white"
+        >
           <p class="font-mono text-xs font-bold uppercase text-zinc-400">Dark Surface</p>
-          <p class="font-display font-black text-lg">#181818</p>
+          <p class="font-display text-lg font-black">#181818</p>
         </div>
       </div>
     </section>
@@ -109,14 +132,26 @@ const translatePath = useTranslatedPath(lang);
         <Card variant="default">
           <div class="space-y-4">
             <div>
-              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Display 900 (Space Grotesk)</p>
-              <h3 class="font-display font-black text-3xl md:text-5xl tracking-tight leading-tight text-black dark:text-white">
+              <p
+                class="mb-1 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark"
+              >
+                Display 900 (Space Grotesk)
+              </p>
+              <h3
+                class="font-display text-3xl font-black leading-tight tracking-tight text-black dark:text-white md:text-5xl"
+              >
                 INFORMATICS ENGINEER & <span class="highlighter-yellow">FULLSTACK</span>
               </h3>
             </div>
             <div>
-              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Highlighter Variants</p>
-              <div class="flex flex-wrap gap-3 font-display font-black text-xl md:text-2xl text-black dark:text-white">
+              <p
+                class="mb-1 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark"
+              >
+                Highlighter Variants
+              </p>
+              <div
+                class="flex flex-wrap gap-3 font-display text-xl font-black text-black dark:text-white md:text-2xl"
+              >
                 <span>Highlight <span class="highlighter-yellow">Yellow</span></span>
                 <span>Highlight <span class="highlighter-pink">Magenta</span></span>
                 <span>Highlight <span class="highlighter-lime">Lime</span></span>
@@ -124,15 +159,29 @@ const translatePath = useTranslatedPath(lang);
               </div>
             </div>
             <div>
-              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Body Text (Inter)</p>
-              <p class="text-sm md:text-base leading-relaxed text-fg-light dark:text-fg-dark max-w-3xl font-medium">
-                Software engineering focused on robust architecture, conversational AI agents with RAG, and modern interactive web experiences.
+              <p
+                class="mb-1 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark"
+              >
+                Body Text (Inter)
+              </p>
+              <p
+                class="max-w-3xl text-sm font-medium leading-relaxed text-fg-light dark:text-fg-dark md:text-base"
+              >
+                Software engineering focused on robust architecture, conversational AI agents with
+                RAG, and modern interactive web experiences.
               </p>
             </div>
             <div>
-              <p class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark mb-1">Monospace (JetBrains Mono)</p>
-              <p class="font-mono text-xs md:text-sm bg-black/5 dark:bg-white/5 p-3 border-2 border-black dark:border-white text-black dark:text-white">
-                const profile = &#123; role: "Software Engineer", focus: ["FullStack", "RAG", "Teaching"] &#125;;
+              <p
+                class="mb-1 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark"
+              >
+                Monospace (JetBrains Mono)
+              </p>
+              <p
+                class="border-2 border-black bg-black/5 p-3 font-mono text-xs text-black dark:border-white dark:bg-white/5 dark:text-white md:text-sm"
+              >
+                const profile = &#123; role: "Software Engineer", focus: ["FullStack", "RAG",
+                "Teaching"] &#125;;
               </p>
             </div>
           </div>
@@ -152,8 +201,12 @@ const translatePath = useTranslatedPath(lang);
       <div class="space-y-6">
         <!-- Button Variants -->
         <Card variant="default">
-          <p class="font-mono text-xs font-bold mb-3 uppercase tracking-wider text-black dark:text-white">Color Variants</p>
-          <div class="flex flex-wrap gap-4 items-center">
+          <p
+            class="mb-3 font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white"
+          >
+            Color Variants
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
             <Button variant="primary">Primary (Yellow)</Button>
             <Button variant="pink">Pink</Button>
             <Button variant="lime">Lime</Button>
@@ -168,13 +221,17 @@ const translatePath = useTranslatedPath(lang);
 
         <!-- Button Sizes & States -->
         <Card variant="default">
-          <p class="font-mono text-xs font-bold mb-3 uppercase tracking-wider text-black dark:text-white">Sizes & States</p>
-          <div class="flex flex-wrap gap-4 items-center mb-6">
+          <p
+            class="mb-3 font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white"
+          >
+            Sizes & States
+          </p>
+          <div class="mb-6 flex flex-wrap items-center gap-4">
             <Button size="sm" variant="primary">Small (sm)</Button>
             <Button size="md" variant="primary">Medium (md)</Button>
             <Button size="lg" variant="primary">Large (lg)</Button>
           </div>
-          <div class="flex flex-wrap gap-4 items-center">
+          <div class="flex flex-wrap items-center gap-4">
             <Button variant="primary" disabled={true}>Disabled</Button>
             <Button variant="pink">
               <span slot="prefix">⚡</span>
@@ -198,13 +255,13 @@ const translatePath = useTranslatedPath(lang);
         highlightColor="cyan"
       />
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         <Card variant="default" shadow="md">
           <div slot="header" class="flex items-center justify-between">
             <span class="text-black dark:text-white">Card Default</span>
             <Badge color="yellow">Base</Badge>
           </div>
-          <p class="text-sm leading-relaxed mb-4 text-fg-light dark:text-fg-dark">
+          <p class="mb-4 text-sm leading-relaxed text-fg-light dark:text-fg-dark">
             Standard container with white/charcoal surface, 3px border, and 4px hard offset shadow.
           </p>
           <Button variant="secondary" size="sm">Action</Button>
@@ -215,8 +272,9 @@ const translatePath = useTranslatedPath(lang);
             <span class="text-black">Card Yellow Tilt</span>
             <Badge color="dark">Tilt Left</Badge>
           </div>
-          <p class="text-sm leading-relaxed text-black mb-4 font-medium">
-            Hover over this card to witness dynamic micro-rotation to the left with a 6px deep shadow.
+          <p class="mb-4 text-sm font-medium leading-relaxed text-black">
+            Hover over this card to witness dynamic micro-rotation to the left with a 6px deep
+            shadow.
           </p>
           <Button variant="secondary" size="sm">Explore</Button>
         </Card>
@@ -226,8 +284,9 @@ const translatePath = useTranslatedPath(lang);
             <span>Card Pink Tilt</span>
             <Badge color="lime">Tilt Right</Badge>
           </div>
-          <p class="text-sm leading-relaxed text-white mb-4 font-medium">
-            Dynamic right-leaning micro-tilt with high-energy neon magenta background and bold contrast.
+          <p class="mb-4 text-sm font-medium leading-relaxed text-white">
+            Dynamic right-leaning micro-tilt with high-energy neon magenta background and bold
+            contrast.
           </p>
           <Button variant="secondary" size="sm">View More</Button>
         </Card>
@@ -243,9 +302,11 @@ const translatePath = useTranslatedPath(lang);
         highlightColor="yellow"
       />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card variant="default">
-          <p class="font-mono text-xs font-bold mb-4 uppercase tracking-wider text-black dark:text-white">
+          <p
+            class="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white"
+          >
             Badges with & without Radar Pulse
           </p>
           <div class="flex flex-wrap gap-3">
@@ -260,18 +321,20 @@ const translatePath = useTranslatedPath(lang);
         </Card>
 
         <Card variant="default">
-          <p class="font-mono text-xs font-bold mb-4 uppercase tracking-wider text-black dark:text-white">
+          <p
+            class="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-black dark:text-white"
+          >
             Technology Tags (Interactive)
           </p>
           <div class="flex flex-wrap gap-2">
-            <Tag active={true}>#Astro</Tag>
-            <Tag interactive={true}>#TypeScript</Tag>
-            <Tag interactive={true}>#TailwindCSS</Tag>
-            <Tag interactive={true}>#Cloudflare</Tag>
-            <Tag interactive={true}>#Python</Tag>
-            <Tag interactive={true}>#RAG</Tag>
-            <Tag interactive={true}>#Java</Tag>
-            <Tag interactive={true}>#Spring</Tag>
+            <Tag active={true}>Astro</Tag>
+            <Tag interactive={true}>TypeScript</Tag>
+            <Tag interactive={true}>TailwindCSS</Tag>
+            <Tag interactive={true}>Cloudflare</Tag>
+            <Tag interactive={true}>Python</Tag>
+            <Tag interactive={true}>RAG</Tag>
+            <Tag interactive={true}>Java</Tag>
+            <Tag interactive={true}>Spring</Tag>
           </div>
         </Card>
       </div>
@@ -286,49 +349,64 @@ const translatePath = useTranslatedPath(lang);
         highlightColor="pink"
       />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div class="brutal-box p-5">
-          <div class="w-8 h-8 bg-accent-yellow border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+          <div
+            class="mb-3 flex h-8 w-8 items-center justify-center border-2 border-black bg-accent-yellow font-mono text-sm font-bold text-black dark:border-white"
+          >
             01
           </div>
-          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Tactile Press</h4>
-          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
-            Buttons translate diagonally on click while reducing shadow to 0px, simulating mechanical keys.
+          <h4 class="mb-1 font-display text-base font-bold text-black dark:text-white">
+            Tactile Press
+          </h4>
+          <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+            Buttons translate diagonally on click while reducing shadow to 0px, simulating
+            mechanical keys.
           </p>
         </div>
 
         <div class="brutal-box p-5">
-          <div class="w-8 h-8 bg-accent-pink border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-white text-sm">
+          <div
+            class="mb-3 flex h-8 w-8 items-center justify-center border-2 border-black bg-accent-pink font-mono text-sm font-bold text-white dark:border-white"
+          >
             02
           </div>
-          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Highlighter Mark</h4>
-          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+          <h4 class="mb-1 font-display text-base font-bold text-black dark:text-white">
+            Highlighter Mark
+          </h4>
+          <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
             Fluorescent marker effects over key concepts for immediate visual impact and hierarchy.
           </p>
         </div>
 
         <div class="brutal-box p-5">
-          <div class="w-8 h-8 bg-accent-lime border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+          <div
+            class="mb-3 flex h-8 w-8 items-center justify-center border-2 border-black bg-accent-lime font-mono text-sm font-bold text-black dark:border-white"
+          >
             03
           </div>
-          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Dynamic Tilt</h4>
-          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+          <h4 class="mb-1 font-display text-base font-bold text-black dark:text-white">
+            Dynamic Tilt
+          </h4>
+          <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
             Subtle ±1 degree tilt on project cards during cursor hover, bringing the grid to life.
           </p>
         </div>
 
         <div class="brutal-box p-5">
-          <div class="w-8 h-8 bg-accent-cyan border-2 border-black dark:border-white mb-3 flex items-center justify-center font-mono font-bold text-black text-sm">
+          <div
+            class="mb-3 flex h-8 w-8 items-center justify-center border-2 border-black bg-accent-cyan font-mono text-sm font-bold text-black dark:border-white"
+          >
             04
           </div>
-          <h4 class="font-display font-bold text-base mb-1 text-black dark:text-white">Radar Status</h4>
-          <p class="text-xs text-fg-muted-light dark:text-fg-muted-dark leading-relaxed">
+          <h4 class="mb-1 font-display text-base font-bold text-black dark:text-white">
+            Radar Status
+          </h4>
+          <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
             Continuous pulse animation on badges signaling live availability and ongoing projects.
           </p>
         </div>
       </div>
     </section>
-
-
   </div>
 </BaseLayout>

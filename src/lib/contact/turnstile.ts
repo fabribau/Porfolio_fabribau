@@ -1,6 +1,6 @@
 export interface TurnstileVerifyResponse {
   success: boolean;
-  "error-codes"?: string[];
+  'error-codes'?: string[];
   challenge_ts?: string;
   hostname?: string;
   action?: string;
@@ -21,46 +21,43 @@ export async function verifyTurnstileToken(
   secretKey?: string,
   remoteIp?: string
 ): Promise<VerifyTurnstileResult> {
-  if (!token || typeof token !== "string" || token.trim() === "") {
+  if (!token || typeof token !== 'string' || token.trim() === '') {
     return {
       success: false,
-      error: "Token de seguridad no proporcionado",
+      error: 'Token de seguridad no proporcionado',
     };
   }
 
   // Si no hay secretKey definida o es la clave dummy de paso de Cloudflare
-  const secret = secretKey || "1x0000000000000000000000000000000AA";
+  const secret = secretKey || '1x0000000000000000000000000000000AA';
 
   // Test dummy tokens handling
-  if (token === "dummy-success-token" || token.startsWith("XXXX.DUMMY.TOKEN")) {
+  if (token === 'dummy-success-token' || token.startsWith('XXXX.DUMMY.TOKEN')) {
     return { success: true };
   }
-  if (token === "dummy-fail-token") {
+  if (token === 'dummy-fail-token') {
     return {
       success: false,
-      error: "Token de seguridad rechazado (dummy-fail)",
-      errorCodes: ["invalid-input-response"],
+      error: 'Token de seguridad rechazado (dummy-fail)',
+      errorCodes: ['invalid-input-response'],
     };
   }
 
   try {
     const formData = new URLSearchParams();
-    formData.append("secret", secret);
-    formData.append("response", token);
+    formData.append('secret', secret);
+    formData.append('response', token);
     if (remoteIp) {
-      formData.append("remoteip", remoteIp);
+      formData.append('remoteip', remoteIp);
     }
 
-    const response = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        body: formData,
-        headers: {
-          "content-type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    });
 
     if (!response.ok) {
       return {
@@ -77,13 +74,13 @@ export async function verifyTurnstileToken(
 
     return {
       success: false,
-      error: "Verificación de seguridad fallida. Por favor intenta de nuevo.",
-      errorCodes: outcome["error-codes"],
+      error: 'Verificación de seguridad fallida. Por favor intenta de nuevo.',
+      errorCodes: outcome['error-codes'],
     };
   } catch (err) {
     return {
       success: false,
-      error: err instanceof Error ? err.message : "Error inesperado al validar seguridad",
+      error: err instanceof Error ? err.message : 'Error inesperado al validar seguridad',
     };
   }
 }

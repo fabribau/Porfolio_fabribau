@@ -3,12 +3,24 @@ import { ClientRouter } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Navbar from '@components/Navbar.astro';
 import Footer from '@components/Footer.astro';
+import SEO from '@components/SEO.astro';
 import '@styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noIndex?: boolean;
+  article?: {
+    pubDate?: Date;
+    author?: string;
+    tags?: string[];
+  };
+  project?: {
+    pubDate?: Date;
+    status?: string;
+    tags?: string[];
+  };
 }
 
 const lang = getLangFromUrl(Astro.url);
@@ -17,10 +29,11 @@ const t = useTranslations(lang);
 const {
   title = 'Fabrizio José Riera Bauer — Portfolio',
   description = t('hero.desc'),
-  image = '/favicon.svg',
+  image = '/og-image.svg',
+  noIndex = false,
+  article,
+  project,
 } = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fabribau.tech');
 ---
 
 <!doctype html>
@@ -29,25 +42,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fabribau
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalURL} />
-    <meta name="generator" content={Astro.generator} />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FFE400" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D0D0D" media="(prefers-color-scheme: dark)" />
 
-    <!-- SEO & Open Graph -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={image} />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Google Fonts: Space Grotesk (Display) & JetBrains Mono (Code/Labels) & Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Local Font Preloads for High Performance & Zero CLS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/SpaceGrotesk-VariableFont_wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter-VariableFont_opsz,wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
+    <!-- SEO & Structured Data -->
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      lang={lang}
+      noIndex={noIndex}
+      article={article}
+      project={project}
     />
 
     <!-- Zero-FOUC Inline Theme Script -->
@@ -56,7 +79,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fabribau
         try {
           const stored = localStorage.getItem('theme');
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const theme = stored ? stored : (prefersDark ? 'dark' : 'light');
+          const theme = stored ? stored : prefersDark ? 'dark' : 'light';
 
           if (theme === 'dark') {
             document.documentElement.classList.add('dark');
@@ -76,12 +99,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fabribau
     <!-- Astro View Transitions -->
     <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col font-sans bg-bg-light dark:bg-bg-dark text-fg-light dark:text-fg-dark transition-colors duration-200">
+  <body
+    class="flex min-h-screen flex-col bg-bg-light font-sans text-fg-light transition-colors duration-200 dark:bg-bg-dark dark:text-fg-dark"
+  >
     <!-- Navbar Component -->
     <Navbar />
 
     <!-- Main Content Container -->
-    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-8 md:py-12">
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-12">
       <slot />
     </main>
 

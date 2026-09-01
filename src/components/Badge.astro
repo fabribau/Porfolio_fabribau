@@ -7,13 +7,7 @@ interface Props {
   [key: string]: any;
 }
 
-const {
-  color = 'lime',
-  size = 'sm',
-  pulse = false,
-  class: className = '',
-  ...rest
-} = Astro.props;
+const { color = 'lime', size = 'sm', pulse = false, class: className = '', ...rest } = Astro.props;
 
 // Color styles
 const colorStyles: Record<string, string> = {
@@ -38,15 +32,19 @@ const baseStyles = [
   colorStyles[color] || colorStyles.lime,
   sizeStyles[size] || sizeStyles.sm,
   className,
-].filter(Boolean).join(' ');
+]
+  .filter(Boolean)
+  .join(' ');
 ---
 
 <span class={baseStyles} {...rest}>
-  {pulse && (
-    <span class="relative flex h-2 w-2 shrink-0">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-current"></span>
-      <span class="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
-    </span>
-  )}
+  {
+    pulse && (
+      <span class="relative flex h-2 w-2 shrink-0">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-75" />
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-current" />
+      </span>
+    )
+  }
   <slot />
 </span>

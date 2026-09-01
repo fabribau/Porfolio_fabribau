@@ -1,0 +1,16 @@
+{
+  "name": "Fabrizio José Riera Bauer — Portfolio",
+  "short_name": "FabRiBau",
+  "description": "Portfolio profesional de Fabrizio José Riera Bauer — Ingeniero en Informática & Desarrollador FullStack",
+  "start_url": "/es/",
+  "display": "standalone",
+  "background_color": "#F5F0E8",
+  "theme_color": "#FFE400",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

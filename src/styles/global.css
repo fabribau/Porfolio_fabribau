@@ -2,34 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Local Google Fonts - Zero Render-Blocking & 100% Privacy */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src:
+    url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations'),
+    url('/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src:
+    url('/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype-variations'),
+    url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+}
+
 :root {
-  --bg-primary: #F5F0E8;
-  --bg-surface: #FFFFFF;
-  --text-primary: #0D0D0D;
-  --text-muted: #4B5563;
-  --border-color: #0D0D0D;
-  --shadow-color: #0D0D0D;
-  --accent-yellow: #FFE400;
-  --accent-pink: #FF3D8A;
-  --accent-lime: #B4FF39;
-  --accent-cyan: #00F0FF;
-  --accent-orange: #FF6B00;
-  --accent-purple: #8B5CF6;
+  --bg-primary: #f5f0e8;
+  --bg-surface: #ffffff;
+  --text-primary: #0d0d0d;
+  --text-muted: #4b5563;
+  --border-color: #0d0d0d;
+  --shadow-color: #0d0d0d;
+  --accent-yellow: #ffe400;
+  --accent-pink: #ff3d8a;
+  --accent-lime: #b4ff39;
+  --accent-cyan: #00f0ff;
+  --accent-orange: #ff6b00;
+  --accent-purple: #8b5cf6;
 }
 
 .dark {
-  --bg-primary: #0D0D0D;
+  --bg-primary: #0d0d0d;
   --bg-surface: #181818;
-  --text-primary: #F5F0E8;
-  --text-muted: #9CA3AF;
-  --border-color: #F5F0E8;
+  --text-primary: #f5f0e8;
+  --text-muted: #9ca3af;
+  --border-color: #f5f0e8;
   --shadow-color: #000000;
-  --accent-yellow: #FFE400;
-  --accent-pink: #FF3D8A;
-  --accent-lime: #B4FF39;
-  --accent-cyan: #00F0FF;
-  --accent-orange: #FF6B00;
-  --accent-purple: #8B5CF6;
+  --accent-yellow: #ffe400;
+  --accent-pink: #ff3d8a;
+  --accent-lime: #b4ff39;
+  --accent-cyan: #00f0ff;
+  --accent-orange: #ff6b00;
+  --accent-purple: #8b5cf6;
 }
 
 @layer base {
@@ -45,18 +74,20 @@
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Neobrutalist custom selection */
   ::selection {
-    background-color: #FFE400;
-    color: #0D0D0D;
+    background-color: #ffe400;
+    color: #0d0d0d;
   }
 
   /* High contrast focus ring */
   :focus-visible {
-    outline: 3px solid #FF3D8A;
+    outline: 3px solid #ff3d8a;
     outline-offset: 3px;
   }
 }
@@ -74,36 +105,60 @@
 @layer utilities {
   /* Neobrutalist highlighter marker effects */
   .highlighter-yellow {
-    background: linear-gradient(104deg, rgba(255, 228, 0, 0) 0.9%, rgba(255, 228, 0, 1) 2.4%, rgba(255, 228, 0, 1) 96%, rgba(255, 228, 0, 0) 98.5%);
+    background: linear-gradient(
+      104deg,
+      rgba(255, 228, 0, 0) 0.9%,
+      rgba(255, 228, 0, 1) 2.4%,
+      rgba(255, 228, 0, 1) 96%,
+      rgba(255, 228, 0, 0) 98.5%
+    );
     padding: 0.1em 0.35em;
-    color: #0D0D0D;
+    color: #0d0d0d;
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
   .highlighter-pink {
-    background: linear-gradient(104deg, rgba(255, 61, 138, 0) 0.9%, rgba(255, 61, 138, 1) 2.4%, rgba(255, 61, 138, 1) 96%, rgba(255, 61, 138, 0) 98.5%);
+    background: linear-gradient(
+      104deg,
+      rgba(255, 61, 138, 0) 0.9%,
+      rgba(255, 61, 138, 1) 2.4%,
+      rgba(255, 61, 138, 1) 96%,
+      rgba(255, 61, 138, 0) 98.5%
+    );
     padding: 0.1em 0.35em;
-    color: #FFFFFF;
+    color: #ffffff;
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
   .highlighter-lime {
-    background: linear-gradient(104deg, rgba(180, 255, 57, 0) 0.9%, rgba(180, 255, 57, 1) 2.4%, rgba(180, 255, 57, 1) 96%, rgba(180, 255, 57, 0) 98.5%);
+    background: linear-gradient(
+      104deg,
+      rgba(180, 255, 57, 0) 0.9%,
+      rgba(180, 255, 57, 1) 2.4%,
+      rgba(180, 255, 57, 1) 96%,
+      rgba(180, 255, 57, 0) 98.5%
+    );
     padding: 0.1em 0.35em;
-    color: #0D0D0D;
+    color: #0d0d0d;
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
   .highlighter-cyan {
-    background: linear-gradient(104deg, rgba(0, 240, 255, 0) 0.9%, rgba(0, 240, 255, 1) 2.4%, rgba(0, 240, 255, 1) 96%, rgba(0, 240, 255, 0) 98.5%);
+    background: linear-gradient(
+      104deg,
+      rgba(0, 240, 255, 0) 0.9%,
+      rgba(0, 240, 255, 1) 2.4%,
+      rgba(0, 240, 255, 1) 96%,
+      rgba(0, 240, 255, 0) 98.5%
+    );
     padding: 0.1em 0.35em;
-    color: #0D0D0D;
+    color: #0d0d0d;
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
@@ -126,7 +181,9 @@
 
   /* Mechanical button press animation */
   .brutal-btn-press {
-    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    transition:
+      transform 0.12s ease-out,
+      box-shadow 0.12s ease-out;
   }
 
   .brutal-btn-press:hover:not(:disabled) {
@@ -142,13 +199,13 @@
   /* Subtle background patterns */
   .bg-grid-pattern {
     background-size: 32px 32px;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
   }
 
   .dark .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   }

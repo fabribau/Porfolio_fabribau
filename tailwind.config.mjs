@@ -58,12 +58,7 @@ export default {
           'Roboto',
           'sans-serif',
         ],
-        display: [
-          '"Space Grotesk"',
-          'Impact',
-          'system-ui',
-          'sans-serif',
-        ],
+        display: ['"Space Grotesk"', 'Impact', 'system-ui', 'sans-serif'],
         mono: [
           '"JetBrains Mono"',
           'ui-monospace',
@@ -80,14 +75,14 @@ export default {
           '50%': { transform: 'scale(1.6)', opacity: '0' },
           '100%': { transform: 'scale(0.95)', opacity: '0' },
         },
-        'marquee': {
+        marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
       },
       animation: {
-        'radar': 'radar-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'marquee': 'marquee 25s linear infinite',
+        radar: 'radar-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        marquee: 'marquee 25s linear infinite',
       },
     },
   },

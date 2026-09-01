@@ -1,15 +1,15 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Button from "@components/Button.astro";
-import Badge from "@components/Badge.astro";
-import Tag from "@components/Tag.astro";
-import { getCollection, render } from "astro:content";
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/Button.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import { getCollection, render } from 'astro:content';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 export async function getStaticPaths() {
-  const projects = await getCollection("proyectos", ({ id }) => id.startsWith("en/"));
+  const projects = await getCollection('proyectos', ({ id }) => id.startsWith('en/'));
   return projects.map((project) => ({
-    params: { slug: project.id.replace(/^en\//, "") },
+    params: { slug: project.id.replace(/^en\//, '') },
     props: { project },
   }));
 }
@@ -20,86 +20,108 @@ const { Content } = await render(project);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
-const isDev = project.data.status === "en-desarrollo";
+const isDev = project.data.status === 'en-desarrollo';
 ---
 
 <BaseLayout
   title={`${project.data.title} — Projects`}
   description={project.data.description}
+  project={{
+    pubDate: project.data.pubDate,
+    status: project.data.status,
+    tags: project.data.tags,
+  }}
 >
   <article class="space-y-8">
     <!-- Back button -->
     <div>
-      <Button href={translatePath("/proyectos")} variant="secondary" size="sm">
-        {t("common.back_projects")}
+      <Button href={translatePath('/proyectos')} variant="secondary" size="sm">
+        {t('common.back_projects')}
       </Button>
     </div>
 
     <!-- Project Header Box -->
-    <header class="p-6 md:p-10 bg-bg-surface-light dark:bg-bg-surface-dark border-4 border-black dark:border-white shadow-brutal-xl space-y-6">
+    <header
+      class="space-y-6 border-4 border-black bg-bg-surface-light p-6 shadow-brutal-xl dark:border-white dark:bg-bg-surface-dark md:p-10"
+    >
       <div class="flex flex-wrap items-center justify-between gap-4">
-        <Badge
-          color={isDev ? "lime" : "cyan"}
-          pulse={isDev}
-          size="md"
-        >
-          {isDev ? t("project.status.in_progress") : t("project.status.completed")}
+        <Badge color={isDev ? 'lime' : 'cyan'} pulse={isDev} size="md">
+          {isDev ? t('project.status.in_progress') : t('project.status.completed')}
         </Badge>
         <span class="font-mono text-sm font-bold text-fg-muted-light dark:text-fg-muted-dark">
-          {t("common.published_on")} {project.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          {t('common.published_on')}
+          {
+            project.data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
         </span>
       </div>
 
-      <h1 class="font-display font-black text-3xl sm:text-4xl md:text-6xl tracking-tight leading-tight">
+      <h1
+        class="font-display text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-6xl"
+      >
         {project.data.title}
       </h1>
 
-      <p class="text-base sm:text-lg text-fg-muted-light dark:text-fg-muted-dark max-w-3xl leading-relaxed font-medium">
+      <p
+        class="max-w-3xl text-base font-medium leading-relaxed text-fg-muted-light dark:text-fg-muted-dark sm:text-lg"
+      >
         {project.data.description}
       </p>
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-2 pt-2">
-        {project.data.tags.map((tag) => (
-          <Tag>{tag}</Tag>
-        ))}
+        {project.data.tags.map((tag) => <Tag>{tag}</Tag>)}
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center gap-4 pt-4 border-t-3 border-black/10 dark:border-white/10">
-        {project.data.liveUrl && (
-          <Button href={project.data.liveUrl} target="_blank" variant="primary" size="md">
-            {t("project.live_demo")}
-            <span slot="suffix">↗</span>
-          </Button>
-        )}
-        {project.data.thesisUrl && (
-          <Button href={project.data.thesisUrl} target="_blank" variant="purple" size="md">
-            {t("project.thesis_pdf")}
-            <span slot="suffix">📄</span>
-          </Button>
-        )}
-        {project.data.repositoryUrl && (
-          <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="md">
-            {t("project.source_code")}
-            <span slot="suffix">↗</span>
-          </Button>
-        )}
+      <div
+        class="flex flex-wrap items-center gap-4 border-t-3 border-black/10 pt-4 dark:border-white/10"
+      >
+        {
+          project.data.liveUrl && (
+            <Button href={project.data.liveUrl} target="_blank" variant="primary" size="md">
+              {t('project.live_demo')}
+              <span slot="suffix">↗</span>
+            </Button>
+          )
+        }
+        {
+          project.data.thesisUrl && (
+            <Button href={project.data.thesisUrl} target="_blank" variant="purple" size="md">
+              {t('project.thesis_pdf')}
+              <span slot="suffix">📄</span>
+            </Button>
+          )
+        }
+        {
+          project.data.repositoryUrl && (
+            <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="md">
+              {t('project.source_code')}
+              <span slot="suffix">↗</span>
+            </Button>
+          )
+        }
       </div>
     </header>
 
     <!-- Markdown Content Container -->
-    <div class="p-6 md:p-10 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-brutal-lg prose dark:prose-invert max-w-none font-sans prose-headings:font-display prose-headings:font-black prose-a:text-accent-pink dark:prose-a:text-accent-yellow prose-code:font-mono">
+    <div
+      class="prose dark:prose-invert prose-headings:font-display prose-headings:font-black prose-a:text-accent-pink dark:prose-a:text-accent-yellow prose-code:font-mono max-w-none border-4 border-black bg-white p-6 font-sans shadow-brutal-lg dark:border-white dark:bg-zinc-900 md:p-10"
+    >
       <Content />
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="pt-6 flex justify-between items-center">
-      <Button href={translatePath("/proyectos")} variant="secondary" size="md">
-        {t("common.back_projects")}
+    <div class="flex items-center justify-between pt-6">
+      <Button href={translatePath('/proyectos')} variant="secondary" size="md">
+        {t('common.back_projects')}
       </Button>
-      <Button href={translatePath("/contact")} variant="pink" size="md">
-        {t("hero.cta_contact")}
+      <Button href={translatePath('/contact')} variant="pink" size="md">
+        {t('hero.cta_contact')}
         <span slot="suffix">⚡</span>
       </Button>
     </div>

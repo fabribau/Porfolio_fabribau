@@ -1,44 +1,41 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionHeader from "@components/SectionHeader.astro";
-import Card from "@components/Card.astro";
-import Badge from "@components/Badge.astro";
-import Tag from "@components/Tag.astro";
-import Button from "@components/Button.astro";
-import { getCollection } from "astro:content";
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import Button from '@components/Button.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-const allProjects = await getCollection("proyectos", ({ id }) => id.startsWith("en/"));
+const allProjects = await getCollection('proyectos', ({ id }) => id.startsWith('en/'));
 allProjects.sort((a, b) => {
-  if (a.data.status === "en-desarrollo" && b.data.status !== "en-desarrollo") return -1;
-  if (a.data.status !== "en-desarrollo" && b.data.status === "en-desarrollo") return 1;
+  if (a.data.status === 'en-desarrollo' && b.data.status !== 'en-desarrollo') return -1;
+  if (a.data.status !== 'en-desarrollo' && b.data.status === 'en-desarrollo') return 1;
   return b.data.pubDate.getTime() - a.data.pubDate.getTime();
 });
 ---
 
-<BaseLayout
-  title={`${t("projects.title")} — Fabrizio Bauer`}
-  description={t("projects.subtitle")}
->
+<BaseLayout title={`${t('projects.title')} — Fabrizio Bauer`} description={t('projects.subtitle')}>
   <div class="space-y-12">
     <!-- Header -->
     <SectionHeader
       number="01"
-      title={t("projects.title")}
-      subtitle={t("projects.subtitle")}
+      title={t('projects.title')}
+      subtitle={t('projects.subtitle')}
       highlightColor="yellow"
     />
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {
         allProjects.map((project) => {
-          const slug = project.id.replace(/^en\//, "");
-          const isDev = project.data.status === "en-desarrollo";
+          const slug = project.id.replace(/^en\//, '');
+          const isDev = project.data.status === 'en-desarrollo';
 
           return (
             <Card
@@ -48,47 +45,39 @@ allProjects.sort((a, b) => {
               class="flex flex-col justify-between"
             >
               <div>
-                <div class="flex items-center justify-between gap-2 mb-4">
-                  <Badge
-                    color={isDev ? "lime" : "cyan"}
-                    pulse={isDev}
-                    size="sm"
-                  >
-                    {isDev ? t("project.status.in_progress") : t("project.status.completed")}
+                <div class="mb-4 flex items-center justify-between gap-2">
+                  <Badge color={isDev ? 'lime' : 'cyan'} pulse={isDev} size="sm">
+                    {isDev ? t('project.status.in_progress') : t('project.status.completed')}
                   </Badge>
-                  <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                    {project.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+                  <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                    {project.data.pubDate.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                    })}
                   </span>
                 </div>
 
-                <a
-                  href={translatePath(`/proyectos/${slug}`)}
-                  class="group inline-block mb-3"
-                >
-                  <h2 class="font-display font-black text-2xl md:text-3xl tracking-tight group-hover:text-accent-pink transition-colors">
+                <a href={translatePath(`/proyectos/${slug}`)} class="group mb-3 inline-block">
+                  <h2 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink md:text-3xl">
                     {project.data.title}
                   </h2>
                 </a>
 
-                <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
+                <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
                   {project.data.description}
                 </p>
               </div>
 
               <div>
-                <div class="flex flex-wrap gap-2 mb-6">
+                <div class="mb-6 flex flex-wrap gap-2">
                   {project.data.tags.map((tag) => (
                     <Tag>{tag}</Tag>
                   ))}
                 </div>
 
-                <div class="flex flex-wrap items-center gap-3 pt-4 border-t-2 border-black/10 dark:border-white/10">
-                  <Button
-                    href={translatePath(`/proyectos/${slug}`)}
-                    variant="primary"
-                    size="sm"
-                  >
-                    {t("common.read_more")}
+                <div class="flex flex-wrap items-center gap-3 border-t-2 border-black/10 pt-4 dark:border-white/10">
+                  <Button href={translatePath(`/proyectos/${slug}`)} variant="primary" size="sm">
+                    {t('common.read_more')}
                     <span slot="suffix">→</span>
                   </Button>
 
@@ -99,7 +88,7 @@ allProjects.sort((a, b) => {
                       variant="secondary"
                       size="sm"
                     >
-                      {t("project.live_demo")}
+                      {t('project.live_demo')}
                       <span slot="suffix">↗</span>
                     </Button>
                   )}
@@ -111,7 +100,7 @@ allProjects.sort((a, b) => {
                       variant="ghost"
                       size="sm"
                     >
-                      {t("common.view_code")}
+                      {t('common.view_code')}
                     </Button>
                   )}
                 </div>

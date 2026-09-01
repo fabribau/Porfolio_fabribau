@@ -43,8 +43,8 @@ The widespread growth of virtual casinos, digital wallets, and sports betting pl
 
 The findings and methodology were presented and published in leading national scientific venues:
 
-- **CoNaIISI 2025 (Córdoba, Argentina):** Paper author and poster presenter for *"AI-based Conversational Assistant for the Prevention of Online Gambling"* at the *13th National Congress on Informatics Engineering / Information Systems* (RIISIC / UTN-FRC).
-- **Mendoza Mental Health Congress 2025:** Paper author and poster presenter for *"Effectiveness of an AI-Based Virtual Assistant for Online Gambling Prevention"* at the *Constructs: Clinical Practice, Diagnosis and Therapeutic Approaches* conference (Ministry of Health and Sports of Mendoza).
+- **CoNaIISI 2025 (Córdoba, Argentina):** Paper author and poster presenter for _"AI-based Conversational Assistant for the Prevention of Online Gambling"_ at the _13th National Congress on Informatics Engineering / Information Systems_ (RIISIC / UTN-FRC).
+- **Mendoza Mental Health Congress 2025:** Paper author and poster presenter for _"Effectiveness of an AI-Based Virtual Assistant for Online Gambling Prevention"_ at the _Constructs: Clinical Practice, Diagnosis and Therapeutic Approaches_ conference (Ministry of Health and Sports of Mendoza).
 - **UNSL Health & Consumption Conference 2025:** Speaker at the 3rd university conference on addictive behaviors and digital health.
 
 ---

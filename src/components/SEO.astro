@@ -1,0 +1,170 @@
+---
+import type { Lang } from '@i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang: Lang;
+  noIndex?: boolean;
+  article?: {
+    pubDate?: Date;
+    author?: string;
+    tags?: string[];
+  };
+  project?: {
+    pubDate?: Date;
+    status?: string;
+    tags?: string[];
+  };
+}
+
+const {
+  title = 'Fabrizio José Riera Bauer — Portfolio',
+  description = 'Portfolio profesional de Fabrizio José Riera Bauer — Ingeniero en Informática, Desarrollador FullStack, Docente Universitario e Investigador en IA/RAG.',
+  image = '/og-image.svg',
+  lang,
+  noIndex = false,
+  article,
+  project,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.origin : 'https://fabribau.tech';
+
+// Exact canonical URL
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+
+// Absolute image URL
+const ogImageURL = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+
+// Generate hreflang paths
+const pathname = Astro.url.pathname;
+const esPath = pathname.replace(/^\/en(\/|$)/, '/es$1');
+const enPath = pathname.replace(/^\/es(\/|$)/, '/en$1');
+
+const esURL = new URL(esPath, siteUrl).href;
+const enURL = new URL(enPath, siteUrl).href;
+const defaultURL = esURL; // ES is defaultLocale
+
+// Base Schema JSON-LD (Person & WebSite)
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Fabrizio José Riera Bauer',
+  url: 'https://fabribau.tech',
+  jobTitle: 'Ingeniero en Informática & Desarrollador FullStack',
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Universidad Nacional de San Luis (UNSL)',
+  },
+  sameAs: ['https://github.com/fabribauer', 'https://linkedin.com/in/fabriziorierabauer'],
+  knowsAbout: [
+    'Software Engineering',
+    'FullStack Web Development',
+    'Artificial Intelligence',
+    'Retrieval-Augmented Generation (RAG)',
+    'Java',
+    'Spring Boot',
+    'TypeScript',
+    'Astro',
+    'Python',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Fabrizio José Riera Bauer Portfolio',
+  url: 'https://fabribau.tech',
+  inLanguage: ['es', 'en'],
+};
+
+// Specific schemas
+let pageSchema: Record<string, any> | null = null;
+
+if (article) {
+  pageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    image: ogImageURL,
+    datePublished: article.pubDate?.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: article.author || 'Fabrizio José Riera Bauer',
+      url: 'https://fabribau.tech',
+    },
+    inLanguage: lang,
+    keywords: article.tags?.join(', '),
+  };
+} else if (project) {
+  pageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: title,
+    description: description,
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Any',
+    author: {
+      '@type': 'Person',
+      name: 'Fabrizio José Riera Bauer',
+    },
+    keywords: project.tags?.join(', '),
+  };
+}
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="Fabrizio José Riera Bauer" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Robots Indexation -->
+{
+  noIndex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+  )
+}
+
+<!-- Multilingual SEO & Hreflang Alternates -->
+<link rel="alternate" hreflang="es" href={esURL} />
+<link rel="alternate" hreflang="en" href={enURL} />
+<link rel="alternate" hreflang="x-default" href={defaultURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content="Fabrizio José Riera Bauer" />
+<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:creator" content="@fabribauer" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
+{
+  pageSchema && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
+  )
+}

@@ -1,99 +1,91 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionHeader from "@components/SectionHeader.astro";
-import Card from "@components/Card.astro";
-import Badge from "@components/Badge.astro";
-import Tag from "@components/Tag.astro";
-import Button from "@components/Button.astro";
-import { getCollection } from "astro:content";
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import Card from '@components/Card.astro';
+import Badge from '@components/Badge.astro';
+import Tag from '@components/Tag.astro';
+import Button from '@components/Button.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-const allPosts = await getCollection("blog", ({ id, data }) => id.startsWith("en/") && !data.draft);
+const allPosts = await getCollection('blog', ({ id, data }) => id.startsWith('en/') && !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout
-  title={`${t("blog.title")} — Fabrizio Bauer`}
-  description={t("blog.subtitle")}
->
+<BaseLayout title={`${t('blog.title')} — Fabrizio Bauer`} description={t('blog.subtitle')}>
   <div class="space-y-12">
     <!-- Header -->
     <SectionHeader
       number="02"
-      title={t("blog.title")}
-      subtitle={t("blog.subtitle")}
+      title={t('blog.title')}
+      subtitle={t('blog.subtitle')}
       highlightColor="pink"
     />
 
     {
       allPosts.length === 0 ? (
         <Card variant="default" shadow="md">
-          <p class="text-fg-muted-light dark:text-fg-muted-dark font-mono text-center py-8">
-            {t("blog.no_posts")}
+          <p class="py-8 text-center font-mono text-fg-muted-light dark:text-fg-muted-dark">
+            {t('blog.no_posts')}
           </p>
         </Card>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {
-            allPosts.map((post) => {
-              const slug = post.id.replace(/^en\//, "");
-              return (
-                <Card
-                  variant="default"
-                  shadow="lg"
-                  hoverTilt="right"
-                  class="flex flex-col justify-between"
-                >
-                  <div>
-                    <div class="flex items-center justify-between gap-2 mb-4">
-                      <Badge color="pink" size="sm">
-                        POST
-                      </Badge>
-                      <span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark font-bold">
-                        {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
-                      </span>
-                    </div>
-
-                    <a
-                      href={translatePath(`/blog/${slug}`)}
-                      class="group inline-block mb-3"
-                    >
-                      <h2 class="font-display font-black text-2xl md:text-3xl tracking-tight group-hover:text-accent-pink transition-colors">
-                        {post.data.title}
-                      </h2>
-                    </a>
-
-                    <p class="text-sm text-fg-muted-light dark:text-fg-muted-dark mb-6 leading-relaxed">
-                      {post.data.description}
-                    </p>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {allPosts.map((post) => {
+            const slug = post.id.replace(/^en\//, '');
+            return (
+              <Card
+                variant="default"
+                shadow="lg"
+                hoverTilt="right"
+                class="flex flex-col justify-between"
+              >
+                <div>
+                  <div class="mb-4 flex items-center justify-between gap-2">
+                    <Badge color="pink" size="sm">
+                      POST
+                    </Badge>
+                    <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                      {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </span>
                   </div>
 
-                  <div>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                      {post.data.tags.map((tag) => (
-                        <Tag>{tag}</Tag>
-                      ))}
-                    </div>
+                  <a href={translatePath(`/blog/${slug}`)} class="group mb-3 inline-block">
+                    <h2 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink md:text-3xl">
+                      {post.data.title}
+                    </h2>
+                  </a>
 
-                    <div class="pt-4 border-t-2 border-black/10 dark:border-white/10 flex justify-end">
-                      <Button
-                        href={translatePath(`/blog/${slug}`)}
-                        variant="primary"
-                        size="sm"
-                      >
-                        {t("common.read_more")}
-                        <span slot="suffix">→</span>
-                      </Button>
-                    </div>
+                  <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                    {post.data.description}
+                  </p>
+                </div>
+
+                <div>
+                  <div class="mb-6 flex flex-wrap gap-2">
+                    {post.data.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
                   </div>
-                </Card>
-              );
-            })
-          }
+
+                  <div class="flex justify-end border-t-2 border-black/10 pt-4 dark:border-white/10">
+                    <Button href={translatePath(`/blog/${slug}`)} variant="primary" size="sm">
+                      {t('common.read_more')}
+                      <span slot="suffix">→</span>
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       )
     }

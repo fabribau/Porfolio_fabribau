@@ -16,7 +16,7 @@ export function useTranslatedPath(lang: Lang) {
   return function translatePath(path: string, targetLang: Lang = lang): string {
     // Clean leading slash for consistency
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    
+
     // Check if path already starts with a lang prefix
     const segments = cleanPath.split('/');
     if (segments[0] === 'es' || segments[0] === 'en') {

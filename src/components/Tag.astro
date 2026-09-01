@@ -28,10 +28,12 @@ const baseStyles = [
     ? 'hover:bg-accent-yellow hover:text-black hover:border-black dark:hover:border-white cursor-pointer hover:shadow-brutal-sm hover:-translate-y-0.5'
     : '',
   className,
-].filter(Boolean).join(' ');
+]
+  .filter(Boolean)
+  .join(' ');
 ---
 
 <Component href={href} class={baseStyles} {...rest}>
-  {prefix && <span class="opacity-60 mr-0.5">{prefix}</span>}
+  {prefix && <span class="mr-0.5 opacity-60">{prefix}</span>}
   <slot />
 </Component>

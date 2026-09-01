@@ -6,7 +6,7 @@
     "dev": "astro dev --host",
     "start": "astro dev --host",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro",
     "check": "astro check",
     "lint": "eslint .",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.2.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/tailwind": "^5.1.5",
     "astro": "^5.4.1",
     "resend": "^6.25.0",
@@ -33,6 +34,7 @@
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.11",
+    "wrangler": "^4.128.0"
   }
 }

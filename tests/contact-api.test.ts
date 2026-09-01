@@ -1,10 +1,10 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { POST } from "../src/pages/api/contact";
-import type { APIContext } from "astro";
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { POST } from '../src/pages/api/contact';
+import type { APIContext } from 'astro';
 
 // Mock de la librería Resend
 const mockSend = vi.fn();
-vi.mock("resend", () => {
+vi.mock('resend', () => {
   return {
     Resend: class {
       emails = {
@@ -14,17 +14,17 @@ vi.mock("resend", () => {
   };
 });
 
-describe("Contact API Endpoint (/api/contact)", () => {
+describe('Contact API Endpoint (/api/contact)', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     mockSend.mockReset();
   });
 
   function createMockContext(body: unknown, env: Record<string, string> = {}): APIContext {
-    const isString = typeof body === "string";
-    const request = new Request("https://fabribau.tech/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const isString = typeof body === 'string';
+    const request = new Request('https://fabribau.tech/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: isString ? body : JSON.stringify(body),
     });
 
@@ -39,31 +39,31 @@ describe("Contact API Endpoint (/api/contact)", () => {
   }
 
   const validPayload = {
-    name: "Fabrizio Bauer",
-    email: "test@fabribau.tech",
-    subject: "Consulta de Desarrollo",
-    message: "Hola Fabrizio, quiero consultar por tus servicios de desarrollo.",
-    turnstileToken: "dummy-success-token",
-    lang: "es",
+    name: 'Fabrizio Bauer',
+    email: 'test@fabribau.tech',
+    subject: 'Consulta de Desarrollo',
+    message: 'Hola Fabrizio, quiero consultar por tus servicios de desarrollo.',
+    turnstileToken: 'dummy-success-token',
+    lang: 'es',
   };
 
-  it("retorna 400 cuando el cuerpo de la solicitud no es JSON válido", async () => {
-    const context = createMockContext("invalid-json-string{");
+  it('retorna 400 cuando el cuerpo de la solicitud no es JSON válido', async () => {
+    const context = createMockContext('invalid-json-string{');
     const response = await POST(context);
     const data = await response.json();
 
     expect(response.status).toBe(400);
     expect(data.success).toBe(false);
-    expect(data.message).toContain("Cuerpo de solicitud inválido");
+    expect(data.message).toContain('Cuerpo de solicitud inválido');
   });
 
-  it("retorna 400 cuando faltan campos o no cumplen el esquema Zod", async () => {
+  it('retorna 400 cuando faltan campos o no cumplen el esquema Zod', async () => {
     const context = createMockContext({
-      name: "A", // Demasiado corto
-      email: "email-invalido",
-      subject: "",
-      message: "corto",
-      turnstileToken: "",
+      name: 'A', // Demasiado corto
+      email: 'email-invalido',
+      subject: '',
+      message: 'corto',
+      turnstileToken: '',
     });
 
     const response = await POST(context);
@@ -79,10 +79,10 @@ describe("Contact API Endpoint (/api/contact)", () => {
     expect(data.errors.turnstileToken).toBeDefined();
   });
 
-  it("retorna 403 si la validación anti-bot de Turnstile falla", async () => {
+  it('retorna 403 si la validación anti-bot de Turnstile falla', async () => {
     const context = createMockContext({
       ...validPayload,
-      turnstileToken: "dummy-fail-token",
+      turnstileToken: 'dummy-fail-token',
     });
 
     const response = await POST(context);
@@ -93,9 +93,9 @@ describe("Contact API Endpoint (/api/contact)", () => {
     expect(data.errors?.turnstileToken).toBeDefined();
   });
 
-  it("responde 200 en modo Mock/Dev si no hay RESEND_API_KEY configurada", async () => {
+  it('responde 200 en modo Mock/Dev si no hay RESEND_API_KEY configurada', async () => {
     const context = createMockContext(validPayload, {
-      RESEND_API_KEY: "", // Sin clave
+      RESEND_API_KEY: '', // Sin clave
     });
 
     const response = await POST(context);
@@ -106,12 +106,12 @@ describe("Contact API Endpoint (/api/contact)", () => {
     expect(data.mock).toBe(true);
   });
 
-  it("envía ambos correos (notificación + autoresponder) con Resend cuando la clave está configurada", async () => {
-    mockSend.mockResolvedValue({ data: { id: "msg_12345" }, error: null });
+  it('envía ambos correos (notificación + autoresponder) con Resend cuando la clave está configurada', async () => {
+    mockSend.mockResolvedValue({ data: { id: 'msg_12345' }, error: null });
 
     const context = createMockContext(validPayload, {
-      RESEND_API_KEY: "re_real_live_test_key_12345",
-      CONTACT_RECIPIENT_EMAIL: "fabriziojriera@gmail.com",
+      RESEND_API_KEY: 're_real_live_test_key_12345',
+      CONTACT_RECIPIENT_EMAIL: 'fabriziojriera@gmail.com',
     });
 
     const response = await POST(context);
@@ -125,27 +125,27 @@ describe("Contact API Endpoint (/api/contact)", () => {
 
     // Primer llamada: notificación
     const call1 = mockSend.mock.calls[0][0];
-    expect(call1.to).toBe("fabriziojriera@gmail.com");
-    expect(call1.replyTo).toBe("test@fabribau.tech");
-    expect(call1.subject).toContain("Consulta de Desarrollo");
+    expect(call1.to).toBe('fabriziojriera@gmail.com');
+    expect(call1.replyTo).toBe('test@fabribau.tech');
+    expect(call1.subject).toContain('Consulta de Desarrollo');
 
     // Segunda llamada: autoresponder bilingüe al remitente
     const call2 = mockSend.mock.calls[1][0];
-    expect(call2.to).toBe("test@fabribau.tech");
-    expect(call2.subject).toBe("¡Gracias por contactarme! — Fabrizio Bauer");
+    expect(call2.to).toBe('test@fabribau.tech');
+    expect(call2.subject).toBe('¡Gracias por contactarme! — Fabrizio Bauer');
   });
 
   it("envía el autoresponder en inglés cuando el formulario se envía con lang 'en'", async () => {
-    mockSend.mockResolvedValue({ data: { id: "msg_67890" }, error: null });
+    mockSend.mockResolvedValue({ data: { id: 'msg_67890' }, error: null });
 
     const context = createMockContext(
       {
         ...validPayload,
-        lang: "en",
-        subject: "Collaboration Request",
+        lang: 'en',
+        subject: 'Collaboration Request',
       },
       {
-        RESEND_API_KEY: "re_real_live_test_key_12345",
+        RESEND_API_KEY: 're_real_live_test_key_12345',
       }
     );
 
@@ -157,7 +157,7 @@ describe("Contact API Endpoint (/api/contact)", () => {
 
     expect(mockSend).toHaveBeenCalledTimes(2);
     const call2 = mockSend.mock.calls[1][0];
-    expect(call2.to).toBe("test@fabribau.tech");
-    expect(call2.subject).toBe("Thank you for getting in touch! — Fabrizio Bauer");
+    expect(call2.to).toBe('test@fabribau.tech');
+    expect(call2.subject).toBe('Thank you for getting in touch! — Fabrizio Bauer');
   });
 });

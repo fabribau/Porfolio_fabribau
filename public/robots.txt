@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /style-guide
+Disallow: /es/style-guide
+Disallow: /en/style-guide
+Disallow: /api/
+
+Sitemap: https://fabribau.tech/sitemap-index.xml

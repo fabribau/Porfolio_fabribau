@@ -60,23 +60,29 @@ export const ui = {
     'hero.badge': 'Disponible para nuevos desafíos',
     'hero.title': 'Fabrizio José Riera Bauer',
     'hero.role': 'Ingeniero en Informática & Desarrollador FullStack',
-    'hero.desc': 'Especializado en desarrollo web fullstack, IA conversacional con RAG, docencia universitaria e investigación.',
+    'hero.desc':
+      'Especializado en desarrollo web fullstack, IA conversacional con RAG, docencia universitaria e investigación.',
     'hero.cta_projects': 'Ver Proyectos',
     'hero.cta_about': 'Sobre mí',
     'hero.cta_contact': 'Contactar',
 
     // Home sections
-    'home.about_summary': 'Ingeniero en Informática por la Universidad Nacional de San Luis (UNSL), docente auxiliar de programación e investigador en sistemas de IA con Retrieval-Augmented Generation (RAG). Combino rigor científico y metodológico con desarrollo de software ágil para crear soluciones robustas, eficientes y de alto impacto.',
+    'home.about_summary':
+      'Ingeniero en Informática por la Universidad Nacional de San Luis (UNSL), docente auxiliar de programación e investigador en sistemas de IA con Retrieval-Augmented Generation (RAG). Combino rigor científico y metodológico con desarrollo de software ágil para crear soluciones robustas, eficientes y de alto impacto.',
     'home.latest_articles': 'Últimos Artículos',
-    'home.latest_articles_desc': 'Publicaciones técnicas, reflexiones académicas e ingeniería de software.',
+    'home.latest_articles_desc':
+      'Publicaciones técnicas, reflexiones académicas e ingeniería de software.',
     'home.view_all_posts': 'Ver todos los artículos',
 
     // About Me Page
     'about.title': 'Sobre Mí',
-    'about.subtitle': 'Ingeniero en Informática, Docente Universitario e Investigador en IA en San Luis, Argentina.',
+    'about.subtitle':
+      'Ingeniero en Informática, Docente Universitario e Investigador en IA en San Luis, Argentina.',
     'about.bio_title': 'Perfil Profesional & Académico',
-    'about.bio_p1': 'Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas RAG para el impacto social, con experiencia como autor y expositor en congresos científicos.',
-    'about.bio_p2': 'Combino mi trayectoria docente en la Universidad Nacional de San Luis (UNSL) en materias centrales de programación y algoritmos con experiencia práctica en la industria y el sector público, participando activamente en todas las etapas del ciclo de vida del software.',
+    'about.bio_p1':
+      'Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas RAG para el impacto social, con experiencia como autor y expositor en congresos científicos.',
+    'about.bio_p2':
+      'Combino mi trayectoria docente en la Universidad Nacional de San Luis (UNSL) en materias centrales de programación y algoritmos con experiencia práctica en la industria y el sector público, participando activamente en todas las etapas del ciclo de vida del software.',
     'about.experience_title': 'Experiencia Profesional & Laboral',
     'about.teaching_title': 'Trayectoria Docente Universitaria',
     'about.research_title': 'Investigación Científica & Publicaciones',
@@ -97,19 +103,22 @@ export const ui = {
 
     // Projects Page
     'projects.title': 'Proyectos & Desarrollos',
-    'projects.subtitle': 'Exploración de software, plataformas en producción, agentes de IA e iniciativas de investigación.',
+    'projects.subtitle':
+      'Exploración de software, plataformas en producción, agentes de IA e iniciativas de investigación.',
     'projects.filter_all': 'Todos',
     'projects.filter_in_progress': 'En desarrollo',
     'projects.filter_completed': 'Completados',
 
     // Blog Page
     'blog.title': 'Blog & Publicaciones',
-    'blog.subtitle': 'Artículos técnicos, notas de investigación en IA, experiencias docentes y reflexiones de desarrollo.',
+    'blog.subtitle':
+      'Artículos técnicos, notas de investigación en IA, experiencias docentes y reflexiones de desarrollo.',
     'blog.no_posts': 'No hay publicaciones disponibles en este momento.',
 
     // Contact Page
     'contact.title': 'Contacto',
-    'contact.subtitle': '¿Tenés una propuesta, proyecto o consulta? Escribime o contactame por cualquiera de mis canales.',
+    'contact.subtitle':
+      '¿Tenés una propuesta, proyecto o consulta? Escribime o contactame por cualquiera de mis canales.',
     'contact.form_name': 'Tu Nombre',
     'contact.form_email': 'Tu Correo Electrónico',
     'contact.form_subject': 'Asunto',
@@ -120,15 +129,19 @@ export const ui = {
     'contact.form_message_placeholder': 'Contame los detalles de tu proyecto o propuesta...',
     'contact.form_submit': 'Enviar Mensaje',
     'contact.form_sending': 'Enviando mensaje...',
-    'contact.form_success': '¡Mensaje recibido con éxito! Me pondré en contacto contigo a la brevedad.',
-    'contact.form_error': 'Ocurrió un error al enviar el mensaje. Por favor revisa los campos e intenta de nuevo.',
+    'contact.form_success':
+      '¡Mensaje recibido con éxito! Me pondré en contacto contigo a la brevedad.',
+    'contact.form_error':
+      'Ocurrió un error al enviar el mensaje. Por favor revisa los campos e intenta de nuevo.',
     'contact.form_security': 'Protegido por Cloudflare Turnstile anti-bot',
     'contact.form_validation_name': 'El nombre debe tener al menos 2 caracteres.',
     'contact.form_validation_email': 'Ingresa un correo electrónico válido.',
     'contact.form_validation_subject': 'El asunto debe tener al menos 3 caracteres.',
     'contact.form_validation_message': 'El mensaje debe tener al menos 10 caracteres.',
-    'contact.form_turnstile_pending': 'Por favor completa la verificación de seguridad antes de enviar.',
-    'contact.form_network_error': 'Error de conexión. Verifica tu conexión a internet e intenta nuevamente.',
+    'contact.form_turnstile_pending':
+      'Por favor completa la verificación de seguridad antes de enviar.',
+    'contact.form_network_error':
+      'Error de conexión. Verifica tu conexión a internet e intenta nuevamente.',
     'contact.direct_channels': 'Canales Directos',
     'contact.email_label': 'Correo Electrónico',
     'contact.whatsapp_label': 'WhatsApp',
@@ -148,22 +161,30 @@ export const ui = {
 
     // Style Guide
     'styleguide.title': 'UI Kit Neobrutalista',
-    'styleguide.subtitle': 'Sistema de componentes, tokens de diseño y micro-interacciones de fabribau.tech.',
-    'styleguide.back_home': '← Volver al Inicio',
+    'styleguide.subtitle':
+      'Sistema de componentes, tokens de diseño y micro-interacciones de fabribau.tech.',
+    'styleguide.back_home': 'Volver al Inicio',
     'styleguide.colors': '01. Paleta de Colores & Tokens',
-    'styleguide.colors_desc': 'Tokens de color primarios, de superficie y acentos vivos con alto contraste en modo claro y oscuro.',
+    'styleguide.colors_desc':
+      'Tokens de color primarios, de superficie y acentos vivos con alto contraste en modo claro y oscuro.',
     'styleguide.typography': '02. Tipografía & Jerarquías',
-    'styleguide.typography_desc': 'Space Grotesk para display y titulares, Inter para lectura y JetBrains Mono para datos y código.',
+    'styleguide.typography_desc':
+      'Space Grotesk para display y titulares, Inter para lectura y JetBrains Mono para datos y código.',
     'styleguide.buttons': '03. Botones & Acciones',
-    'styleguide.buttons_desc': 'Variantes de color, tamaños y estados mecánicos (hover, click press, disabled).',
+    'styleguide.buttons_desc':
+      'Variantes de color, tamaños y estados mecánicos (hover, click press, disabled).',
     'styleguide.cards': '04. Tarjetas & Contenedores',
-    'styleguide.cards_desc': 'Bordes 3px/4px, sombras duras offset y micro-rotación dinámica (hover-tilt).',
+    'styleguide.cards_desc':
+      'Bordes 3px/4px, sombras duras offset y micro-rotación dinámica (hover-tilt).',
     'styleguide.badges_tags': '05. Badges & Tags',
-    'styleguide.badges_tags_desc': 'Etiquetas de estado con radar-pulse animado y chips monospaced para tecnologías.',
+    'styleguide.badges_tags_desc':
+      'Etiquetas de estado con radar-pulse animado y chips monospaced para tecnologías.',
     'styleguide.headers': '06. Encabezados de Sección',
-    'styleguide.headers_desc': 'Títulos con efectos de marcador highlighter y distintivos numéricos.',
+    'styleguide.headers_desc':
+      'Títulos con efectos de marcador highlighter y distintivos numéricos.',
     'styleguide.interactive': '07. Micro-interacciones & Diferenciadores',
-    'styleguide.interactive_desc': 'Pulsación física de botones, marcadores fluorescentes y tarjetas reactivas.',
+    'styleguide.interactive_desc':
+      'Pulsación física de botones, marcadores fluorescentes y tarjetas reactivas.',
   },
   en: {
     // Navigation
@@ -217,23 +238,29 @@ export const ui = {
     'hero.badge': 'Available for new challenges',
     'hero.title': 'Fabrizio José Riera Bauer',
     'hero.role': 'Informatics Engineer & FullStack Developer',
-    'hero.desc': 'Specialized in FullStack web development, conversational AI with RAG, university lecturing, and research.',
+    'hero.desc':
+      'Specialized in FullStack web development, conversational AI with RAG, university lecturing, and research.',
     'hero.cta_projects': 'Explore Projects',
     'hero.cta_about': 'About Me',
     'hero.cta_contact': 'Get in Touch',
 
     // Home sections
-    'home.about_summary': 'Informatics Engineer graduated from Universidad Nacional de San Luis (UNSL), programming teaching assistant, and researcher in AI systems using Retrieval-Augmented Generation (RAG). Combining academic and scientific rigor with agile software development to build robust, scalable, and high-impact solutions.',
+    'home.about_summary':
+      'Informatics Engineer graduated from Universidad Nacional de San Luis (UNSL), programming teaching assistant, and researcher in AI systems using Retrieval-Augmented Generation (RAG). Combining academic and scientific rigor with agile software development to build robust, scalable, and high-impact solutions.',
     'home.latest_articles': 'Latest Articles',
-    'home.latest_articles_desc': 'Technical write-ups, academic insights, and software engineering practices.',
+    'home.latest_articles_desc':
+      'Technical write-ups, academic insights, and software engineering practices.',
     'home.view_all_posts': 'View all articles',
 
     // About Me Page
     'about.title': 'About Me',
-    'about.subtitle': 'Informatics Engineer, University Lecturer, and AI Researcher based in San Luis, Argentina.',
+    'about.subtitle':
+      'Informatics Engineer, University Lecturer, and AI Researcher based in San Luis, Argentina.',
     'about.bio_title': 'Professional & Academic Profile',
-    'about.bio_p1': 'Informatics Engineer with strong expertise in transforming complex domain requirements into efficient, scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and RAG architectures for social impact, with proven experience as an author and presenter at scientific congresses.',
-    'about.bio_p2': 'I blend my academic lecturing journey at Universidad Nacional de San Luis (UNSL) in foundational algorithms and programming courses with hands-on industry and public sector engineering, actively contributing across all stages of the software development lifecycle.',
+    'about.bio_p1':
+      'Informatics Engineer with strong expertise in transforming complex domain requirements into efficient, scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and RAG architectures for social impact, with proven experience as an author and presenter at scientific congresses.',
+    'about.bio_p2':
+      'I blend my academic lecturing journey at Universidad Nacional de San Luis (UNSL) in foundational algorithms and programming courses with hands-on industry and public sector engineering, actively contributing across all stages of the software development lifecycle.',
     'about.experience_title': 'Professional & Industry Experience',
     'about.teaching_title': 'University Teaching Experience',
     'about.research_title': 'Scientific Research & Publications',
@@ -254,19 +281,22 @@ export const ui = {
 
     // Projects Page
     'projects.title': 'Projects & Engineering',
-    'projects.subtitle': 'Production software applications, AI agents, enterprise systems, and research platforms.',
+    'projects.subtitle':
+      'Production software applications, AI agents, enterprise systems, and research platforms.',
     'projects.filter_all': 'All',
     'projects.filter_in_progress': 'In Progress',
     'projects.filter_completed': 'Completed',
 
     // Blog Page
     'blog.title': 'Blog & Insights',
-    'blog.subtitle': 'Technical deep dives, AI research notes, university teaching reflections, and software craftsmanship.',
+    'blog.subtitle':
+      'Technical deep dives, AI research notes, university teaching reflections, and software craftsmanship.',
     'blog.no_posts': 'No posts available at this moment.',
 
     // Contact Page
     'contact.title': 'Contact',
-    'contact.subtitle': 'Have a project, technical inquiry, or opportunity in mind? Feel free to reach out directly.',
+    'contact.subtitle':
+      'Have a project, technical inquiry, or opportunity in mind? Feel free to reach out directly.',
     'contact.form_name': 'Your Name',
     'contact.form_email': 'Your Email Address',
     'contact.form_subject': 'Subject',
@@ -278,14 +308,16 @@ export const ui = {
     'contact.form_submit': 'Send Message',
     'contact.form_sending': 'Sending message...',
     'contact.form_success': 'Message received successfully! I will get back to you shortly.',
-    'contact.form_error': 'An error occurred while sending the message. Please check the fields and try again.',
+    'contact.form_error':
+      'An error occurred while sending the message. Please check the fields and try again.',
     'contact.form_security': 'Protected by Cloudflare Turnstile anti-bot',
     'contact.form_validation_name': 'Name must be at least 2 characters.',
     'contact.form_validation_email': 'Please enter a valid email address.',
     'contact.form_validation_subject': 'Subject must be at least 3 characters.',
     'contact.form_validation_message': 'Message must be at least 10 characters.',
     'contact.form_turnstile_pending': 'Please complete the security check before submitting.',
-    'contact.form_network_error': 'Network error. Please check your internet connection and try again.',
+    'contact.form_network_error':
+      'Network error. Please check your internet connection and try again.',
     'contact.direct_channels': 'Direct Channels',
     'contact.email_label': 'Email Address',
     'contact.whatsapp_label': 'WhatsApp',
@@ -305,22 +337,29 @@ export const ui = {
 
     // Style Guide
     'styleguide.title': 'Neobrutalist UI Kit',
-    'styleguide.subtitle': 'Component system, design tokens, and micro-interactions for fabribau.tech.',
-    'styleguide.back_home': '← Back to Home',
+    'styleguide.subtitle':
+      'Component system, design tokens, and micro-interactions for fabribau.tech.',
+    'styleguide.back_home': 'Back to Home',
     'styleguide.colors': '01. Color Palette & Tokens',
-    'styleguide.colors_desc': 'Primary surfaces, deep backgrounds, and high-contrast vivid accents in light and dark modes.',
+    'styleguide.colors_desc':
+      'Primary surfaces, deep backgrounds, and high-contrast vivid accents in light and dark modes.',
     'styleguide.typography': '02. Typography & Hierarchies',
-    'styleguide.typography_desc': 'Space Grotesk for display and headlines, Inter for body copy, and JetBrains Mono for data & code.',
+    'styleguide.typography_desc':
+      'Space Grotesk for display and headlines, Inter for body copy, and JetBrains Mono for data & code.',
     'styleguide.buttons': '03. Buttons & Actions',
-    'styleguide.buttons_desc': 'Color variants, sizes, and mechanical tactile states (hover, click press, disabled).',
+    'styleguide.buttons_desc':
+      'Color variants, sizes, and mechanical tactile states (hover, click press, disabled).',
     'styleguide.cards': '04. Cards & Containers',
-    'styleguide.cards_desc': '3px/4px borders, hard offset shadows, and dynamic micro-tilt on hover.',
+    'styleguide.cards_desc':
+      '3px/4px borders, hard offset shadows, and dynamic micro-tilt on hover.',
     'styleguide.badges_tags': '05. Badges & Tags',
-    'styleguide.badges_tags_desc': 'Status labels with animated radar-pulse and monospaced tech chips.',
+    'styleguide.badges_tags_desc':
+      'Status labels with animated radar-pulse and monospaced tech chips.',
     'styleguide.headers': '06. Section Headers',
     'styleguide.headers_desc': 'Headings with fluorescent highlighter accents and numeric badges.',
     'styleguide.interactive': '07. Micro-interactions & Differentiators',
-    'styleguide.interactive_desc': 'Physical button press, highlighter markers, and reactive cards.',
+    'styleguide.interactive_desc':
+      'Physical button press, highlighter markers, and reactive cards.',
   },
 } as const;
 

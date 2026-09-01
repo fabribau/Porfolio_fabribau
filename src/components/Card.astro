@@ -68,29 +68,35 @@ const baseStyles = [
   tiltStyles[hoverTilt],
   href ? 'cursor-pointer brutal-btn-press' : '',
   className,
-].filter(Boolean).join(' ');
+]
+  .filter(Boolean)
+  .join(' ');
 ---
 
 <Component
   href={href}
   target={target}
-  rel={target === '_blank' ? (rel || 'noopener noreferrer') : rel}
+  rel={target === '_blank' ? rel || 'noopener noreferrer' : rel}
   class={baseStyles}
   {...rest}
 >
-  {Astro.slots.has('header') && (
-    <div class="border-b-3 border-black dark:border-white p-4 font-display font-bold">
-      <slot name="header" />
-    </div>
-  )}
+  {
+    Astro.slots.has('header') && (
+      <div class="border-b-3 border-black p-4 font-display font-bold dark:border-white">
+        <slot name="header" />
+      </div>
+    )
+  }
 
   <div class="p-6">
     <slot />
   </div>
 
-  {Astro.slots.has('footer') && (
-    <div class="border-t-3 border-black dark:border-white p-4 bg-black/5 dark:bg-white/5">
-      <slot name="footer" />
-    </div>
-  )}
+  {
+    Astro.slots.has('footer') && (
+      <div class="border-t-3 border-black bg-black/5 p-4 dark:border-white dark:bg-white/5">
+        <slot name="footer" />
+      </div>
+    )
+  }
 </Component>

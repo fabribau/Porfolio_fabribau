@@ -2,7 +2,17 @@
 title: 'Track & Field School Olympics Management System'
 description: 'Full-scale web platform for athletic tournament management, automated heat generation, score sheet orchestration, and real-time results computation for the Sports Secretariat.'
 pubDate: 2024-10-31
-tags: ['Java', 'Spring Boot', 'Spring Data JPA', 'Hibernate', 'Next.js', 'Material UI', 'MySQL', 'REST API']
+tags:
+  [
+    'Java',
+    'Spring Boot',
+    'Spring Data JPA',
+    'Hibernate',
+    'Next.js',
+    'Material UI',
+    'MySQL',
+    'REST API',
+  ]
 status: 'completado'
 featured: true
 order: 3
@@ -21,6 +31,7 @@ The platform was successfully deployed and utilized during the **2024 and 2025 p
 Prior to the introduction of this software, school track and field championships relied heavily on manual paperwork and decentralized spreadsheet tracking, causing significant bottlenecks during heat compilation and podium announcements.
 
 The system eliminated these friction points by implementing:
+
 - **Automated Heat & Lane Generation:** Algorithmic seeding and lane allocation based on official athletic federation rules, athlete age categories, and qualifying marks.
 - **Rapid Trackside Results Entry:** Streamlined interfaces designed for track judges and timing officials to register marks instantly on trackside tablets.
 - **Instant Standing Computations:** Real-time computation of qualifiers for semifinals, finals, and institutional school scoring rankings.
