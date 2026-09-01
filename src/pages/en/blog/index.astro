@@ -16,7 +16,7 @@ const allPosts = await getCollection('blog', ({ id, data }) => id.startsWith('en
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title={`${t('blog.title')} — Fabrizio Bauer`} description={t('blog.subtitle')}>
+<BaseLayout title={`${t('blog.title')} — Fabrizio Riera Bauer`} description={t('blog.subtitle')}>
   <div class="space-y-12">
     <!-- Header -->
     <SectionHeader

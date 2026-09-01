@@ -63,7 +63,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       runtimeEnv?.RESEND_FROM_EMAIL ||
       import.meta.env.RESEND_FROM_EMAIL ||
       (typeof process !== 'undefined' ? process.env.RESEND_FROM_EMAIL : undefined) ||
-      'Portfolio Fabrizio Bauer <contacto@fabribau.tech>';
+      'Portfolio Fabrizio Riera Bauer <contacto@fabribau.tech>';
 
     // 4. Verificación anti-bot con Cloudflare Turnstile
     const clientIp =

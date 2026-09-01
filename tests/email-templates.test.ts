@@ -62,7 +62,7 @@ describe('Email Templates Generator', () => {
     it("genera correo de agradecimiento en Español cuando lang es 'es'", () => {
       const { subject, html, text } = generateAutoresponderEmail(sampleDataES);
 
-      expect(subject).toBe('¡Gracias por contactarme! — Fabrizio Bauer');
+      expect(subject).toBe('¡Gracias por contactarme! — Fabrizio Riera Bauer');
       expect(html).toContain('¡Hola Juan Pérez &lt;test&gt;! Gracias por tu mensaje.');
       expect(html).toContain('He recibido tu consulta sobre');
       expect(html).toContain('Ver Proyectos');
@@ -76,7 +76,7 @@ describe('Email Templates Generator', () => {
     it("genera correo de agradecimiento en Inglés cuando lang es 'en'", () => {
       const { subject, html, text } = generateAutoresponderEmail(sampleDataEN);
 
-      expect(subject).toBe('Thank you for getting in touch! — Fabrizio Bauer');
+      expect(subject).toBe('Thank you for getting in touch! — Fabrizio Riera Bauer');
       expect(html).toContain('Hello John Doe! Thank you for your message.');
       expect(html).toContain('I have successfully received your message');
       expect(html).toContain('Explore Projects');

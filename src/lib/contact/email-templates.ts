@@ -100,8 +100,8 @@ export function generateAutoresponderEmail(data: ContactFormData) {
   const isSpanish = data.lang === 'es';
 
   const subject = isSpanish
-    ? `¡Gracias por contactarme! — Fabrizio Bauer`
-    : `Thank you for getting in touch! — Fabrizio Bauer`;
+    ? `¡Gracias por contactarme! — Fabrizio Riera Bauer`
+    : `Thank you for getting in touch! — Fabrizio Riera Bauer`;
 
   const heading = isSpanish
     ? `¡Hola ${safeName}! Gracias por tu mensaje.`

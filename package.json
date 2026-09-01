@@ -6,7 +6,7 @@
     "dev": "astro dev --host",
     "start": "astro dev --host",
     "build": "astro build",
-    "preview": "wrangler pages dev ./dist",
+    "preview": "wrangler pages dev ./dist --ip 0.0.0.0",
     "astro": "astro",
     "check": "astro check",
     "lint": "eslint .",

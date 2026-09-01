@@ -39,7 +39,7 @@ describe('Contact API Endpoint (/api/contact)', () => {
   }
 
   const validPayload = {
-    name: 'Fabrizio Bauer',
+    name: 'Fabrizio Riera Bauer',
     email: 'test@fabribau.tech',
     subject: 'Consulta de Desarrollo',
     message: 'Hola Fabrizio, quiero consultar por tus servicios de desarrollo.',
@@ -132,7 +132,7 @@ describe('Contact API Endpoint (/api/contact)', () => {
     // Segunda llamada: autoresponder bilingüe al remitente
     const call2 = mockSend.mock.calls[1][0];
     expect(call2.to).toBe('test@fabribau.tech');
-    expect(call2.subject).toBe('¡Gracias por contactarme! — Fabrizio Bauer');
+    expect(call2.subject).toBe('¡Gracias por contactarme! — Fabrizio Riera Bauer');
   });
 
   it("envía el autoresponder en inglés cuando el formulario se envía con lang 'en'", async () => {
@@ -158,6 +158,6 @@ describe('Contact API Endpoint (/api/contact)', () => {
     expect(mockSend).toHaveBeenCalledTimes(2);
     const call2 = mockSend.mock.calls[1][0];
     expect(call2.to).toBe('test@fabribau.tech');
-    expect(call2.subject).toBe('Thank you for getting in touch! — Fabrizio Bauer');
+    expect(call2.subject).toBe('Thank you for getting in touch! — Fabrizio Riera Bauer');
   });
 });

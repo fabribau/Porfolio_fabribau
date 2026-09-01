@@ -3,7 +3,7 @@ import { validateContactForm } from '../src/lib/contact/schema';
 
 describe('Contact Form Validation Schema (Zod)', () => {
   const validPayload = {
-    name: 'Fabrizio Bauer',
+    name: 'Fabrizio Riera Bauer',
     email: 'test@fabribau.tech',
     subject: 'Propuesta de Proyecto',
     message: 'Hola, me gustaría conversar sobre una oportunidad de desarrollo FullStack e IA.',
@@ -15,7 +15,7 @@ describe('Contact Form Validation Schema (Zod)', () => {
     const result = validateContactForm(validPayload);
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.name).toBe('Fabrizio Bauer');
+      expect(result.data.name).toBe('Fabrizio Riera Bauer');
       expect(result.data.email).toBe('test@fabribau.tech');
       expect(result.data.lang).toBe('es');
     }
@@ -44,13 +44,13 @@ describe('Contact Form Validation Schema (Zod)', () => {
   it('normaliza el email a minúsculas y elimina espacios en blanco', () => {
     const result = validateContactForm({
       ...validPayload,
-      name: '  Fabrizio Bauer  ',
+      name: '  Fabrizio Riera Bauer  ',
       email: '  TEST.CAPS@FABRIBAU.TECH  ',
       subject: '  Consulta general  ',
     });
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.name).toBe('Fabrizio Bauer');
+      expect(result.data.name).toBe('Fabrizio Riera Bauer');
       expect(result.data.email).toBe('test.caps@fabribau.tech');
       expect(result.data.subject).toBe('Consulta general');
     }
