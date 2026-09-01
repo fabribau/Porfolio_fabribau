@@ -7,13 +7,16 @@ export default defineConfig({
   site: 'https://fabribau.tech',
   output: 'static',
   adapter: cloudflare({
-    imageService: 'passthrough',
+    imageService: 'compile',
   }),
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
   ],
+  prefetch: {
+    defaultStrategy: 'hover',
+  },
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],

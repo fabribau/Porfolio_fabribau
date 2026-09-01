@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import fabriProfile from "@assets/images/fabri-photo.jpg";
 import SectionHeader from "@components/SectionHeader.astro";
 import Card from "@components/Card.astro";
 import Badge from "@components/Badge.astro";
@@ -184,11 +186,16 @@ const taughtCourses = [
       <!-- Photo / Profile Card (4 cols) -->
       <div class="lg:col-span-4 p-6 bg-accent-yellow border-4 border-black dark:border-white shadow-brutal-lg flex flex-col items-center justify-between text-center space-y-4">
         <div class="relative w-48 h-48 sm:w-52 sm:h-52 border-4 border-black dark:border-white shadow-brutal overflow-hidden bg-zinc-900 group">
-          <img
-            src="/Fabri-paper.jpg"
+          <Image
+            src={fabriProfile}
             alt="Fabrizio José Riera Bauer"
-            class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:grayscale-0 transition-all duration-300"
+            widths={[192, 208, 384, 416]}
+            sizes="(min-width: 640px) 208px, 192px"
+            format="webp"
+            quality="high"
             loading="eager"
+            fetchpriority="high"
+            class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:grayscale-0 transition-all duration-300"
           />
         </div>
         <div class="space-y-1">
@@ -236,11 +243,11 @@ const taughtCourses = [
             WhatsApp
             <span slot="suffix">💬</span>
           </Button>
-          <Button href="/CV-Empresas.pdf" target="_blank" download="CV-Fabrizio-Riera-Bauer.pdf" variant="cyan" size="md">
+          <Button href="/docs/CV-Empresas.pdf" target="_blank" download="CV-Fabrizio-Riera-Bauer.pdf" variant="cyan" size="md">
             {t("common.download_cv_companies")}
             <span slot="suffix">↓</span>
           </Button>
-          <Button href="/CV-Academico.pdf" target="_blank" download="CV-Academic-Fabrizio-Riera-Bauer.pdf" variant="purple" size="md">
+          <Button href="/docs/CV-Academico.pdf" target="_blank" download="CV-Academico-Fabrizio-Riera-Bauer.pdf" variant="purple" size="md">
             {t("common.download_cv_academic")}
             <span slot="suffix">🎓</span>
           </Button>

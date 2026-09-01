@@ -8,7 +8,7 @@ featured: true
 order: 1
 repositoryUrl: 'https://github.com/fabribau/novamas'
 liveUrl: 'https://asistenteprevencion.vercel.app/'
-thesisUrl: '/Loyola_Riera_InformePI_2025.pdf'
+thesisUrl: '/docs/Loyola_Riera_InformePI_2025.pdf'
 ---
 
 ## Resumen del Proyecto
