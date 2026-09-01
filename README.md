@@ -9,7 +9,7 @@ Guía rápida de comandos para desarrollo, verificación, tests, formateo y comp
 Instalar todas las dependencias del proyecto:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
@@ -19,7 +19,7 @@ npm install
 Inicia el servidor de desarrollo local con recarga en caliente (HMR) y acceso habilitado para red local (`--host`):
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 - **URL local:** `http://localhost:4321/` (o `http://localhost:4321/es/`)
@@ -32,7 +32,7 @@ npm run dev
 Verificar la integridad estricta de TypeScript y las Content Collections con Astro Check:
 
 ```bash
-npm run check
+pnpm run check
 ```
 
 ---
@@ -43,10 +43,10 @@ Ejecutar la suite de pruebas unitarias (validación de formularios, esquemas Zod
 
 ```bash
 # Ejecutar todas las pruebas una vez
-npm run test
+pnpm run test
 
 # Modo interactivo / observador (watch mode) durante el desarrollo
-npm run test:watch
+pnpm run test:watch
 ```
 
 ---
@@ -57,10 +57,10 @@ Revisar y formatear automáticamente el código con las reglas del proyecto:
 
 ```bash
 # Formatear todos los archivos (.astro, .ts, .mjs, .css, .md)
-npm run format
+pnpm run format
 
 # Ejecutar el linter (ESLint)
-npm run lint
+pnpm run lint
 ```
 
 ---
@@ -70,7 +70,7 @@ npm run lint
 Genera el build estático optimizado, crea el sitemap XML, procesa imágenes y prepara las funciones de Cloudflare Pages en la carpeta `dist/`:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ---
@@ -81,10 +81,10 @@ Inicia el emulador local de Cloudflare Pages (`wrangler`) para probar el build t
 
 ```bash
 # 1. Asegurarse de tener el build generado previamente
-npm run build
+pnpm run build
 
 # 2. Levantar el preview local con Wrangler
-npm run preview
+pnpm run preview
 ```
 
 - **URL por defecto de Wrangler:** `http://localhost:8788/` o `http://127.0.0.1:8788/`
