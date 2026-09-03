@@ -58,6 +58,7 @@ export const ui = {
 
     // Hero section
     'hero.badge': 'Disponible para nuevos desafíos',
+    'hero.greeting': '¡Hola! Soy Fabri, o si preferís el nombre largo:',
     'hero.title': 'Fabrizio José Riera Bauer',
     'hero.role': 'Ingeniero en Informática',
     'hero.desc':
@@ -138,6 +139,8 @@ export const ui = {
     'contact.form_validation_email': 'Ingresa un correo electrónico válido.',
     'contact.form_validation_subject': 'El asunto debe tener al menos 3 caracteres.',
     'contact.form_validation_message': 'El mensaje debe tener al menos 10 caracteres.',
+    'contact.form_validation_message_max':
+      'El mensaje no puede exceder los 3000 caracteres.',
     'contact.form_turnstile_pending':
       'Por favor completa la verificación de seguridad antes de enviar.',
     'contact.form_network_error':
@@ -236,6 +239,7 @@ export const ui = {
 
     // Hero section
     'hero.badge': 'Available for new challenges',
+    'hero.greeting': "Hey! I'm Fabri, or if you prefer the long version:",
     'hero.title': 'Fabrizio José Riera Bauer',
     'hero.role': 'Software Engineer',
     'hero.desc':
@@ -315,6 +319,7 @@ export const ui = {
     'contact.form_validation_email': 'Please enter a valid email address.',
     'contact.form_validation_subject': 'Subject must be at least 3 characters.',
     'contact.form_validation_message': 'Message must be at least 10 characters.',
+    'contact.form_validation_message_max': 'Message cannot exceed 3000 characters.',
     'contact.form_turnstile_pending': 'Please complete the security check before submitting.',
     'contact.form_network_error':
       'Network error. Please check your internet connection and try again.',

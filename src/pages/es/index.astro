@@ -42,11 +42,16 @@ const latestPosts = allPosts.slice(0, 2);
           </Badge>
         </div>
 
-        <h1
-          class="font-display text-4xl font-black leading-none tracking-tight text-black sm:text-6xl md:text-7xl"
-        >
-          {t('hero.title')}
-        </h1>
+        <div class="space-y-2">
+          <p class="font-mono text-base font-bold text-zinc-900 sm:text-lg">
+            {t('hero.greeting')}
+          </p>
+          <h1
+            class="font-display text-4xl font-black leading-none tracking-tight text-black sm:text-6xl md:text-7xl"
+          >
+            {t('hero.title')}
+          </h1>
+        </div>
 
         <p class="font-mono text-base font-bold text-black sm:text-xl">
           {t('hero.role')}

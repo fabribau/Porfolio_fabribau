@@ -81,17 +81,25 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
 
     <!-- Campo Mensaje -->
     <div>
-      <label for="message" class="mb-2 block font-mono text-xs font-bold uppercase tracking-wider">
-        {t('contact.form_message')}
-        <span class="text-accent-pink">*</span>
-      </label>
+      <div class="mb-2 flex items-center justify-between">
+        <label for="message" class="block font-mono text-xs font-bold uppercase tracking-wider">
+          {t('contact.form_message')}
+          <span class="text-accent-pink">*</span>
+        </label>
+        <span
+          id="message-counter-container"
+          class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark"
+          aria-live="polite"
+        >
+          <span id="message-counter" class="inline-block transition-all duration-150">0 / 3000</span>
+        </span>
+      </div>
       <textarea
         id="message"
         name="message"
         rows="5"
         required
         minlength="10"
-        maxlength="3000"
         placeholder={t('contact.form_message_placeholder')}
         class="w-full resize-y border-3 border-black bg-zinc-50 px-4 py-3 font-sans text-black transition-colors focus:border-accent-pink focus:bg-accent-yellow/10 focus:outline-none dark:border-white dark:bg-zinc-800 dark:text-white"
       ></textarea>
@@ -173,6 +181,30 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
       'turnstile-token'
     ) as HTMLInputElement | null;
     const turnstileContainer = document.getElementById('turnstile-container');
+
+    const MAX_MESSAGE_LENGTH = 3000;
+    const messageEl = form.elements.namedItem('message') as HTMLTextAreaElement | null;
+    const messageCounter = document.getElementById('message-counter');
+
+    // Actualización reactiva del contador de caracteres y resaltado magenta
+    function updateMessageCounter() {
+      if (!messageEl || !messageCounter) return;
+      const count = messageEl.value.length;
+      messageCounter.textContent = `${count} / ${MAX_MESSAGE_LENGTH}`;
+
+      if (count > MAX_MESSAGE_LENGTH) {
+        messageCounter.classList.add('highlighter-pink', 'font-black');
+        messageEl.classList.add('border-accent-pink');
+      } else {
+        messageCounter.classList.remove('highlighter-pink', 'font-black');
+        messageEl.classList.remove('border-accent-pink');
+      }
+    }
+
+    if (messageEl) {
+      messageEl.addEventListener('input', updateMessageCounter);
+      updateMessageCounter();
+    }
 
     const fields = ['name', 'email', 'subject', 'message'] as const;
 
@@ -293,6 +325,14 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
             : 'El mensaje debe tener al menos 10 caracteres.'
         );
         isValid = false;
+      } else if (messageVal.length > MAX_MESSAGE_LENGTH) {
+        setFieldError(
+          'message',
+          lang === 'en'
+            ? `Message cannot exceed ${MAX_MESSAGE_LENGTH} characters.`
+            : `El mensaje no puede exceder los ${MAX_MESSAGE_LENGTH} caracteres.`
+        );
+        isValid = false;
       }
 
       if (!token) {
@@ -352,6 +392,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
             feedback.innerHTML = `✓ ${data.message || (lang === 'en' ? 'Message received successfully!' : '¡Mensaje recibido con éxito!')}`;
           }
           form.reset();
+          updateMessageCounter();
           if (turnstileTokenInput) turnstileTokenInput.value = '';
           if (window.turnstile && window.turnstileWidgetId) {
             window.turnstile.reset(window.turnstileWidgetId);
