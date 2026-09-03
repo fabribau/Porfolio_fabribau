@@ -12,7 +12,7 @@ liveUrl: 'https://fabribau.tech'
 
 ## About the Project
 
-**FabRiBau** (`fabribau.tech`) is this very website: an engineered meta-project created as a comprehensive showcase of my profile as an **Informatics Engineer, FullStack Software Developer, and University Lecturer**.
+**FabRiBau** (`fabribau.tech`) is this very website: an engineered meta-project created as a comprehensive showcase of my profile as an **Informatics Engineer, FullStack Software Developer, and University Teacher**.
 
 Designed from the ground up without relying on standard cookie-cutter templates, it adopts a **modern Neobrutalist aesthetic** combining high-contrast vibrant color accents, thick borders, and solid offset shadows with tactile mechanical micro-interactions and smooth View Transitions.
 

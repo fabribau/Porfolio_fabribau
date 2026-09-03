@@ -259,7 +259,7 @@ export const ui = {
     // About Me Page
     'about.title': 'About Me',
     'about.subtitle':
-      'Software Engineer, University Lecturer, and AI Researcher in San Luis, Argentina.',
+      'Software Engineer, University Teacher, and AI Researcher in San Luis, Argentina.',
     'about.bio_title': 'Professional & Academic Profile',
     'about.bio_p1':
       "Hi, I'm Fabri, a Software Engineer with the ability to transform complex requirements into efficient and scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and complex high-impact architectures, with experience as an author and speaker at scientific conferences.",
