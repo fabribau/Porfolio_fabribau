@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -84,7 +86,96 @@ export default {
         radar: 'radar-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         marquee: 'marquee 25s linear infinite',
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': '#0D0D0D',
+            '--tw-prose-headings': '#0D0D0D',
+            '--tw-prose-lead': '#4B5563',
+            '--tw-prose-links': '#FF3D8A',
+            '--tw-prose-bold': '#0D0D0D',
+            '--tw-prose-counters': '#0D0D0D',
+            '--tw-prose-bullets': '#0D0D0D',
+            '--tw-prose-hr': '#0D0D0D',
+            '--tw-prose-quotes': '#0D0D0D',
+            '--tw-prose-quote-borders': '#FFE400',
+            '--tw-prose-captions': '#4B5563',
+            '--tw-prose-code': '#0D0D0D',
+            '--tw-prose-pre-code': '#F5F0E8',
+            '--tw-prose-pre-bg': '#0D0D0D',
+            '--tw-prose-th-borders': '#0D0D0D',
+            '--tw-prose-td-borders': '#E5E7EB',
+            '--tw-prose-invert-body': '#F5F0E8',
+            '--tw-prose-invert-headings': '#F5F0E8',
+            '--tw-prose-invert-lead': '#9CA3AF',
+            '--tw-prose-invert-links': '#FFE400',
+            '--tw-prose-invert-bold': '#FFFFFF',
+            '--tw-prose-invert-counters': '#F5F0E8',
+            '--tw-prose-invert-bullets': '#FFE400',
+            '--tw-prose-invert-hr': '#F5F0E8',
+            '--tw-prose-invert-quotes': '#F5F0E8',
+            '--tw-prose-invert-quote-borders': '#FFE400',
+            '--tw-prose-invert-captions': '#9CA3AF',
+            '--tw-prose-invert-code': '#F5F0E8',
+            '--tw-prose-invert-pre-code': '#F5F0E8',
+            '--tw-prose-invert-pre-bg': '#181818',
+            '--tw-prose-invert-th-borders': '#F5F0E8',
+            '--tw-prose-invert-td-borders': '#27272A',
+            h1: {
+              fontFamily: theme('fontFamily.display').join(', '),
+              fontWeight: '900',
+              letterSpacing: '-0.025em',
+            },
+            h2: {
+              fontFamily: theme('fontFamily.display').join(', '),
+              fontWeight: '800',
+              letterSpacing: '-0.02em',
+              marginTop: '2em',
+              marginBottom: '0.75em',
+            },
+            h3: {
+              fontFamily: theme('fontFamily.display').join(', '),
+              fontWeight: '800',
+              marginTop: '1.6em',
+              marginBottom: '0.6em',
+            },
+            h4: {
+              fontFamily: theme('fontFamily.display').join(', '),
+              fontWeight: '700',
+            },
+            hr: {
+              borderWidth: '2px',
+              borderColor: 'currentColor',
+              opacity: '0.2',
+              marginTop: '2.5em',
+              marginBottom: '2.5em',
+            },
+            blockquote: {
+              borderLeftWidth: '4px',
+              borderLeftColor: '#FFE400',
+              fontStyle: 'normal',
+              fontWeight: '500',
+            },
+            code: {
+              fontFamily: theme('fontFamily.mono').join(', '),
+              fontWeight: '600',
+              padding: '0.2em 0.4em',
+              borderRadius: '2px',
+              backgroundColor: 'rgba(0, 0, 0, 0.06)',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            'li::marker': {
+              fontWeight: 'bold',
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
