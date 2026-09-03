@@ -57,7 +57,7 @@ const isCurrentPath = (href: string) => {
 
     <!-- Desktop Navigation -->
     <nav
-      class="hidden items-center gap-1 font-display text-xs font-bold uppercase tracking-wider md:flex"
+      class="hidden items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider md:flex"
     >
       {
         navItems.map((item) => {
@@ -65,10 +65,10 @@ const isCurrentPath = (href: string) => {
           return (
             <a
               href={item.href}
-              class={`border-2 px-3 py-1.5 transition-all ${
+              class={`border-2 px-3 py-1.5 transition-all duration-150 ease-out active:translate-x-0.5 active:translate-y-0.5 active:shadow-none ${
                 active
-                  ? '-translate-y-0.5 border-black bg-accent-yellow text-black shadow-[2px_2px_0px_0px_var(--shadow-color)]'
-                  : 'border-transparent text-zinc-700 hover:border-black hover:bg-black/5 dark:text-zinc-300 dark:hover:border-white dark:hover:bg-white/5'
+                  ? '-translate-x-0.5 -translate-y-0.5 border-black bg-accent-yellow text-black shadow-brutal-sm hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal dark:border-white'
+                  : 'border-transparent text-zinc-700 hover:-translate-x-1 hover:-translate-y-1 hover:border-black hover:bg-white hover:text-black hover:shadow-brutal dark:text-zinc-300 dark:hover:border-white dark:hover:bg-zinc-800 dark:hover:text-white dark:hover:shadow-brutal'
               }`}
             >
               {item.label}
@@ -132,10 +132,10 @@ const isCurrentPath = (href: string) => {
         return (
           <a
             href={item.href}
-            class={`block border-2 border-black px-4 py-2.5 font-display text-sm font-black uppercase tracking-wider dark:border-white ${
+            class={`block border-2 border-black px-4 py-2.5 font-display text-sm font-black uppercase tracking-wider transition-all duration-150 ease-out active:translate-x-0.5 active:translate-y-0.5 active:shadow-none dark:border-white ${
               active
-                ? 'bg-accent-yellow text-black shadow-brutal-sm'
-                : 'bg-zinc-100 text-zinc-900 hover:bg-accent-pink hover:text-white dark:bg-zinc-800 dark:text-zinc-100'
+                ? '-translate-x-0.5 -translate-y-0.5 bg-accent-yellow text-black shadow-brutal-sm hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal'
+                : 'bg-zinc-100 text-zinc-900 shadow-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-accent-pink hover:text-white hover:shadow-brutal dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-accent-pink dark:hover:text-white'
             }`}
           >
             {item.label}

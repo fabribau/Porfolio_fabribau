@@ -11,7 +11,7 @@ const switchUrl = translatePath(Astro.url.pathname, otherLang);
 ---
 
 <div
-  class="flex items-center gap-1 border-2 border-black bg-white p-0.5 shadow-brutal-sm dark:border-white dark:bg-zinc-800"
+  class="flex items-center gap-1 border-2 border-black bg-white p-0.5 shadow-brutal-sm transition-all duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal active:translate-x-0.5 active:translate-y-0.5 active:shadow-none dark:border-white dark:bg-zinc-800"
 >
   {
     (Object.keys(languages) as Lang[]).map((lang) => {
@@ -19,10 +19,10 @@ const switchUrl = translatePath(Astro.url.pathname, otherLang);
       return (
         <a
           href={switchUrl}
-          class={`px-2.5 py-1 text-xs font-bold transition-colors ${
+          class={`px-2.5 py-1 text-xs font-bold transition-all duration-150 ease-out ${
             isActive
-              ? 'border-2 border-black bg-accent-yellow text-black shadow-[1px_1px_0px_0px_#000]'
-              : 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-700'
+              ? 'border-2 border-black bg-accent-yellow text-black shadow-[1px_1px_0px_0px_var(--shadow-color)]'
+              : 'text-zinc-700 hover:bg-zinc-100 hover:text-black dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-white'
           }`}
         >
           {lang.toUpperCase()}

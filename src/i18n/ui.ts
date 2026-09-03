@@ -59,19 +59,19 @@ export const ui = {
     // Hero section
     'hero.badge': 'Disponible para nuevos desafíos',
     'hero.title': 'Fabrizio José Riera Bauer',
-    'hero.role': 'Ingeniero en Informática & Desarrollador FullStack',
+    'hero.role': 'Ingeniero en Informática',
     'hero.desc':
-      'Especializado en desarrollo web fullstack, IA conversacional con RAG, docencia universitaria e investigación.',
+      'Especializado en desarrollo fullstack, IA, docencia e investigación.',
     'hero.cta_projects': 'Ver Proyectos',
     'hero.cta_about': 'Sobre mí',
     'hero.cta_contact': 'Contactar',
 
     // Home sections
     'home.about_summary':
-      'Ingeniero en Informática por la Universidad Nacional de San Luis (UNSL), docente auxiliar de programación e investigador en sistemas de IA con Retrieval-Augmented Generation (RAG). Combino rigor científico y metodológico con desarrollo de software ágil para crear soluciones robustas, eficientes y de alto impacto.',
+      'Ingeniero en Informática graduado en la Universidad Nacional de San Luis (UNSL), desarrollador de software, docente auxiliar de programación e investigador en sistemas de IA. Combino rigor científico y metodológico con desarrollo de software ágil para crear soluciones robustas, eficientes y de alto impacto.',
     'home.latest_articles': 'Últimos Artículos',
     'home.latest_articles_desc':
-      'Publicaciones técnicas, reflexiones académicas e ingeniería de software.',
+      'Algunas reflexiones, publicaciones técnicas/académicas, datos random e ingeniería de software.',
     'home.view_all_posts': 'Ver todos los artículos',
 
     // About Me Page
@@ -80,31 +80,31 @@ export const ui = {
       'Ingeniero en Informática, Docente Universitario e Investigador en IA en San Luis, Argentina.',
     'about.bio_title': 'Perfil Profesional & Académico',
     'about.bio_p1':
-      'Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas RAG para el impacto social, con experiencia como autor y expositor en congresos científicos.',
+      'Hola soy Fabri, Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas complejas de alto impacto, con experiencia como autor y expositor en congresos científicos.',
     'about.bio_p2':
-      'Combino mi trayectoria docente en la Universidad Nacional de San Luis (UNSL) en materias centrales de programación y algoritmos con experiencia práctica en la industria y el sector público, participando activamente en todas las etapas del ciclo de vida del software.',
+      'Combino mi trayectoria docente en la Universidad Nacional de San Luis (UNSL) en materias centrales de resolución de problemas, algoritmos y programación, con experiencia práctica en la industria y el sector público, participando activamente en todas las etapas del ciclo de vida del software.', 
     'about.experience_title': 'Experiencia Profesional & Laboral',
     'about.teaching_title': 'Trayectoria Docente Universitaria',
-    'about.research_title': 'Investigación Científica & Publicaciones',
     'about.education_title': 'Educación & Distinciones Académicas',
+    'about.research_title': 'Investigación Científica & Publicaciones',
     'about.courses_title': 'Cursos Extracurriculares Dictados',
     'about.governance_title': 'Extensión y Gestión Universitaria',
     'about.skills_title': 'Habilidades Técnicas & Tecnologías',
     'about.skills_frontend': 'Frontend & UI',
     'about.skills_backend': 'Backend & APIs',
-    'about.skills_ai': 'Inteligencia Artificial & RAG',
+    'about.skills_ai': 'Inteligencia Artificial',
     'about.skills_databases': 'Bases de Datos & Cloud',
     'about.skills_tools': 'DevOps & Herramientas',
     'about.languages_title': 'Idiomas',
     'about.lang_es': 'Español (Nativo)',
-    'about.lang_en': 'Inglés (Intermedio B1 / B2 Técnico)',
+    'about.lang_en': 'Inglés (Intermedio B1 Técnico)',
     'about.location_title': 'Ubicación & Modalidad',
-    'about.location_desc': 'San Luis, Argentina — Disponible para trabajo remoto y presencial.',
+    'about.location_desc': 'San Luis, Argentina — Estoy disponible para trabajo remoto y presencial.',
 
     // Projects Page
     'projects.title': 'Proyectos & Desarrollos',
     'projects.subtitle':
-      'Exploración de software, plataformas en producción, agentes de IA e iniciativas de investigación.',
+      'Una exploración de mis proyectos de software, plataformas en producción y desarrollos con IA.',
     'projects.filter_all': 'Todos',
     'projects.filter_in_progress': 'En desarrollo',
     'projects.filter_completed': 'Completados',
@@ -112,13 +112,13 @@ export const ui = {
     // Blog Page
     'blog.title': 'Blog & Publicaciones',
     'blog.subtitle':
-      'Artículos técnicos, notas de investigación en IA, experiencias docentes y reflexiones de desarrollo.',
+      'Algunas reflexiones, publicaciones técnicas/académicas, datos random e ingeniería de software.',
     'blog.no_posts': 'No hay publicaciones disponibles en este momento.',
 
     // Contact Page
     'contact.title': 'Contacto',
     'contact.subtitle':
-      '¿Tenés una propuesta, proyecto o consulta? Escribime o contactame por cualquiera de mis canales.',
+      '¿Tenés una propuesta, proyecto o consulta? Escribime o contactame por acá o por mis redes.',
     'contact.form_name': 'Tu Nombre',
     'contact.form_email': 'Tu Correo Electrónico',
     'contact.form_subject': 'Asunto',
@@ -144,7 +144,7 @@ export const ui = {
       'Error de conexión. Verifica tu conexión a internet e intenta nuevamente.',
     'contact.direct_channels': 'Canales Directos',
     'contact.email_label': 'Correo Electrónico',
-    'contact.whatsapp_label': 'WhatsApp',
+    'contact.whatsapp_label': 'Si es urgente, contactame por WhatsApp',
     'contact.whatsapp_cta': 'Chatear por WhatsApp',
     'contact.linkedin_label': 'LinkedIn',
     'contact.github_label': 'GitHub',
@@ -157,7 +157,7 @@ export const ui = {
     'footer.rights': 'Todos los derechos reservados.',
     'footer.quick_links': 'Accesos Rápidos',
     'footer.social': 'Redes y Contacto',
-    'footer.status': 'Sistema operativo v1.0 • Listo para producción',
+    'footer.status': 'Listo para desarrollar nuevas soluciones',
 
     // Style Guide
     'styleguide.title': 'UI Kit Neobrutalista',
