@@ -237,52 +237,52 @@ export const ui = {
     // Hero section
     'hero.badge': 'Available for new challenges',
     'hero.title': 'Fabrizio José Riera Bauer',
-    'hero.role': 'Informatics Engineer & FullStack Developer',
+    'hero.role': 'Software Engineer',
     'hero.desc':
-      'Specialized in FullStack web development, conversational AI with RAG, university lecturing, and research.',
+      'Specialized in fullstack development, AI, teaching, and research.',
     'hero.cta_projects': 'Explore Projects',
     'hero.cta_about': 'About Me',
     'hero.cta_contact': 'Get in Touch',
 
     // Home sections
     'home.about_summary':
-      'Informatics Engineer graduated from Universidad Nacional de San Luis (UNSL), programming teaching assistant, and researcher in AI systems using Retrieval-Augmented Generation (RAG). Combining academic and scientific rigor with agile software development to build robust, scalable, and high-impact solutions.',
+      'Software Engineer graduated from Universidad Nacional de San Luis (UNSL), software developer, programming teaching assistant, and AI systems researcher. I combine scientific and methodological rigor with agile software development to create robust, efficient, and high-impact solutions.',
     'home.latest_articles': 'Latest Articles',
     'home.latest_articles_desc':
-      'Technical write-ups, academic insights, and software engineering practices.',
+      'Some reflections, technical/academic publications, random facts, and software engineering.',
     'home.view_all_posts': 'View all articles',
 
     // About Me Page
     'about.title': 'About Me',
     'about.subtitle':
-      'Informatics Engineer, University Lecturer, and AI Researcher based in San Luis, Argentina.',
+      'Software Engineer, University Lecturer, and AI Researcher in San Luis, Argentina.',
     'about.bio_title': 'Professional & Academic Profile',
     'about.bio_p1':
-      'Informatics Engineer with strong expertise in transforming complex domain requirements into efficient, scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and RAG architectures for social impact, with proven experience as an author and presenter at scientific congresses.',
+      "Hi, I'm Fabri, a Software Engineer with the ability to transform complex requirements into efficient and scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and complex high-impact architectures, with experience as an author and speaker at scientific conferences.",
     'about.bio_p2':
-      'I blend my academic lecturing journey at Universidad Nacional de San Luis (UNSL) in foundational algorithms and programming courses with hands-on industry and public sector engineering, actively contributing across all stages of the software development lifecycle.',
+      'I blend my university teaching journey at Universidad Nacional de San Luis (UNSL) in core courses of problem solving, algorithms, and programming, with hands-on experience in the industry and public sector, actively participating in all stages of the software development lifecycle.',
     'about.experience_title': 'Professional & Industry Experience',
     'about.teaching_title': 'University Teaching Experience',
-    'about.research_title': 'Scientific Research & Publications',
     'about.education_title': 'Education & Academic Distinctions',
+    'about.research_title': 'Scientific Research & Publications',
     'about.courses_title': 'Taught Extracurricular Courses',
     'about.governance_title': 'University Governance & Outreach',
     'about.skills_title': 'Technical Skills & Technologies',
     'about.skills_frontend': 'Frontend & UI',
     'about.skills_backend': 'Backend & APIs',
-    'about.skills_ai': 'Artificial Intelligence & RAG',
+    'about.skills_ai': 'Artificial Intelligence',
     'about.skills_databases': 'Databases & Cloud',
     'about.skills_tools': 'DevOps & Tools',
     'about.languages_title': 'Languages',
     'about.lang_es': 'Spanish (Native)',
-    'about.lang_en': 'English (Intermediate B1 / B2 Technical)',
+    'about.lang_en': 'English (Intermediate B1 Technical)',
     'about.location_title': 'Location & Work Mode',
-    'about.location_desc': 'San Luis, Argentina — Open to remote and on-site opportunities.',
+    'about.location_desc': 'San Luis, Argentina — I am available for remote and on-site work.',
 
     // Projects Page
     'projects.title': 'Projects & Engineering',
     'projects.subtitle':
-      'Production software applications, AI agents, enterprise systems, and research platforms.',
+      'An exploration of my software projects, platforms in production, and AI developments.',
     'projects.filter_all': 'All',
     'projects.filter_in_progress': 'In Progress',
     'projects.filter_completed': 'Completed',
@@ -290,13 +290,13 @@ export const ui = {
     // Blog Page
     'blog.title': 'Blog & Insights',
     'blog.subtitle':
-      'Technical deep dives, AI research notes, university teaching reflections, and software craftsmanship.',
+      'Some reflections, technical/academic publications, random facts, and software engineering.',
     'blog.no_posts': 'No posts available at this moment.',
 
     // Contact Page
     'contact.title': 'Contact',
     'contact.subtitle':
-      'Have a project, technical inquiry, or opportunity in mind? Feel free to reach out directly.',
+      'Got a proposal, project, or inquiry? Reach out to me here or through my social networks.',
     'contact.form_name': 'Your Name',
     'contact.form_email': 'Your Email Address',
     'contact.form_subject': 'Subject',
@@ -320,20 +320,20 @@ export const ui = {
       'Network error. Please check your internet connection and try again.',
     'contact.direct_channels': 'Direct Channels',
     'contact.email_label': 'Email Address',
-    'contact.whatsapp_label': 'WhatsApp',
+    'contact.whatsapp_label': 'If it is urgent, contact me via WhatsApp',
     'contact.whatsapp_cta': 'Chat on WhatsApp',
     'contact.linkedin_label': 'LinkedIn',
     'contact.github_label': 'GitHub',
     'contact.location_label': 'Location',
     'contact.status_label': 'Status',
-    'contact.status_value': 'Available for FullStack, AI & Lecturing Opportunities',
+    'contact.status_value': 'Available for FullStack, AI & Teaching Opportunities',
 
     // Footer
     'footer.built_with': 'Built with',
     'footer.rights': 'All rights reserved.',
     'footer.quick_links': 'Quick Links',
     'footer.social': 'Social & Contact',
-    'footer.status': 'Operating System v1.0 • Production ready',
+    'footer.status': 'Ready to build new solutions',
 
     // Style Guide
     'styleguide.title': 'Neobrutalist UI Kit',
