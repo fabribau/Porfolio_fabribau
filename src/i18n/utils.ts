@@ -31,3 +31,19 @@ export function useTranslatedPath(lang: Lang) {
     return `/${targetLang}/${cleanPath}`;
   };
 }
+
+export function formatDate(
+  date: Date,
+  lang: Lang,
+  options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+): string {
+  const locale = lang === 'es' ? 'es-AR' : 'en-US';
+  return date.toLocaleDateString(locale, {
+    timeZone: 'UTC',
+    ...options,
+  });
+}

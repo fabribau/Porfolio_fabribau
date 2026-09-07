@@ -6,7 +6,7 @@ import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import Button from '@components/Button.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -50,7 +50,7 @@ allProjects.sort((a, b) => {
                     {isDev ? t('project.status.in_progress') : t('project.status.completed')}
                   </Badge>
                   <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                    {project.data.pubDate.toLocaleDateString('en-US', {
+                    {formatDate(project.data.pubDate, lang, {
                       year: 'numeric',
                       month: 'short',
                     })}
@@ -97,10 +97,11 @@ allProjects.sort((a, b) => {
                     <Button
                       href={project.data.repositoryUrl}
                       target="_blank"
-                      variant="ghost"
+                      variant="cyan"
                       size="sm"
                     >
                       {t('common.view_code')}
+                      <span slot="suffix">↗</span>
                     </Button>
                   )}
                 </div>

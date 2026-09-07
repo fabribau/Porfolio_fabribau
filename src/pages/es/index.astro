@@ -6,7 +6,7 @@ import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -156,7 +156,7 @@ const latestPosts = allPosts.slice(0, 2);
                       {isDev ? t('project.status.in_progress') : t('project.status.completed')}
                     </Badge>
                     <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                      {project.data.pubDate.toLocaleDateString('es-AR', {
+                      {formatDate(project.data.pubDate, lang, {
                         year: 'numeric',
                         month: 'short',
                       })}
@@ -239,7 +239,7 @@ const latestPosts = allPosts.slice(0, 2);
                       BLOG
                     </Badge>
                     <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                      {post.data.pubDate.toLocaleDateString('es-AR', {
+                      {formatDate(post.data.pubDate, lang, {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',

@@ -100,6 +100,73 @@
     border: 3px solid var(--border-color);
     box-shadow: 4px 4px 0px 0px var(--shadow-color);
   }
+
+  /* Responsive neobrutalist tables inside markdown prose */
+  .prose table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    border: 3px solid var(--border-color);
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-surface);
+  }
+
+  .prose thead {
+    border-bottom: 3px solid var(--border-color);
+    background-color: rgba(255, 228, 0, 0.18);
+  }
+
+  .dark .prose thead {
+    background-color: rgba(255, 228, 0, 0.1);
+  }
+
+  .prose th {
+    padding: 0.75rem 1rem;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    border-right: 2px solid var(--border-color);
+    white-space: nowrap;
+  }
+
+  .prose th:last-child {
+    border-right: none;
+  }
+
+  .prose td {
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    border-bottom: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+    vertical-align: top;
+    min-width: 220px;
+    color: var(--text-primary);
+  }
+
+  .prose td:last-child {
+    border-right: none;
+  }
+
+  .prose tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .prose tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .dark .prose tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
 }
 
 @layer utilities {

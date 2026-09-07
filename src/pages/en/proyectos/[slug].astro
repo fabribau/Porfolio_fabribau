@@ -4,7 +4,7 @@ import Button from '@components/Button.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import { getCollection, render } from 'astro:content';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
 export async function getStaticPaths() {
   const projects = await getCollection('proyectos', ({ id }) => id.startsWith('en/'));
@@ -49,14 +49,7 @@ const isDev = project.data.status === 'en-desarrollo';
           {isDev ? t('project.status.in_progress') : t('project.status.completed')}
         </Badge>
         <span class="font-mono text-sm font-bold text-fg-muted-light dark:text-fg-muted-dark">
-          {t('common.published_on')}
-          {
-            project.data.pubDate.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })
-          }
+          {t('common.published_on')} {formatDate(project.data.pubDate, lang)}
         </span>
       </div>
 
@@ -99,7 +92,7 @@ const isDev = project.data.status === 'en-desarrollo';
         }
         {
           project.data.repositoryUrl && (
-            <Button href={project.data.repositoryUrl} target="_blank" variant="secondary" size="md">
+            <Button href={project.data.repositoryUrl} target="_blank" variant="cyan" size="md">
               {t('project.source_code')}
               <span slot="suffix">↗</span>
             </Button>
@@ -110,7 +103,7 @@ const isDev = project.data.status === 'en-desarrollo';
 
     <!-- Markdown Content Container -->
     <div
-      class="prose dark:prose-invert prose-headings:font-display prose-headings:font-black prose-a:text-accent-pink dark:prose-a:text-accent-yellow prose-code:font-mono max-w-none border-4 border-black bg-white p-6 font-sans shadow-brutal-lg dark:border-white dark:bg-zinc-900 md:p-10"
+      class="prose dark:prose-invert prose-headings:font-display prose-headings:font-black prose-a:text-accent-pink dark:prose-a:text-accent-yellow prose-code:font-mono max-w-none overflow-hidden border-4 border-black bg-white p-4 font-sans shadow-brutal-lg dark:border-white dark:bg-zinc-900 sm:p-6 md:p-10"
     >
       <Content />
     </div>
