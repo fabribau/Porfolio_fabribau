@@ -33,7 +33,7 @@ const latestPosts = allPosts.slice(0, 2);
 >
   <div class="space-y-16">
     <!-- Hero Section -->
-    <section>
+    <section class="reveal-on-scroll reveal-pop">
       <div
         class="space-y-6 border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl selection:bg-accent-pink selection:text-white dark:border-white md:p-12"
       >
@@ -80,7 +80,7 @@ const latestPosts = allPosts.slice(0, 2);
     </section>
 
     <!-- About Me Snippet Section -->
-    <section>
+    <section class="reveal-on-scroll">
       <Card variant="default" shadow="lg">
         <div class="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
           <div class="space-y-4 md:col-span-8">
@@ -143,82 +143,87 @@ const latestPosts = allPosts.slice(0, 2);
 
     <!-- Featured Projects Section -->
     <section class="space-y-8">
-      <SectionHeader
-        number="01"
-        title={t('project.featured')}
-        subtitle="Sistemas en producción, agentes de inteligencia artificial y proyectos destacados."
-        highlightColor="pink"
-      />
+      <div class="reveal-on-scroll">
+        <SectionHeader
+          number="01"
+          title={t('project.featured')}
+          subtitle="Sistemas en producción, agentes de inteligencia artificial y proyectos destacados."
+          highlightColor="pink"
+        />
+      </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
-          featuredProjects.map((project) => {
+          featuredProjects.map((project, index) => {
             const slug = project.id.replace(/^es\//, '');
             const isDev = project.data.status === 'en-desarrollo';
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
 
             return (
-              <Card
-                variant="default"
-                shadow="lg"
-                hoverTilt="left"
-                class="flex flex-col justify-between"
-              >
-                <div>
-                  <div class="mb-4 flex items-center justify-between gap-2">
-                    <Badge color={isDev ? 'lime' : 'cyan'} pulse={isDev} size="sm">
-                      {isDev ? t('project.status.in_progress') : t('project.status.completed')}
-                    </Badge>
-                    <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                      {formatDate(project.data.pubDate, lang, {
-                        year: 'numeric',
-                        month: 'short',
-                      })}
-                    </span>
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card
+                  variant="default"
+                  shadow="lg"
+                  hoverTilt={index % 2 === 0 ? 'left' : 'right'}
+                  class="flex flex-1 flex-col justify-between"
+                >
+                  <div>
+                    <div class="mb-4 flex items-center justify-between gap-2">
+                      <Badge color={isDev ? 'lime' : 'cyan'} pulse={isDev} size="sm">
+                        {isDev ? t('project.status.in_progress') : t('project.status.completed')}
+                      </Badge>
+                      <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                        {formatDate(project.data.pubDate, lang, {
+                          year: 'numeric',
+                          month: 'short',
+                        })}
+                      </span>
+                    </div>
+
+                    <a href={translatePath(`/proyectos/${slug}`)} class="group mb-3 inline-block">
+                      <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
+                        {project.data.title}
+                      </h3>
+                    </a>
+
+                    <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                      {project.data.description}
+                    </p>
                   </div>
 
-                  <a href={translatePath(`/proyectos/${slug}`)} class="group mb-3 inline-block">
-                    <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
-                      {project.data.title}
-                    </h3>
-                  </a>
+                  <div>
+                    <div class="mb-6 flex flex-wrap gap-2">
+                      {project.data.tags.map((tag) => (
+                        <Tag>{tag}</Tag>
+                      ))}
+                    </div>
 
-                  <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                    {project.data.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div class="mb-6 flex flex-wrap gap-2">
-                    {project.data.tags.map((tag) => (
-                      <Tag>{tag}</Tag>
-                    ))}
-                  </div>
-
-                  <div class="flex items-center gap-3 border-t-2 border-black/10 pt-4 dark:border-white/10">
-                    <Button href={translatePath(`/proyectos/${slug}`)} variant="primary" size="sm">
-                      {t('common.view_project')}
-                      <span slot="suffix">→</span>
-                    </Button>
-                    {project.data.liveUrl && (
-                      <Button
-                        href={project.data.liveUrl}
-                        target="_blank"
-                        variant="secondary"
-                        size="sm"
-                      >
-                        {t('project.live_demo')}
-                        <span slot="suffix">↗</span>
+                    <div class="flex items-center gap-3 border-t-2 border-black/10 pt-4 dark:border-white/10">
+                      <Button href={translatePath(`/proyectos/${slug}`)} variant="primary" size="sm">
+                        {t('common.view_project')}
+                        <span slot="suffix">→</span>
                       </Button>
-                    )}
+                      {project.data.liveUrl && (
+                        <Button
+                          href={project.data.liveUrl}
+                          target="_blank"
+                          variant="secondary"
+                          size="sm"
+                        >
+                          {t('project.live_demo')}
+                          <span slot="suffix">↗</span>
+                        </Button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             );
           })
         }
       </div>
 
-      <div class="pt-4 text-center">
+      <div class="reveal-on-scroll pt-4 text-center">
         <Button href={translatePath('/proyectos')} variant="secondary" size="md">
           {t('project.view_all')} ({allProjects.length})
           <span slot="suffix">→</span>
@@ -228,70 +233,76 @@ const latestPosts = allPosts.slice(0, 2);
 
     <!-- Latest Blog Posts Section -->
     <section class="space-y-8">
-      <SectionHeader
-        number="02"
-        title={t('home.latest_articles')}
-        subtitle={t('home.latest_articles_desc')}
-        highlightColor="yellow"
-      />
+      <div class="reveal-on-scroll">
+        <SectionHeader
+          number="02"
+          title={t('home.latest_articles')}
+          subtitle={t('home.latest_articles_desc')}
+          highlightColor="yellow"
+        />
+      </div>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {
-          latestPosts.map((post) => {
+          latestPosts.map((post, index) => {
             const slug = post.id.replace(/^es\//, '');
+            const delayClass = `reveal-delay-${((index % 2) + 1) * 100}`;
+
             return (
-              <Card
-                variant="default"
-                shadow="lg"
-                hoverTilt="right"
-                class="flex flex-col justify-between"
-              >
-                <div>
-                  <div class="mb-4 flex items-center justify-between gap-2">
-                    <Badge color="pink" size="sm">
-                      BLOG
-                    </Badge>
-                    <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                      {formatDate(post.data.pubDate, lang, {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card
+                  variant="default"
+                  shadow="lg"
+                  hoverTilt={index % 2 === 0 ? 'right' : 'left'}
+                  class="flex flex-1 flex-col justify-between"
+                >
+                  <div>
+                    <div class="mb-4 flex items-center justify-between gap-2">
+                      <Badge color="pink" size="sm">
+                        BLOG
+                      </Badge>
+                      <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                        {formatDate(post.data.pubDate, lang, {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </div>
+
+                    <a href={translatePath(`/blog/${slug}`)} class="group mb-3 inline-block">
+                      <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
+                        {post.data.title}
+                      </h3>
+                    </a>
+
+                    <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                      {post.data.description}
+                    </p>
                   </div>
 
-                  <a href={translatePath(`/blog/${slug}`)} class="group mb-3 inline-block">
-                    <h3 class="font-display text-2xl font-black tracking-tight transition-colors group-hover:text-accent-pink">
-                      {post.data.title}
-                    </h3>
-                  </a>
+                  <div>
+                    <div class="mb-6 flex flex-wrap gap-2">
+                      {post.data.tags.map((tag) => (
+                        <Tag>{tag}</Tag>
+                      ))}
+                    </div>
 
-                  <p class="mb-6 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                    {post.data.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div class="mb-6 flex flex-wrap gap-2">
-                    {post.data.tags.map((tag) => (
-                      <Tag>{tag}</Tag>
-                    ))}
+                    <div class="flex justify-end border-t-2 border-black/10 pt-4 dark:border-white/10">
+                      <Button href={translatePath(`/blog/${slug}`)} variant="primary" size="sm">
+                        {t('common.read_more')}
+                        <span slot="suffix">→</span>
+                      </Button>
+                    </div>
                   </div>
-
-                  <div class="flex justify-end border-t-2 border-black/10 pt-4 dark:border-white/10">
-                    <Button href={translatePath(`/blog/${slug}`)} variant="primary" size="sm">
-                      {t('common.read_more')}
-                      <span slot="suffix">→</span>
-                    </Button>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             );
           })
         }
       </div>
 
-      <div class="pt-4 text-center">
+      <div class="reveal-on-scroll pt-4 text-center">
         <Button href={translatePath('/blog')} variant="secondary" size="md">
           {t('home.view_all_posts')}
           <span slot="suffix">→</span>
@@ -300,7 +311,7 @@ const latestPosts = allPosts.slice(0, 2);
     </section>
 
     <!-- Contact CTA Banner -->
-    <section>
+    <section class="reveal-on-scroll reveal-pop">
       <div
         class="flex flex-col items-center justify-between gap-6 border-4 border-black bg-accent-cyan p-8 text-black shadow-brutal-xl dark:border-white md:flex-row md:p-12"
       >
@@ -321,3 +332,37 @@ const latestPosts = allPosts.slice(0, 2);
     </section>
   </div>
 </BaseLayout>
+
+<script>
+  function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)');
+    if (!reveals.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach((el) => el.classList.add('is-revealed'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  }
+
+  // Initialize on load and on Astro View Transitions
+  initScrollReveal();
+  document.addEventListener('astro:page-load', initScrollReveal);
+</script>
