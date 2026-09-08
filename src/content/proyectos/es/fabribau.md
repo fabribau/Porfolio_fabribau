@@ -42,7 +42,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           El 95% del sitio es contenido de lectura (proyectos, bio, artículos). Astro compila a HTML y CSS puros en build time, despachando 0 KB de JavaScript cliente salvo en islas interactivas puntuales (como el selector de tema y validación de formularios).
@@ -50,7 +50,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Single Page Application en Next.js o Vite SPA:</strong> Descartado por trasladar al navegador del usuario el costo de renderizado e hidratación innecesaria para un sitio de contenido.
@@ -72,7 +72,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           El contenido se gestiona en Markdown/MDX tipado estrictamente. Zod valida fechas, tags, estados y enlaces en tiempo de compilación; cualquier inconsistencia detiene el build inmediatamente antes del despliegue.
@@ -80,7 +80,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Headless CMS (Strapi, Sanity o Supabase):</strong> Descartado para mantener todo el contenido versionado en Git, sin dependencias de red en runtime ni costos de servicio externos.
@@ -102,7 +102,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Un script síncrono inline (&lt;1 KB) en el <code>&lt;head&gt;</code> evalúa la preferencia del sistema y <code>localStorage</code> antes del primer render, evitando parpadeos de tema incorrecto. Las sombras offset duras y físicas de botones se calculan con variables CSS sin librerías pesadas de animación.
@@ -110,7 +110,7 @@ El objetivo fue construir una plataforma propia que combine **máxima expresivid
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Librerías de animación en JS (Framer Motion / GSAP):</strong> Descartado por inflar el bundle innecesariamente para efectos que el motor gráfico nativo de CSS ejecuta a 60 FPS.

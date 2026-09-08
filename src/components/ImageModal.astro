@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -27,10 +28,11 @@ const t = useTranslations(lang);
       <button
         id="image-preview-close"
         type="button"
-        class="border-2 border-black bg-accent-pink px-2.5 py-1 font-mono text-xs font-bold text-white shadow-brutal-sm transition-all brutal-btn-press hover:bg-accent-pink/90 dark:border-white"
+        class="inline-flex items-center gap-1.5 border-2 border-black bg-accent-pink px-2.5 py-1 font-mono text-xs font-bold text-white shadow-brutal-sm transition-all brutal-btn-press hover:bg-accent-pink/90 dark:border-white"
         aria-label={t('nav.close')}
       >
-        ✕ {t('nav.close')} [Esc]
+        <Icon name="ph:x-bold" class="h-3.5 w-3.5" />
+        {t('nav.close')} [Esc]
       </button>
     </div>
 

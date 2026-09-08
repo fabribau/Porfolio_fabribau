@@ -7,6 +7,7 @@ import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import Button from '@components/Button.astro';
+import { Icon } from 'astro-icon/components';
 import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -252,7 +253,10 @@ const taughtCourses = [
           <p class="font-mono text-xs font-bold uppercase text-zinc-900">
             Ingeniero en Informática · UNSL
           </p>
-          <p class="font-mono text-xs font-semibold text-zinc-800">📍 San Luis, Argentina</p>
+          <p class="flex items-center gap-1 font-mono text-xs font-semibold text-zinc-800">
+            <Icon name="ph:map-pin-bold" class="h-3.5 w-3.5 shrink-0" />
+            San Luis, Argentina
+          </p>
         </div>
         <Badge color="dark" pulse={true} size="sm">
           {t('hero.badge')}
@@ -289,7 +293,7 @@ const taughtCourses = [
         >
           <Button href={translatePath('/contact')} variant="pink" size="md">
             {t('hero.cta_contact')}
-            <span slot="suffix">✉</span>
+            <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
           </Button>
           <Button
             href="/docs/CV-Empresas.pdf"
@@ -299,7 +303,7 @@ const taughtCourses = [
             size="md"
           >
             {t('common.download_cv_companies')}
-            <span slot="suffix">↓</span>
+            <Icon name="ph:download-simple-bold" slot="suffix" class="h-5 w-5" />
           </Button>
           <Button
             href="/docs/CV-Academico.pdf"
@@ -309,7 +313,7 @@ const taughtCourses = [
             size="md"
           >
             {t('common.download_cv_academic')}
-            <span slot="suffix">🎓</span>
+            <Icon name="ph:graduation-cap-bold" slot="suffix" class="h-5 w-5" />
           </Button>
         </div>
       </div>
@@ -522,8 +526,9 @@ const taughtCourses = [
     <!-- Languages & Location -->
     <section class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <Card variant="yellow" shadow="md">
-        <h4 class="mb-3 font-display text-xl font-black text-black">
-          🗣️ {t('about.languages_title')}
+        <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
+          <Icon name="ph:translate-bold" class="h-5 w-5 shrink-0" />
+          {t('about.languages_title')}
         </h4>
         <ul class="space-y-2 font-mono text-sm font-medium text-black">
           <li>• <strong>{t('about.lang_es')}</strong></li>
@@ -532,8 +537,9 @@ const taughtCourses = [
       </Card>
 
       <Card variant="cyan" shadow="md">
-        <h4 class="mb-3 font-display text-xl font-black text-black">
-          📍 {t('about.location_title')}
+        <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
+          <Icon name="ph:map-pin-bold" class="h-5 w-5 shrink-0" />
+          {t('about.location_title')}
         </h4>
         <p class="text-sm font-medium leading-relaxed text-black">
           {t('about.location_desc')}

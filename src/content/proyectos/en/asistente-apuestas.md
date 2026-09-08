@@ -52,7 +52,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          ✓ Engineering Rationale
+          Engineering Rationale
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           The conversational assistant requires sub-second latency and real-time streaming to retain youth engagement on mobile. Heavy NLP Transformer analysis (<code class="font-mono text-xs bg-black/5 dark:bg-white/10 px-1 py-0.5">pysentimiento</code>, emotion detection, risk scoring, and Excel reporting) is computationally intensive. Decoupling both workloads prevents heavy batch jobs from blocking the web event loop or inflating serverless compute costs.
@@ -60,7 +60,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Trade-off
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Unified Python Monolith (FastAPI/Streamlit) or Next.js synchronous processing:</strong> Discarded due to severe latency degradation in user chat during concurrent statistical batch calculations.
@@ -82,7 +82,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          ✓ Engineering Rationale
+          Engineering Rationale
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Grounded in independent benchmarks from <em>Artificial Analysis</em> (August 2025), this model occupied the optimal Pareto frontier: highest output token generation speed to sustain fluent real-time dialogues, an intelligence index score of 58 with integrated reasoning to follow clinical boundaries, and sustainable operational costs for a public university.
@@ -90,7 +90,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Trade-off
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Self-hosted Local LLMs (Llama 3 / Mistral) or Heavy Frontier Models (GPT-4o / Claude Opus):</strong> Local deployment required cost-prohibitive GPU hardware for 50+ concurrent users; frontier models multiplied token costs with negligible benefits for short guidance sessions.
@@ -112,7 +112,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          ✓ Engineering Rationale
+          Engineering Rationale
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Clinical psychology manuals and regulatory PDFs feature complex structural elements (multi-columns, tables, repetitive headers) that corrupt embeddings if parsed naively. Normalizing documents to Markdown beforehand preserves structural hierarchy, while 600-character sentence-boundary chunking with overlap prevents severing key diagnostic definitions.
@@ -120,7 +120,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Trade-off
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Raw PDF text extraction or rigid fixed-size token chunking:</strong> Discarded due to semantic false positives and hallucination risks caused by split clinical concepts.
@@ -142,7 +142,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-purple block mb-1 font-mono">
-          ✓ Engineering Rationale
+          Engineering Rationale
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Compliant with Law 25.326 and AAIP Responsible AI guidelines, the system operates with anonymous public access (no registration required) and ephemeral credentials for school interventions. All stored messages and session telemetry are encrypted at rest using AES-256-GCM with segregated keys.
@@ -150,7 +150,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
       </div>
       <div class="border-l-3 border-accent-purple bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Trade-off
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Plaintext storage or mandatory registration via email/national ID:</strong> Discarded to adhere strictly to data minimization and prevent teenage apprehension when reporting gambling habits.

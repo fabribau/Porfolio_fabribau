@@ -5,6 +5,7 @@ import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import SectionHeader from '@components/SectionHeader.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
@@ -63,7 +64,7 @@ const latestPosts = allPosts.slice(0, 2);
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <Button href={translatePath('/proyectos')} variant="pink" size="lg">
-            <span slot="prefix">⚡</span>
+            <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
             {t('hero.cta_projects')}
           </Button>
           <Button href={translatePath('/about')} variant="secondary" size="lg">
@@ -72,7 +73,7 @@ const latestPosts = allPosts.slice(0, 2);
           </Button>
           <Button href={translatePath('/contact')} variant="cyan" size="lg">
             {t('hero.cta_contact')}
-            <span slot="suffix">✉</span>
+            <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
           </Button>
         </div>
       </div>
@@ -117,11 +118,23 @@ const latestPosts = allPosts.slice(0, 2);
             >
               Key Highlights
             </h3>
-            <ul class="space-y-2 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
-              <li>🎓 <strong>Software Engineer</strong> (UNSL)</li>
-              <li>🌐 <strong>Software Architect</strong></li>
-              <li>🤖 <strong>AI Specialist</strong></li>
-              <li>🏛️ <strong>University Teacher</strong></li>
+            <ul class="space-y-2.5 font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+              <li class="flex items-center gap-2">
+                <Icon name="ph:graduation-cap-bold" class="h-4 w-4 shrink-0 text-pink-600 dark:text-accent-pink" />
+                <span><strong>Software Engineer</strong> (UNSL)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <Icon name="ph:globe-bold" class="h-4 w-4 shrink-0 text-cyan-600 dark:text-accent-cyan" />
+                <span><strong>Software Architect</strong></span>
+              </li>
+              <li class="flex items-center gap-2">
+                <Icon name="ph:cpu-bold" class="h-4 w-4 shrink-0 text-lime-600 dark:text-accent-lime" />
+                <span><strong>AI Specialist</strong></span>
+              </li>
+              <li class="flex items-center gap-2">
+                <Icon name="ph:chalkboard-teacher-bold" class="h-4 w-4 shrink-0 text-amber-600 dark:text-accent-yellow" />
+                <span><strong>University Teacher</strong></span>
+              </li>
             </ul>
           </div>
         </div>
@@ -301,7 +314,7 @@ const latestPosts = allPosts.slice(0, 2);
         </div>
 
         <Button href={translatePath('/contact')} variant="pink" size="lg">
-          <span slot="prefix">⚡</span>
+          <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
           {t('hero.cta_contact')}
         </Button>
       </div>

@@ -52,7 +52,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           El asistente conversacional requiere latencia mínima y streaming fluido para retener la atención de jóvenes en móvil. El análisis de texto mediante Transformers (<code class="font-mono text-xs bg-black/5 dark:bg-white/10 px-1 py-0.5">pysentimiento</code>, detección de emociones, ironía y exportación analítica a Excel) demanda alto cómputo de CPU. Separar ambos servicios previene que los cálculos pesados bloqueen el event loop web o encarezcan el consumo serverless.
@@ -60,7 +60,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Monolito en Python (FastAPI/Streamlit) o procesamiento unificado en Next.js:</strong> Descartado por el riesgo de degradación de latencia en el chat durante picos de cálculo estadístico concurrente.
@@ -82,7 +82,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Conforme a los benchmarks independientes de <em>Artificial Analysis</em> (agosto 2025), el modelo se situó en el cuadrante óptimo de equilibrio: máxima velocidad de salida (tokens/segundo) para mantener la inmediatez del diálogo, índice de inteligencia de 58 puntos con razonamiento integrado para acatar directrices clínicas, y un costo operativo viable para la universidad pública.
@@ -90,7 +90,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Modelos locales (Llama 3 / Mistral) o LLMs frontera pesados (GPT-4o / Claude Opus):</strong> La ejecución local requería servidores con hardware GPU prohibitivo para 50+ concurrentes; los modelos frontera encarecían los tokens sin aportar valor diferencial en diálogos breves de orientación.
@@ -112,7 +112,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Los manuales de psicología y guías clínicas en PDF poseen estructuras complejas (doble columna, tablas, pies de página) que distorsionan el vectorizado si se ingieren en crudo. Convertir previamente a Markdown conserva la semántica del documento, y el corte en oraciones naturales con solapamiento evita fracturar conceptos clínicos clave.
@@ -120,7 +120,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Ingesta directa de texto plano de PDFs o chunking rígido por tamaño fijo:</strong> Descartado por generar falsos positivos semánticos y alucinaciones al partir definiciones a la mitad.
@@ -142,7 +142,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-purple block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Bajo la Ley 25.326 y recomendaciones de la AAIP para IA responsable, el sistema opera con acceso público anónimo (sin registro) y credenciales temporales efímeras para intervenciones escolares. Toda la persistencia de mensajes y métricas se cifra en reposo mediante AES-256-GCM con claves segregadas.
@@ -150,7 +150,7 @@ El crecimiento explosivo de billeteras virtuales, casinos en línea y plataforma
       </div>
       <div class="border-l-3 border-accent-purple bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Almacenamiento en texto plano o autenticación obligatoria con correo/DNI:</strong> Descartado para cumplir con el principio de minimización de datos y evitar desconfianza en menores al relatar situaciones personales de juego.

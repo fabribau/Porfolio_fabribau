@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Button from '@components/Button.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
@@ -81,7 +82,7 @@ const translatePath = useTranslatedPath(lang);
       </Button>
       <Button href={translatePath('/contact')} variant="primary" size="md">
         {t('hero.cta_contact')}
-        <span slot="suffix">✉</span>
+        <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-4 w-4" />
       </Button>
     </div>
   </article>

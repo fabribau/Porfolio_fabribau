@@ -5,6 +5,7 @@ import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import SectionHeader from '@components/SectionHeader.astro';
+import { Icon } from 'astro-icon/components';
 import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -234,8 +235,8 @@ const translatePath = useTranslatedPath(lang);
           <div class="flex flex-wrap items-center gap-4">
             <Button variant="primary" disabled={true}>Disabled</Button>
             <Button variant="pink">
-              <span slot="prefix">⚡</span>
-              Prefix Icon
+              <Icon name="ph:lightning-bold" slot="prefix" class="h-4 w-4" />
+              With Prefix Icon
             </Button>
             <Button variant="lime">
               Suffix Icon

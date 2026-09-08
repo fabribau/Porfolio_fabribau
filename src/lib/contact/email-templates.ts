@@ -39,7 +39,7 @@ export function generateNotificationEmail(data: ContactFormData) {
     
     <!-- Header -->
     <div style="background-color: #FFE400; border: 2px solid #0D0D0D; padding: 12px 16px; margin-bottom: 20px; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 0.05em;">
-      📬 Nuevo mensaje desde fabribau.tech
+      Nuevo mensaje desde fabribau.tech
     </div>
 
     <!-- Details Box -->
@@ -132,7 +132,7 @@ export function generateAutoresponderEmail(data: ContactFormData) {
     
     <!-- Brand / Header -->
     <div style="background-color: #B4FF39; border: 2px solid #0D0D0D; padding: 12px 16px; margin-bottom: 20px; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0.05em;">
-      ⚡ Fabrizio José Riera Bauer &bull; fabribau.tech
+      Fabrizio José Riera Bauer &bull; fabribau.tech
     </div>
 
     <!-- Title & Greeting -->

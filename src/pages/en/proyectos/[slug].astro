@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Button from '@components/Button.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
 
@@ -86,7 +87,7 @@ const isDev = project.data.status === 'en-desarrollo';
           project.data.thesisUrl && (
             <Button href={project.data.thesisUrl} target="_blank" variant="purple" size="md">
               {t('project.thesis_pdf')}
-              <span slot="suffix">📄</span>
+              <Icon name="ph:file-text-bold" slot="suffix" class="h-4 w-4" />
             </Button>
           )
         }
@@ -115,7 +116,7 @@ const isDev = project.data.status === 'en-desarrollo';
       </Button>
       <Button href={translatePath('/contact')} variant="pink" size="md">
         {t('hero.cta_contact')}
-        <span slot="suffix">⚡</span>
+        <Icon name="ph:lightning-bold" slot="suffix" class="h-4 w-4" />
       </Button>
     </div>
   </article>

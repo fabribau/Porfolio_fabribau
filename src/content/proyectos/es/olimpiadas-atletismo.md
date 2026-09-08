@@ -64,7 +64,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Cada fila del archivo (CSV o Excel) requería un flujo <em>upsert</em>: verificar o crear el atleta, asociar su colegio y registrar la prueba validando topes reglamentarios. Toda la carga se procesa bajo una única unidad transaccional en MySQL para evitar estados corruptos o inscripciones a medias.
@@ -72,7 +72,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Procesamiento cliente o scripts sueltos:</strong> Descartado por falta de integridad referencial y riesgo de inconsistencias ante fallos de conexión o formatos inválidos.
@@ -94,7 +94,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Se implementó un algoritmo propio en el backend: calcula <code>N = ceil(atletas / andariveles)</code>, agrupa por institución y distribuye en <em>round-robin</em> inverso (<code>S1, S2, ..., Sn</code>) para garantizar que atletas del mismo colegio no compitan entre sí en series. En finales, asigna andariveles según el estándar oficial de World Athletics (carriles <code>4, 5, 3, 6, 2, 7, 1, 8</code> según mejores marcas).
@@ -102,7 +102,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Sorteo aleatorio o asignación manual asistida:</strong> Descartado por introducir sesgo humano y retrasar el inicio de las pruebas en pista.
@@ -124,7 +124,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          ✓ Justificación
+          Justificación Técnica
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           El backend en Spring Boot se mantuvo enfocado exclusivamente en lógica de negocio, validaciones y persistencia ACID. La generación de planillas reglamentarias en PDF (<code>@react-pdf/renderer</code>) y actas finales en Word (<code>docx</code>) se delegó al cliente en Next.js.
@@ -132,7 +132,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Alternativa Descartada
+          Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Generación de documentos en servidor (JasperReports / Apache POI pesado):</strong> Descartado para no saturar memoria RAM ni CPU en el servidor VPS ante descargas concurrentes.

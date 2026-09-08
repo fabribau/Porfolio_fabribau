@@ -64,7 +64,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          ✓ Engineering Justification
+          Engineering Justification
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Every file record (CSV or Excel) followed an <em>upsert</em> pipeline: check or create athlete entity, link school affiliations, and register event entries against regulation quotas. The entire batch runs within an isolated MySQL ACID transaction to prevent corrupt partial states.
@@ -72,7 +72,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Why
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Client-side parsing or ad-hoc SQL scripts:</strong> Discarded due to lack of referential integrity guarantees and data corruption risks during network drops or format mismatches.
@@ -94,7 +94,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          ✓ Engineering Justification
+          Engineering Justification
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Custom backend engine that calculates <code>N = ceil(athletes / lanes)</code>, partitions by school, and performs snake distribution (<code>S1, S2, ..., Sn</code>) to prevent teammates from racing in the same heat. In finals, lanes are assigned strictly following World Athletics regulations (<code>lanes 4, 5, 3, 6, 2, 7, 1, 8</code> based on qualifying marks).
@@ -102,7 +102,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Why
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Random drawing or UI-assisted manual picks:</strong> Discarded due to human bias and trackside delays waiting for manual pairings.
@@ -124,7 +124,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          ✓ Engineering Justification
+          Engineering Justification
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
           Spring Boot remained focused on domain validation and database transactions, exposing structured REST payloads. Official PDF score sheets (<code>@react-pdf/renderer</code>) and formal Word tournament reports (<code>docx</code>) were generated in Next.js on the client side.
@@ -132,7 +132,7 @@ Provincial track and field events host three age divisions (U14, U16, and U20) a
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
         <span class="font-bold uppercase tracking-wider text-xs text-fg-muted-light dark:text-fg-muted-dark block mb-1 font-mono">
-          ✕ Discarded Alternative & Why
+          Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
           <strong>Server-side document rendering (JasperReports / heavy Apache POI):</strong> Discarded to preserve CPU and RAM on the single VPS instance during concurrent downloads.

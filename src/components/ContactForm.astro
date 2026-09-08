@@ -1,6 +1,7 @@
 ---
 import Button from '@components/Button.astro';
 import Card from '@components/Card.astro';
+import { Icon } from 'astro-icon/components';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 interface Props {
@@ -131,7 +132,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
       id="submit-btn"
       class="w-full select-none justify-center"
     >
-      <span id="btn-icon" slot="prefix">✉</span>
+      <span id="btn-icon" slot="prefix" class="flex items-center">
+        <Icon name="ph:paper-plane-tilt-bold" class="h-5 w-5" />
+      </span>
       <span id="btn-text">{t('contact.form_submit')}</span>
     </Button>
   </form>
@@ -166,6 +169,11 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
       turnstileWidgetId?: string;
     }
   }
+
+  const defaultIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="h-5 w-5"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.8,229.49,121.28,154.5,160,115.78a8,8,0,0,0-11.31-11.31l-38.72,38.72L34.51,98.2,216,40Z"></path></svg>`;
+  const spinnerIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="h-5 w-5 animate-spin"><path d="M232,128a104,104,0,0,1-208,0c0-41,23.81-78.36,60.66-95.27a8,8,0,0,1,6.68,14.54C57.15,63.49,38,94.24,38,128a90,90,0,0,0,180,0c0-33.76-19.15-64.51-53.34-80.73a8,8,0,0,1,6.68-14.54C208.19,49.64,232,87,232,128Z"></path></svg>`;
+  const checkIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="h-5 w-5 shrink-0"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>`;
+  const warningIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="h-5 w-5 shrink-0"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path></svg>`;
 
   function setupContactForm() {
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
@@ -368,7 +376,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
       if (submitBtn) submitBtn.disabled = true;
       if (btnText)
         btnText.textContent = lang === 'en' ? 'Sending message...' : 'Enviando mensaje...';
-      if (btnIcon) btnIcon.textContent = '⏳';
+      if (btnIcon) btnIcon.innerHTML = spinnerIconSvg;
       if (feedback) {
         feedback.classList.add('hidden');
         feedback.className =
@@ -388,8 +396,8 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
           // Éxito
           if (feedback) {
             feedback.classList.remove('hidden');
-            feedback.classList.add('bg-accent-lime', 'text-black');
-            feedback.innerHTML = `✓ ${data.message || (lang === 'en' ? 'Message received successfully!' : '¡Mensaje recibido con éxito!')}`;
+            feedback.classList.add('bg-accent-lime', 'text-black', 'flex', 'items-center', 'gap-2');
+            feedback.innerHTML = `${checkIconSvg} <span>${data.message || (lang === 'en' ? 'Message received successfully!' : '¡Mensaje recibido con éxito!')}</span>`;
           }
           form.reset();
           updateMessageCounter();
@@ -401,8 +409,8 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
           // Error desde el servidor
           if (feedback) {
             feedback.classList.remove('hidden');
-            feedback.classList.add('bg-accent-pink', 'text-white');
-            feedback.innerHTML = `✗ ${data.message || (lang === 'en' ? 'An error occurred while sending.' : 'Ocurrió un error al enviar el mensaje.')}`;
+            feedback.classList.add('bg-accent-pink', 'text-white', 'flex', 'items-center', 'gap-2');
+            feedback.innerHTML = `${warningIconSvg} <span>${data.message || (lang === 'en' ? 'An error occurred while sending.' : 'Ocurrió un error al enviar el mensaje.')}</span>`;
           }
 
           if (data.errors) {
@@ -419,13 +427,13 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
         // Error de red
         if (feedback) {
           feedback.classList.remove('hidden');
-          feedback.classList.add('bg-accent-pink', 'text-white');
-          feedback.innerHTML = `✗ ${lang === 'en' ? 'Network error. Please check your internet connection.' : 'Error de conexión. Verifica tu internet e inténtalo nuevamente.'}`;
+          feedback.classList.add('bg-accent-pink', 'text-white', 'flex', 'items-center', 'gap-2');
+          feedback.innerHTML = `${warningIconSvg} <span>${lang === 'en' ? 'Network error. Please check your internet connection.' : 'Error de conexión. Verifica tu internet e inténtalo nuevamente.'}</span>`;
         }
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.textContent = lang === 'en' ? 'Send Message' : 'Enviar Mensaje';
-        if (btnIcon) btnIcon.textContent = '✉';
+        if (btnIcon) btnIcon.innerHTML = defaultIconSvg;
       }
     };
   }
