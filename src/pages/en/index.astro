@@ -203,7 +203,7 @@ const latestPosts = allPosts.slice(0, 2);
                         {t('common.view_project')}
                         <span slot="suffix">→</span>
                       </Button>
-                      {project.data.liveUrl && (
+                      {project.data.liveUrl ? (
                         <Button
                           href={project.data.liveUrl}
                           target="_blank"
@@ -213,7 +213,17 @@ const latestPosts = allPosts.slice(0, 2);
                           {t('project.live_demo')}
                           <span slot="suffix">↗</span>
                         </Button>
-                      )}
+                      ) : project.data.repositoryUrl ? (
+                        <Button
+                          href={project.data.repositoryUrl}
+                          target="_blank"
+                          variant="secondary"
+                          size="sm"
+                        >
+                          {t('project.source_code')}
+                          <span slot="suffix">↗</span>
+                        </Button>
+                      ) : null}
                     </div>
                   </div>
                 </Card>

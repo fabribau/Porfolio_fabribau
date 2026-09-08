@@ -7,7 +7,6 @@ status: 'en-desarrollo'
 featured: true
 order: 2
 repositoryUrl: 'https://github.com/fabribau/Porfolio_fabribau'
-liveUrl: 'https://fabribau.tech'
 ---
 
 ## 1. Resumen Ejecutivo
