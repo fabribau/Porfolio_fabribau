@@ -38,8 +38,9 @@ const latestPosts = allPosts.slice(0, 2);
       <div
         class="border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl selection:bg-accent-pink selection:text-white dark:border-white md:p-12"
       >
-        <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-          <div class="space-y-6 lg:col-span-8">
+        <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-8">
+          <!-- 1. Hero Text (Top on mobile, left column row 1 on desktop) -->
+          <div class="space-y-6 lg:col-span-8 lg:row-start-1">
             <div>
               <Badge color="dark" pulse={true} size="md">
                 {t('hero.badge')}
@@ -64,26 +65,27 @@ const latestPosts = allPosts.slice(0, 2);
             <p class="max-w-2xl text-base font-medium leading-relaxed text-zinc-900 sm:text-lg">
               {t('hero.desc')}
             </p>
-
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-              <Button href={translatePath('/proyectos')} variant="pink" size="lg">
-                <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
-                {t('hero.cta_projects')}
-              </Button>
-              <Button href={translatePath('/about')} variant="secondary" size="lg">
-                {t('hero.cta_about')}
-                <span slot="suffix">→</span>
-              </Button>
-              <Button href={translatePath('/contact')} variant="cyan" size="lg">
-                {t('hero.cta_contact')}
-                <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
-              </Button>
-            </div>
           </div>
 
-          <!-- Interactive 3D Avatar (Desktop only) -->
-          <div class="hidden lg:flex lg:col-span-4 justify-center items-center">
+          <!-- 2. Interactive 3D Avatar (Between text and buttons on mobile, right column on desktop) -->
+          <div class="flex justify-center items-center py-2 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1 lg:py-0">
             <HeroFace3D />
+          </div>
+
+          <!-- 3. CTA Buttons (Below avatar on mobile, left column row 2 on desktop) -->
+          <div class="flex flex-wrap items-center gap-4 lg:col-span-8 lg:row-start-2">
+            <Button href={translatePath('/proyectos')} variant="pink" size="lg">
+              <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
+              {t('hero.cta_projects')}
+            </Button>
+            <Button href={translatePath('/about')} variant="secondary" size="lg">
+              {t('hero.cta_about')}
+              <span slot="suffix">→</span>
+            </Button>
+            <Button href={translatePath('/contact')} variant="cyan" size="lg">
+              {t('hero.cta_contact')}
+              <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>

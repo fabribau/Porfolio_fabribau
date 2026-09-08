@@ -24,7 +24,7 @@
     <!-- Neobrutalist Face Container (Ready to swap with custom illustration) -->
     <div 
       id="face-head"
-      class="relative w-56 h-56 md:w-60 md:h-60 rounded-3xl border-4 border-black bg-white shadow-brutal-lg transition-shadow duration-200 hover:shadow-brutal-xl overflow-hidden flex items-center justify-center dark:border-black"
+      class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-60 rounded-3xl border-4 border-black bg-white shadow-brutal-lg transition-shadow duration-200 hover:shadow-brutal-xl active:translate-x-0.5 active:translate-y-0.5 overflow-hidden flex items-center justify-center touch-manipulation dark:border-black"
       style="transform-style: preserve-3d; will-change: transform;"
     >
       <!-- Subtle Neobrutalist Grid / Tech Texture Background -->
@@ -342,17 +342,21 @@
     }
     rafId = requestAnimationFrame(renderLoop);
 
-    // --- Mouse Move Handler ---
-    function handleMouseMove(e: MouseEvent) {
+    let lastInteractionTime = Date.now();
+    let idleGlanceInterval: ReturnType<typeof setInterval> | null = null;
+
+    // --- Gaze calculation helper for mouse & touch ---
+    function updateGaze(clientX: number, clientY: number) {
       if (isAnnoyed) return;
+      lastInteractionTime = Date.now();
 
       const rect = head.getBoundingClientRect();
       const faceCenterX = rect.left + rect.width / 2;
       const faceCenterY = rect.top + rect.height / 2;
 
       // Relative delta normalized from screen bounds
-      const deltaX = (e.clientX - faceCenterX) / (window.innerWidth / 2);
-      const deltaY = (e.clientY - faceCenterY) / (window.innerHeight / 2);
+      const deltaX = (clientX - faceCenterX) / (window.innerWidth / 2);
+      const deltaY = (clientY - faceCenterY) / (window.innerHeight / 2);
 
       const clampedX = Math.max(-1, Math.min(1, deltaX));
       const clampedY = Math.max(-1, Math.min(1, deltaY));
@@ -366,7 +370,16 @@
       targetPupilY = clampedY * 9;
     }
 
-    function handleMouseLeave() {
+    function handleMouseMove(e: MouseEvent) {
+      updateGaze(e.clientX, e.clientY);
+    }
+
+    function handleTouchMove(e: TouchEvent) {
+      if (!e.touches[0]) return;
+      updateGaze(e.touches[0].clientX, e.touches[0].clientY);
+    }
+
+    function resetGaze() {
       if (isAnnoyed) return;
       targetRotateX = 0;
       targetRotateY = 0;
@@ -375,7 +388,28 @@
     }
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    container.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', resetGaze, { passive: true });
+    container.addEventListener('mouseleave', resetGaze);
+
+    // Mirada orgánica periódica cuando no hay interacción activa (ideal para mobile en reposo)
+    idleGlanceInterval = setInterval(() => {
+      if (isAnnoyed || isSatisfied) return;
+      if (Date.now() - lastInteractionTime > 4500) {
+        const glanceDir = Math.random() > 0.5 ? 1 : -1;
+        targetRotateY = glanceDir * 7;
+        targetPupilX = glanceDir * 6;
+        targetRotateX = -2;
+        targetPupilY = -2;
+
+        setTimeout(() => {
+          if (Date.now() - lastInteractionTime > 4500 && !isAnnoyed) {
+            resetGaze();
+          }
+        }, 1300);
+      }
+    }, 5200);
 
     // --- Periodic Natural Blink ---
     function scheduleBlink() {
@@ -646,9 +680,13 @@
       () => {
         if (rafId) cancelAnimationFrame(rafId);
         if (blinkInterval) clearInterval(blinkInterval);
+        if (idleGlanceInterval) clearInterval(idleGlanceInterval);
         if (annoyedTimeout) clearTimeout(annoyedTimeout);
         if (satisfactionTimeout) clearTimeout(satisfactionTimeout);
         window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchstart', handleTouchMove);
+        window.removeEventListener('touchend', resetGaze);
       },
       { once: true }
     );
