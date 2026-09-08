@@ -5,6 +5,7 @@ import Card from '@components/Card.astro';
 import Badge from '@components/Badge.astro';
 import Tag from '@components/Tag.astro';
 import SectionHeader from '@components/SectionHeader.astro';
+import HeroFace3D from '@components/HeroFace3D.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, useTranslatedPath, formatDate } from '@i18n/utils';
@@ -35,46 +36,55 @@ const latestPosts = allPosts.slice(0, 2);
     <!-- Hero Section -->
     <section class="reveal-on-scroll reveal-pop">
       <div
-        class="space-y-6 border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl selection:bg-accent-pink selection:text-white dark:border-white md:p-12"
+        class="border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl selection:bg-accent-pink selection:text-white dark:border-white md:p-12"
       >
-        <div>
-          <Badge color="dark" pulse={true} size="md">
-            {t('hero.badge')}
-          </Badge>
-        </div>
+        <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+          <div class="space-y-6 lg:col-span-8">
+            <div>
+              <Badge color="dark" pulse={true} size="md">
+                {t('hero.badge')}
+              </Badge>
+            </div>
 
-        <div class="space-y-2">
-          <p class="font-mono text-base font-bold text-zinc-900 sm:text-lg">
-            {t('hero.greeting')}
-          </p>
-          <h1
-            class="font-display text-4xl font-black leading-none tracking-tight text-black sm:text-6xl md:text-7xl"
-          >
-            {t('hero.title')}
-          </h1>
-        </div>
+            <div class="space-y-2">
+              <p class="font-mono text-base font-bold text-zinc-900 sm:text-lg">
+                {t('hero.greeting')}
+              </p>
+              <h1
+                class="font-display text-4xl font-black leading-none tracking-tight text-black sm:text-6xl md:text-7xl"
+              >
+                {t('hero.title')}
+              </h1>
+            </div>
 
-        <p class="font-mono text-base font-bold text-black sm:text-xl">
-          {t('hero.role')}
-        </p>
+            <p class="font-mono text-base font-bold text-black sm:text-xl">
+              {t('hero.role')}
+            </p>
 
-        <p class="max-w-2xl text-base font-medium leading-relaxed text-zinc-900 sm:text-lg">
-          {t('hero.desc')}
-        </p>
+            <p class="max-w-2xl text-base font-medium leading-relaxed text-zinc-900 sm:text-lg">
+              {t('hero.desc')}
+            </p>
 
-        <div class="flex flex-wrap items-center gap-4 pt-2">
-          <Button href={translatePath('/proyectos')} variant="pink" size="lg">
-            <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
-            {t('hero.cta_projects')}
-          </Button>
-          <Button href={translatePath('/about')} variant="secondary" size="lg">
-            {t('hero.cta_about')}
-            <span slot="suffix">→</span>
-          </Button>
-          <Button href={translatePath('/contact')} variant="cyan" size="lg">
-            {t('hero.cta_contact')}
-            <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
-          </Button>
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <Button href={translatePath('/proyectos')} variant="pink" size="lg">
+                <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
+                {t('hero.cta_projects')}
+              </Button>
+              <Button href={translatePath('/about')} variant="secondary" size="lg">
+                {t('hero.cta_about')}
+                <span slot="suffix">→</span>
+              </Button>
+              <Button href={translatePath('/contact')} variant="cyan" size="lg">
+                {t('hero.cta_contact')}
+                <Icon name="ph:envelope-simple-bold" slot="suffix" class="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+
+          <!-- Interactive 3D Avatar (Desktop only) -->
+          <div class="hidden lg:flex lg:col-span-4 justify-center items-center">
+            <HeroFace3D />
+          </div>
         </div>
       </div>
     </section>
