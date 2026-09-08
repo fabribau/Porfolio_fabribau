@@ -78,7 +78,7 @@ export const ui = {
     // About Me Page
     'about.title': 'Sobre Mí',
     'about.subtitle':
-      'Ingeniero en Informática, Docente Universitario e Investigador en IA en San Luis, Argentina.',
+      'Ingeniero en Informática, Docente Universitario e Investigador en IA en\u00A0San\u00A0Luis,\u00A0Argentina.',
     'about.bio_title': 'Perfil Profesional & Académico',
     'about.bio_p1':
       'Hola soy Fabri, Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas complejas de alto impacto, con experiencia como autor y expositor en congresos científicos.',
@@ -259,7 +259,7 @@ export const ui = {
     // About Me Page
     'about.title': 'About Me',
     'about.subtitle':
-      'Software Engineer, University Teacher, and AI Researcher in San Luis, Argentina.',
+      'Software Engineer, University Teacher, and AI Researcher in\u00A0San\u00A0Luis,\u00A0Argentina.',
     'about.bio_title': 'Professional & Academic Profile',
     'about.bio_p1':
       "Hi, I'm Fabri, a Software Engineer with the ability to transform complex requirements into efficient and scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and complex high-impact architectures, with experience as an author and speaker at scientific conferences.",
