@@ -1,0 +1,113 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<dialog
+  id="image-preview-modal"
+  class="fixed inset-0 m-auto max-h-[94vh] max-w-[94vw] border-0 bg-transparent p-0 outline-none z-50 open:flex open:flex-col open:items-center open:justify-center"
+  aria-label="Image Preview"
+>
+  <div
+    id="image-preview-card"
+    class="relative flex max-h-[92vh] max-w-[92vw] flex-col items-center border-4 border-black bg-white p-2 shadow-brutal-xl dark:border-white dark:bg-zinc-900 md:p-2"
+  >
+    <!-- Top Header -->
+    <div
+      class="mb-2 flex w-full items-center justify-between gap-4 border-b-2 border-black pb-1 dark:border-white"
+    >
+      <span
+        id="image-preview-title"
+        class="truncate font-mono text-xs font-bold uppercase tracking-wider text-fg-primary-light dark:text-fg-primary-dark"
+      >
+        Vista Previa
+      </span>
+      <button
+        id="image-preview-close"
+        type="button"
+        class="border-2 border-black bg-accent-pink px-2.5 py-1 font-mono text-xs font-bold text-white shadow-brutal-sm transition-all brutal-btn-press hover:bg-accent-pink/90 dark:border-white"
+        aria-label={t('nav.close')}
+      >
+        ✕ {t('nav.close')} [Esc]
+      </button>
+    </div>
+
+    <!-- Image Container -->
+    <div
+      class="flex max-h-[calc(90vh-4rem)] w-full items-center justify-center overflow-hidden border-2 border-black/15 bg-black/[0.03] p-2 dark:border-white/20 dark:bg-white/[0.04]"
+    >
+      <img
+        id="image-preview-img"
+        src=""
+        alt=""
+        class="max-h-[calc(90vh-5rem)] max-w-full w-auto h-auto object-contain select-none"
+      />
+    </div>
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+</style>
+
+<script>
+  function setupImageModal() {
+    const modal = document.getElementById('image-preview-modal') as HTMLDialogElement | null;
+    const modalImg = document.getElementById('image-preview-img') as HTMLImageElement | null;
+    const modalTitle = document.getElementById('image-preview-title');
+    const closeBtn = document.getElementById('image-preview-close');
+
+    if (!modal || !modalImg) return;
+
+    // Detect all images inside prose
+    const images = document.querySelectorAll<HTMLImageElement>('.prose img');
+
+    images.forEach((img) => {
+      if (img.dataset.hasZoomListener === 'true') return;
+      img.dataset.hasZoomListener = 'true';
+      img.style.cursor = 'zoom-in';
+
+      img.addEventListener('click', (e) => {
+        // Only trigger if not already wrapped in a link that navigates elsewhere
+        const link = img.closest('a');
+        if (link && link.getAttribute('href') && !link.getAttribute('href')?.startsWith('#')) {
+          return;
+        }
+
+        e.preventDefault();
+        const src = img.getAttribute('src') || '';
+        const alt = img.getAttribute('alt') || '';
+
+        modalImg.src = src;
+        modalImg.alt = alt;
+
+        if (modalTitle) {
+          modalTitle.textContent = alt || 'Preview';
+        }
+
+        modal.showModal();
+      });
+    });
+
+    // Close button click
+    closeBtn?.addEventListener('click', () => {
+      modal.close();
+    });
+
+    // Click outside card (on backdrop)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.close();
+      }
+    });
+  }
+
+  setupImageModal();
+  document.addEventListener('astro:page-load', setupImageModal);
+</script>

@@ -21,11 +21,11 @@ order: 3
 <!-- ASSET 1: OFFICIAL OLYMPICS LOGO                                   -->
 <!-- Processed and optimized by Astro image service                    -->
 <!-- ================================================================= -->
-<div class="my-6 p-4 border-3 border-black bg-bg-surface-light shadow-brutal flex flex-col items-center justify-center text-center dark:border-white dark:bg-bg-surface-dark not-prose">
+<div class="my-8 mx-auto w-full max-w-xs sm:max-w-sm p-4 border-3 border-black bg-bg-surface-light shadow-brutal flex flex-col items-center justify-center text-center dark:border-white dark:bg-bg-surface-dark not-prose">
 
 ![Official Logo — School Athletic Olympics (OLESA)](../../../assets/proyectos/olimpiadas/logo.png)
 
-<span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark mt-2 block">
+<span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark mt-3 block">
   Provincial Sports Secretariat — Government of San Luis
 </span>
 
@@ -150,7 +150,7 @@ The architecture separates concerns into a **Java / Spring Boot** REST backend w
 
 ### Tournament Pipeline & Data Flow
  
-<div class="my-6 border-3 border-black bg-[#231e17] p-3 shadow-brutal dark:border-white not-prose">
+<div class="my-8 mx-auto w-full max-w-2xl border-3 border-black bg-[#231e17] p-3 shadow-brutal dark:border-white not-prose">
 
 ![Architecture Diagram — OLESA Data Flow & Pipeline](../../../assets/proyectos/olimpiadas/OLESA_1.excalidraw.svg)
 

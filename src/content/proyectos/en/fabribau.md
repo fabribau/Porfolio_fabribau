@@ -1,12 +1,12 @@
 ---
 title: 'FabRiBau — Neobrutalist Web Portfolio'
 description: 'Interactive personal portfolio engineered with Astro 5, Tailwind CSS, TypeScript, native i18n, Zod-validated Content Collections, and serverless Cloudflare Pages deployment.'
-pubDate: 2026-08-31
+pubDate: 2026-09-09
 tags: ['Astro 5', 'Tailwind CSS', 'TypeScript', 'Cloudflare Pages', 'i18n', 'Neobrutalism', 'Zod']
 status: 'en-desarrollo'
 featured: true
 order: 2
-repositoryUrl: 'https://github.com/fabribau/portfolio'
+repositoryUrl: 'https://github.com/fabribau/Porfolio_fabribau'
 liveUrl: 'https://fabribau.tech'
 ---
 

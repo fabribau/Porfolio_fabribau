@@ -21,6 +21,9 @@ Thumbs.db
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
+.agents/
+.opencode/
+agent/
 
 # Cloudflare
 .wrangler/

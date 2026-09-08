@@ -1,18 +1,15 @@
 ---
-title: 'NoVa+: Asistente IA para Prevención de Apuestas Online'
+title: 'Asistente IA para Prevención de Apuestas Online'
 description: 'Asistente conversacional con arquitectura RAG para la detección temprana y prevención del juego patológico en jóvenes: arquitectura distribuida, inferencia en tiempo real y privacidad clínica por diseño.'
 pubDate: 2025-12-12
 tags:
   [
     'Next.js',
     'Python',
-    'Gemini 2.5 Flash',
     'RAG',
     'pgvector',
     'NeonDB',
     'Vercel AI SDK',
-    'PySentimiento',
-    'Investigación',
   ]
 status: 'completado'
 featured: true
@@ -172,12 +169,12 @@ El sistema opera bajo una topología distribuida multi-nodo: una aplicación web
 ### Infraestructura y Despliegue Físico
 
 <div class="my-8 flex flex-col items-center not-prose">
-  <div class="w-fit max-w-full border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
+  <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
 
 ![Diagrama de Despliegue del Sistema](../../../assets/proyectos/asistente-apuestas/diagrama-despliegue.png)
 
   </div>
-  <span class="mt-2 block max-w-2xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+  <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
     Figura 1: Diagrama de Despliegue de la infraestructura (Next.js en Vercel, servidor Python on-premise en UNSL, PostgreSQL/pgvector en NeonDB y APIs externas).
   </span>
 </div>
@@ -187,12 +184,12 @@ El sistema opera bajo una topología distribuida multi-nodo: una aplicación web
 ### Pipeline de Inferencia RAG y Flujo de Datos
 
 <div class="my-8 flex flex-col items-center not-prose">
-  <div class="w-fit max-w-full border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
+  <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
 
 ![Diagrama de Flujo de Datos — Pipeline RAG](../../../assets/proyectos/asistente-apuestas/flujo-datos-rag.png)
 
   </div>
-  <span class="mt-2 block max-w-2xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+  <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
     Figura 2: Flujo de datos del asistente conversacional (Ingesta, recuperación semántica vectorial, inyección de directrices éticas y generación en tiempo real).
   </span>
 </div>

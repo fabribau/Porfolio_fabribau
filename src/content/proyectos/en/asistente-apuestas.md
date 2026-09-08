@@ -1,18 +1,15 @@
 ---
-title: 'NoVa+: AI Assistant for Online Gambling Prevention'
+title: 'AI Assistant for Online Gambling Prevention'
 description: 'Conversational agent powered by RAG architecture for early detection and prevention of online gambling harm in youth: distributed architecture, real-time inference, and clinical privacy by design.'
 pubDate: 2025-12-12
 tags:
   [
     'Next.js',
     'Python',
-    'Gemini 2.5 Flash',
     'RAG',
     'pgvector',
     'NeonDB',
     'Vercel AI SDK',
-    'PySentimiento',
-    'Research',
   ]
 status: 'completado'
 featured: true
@@ -172,12 +169,12 @@ The solution operates as a distributed multi-node topology: a serverless web fro
 ### Physical Deployment Architecture
 
 <div class="my-8 flex flex-col items-center not-prose">
-  <div class="w-fit max-w-full border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
+  <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
 
 ![System Deployment Diagram](../../../assets/proyectos/asistente-apuestas/diagrama-despliegue.png)
 
   </div>
-  <span class="mt-2 block max-w-2xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+  <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
     Figure 1: Infrastructure Deployment Diagram (Next.js on Vercel, on-premise Python server at UNSL, PostgreSQL/pgvector on NeonDB, and third-party APIs).
   </span>
 </div>
@@ -187,12 +184,12 @@ The solution operates as a distributed multi-node topology: a serverless web fro
 ### RAG Inference Pipeline & Data Flow
 
 <div class="my-8 flex flex-col items-center not-prose">
-  <div class="w-fit max-w-full border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
+  <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
 
 ![Data Flow Diagram — RAG Pipeline](../../../assets/proyectos/asistente-apuestas/flujo-datos-rag.png)
 
   </div>
-  <span class="mt-2 block max-w-2xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
+  <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
     Figure 2: Conversational assistant data flow (Ingestion, semantic vector retrieval, ethical guardrail injection, and real-time generation).
   </span>
 </div>

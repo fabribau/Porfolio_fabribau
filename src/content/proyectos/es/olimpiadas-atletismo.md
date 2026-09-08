@@ -21,11 +21,11 @@ order: 3
 <!-- ASSET 1: LOGO OFICIAL DE LAS OLIMPÍADAS                           -->
 <!-- Procesado y optimizado por el servicio de imágenes de Astro       -->
 <!-- ================================================================= -->
-<div class="my-6 p-4 border-3 border-black bg-bg-surface-light shadow-brutal flex flex-col items-center justify-center text-center dark:border-white dark:bg-bg-surface-dark not-prose">
+<div class="my-8 mx-auto w-full max-w-xs sm:max-w-sm p-4 border-3 border-black bg-bg-surface-light shadow-brutal flex flex-col items-center justify-center text-center dark:border-white dark:bg-bg-surface-dark not-prose">
 
 ![Logo Oficial de las Olimpíadas Escolares de Atletismo (OLESA)](../../../assets/proyectos/olimpiadas/logo.png)
 
-<span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark mt-2 block">
+<span class="font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark mt-3 block">
   Secretaría de Deportes — Gobierno de la Provincia de San Luis
 </span>
 
@@ -150,7 +150,7 @@ El sistema fue diseñado como un backend desacoplado en **Java / Spring Boot** c
 
 ### Flujo de Datos y Pipeline del Torneo
 
-<div class="my-6 border-3 border-black bg-[#231e17] p-3 shadow-brutal dark:border-white not-prose">
+<div class="my-8 mx-auto w-full max-w-2xl border-3 border-black bg-[#231e17] p-3 shadow-brutal dark:border-white not-prose">
 
 ![Diagrama de Arquitectura — Flujo de Datos y Pipeline OLESA](../../../assets/proyectos/olimpiadas/OLESA_1.excalidraw.svg)
 

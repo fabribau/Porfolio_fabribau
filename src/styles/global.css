@@ -101,6 +101,16 @@
     box-shadow: 4px 4px 0px 0px var(--shadow-color);
   }
 
+  /* Zoomable images inside markdown prose */
+  .prose img {
+    cursor: zoom-in;
+    transition: transform 0.15s ease-out, filter 0.15s ease-out;
+  }
+
+  .prose img:hover {
+    filter: brightness(1.02);
+  }
+
   /* Responsive neobrutalist tables inside markdown prose */
   .prose table {
     display: block;

@@ -105,7 +105,7 @@ export const ui = {
     // Projects Page
     'projects.title': 'Proyectos & Desarrollos',
     'projects.subtitle':
-      'Una exploración de mis proyectos de software, plataformas en producción y desarrollos con IA.',
+      'Una exploración un poco más técnica de mis proyectos de software, plataformas en producción y desarrollos con IA.',
     'projects.filter_all': 'Todos',
     'projects.filter_in_progress': 'En desarrollo',
     'projects.filter_completed': 'Completados',
