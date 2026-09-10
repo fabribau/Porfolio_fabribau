@@ -13,7 +13,7 @@ El sistema visual de `fabribau.tech` fusiona la robustez y honestidad estructura
 Se aleja de los gradientes sutiles y las sombras etéreas del minimalismo corporativo genérico, apostando por:
 
 - Bordes gruesos y geométricos (`3px` y `4px`).
-- Sombras offset "duras" (sin desenfoque gaussiano, color `#0D0D0D` en light y `#000000` en dark).
+- Sombras offset "duras" (sin desenfoque gaussiano, color `#0D0D0D` en light y `#F5F0E8` en dark para crear extrusión 3D simétrica; aislamiento contextual `#0D0D0D` en contenedores saturados/claros).
 - Paleta de colores vivos y saturados (Amarillo, Magenta, Verde Lima, Cyan) sobre fondos de alto contraste.
 - Micro-interacciones mecánicas y táctiles (efecto de pulsación física al hacer clic).
 - Tipografía de impacto con personalidad técnica y jerarquías agresivas.
@@ -53,12 +53,12 @@ Para trascender el arquetipo de plantilla neobrutalista común, el diseño incor
 
 ### Modo Oscuro (Dark Mode — Inspiración Gumroad/Cyber)
 
-- **Fondo Base (`--bg-primary`):** Negro profundo `#0D0D0D`.
-- **Superficie de Tarjetas (`--bg-surface`):** Carbón `#181818` / `#1F1F1F`.
+- **Fondo Base (`--bg-primary`):** Negro profundo `#0A0A0A`.
+- **Superficie de Tarjetas y Header/Footer (`--bg-surface`):** Carbón pizarra elevado `#242424`.
 - **Texto Principal (`--text-primary`):** Crema claro `#F5F0E8`.
 - **Texto Secundario (`--text-muted`):** Gris medio `#9CA3AF`.
 - **Bordes (`--border-color`):** Crema / Blanco `#F5F0E8`.
-- **Sombras (`--shadow-color`):** Negro absoluto `#000000`.
+- **Sombras (`--shadow-color`):** Crema claro `#F5F0E8` (extrusión 3D simétrica; interior de contenedores claros usa `#0D0D0D` vía `.brutal-context-light`).
 
 ### Acentos Saturados (Comunes a ambos modos)
 

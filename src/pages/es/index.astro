@@ -38,7 +38,7 @@ const latestPosts = allPosts.slice(0, 2);
       <div
         class="border-4 border-black bg-accent-yellow p-6 text-black shadow-brutal-xl selection:bg-accent-pink selection:text-white dark:border-white md:p-12"
       >
-        <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-8">
+        <div class="brutal-context-light grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-8">
           <!-- 1. Hero Text (Top on mobile, left column row 1 on desktop) -->
           <div class="space-y-6 lg:col-span-8 lg:row-start-1">
             <div>
@@ -346,7 +346,12 @@ const latestPosts = allPosts.slice(0, 2);
           </p>
         </div>
 
-        <Button href={translatePath('/contact')} variant="pink" size="lg">
+        <Button
+          href={translatePath('/contact')}
+          variant="pink"
+          size="lg"
+          class="dark:!shadow-[4px_4px_0px_0px_#0D0D0D] dark:hover:!shadow-[6px_6px_0px_0px_#0D0D0D] dark:active:!shadow-none"
+        >
           <Icon name="ph:lightning-bold" slot="prefix" class="h-5 w-5" />
           {t('hero.cta_contact')}
         </Button>

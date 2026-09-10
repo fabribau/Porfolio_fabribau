@@ -47,12 +47,12 @@
 }
 
 .dark {
-  --bg-primary: #0d0d0d;
-  --bg-surface: #181818;
+  --bg-primary: #0a0a0a;
+  --bg-surface: #242424;
   --text-primary: #f5f0e8;
   --text-muted: #9ca3af;
   --border-color: #f5f0e8;
-  --shadow-color: #000000;
+  --shadow-color: #f5f0e8;
   --accent-yellow: #ffe400;
   --accent-pink: #ff3d8a;
   --accent-lime: #b4ff39;
@@ -99,6 +99,30 @@
     color: var(--text-primary);
     border: 3px solid var(--border-color);
     box-shadow: 4px 4px 0px 0px var(--shadow-color);
+  }
+
+  /* Context isolation for elements inside light or hyper-saturated containers (e.g. Hero Yellow, Lime, Cyan cards) in Dark Mode */
+  .brutal-context-light > *,
+  .brutal-context-light > * * {
+    --shadow-color: #0d0d0d !important;
+    --border-color: #0d0d0d !important;
+  }
+
+  .dark .brutal-context-light > *,
+  .dark .brutal-context-light > * * {
+    --shadow-color: #0d0d0d !important;
+    --border-color: #0d0d0d !important;
+  }
+
+  /* Force sharp dark borders for children when placed inside a light surface in dark mode */
+  .dark .brutal-context-light .dark\:border-white {
+    border-color: #0d0d0d !important;
+  }
+
+  /* Secondary buttons inside a light surface should maintain white/light background and dark text */
+  .dark .brutal-context-light .dark\:bg-zinc-800 {
+    background-color: #ffffff !important;
+    color: #0d0d0d !important;
   }
 
   /* Zoomable images inside markdown prose */

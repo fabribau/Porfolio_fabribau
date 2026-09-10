@@ -21,7 +21,7 @@ const switchUrl = translatePath(Astro.url.pathname, otherLang);
           href={switchUrl}
           class={`px-2.5 py-1 text-xs font-bold transition-all duration-150 ease-out ${
             isActive
-              ? 'border-2 border-black bg-accent-yellow text-black shadow-[1px_1px_0px_0px_var(--shadow-color)]'
+              ? 'border-2 border-black bg-accent-yellow text-black shadow-[1px_1px_0px_0px_var(--shadow-color)] dark:border-white dark:shadow-none'
               : 'text-zinc-700 hover:bg-zinc-100 hover:text-black dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-white'
           }`}
         >

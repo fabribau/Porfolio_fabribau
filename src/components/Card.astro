@@ -29,7 +29,7 @@ const Component = as || (href ? 'a' : 'div');
 
 // Variant background & text styles
 const variantStyles: Record<string, string> = {
-  default: 'bg-white dark:bg-zinc-900 text-black dark:text-white',
+  default: 'bg-white dark:bg-bg-surface-dark text-black dark:text-white',
   yellow: 'bg-accent-yellow text-black',
   pink: 'bg-accent-pink text-white',
   lime: 'bg-accent-lime text-black',
@@ -60,9 +60,12 @@ const tiltStyles: Record<string, string> = {
   right: 'tilt-hover-right',
 };
 
+const isLightAccentVariant = ['yellow', 'lime', 'cyan'].includes(variant);
+
 const baseStyles = [
   'block border-black dark:border-white transition-all duration-200 relative overflow-hidden',
   variantStyles[variant] || variantStyles.default,
+  isLightAccentVariant ? 'brutal-context-light' : '',
   shadowStyles[shadow] || shadowStyles.md,
   borderStyles[borderWidth] || borderStyles['3'],
   tiltStyles[hoverTilt],

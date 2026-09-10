@@ -128,8 +128,8 @@
 ## 6. Reglas de Theming & Neobrutalismo
 
 1. **Tokens Neobrutalistas:**
-   - **Modo Claro:** Fondo crema `#F5F0E8`, tarjetas `#FFFFFF`, texto `#0D0D0D`, bordes `#0D0D0D`.
-   - **Modo Oscuro:** Fondo `#0D0D0D` / `#121212`, tarjetas `#181818` / `#1A1A1A`, texto `#F5F0E8`, bordes `#F5F0E8` o `#FFFFFF`.
+   - **Modo Claro:** Fondo crema `#F5F0E8`, tarjetas `#FFFFFF`, texto `#0D0D0D`, bordes `#0D0D0D`, sombras `--shadow-color: #0D0D0D`.
+   - **Modo Oscuro:** Fondo `#0A0A0A` / `#0D0D0D`, tarjetas y Header/Footer `#242424`, texto `#F5F0E8`, bordes `#F5F0E8` o `#FFFFFF`, sombras `--shadow-color: #F5F0E8` (extrusión 3D simétrica; aislamiento contextual `#0D0D0D` con `.brutal-context-light` para hijos de contenedores claros/saturados).
    - **Acentos Vivos:** Amarillo `#FFE400`, Rosa/Magenta `#FF3D8A`, Verde Lima `#B4FF39`, Cyan `#00F0FF`, Naranja `#FF6B00`, Púrpura `#8B5CF6`.
 2. **Bordes y Sombras:**
    - Usar bordes gruesos: `border-2`, `border-3` o `border-4`.
