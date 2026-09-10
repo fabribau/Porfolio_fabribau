@@ -31,24 +31,24 @@ order: 3
 
 </div>
 
-## 1. Resumen Ejecutivo
+## 1. Para qué sirve esto
 
-Sistema integral de gestión de torneos y cómputo atlético desarrollado para la Dirección de Deporte Comunitario de la Secretaría de Deportes de San Luis. Automatizó el ciclo completo de las **Olimpíadas Escolares de Atletismo (OLESA)** —desde la ingesta heterogénea de datos hasta el sorteo algorítmico de series y el cómputo de puntos por colegio—, **reduciendo la duración de la competencia de 3 días a una única jornada de 8 horas** y procesando a más de **5.000 estudiantes de 100+ instituciones** en sus ediciones 2024 y 2025.
-
----
-
-## 2. El Problema: El Cuello de Botella Operativo
-
-La organización provincial de atletismo escolar abarca tres categorías formativas (U14, U16 y U20) distribuidas en múltiples etapas regionales y una final provincial.
-
-### Limitaciones del proceso previo
-* **Jornada previa colapsada:** El administrador del torneo debía dedicar un día completo previo a transcribir manualmente inscripciones desde fuentes dispersas, verificar restricciones y confeccionar a mano las planillas de jueces.
-* **Sobrecarga logística gubernamental:** Debido a la lentitud del cálculo manual de marcas, clasificaciones y cómputo por escuelas, el torneo se dividía forzosamente en 3 días (un día por categoría), triplicando costos públicos en transporte de delegaciones, viandas y hospedaje.
-* **Brecha digital y operativa:** Coexistían dos realidades de inscripción: el sistema web provincial ("Juegos Intercolegiales") que exportaba CSVs, y planillas Excel enviadas por canales informales, utilizadas tanto por escuelas rurales sin conectividad como por profesores que por diversos motivos no pudieron cargar las inscripciones en la plataforma web.
+Hay problemas que existen desde siempre y que nadie resuelve porque "así siempre se hizo". Este fue uno de esos. Desarrollé un sistema integral de gestión y cómputo atlético para la Dirección de Deporte Comunitario de la Secretaría de Deportes de San Luis que automatizó el ciclo completo de las **Olimpíadas Escolares de Atletismo (OLESA)**: desde juntar inscripciones de mil lados distintos hasta el sorteo de series y el cálculo final de puntos por colegio. El resultado concreto: **la competencia pasó de durar 3 días a completarse en una única jornada de 8 horas**, procesando a más de **5.000 estudiantes de 100+ instituciones** en las ediciones 2024 y 2025.
 
 ---
 
-## 3. Decisiones Clave de Ingeniería
+## 2. El problema: un cuello de botella que triplicaba todo
+
+La organización de atletismo escolar a nivel provincial abarca tres categorías (U14, U16 y U20) distribuidas en etapas regionales y una final provincial. Suena ordenado en papel. En la práctica, era un caos operativo.
+
+### Cómo funcionaba antes
+* **Un día entero perdido antes de que empezara cualquier carrera:** El administrador del torneo se la pasaba transcribiendo inscripciones a mano desde fuentes dispersas, verificando restricciones y confeccionando a mano las planillas de los jueces. Un día completo de trabajo antes de que arrancara un solo atleta.
+* **El torneo se dividía en 3 días por pura lentitud logística:** Como el cálculo manual de marcas, clasificaciones y puntos por escuela era tan lento, el torneo se partía por categoría (un día por categoría). Eso significaba triplicar los costos públicos en transporte de delegaciones, viandas y hospedaje. Plata del Estado desperdiciada en un problema que tenía solución.
+* **Dos realidades de inscripción que no hablaban entre sí:** Coexistían el sistema web provincial ("Juegos Intercolegiales") que exportaba CSVs, y planillas Excel enviadas por WhatsApp o mail —usadas por escuelas rurales sin conectividad o por docentes que, por lo que sea, no habían podido cargar las inscripciones en la plataforma oficial—. Alguien tenía que unificar ese desastre manualmente.
+
+---
+
+## 3. Decisiones clave de ingeniería
 
 <div class="my-6 space-y-4 not-prose">
   <!-- Tarjeta 1 -->
@@ -64,10 +64,10 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          Justificación Técnica
+          Por qué lo hice así
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Cada fila del archivo (CSV o Excel) requería un flujo <em>upsert</em>: verificar o crear el atleta, asociar su colegio y registrar la prueba validando topes reglamentarios. Toda la carga se procesa bajo una única unidad transaccional en MySQL para evitar estados corruptos o inscripciones a medias.
+          Cada fila del archivo (CSV o Excel) necesitaba un flujo <em>upsert</em>: verificar o crear el atleta, asociarlo a su colegio y registrar la prueba validando topes reglamentarios. Si algo fallaba a mitad de camino, no podía quedar una inscripción a medias en la base. Toda la carga va bajo una única unidad transaccional en MySQL: o entra todo, o no entra nada.
         </p>
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -75,7 +75,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
           Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Procesamiento cliente o scripts sueltos:</strong> Descartado por falta de integridad referencial y riesgo de inconsistencias ante fallos de conexión o formatos inválidos.
+          <strong>Procesamiento en cliente o scripts sueltos:</strong> Descartado. Sin integridad referencial, cualquier corte de conexión o formato inválido dejaba el estado de la base de datos en un lugar indeseable.
         </p>
       </div>
     </div>
@@ -94,10 +94,10 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          Justificación Técnica
+          Por qué lo hice así
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Se implementó un algoritmo propio en el backend: calcula <code>N = ceil(atletas / andariveles)</code>, agrupa por institución y distribuye en <em>round-robin</em> inverso (<code>S1, S2, ..., Sn</code>) para garantizar que atletas del mismo colegio no compitan entre sí en series. En finales, asigna andariveles según el estándar oficial de World Athletics (carriles <code>4, 5, 3, 6, 2, 7, 1, 8</code> según mejores marcas).
+          Implementé un algoritmo propio en el backend: calcula <code>N = ceil(atletas / andariveles)</code>, agrupa por institución y distribuye en <em>round-robin</em> inverso (<code>S1, S2, ..., Sn</code>) para garantizar que atletas del mismo colegio no compitan entre sí en la misma serie. En finales, asigna andariveles según el estándar oficial de World Athletics (carriles <code>4, 5, 3, 6, 2, 7, 1, 8</code> según mejores marcas). No hay forma de que esto salga mal por un olvido humano.
         </p>
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -105,7 +105,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
           Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Sorteo aleatorio o asignación manual asistida:</strong> Descartado por introducir sesgo humano y retrasar el inicio de las pruebas en pista.
+          <strong>Sorteo aleatorio o asignación manual asistida:</strong> Descartado. Introduce sesgo humano y retrasa el inicio de las pruebas en pista —exactamente el problema que estábamos tratando de eliminar—.
         </p>
       </div>
     </div>
@@ -124,10 +124,10 @@ La organización provincial de atletismo escolar abarca tres categorías formati
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          Justificación Técnica
+          Por qué lo hice así
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          El backend en Spring Boot se mantuvo enfocado exclusivamente en lógica de negocio, validaciones y persistencia ACID. La generación de planillas reglamentarias en PDF (<code>@react-pdf/renderer</code>) y actas finales en Word (<code>docx</code>) se delegó al cliente en Next.js.
+          Mantuve el backend de Spring Boot enfocado exclusivamente en lo que le corresponde: lógica de negocio, validaciones y persistencia ACID. La generación de planillas reglamentarias en PDF (<code>@react-pdf/renderer</code>) y actas finales en Word (<code>docx</code>) la delegué al cliente en Next.js. El servidor no tiene que saber cómo se ve un documento; solo tiene que saber qué datos hay que poner en él.
         </p>
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -135,7 +135,7 @@ La organización provincial de atletismo escolar abarca tres categorías formati
           Alternativa Descartada & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Generación de documentos en servidor (JasperReports / Apache POI pesado):</strong> Descartado para no saturar memoria RAM ni CPU en el servidor VPS ante descargas concurrentes.
+          <strong>Generación de documentos en servidor (JasperReports / Apache POI pesado):</strong> Descartado para no saturar la RAM ni la CPU del VPS ante descargas concurrentes en el momento de más tráfico —justo cuando está corriendo la competencia—.
         </p>
       </div>
     </div>
@@ -146,9 +146,9 @@ La organización provincial de atletismo escolar abarca tres categorías formati
 
 ## 4. Arquitectura del Sistema
 
-El sistema fue diseñado como un backend desacoplado en **Java / Spring Boot** con persistencia en **MySQL**, consumido por una SPA administrativa en **Next.js** y empaquetado con **Docker Compose** en un VPS Linux (Ubuntu), priorizando simplicidad operativa y costos acotados para el sector público.
+Diseñé el sistema como un backend desacoplado en **Java / Spring Boot** con persistencia en **MySQL**, consumido por una SPA administrativa en **Next.js**, todo empaquetado con **Docker Compose** en un VPS Linux (Ubuntu). La restricción de contexto era clara: sector público, presupuesto acotado, sin tiempo para operar infraestructura compleja. La arquitectura tenía que ser simple de mantener y barata de correr.
 
-### Flujo de Datos y Pipeline del Torneo
+### Flujo de datos y pipeline del torneo
 
 <div class="my-8 mx-auto w-full max-w-2xl border-3 border-black bg-[#231e17] p-3 shadow-brutal dark:border-white not-prose">
 
@@ -160,46 +160,48 @@ El sistema fue diseñado como un backend desacoplado en **Java / Spring Boot** c
 
 </div>
 
-#### Desglose del flujo en 4 etapas:
-1. **Ingesta heterogénea:** Unificación de entradas mediante CSV (sistema provincial) y planillas Excel (escuelas rurales y docentes con dificultades en la plataforma web).
+#### El flujo completo en 4 etapas:
+1. **Ingesta heterogénea:** Unificación de entradas desde CSV (sistema provincial) y planillas Excel (escuelas rurales y docentes que no pudieron cargar en la plataforma web).
 2. **Núcleo transaccional y algorítmico (Spring Boot):** Saneamiento y deduplicación atómica (`@Transactional`), seguido por el motor de dominio que distribuye series en *round-robin* (anti-colisión por colegio) y asigna andariveles.
-3. **Modelo operativo híbrido (Resiliencia Offline):** Generación de planillas PDF impresas para jueces en campo (cero dependencia de red en pista) y carga supervisada en la mesa de control mediante la SPA en Next.js.
+3. **Modelo operativo híbrido (resiliencia offline):** Generación de planillas PDF impresas para los jueces en campo —cero dependencia de red en pista— y carga supervisada desde la mesa de control vía la SPA en Next.js.
 4. **Cómputo en vivo y resultados:** Clasificación automática a finales provinciales, acumulación de puntos por institución y emisión inmediata de actas oficiales (DOCX/PDF).
 
 ---
 
-### Modelado de Dominio: Polimorfismo de Pruebas y Pistas
+### Modelado de dominio: polimorfismo de pruebas y pistas
 
-Para reflejar fielmente las reglas atléticas sin acoplar el sistema a una pista específica, el dominio se estructuró mediante una jerarquía polimórfica que desacopla la disciplina de la infraestructura física:
+Para reflejar fielmente las reglas atléticas sin atarle el sistema a una pista específica, estructuré el dominio con una jerarquía polimórfica que desacopla la disciplina de la infraestructura física. En concreto, hay tres tipos de prueba con comportamientos bien distintos:
 
 * **Carreras de pista con andarivel (Velocidad — 80m, 100m):** Requieren partición algorítmica en series, asignación reglamentaria de andariveles según la capacidad de la pista sede (6, 8 o 10 andariveles) y clasificación por tiempos hacia finales.
 * **Carreras de pista sin andarivel (Medio fondo y fondo):** Parten en grupo único o salida escalonada en carril libre, sin restricción rígida de andariveles individuales.
-* **Pruebas de campo (Lanzamiento de bala, Salto en largo):** No utilizan andariveles; operan mediante rondas de intentos sucesivos (marcas válidas o nulas) donde la clasificación final se determina por la mejor marca individual registrada.
+* **Pruebas de campo (Lanzamiento de bala, Salto en largo):** No usan andariveles; operan con rondas de intentos sucesivos (marcas válidas o nulas) donde la clasificación final se determina por la mejor marca individual registrada.
 
-Este diseño orientado al dominio (DDD) permitió reutilizar el mismo motor de cómputo en diferentes sedes provinciales con pistas de 6 u 8 andariveles sin alterar la lógica de negocio ni el esquema de base de datos.
-
----
-
-## 5. Desafío Técnico Central y Trade-offs
-
-### Tensión: Entorno de pista sin conectividad vs. Centralización de cómputos
-
-* **El dilema:** En las pistas de atletismo provinciales, la conectividad móvil de los jueces en campo era nula o inestable, impidiendo el uso de aplicaciones web concurrentes en la pista.
-* **La resolución pragmática:** Se adoptó un **modelo híbrido digital-físico**. El sistema generaba e imprimía de forma automatizada las planillas oficiales de campo en blanco con las series y andariveles ya sorteados. Los jueces registraban marcas y firmas en papel (manteniendo respaldo reglamentario oficial) y una mesa de control centralizada las volcaba en el sistema en tiempo real.
-* **Trade-off asumido:** Se aceptó un paso de carga manual en la mesa de control a cambio de **cero dependencia de red en pista y total validez reglamentaria y fiscal** de las actas firmadas.
+Este diseño orientado al dominio (DDD) me permitió reutilizar el mismo motor de cómputo en diferentes sedes provinciales con pistas de 6 u 8 andariveles sin tocar la lógica de negocio ni el esquema de la base de datos.
 
 ---
 
-## 6. Resultados e Impacto Cuantitativo
+## 5. El desafío que más me hizo pensar
+
+### Sin internet en la pista vs. Cómputo centralizado
+
+Este fue el trade-off más interesante de todo el proyecto. La pista de atletismo no tiene señal móvil. Punto. No hay vuelta que darle.
+
+* **El dilema:** La conectividad de los jueces en campo era nula o inestable, así que usar una app web concurrente en pista directamente era inviable.
+* **Cómo lo resolví:** Adopté un **modelo híbrido digital-físico**. El sistema genera e imprime automáticamente las planillas oficiales de campo en blanco, ya con las series y andariveles sorteados. Los jueces registran marcas y firmas en papel —lo que además mantiene el respaldo reglamentario oficial— y una mesa de control centralizada las carga en el sistema en tiempo real.
+* **Trade-off asumido:** Acepté un paso de carga manual en la mesa de control a cambio de **cero dependencia de red en pista y total validez reglamentaria y fiscal** de las actas firmadas. Para el contexto, es exactamente el intercambio correcto.
+
+---
+
+## 6. Resultados: números concretos
 
 * **De 1 día a menos de 1 hora:** La ingesta y validación de inscripciones, asignación de series y generación de planillas pasó de una jornada entera de trabajo manual a menos de 60 minutos.
-* **De 3 días a 1 única jornada:** Las tres categorías (U14, U16 y U20) compitieron en un único día de 8 horas, eliminando demoras en el armado de series y clasificación a finales.
-* **Impacto logístico directo:** Reducción drástica del gasto provincial en transporte de delegaciones escolares, viandas y hospedaje.
+* **De 3 días a 1 única jornada:** Las tres categorías (U14, U16 y U20) compitieron en un único día de 8 horas. Sin demoras en el armado de series ni en la clasificación a finales.
+* **Impacto logístico directo:** Reducción drástica del gasto provincial en transporte de delegaciones escolares, viandas y hospedaje. No es menor: eso es plata pública que deja de gastarse.
 * **Escala en producción:** Procesó a más de **5.000 estudiantes de 100+ instituciones** educativas en las ediciones oficiales 2024 y 2025.
 * **Automatización de finales:** Clasificación automática de los 2 mejores atletas de cada región para conformar los 16 finalistas provinciales y asignación de puntajes a los 8 primeros puestos para premiación por colegios.
 
 ---
 
-## 7. Qué Haría Distinto Hoy
+## 7. Qué haría distinto hoy
 
-Si rediseñara la solución hoy, implementaría una arquitectura **Offline-First (PWA con sincronización en background vía CRDTs o IndexedDB)** para las mesas de jueces de campo. Esto permitiría a los jueces registrar intentos y nulos directamente en tablets en el campo de juego sin conexión, sincronizándose automáticamente con la mesa central en cuanto recuperaran señal, eliminando el paso intermedio de la transcripción manual.
+Si rediseñara la solución hoy, implementaría una arquitectura **Offline-First (PWA con sincronización en background vía CRDTs o IndexedDB)** para las mesas de jueces de campo. Eso permitiría a los jueces registrar intentos y nulos directamente en tablets sin conexión, sincronizándose automáticamente con la mesa central en cuanto recuperaran señal, eliminando el paso intermedio de la transcripción manual.
