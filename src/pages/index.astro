@@ -1,4 +1,25 @@
 ---
-// Redirect root to default locale
-return Astro.redirect('/es/');
+// Redirección de respaldo en caso de que el entorno no aplique las reglas de borde (_redirects).
+// No genera texto visible ni fondo blanco para evitar cualquier destello.
 ---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>fabribau.tech</title>
+    <meta http-equiv="refresh" content="0;url=/es/" />
+    <link rel="canonical" href="https://fabribau.tech/es/" />
+    <script is:inline>
+      window.location.replace('/es/');
+    </script>
+    <style>
+      :root, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0D0D0D;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

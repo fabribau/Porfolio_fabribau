@@ -1,0 +1,6 @@
+# Cloudflare Pages Edge Redirects
+# Redirecciones nativas a nivel de cabecera HTTP (302 Found) ejecutadas en el Edge de Cloudflare
+# Evitan la descarga y renderizado de cualquier HTML intermediario en el navegador.
+
+/            /es/             302
+/style-guide /es/style-guide  302

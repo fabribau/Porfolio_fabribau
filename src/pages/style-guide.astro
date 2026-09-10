@@ -1,4 +1,24 @@
 ---
-// Redirect /style-guide to default locale /es/style-guide
-return Astro.redirect('/es/style-guide');
+// Redirección de respaldo hacia /es/style-guide sin texto visible.
 ---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Style Guide | fabribau.tech</title>
+    <meta http-equiv="refresh" content="0;url=/es/style-guide" />
+    <link rel="canonical" href="https://fabribau.tech/es/style-guide" />
+    <script is:inline>
+      window.location.replace('/es/style-guide');
+    </script>
+    <style>
+      :root, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0D0D0D;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
