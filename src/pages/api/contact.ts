@@ -170,7 +170,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         message:
           data.lang === 'en'
             ? "Message received! I'll get back to you shortly."
-            : '¡Mensaje recibido! Me pondré en contacto contigo a la brevedad.',
+            : '¡Mensaje recibido! Me pondré en contacto con vos apenas pueda.',
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
