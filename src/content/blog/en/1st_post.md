@@ -1,4 +1,4 @@
-﻿---
+---
 title: 'What is FabRiBau?'
 description: 'First post to explain what this site is, why it was built this way, and the technical decisions behind Astro + Cloudflare Pages.'
 pubDate: 2026-09-09
@@ -25,6 +25,7 @@ I built this site from scratch with [Astro](https://astro.build/), aiming for so
 
 - **Minimal JavaScript sent to the client:** thanks to Astro's architecture, pages are served as static HTML. JS only shows up where it's truly needed (the theme toggle, the language picker, the contact form).
 - **Bilingual i18n system (ES/EN):** using Astro's native route prefixes and TypeScript-typed dictionaries. Every page has its Spanish and English version without duplicating logic.
+- **Strict TypeScript and Zod-validated content:** the entire codebase runs under `strict: true`, and every project and blog post is validated through Zod schemas at build time. If a date, a tag, or any required field is missing, the build fails immediately — no surprises in production.
 - **Contact form with Resend and Cloudflare Turnstile:** the form sends messages via [Resend](https://resend.com/) (transactional) and has anti-bot protection with Turnstile instead of the classic reCAPTCHA (no annoying traffic light or crosswalk captchas for the user to solve).
 - **Neobrutalist style:** because after a talk I watched at Platzi Conf I really wanted to build something outside the common denominator of today's sites. Thick borders, hard offset shadows, a vivid palette with a dark variant, and bold typography. Maybe it's not the most elegant style in the world, but it definitely doesn't go unnoticed.
 
@@ -51,7 +52,7 @@ This is where things get a bit more interesting. I discovered **Astro** back in 
 
 </div>
 
-Looking at the options, Astro with SSG stands out by a mile for content-focused sites. It's no coincidence that its slogan is *"The web framework for content-driven websites"*: portfolios, blogs, e-commerce, landing pages, documentation… all those sites where the focus isn't on complex functionality but on presenting information as well as possible. In these cases, the value is in the content and how fast the user can consume it. Does it make sense to force the browser to download 200 KB of React *runtime* just to read a text article? Clearly not.
+Looking at the options, Astro with SSG stands out by a mile for content-focused sites. It's no coincidence that its slogan is *"The web framework for content-driven websites"*: portfolios, blogs, e-commerce, landing pages, documentation… all those sites where the focus isn't on complex functionality but on presenting information as well as possible. In these cases, the value is in the content and how fast the user can consume it. Does it make sense to force the browser to download 200 KB of React *runtime* just to read a text article? Clearly not. And yes, Next.js can also generate static HTML with SSG — but it still ships its entire React runtime and hydration machinery to the client even when nothing on the page is dynamic. Astro was built with zero JS as the default; in Next.js, zero JS is a workaround.
 
 In concrete terms: Astro generates pure HTML at build time and serves it from a global CDN. The result is a **Time to First Byte (TTFB) in the single-digit milliseconds** because there's no server running code at runtime — just static files being delivered from the edge node closest to the user. On top of that, the JavaScript bundle sent to the client is minimal by default (the *islands* architecture only hydrates interactive components, not the whole page).
 
