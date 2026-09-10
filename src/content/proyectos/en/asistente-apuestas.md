@@ -1,6 +1,6 @@
 ---
 title: 'AI Assistant for Online Gambling Prevention'
-description: 'Conversational agent powered by RAG architecture for early detection and prevention of online gambling harm in youth: distributed architecture, real-time inference, and clinical privacy by design.'
+description: 'Conversational assistant with RAG architecture for the early detection and prevention of problem gambling in young people: distributed architecture, real-time inference, and privacy-by-design.'
 pubDate: 2025-12-12
 tags:
   [
@@ -19,43 +19,43 @@ liveUrl: 'https://asistenteprevencion.vercel.app/'
 thesisUrl: '/docs/Loyola_Riera_InformePI_2025.pdf'
 ---
 
-## 1. Executive Summary
+## 1. What this is about
 
-Intelligent conversational system powered by RAG architecture developed as our **Informatics Engineering Capstone Project (Thesis)** at Universidad Nacional de San Luis (UNSL), graded with the maximum score **10/10 (Honors)** by the examination board. Designed collaboratively with researchers from the Faculty of Psychology for the *University Problematic Consumption and Addictive Behavior Prevention Program*, it provides a confidential, empathetic, and psychoeducational channel for early risk detection and prevention of digital gambling addiction in adolescents, empirically validated in field tests with 50+ concurrent users.
-
----
-
-## 2. The Problem: Digital Addiction and the Stigma Barrier
-
-The widespread proliferation of virtual wallets, unauthorized digital casinos, and gamified sports betting platforms has sparked an emergent crisis of gambling addiction and debt among high school and university students.
-
-### Prior Constraints and Operational Frictions
-* **Inaccessibility and Institutional Stigma:** Traditional institutional channels (in-person lectures, addiction telephone hotlines) experience high rejection rates from teenagers due to fears of disciplinary action, breach of privacy, or parental scrutiny.
-* **Unaddressed Cognitive Biases:** Youths fall prey to cognitive fallacies amplified by gamified interfaces (*illusion of control*, *gambler's fallacy*), lacking accessible digital tools that debunk false probabilistic beliefs in their own language.
-* **Lack of Empirical Metrics for Psychological Research:** The multidisciplinary mental health team lacked standardized mechanisms to collect field metrics (dialogue patterns, emotional indicators, and risk levels) without compromising anonymity or violating personal data protection regulations (AAIP / Law 25.326).
+This project was my Final Year Project (Proyecto Integrador) for my Computer Engineering degree at UNSL, and it was graded **10 out of 10**. But beyond the grade — which I won't pretend didn't make me pretty happy — it's the project I'm most proud of for what it actually means. I built it alongside researchers from the Psychology Faculty for the *University Program for the Prevention of Problematic Substance Use and Addictive Behaviors*. The result: a conversational assistant with RAG architecture that provides a confidential, empathetic, and psychoeducational channel for the early detection of risk behaviors related to digital gambling addiction in teenagers. Validated in the field with over 50 simultaneous concurrent users.
 
 ---
 
-## 3. Key Engineering Decisions
+## 2. The problem: gambling, stigma, and a generation with no safety net
+
+The explosive growth of digital wallets, online casinos, and sports betting platforms triggered an emerging crisis of gambling addiction and early debt among high school and university students. This isn't alarmism — it's what the psychologists I worked with documented firsthand.
+
+### Why the problem was hard to solve with existing tools
+* **Traditional channels pushed them away:** Conventional support resources — in-person talks, addiction hotlines — face strong rejection from young people. Fear of school punishment, losing privacy, or being judged by their family means teenagers simply don't use those resources. The problem goes unaddressed.
+* **Nobody explained how probability actually works:** Young people fall for logical fallacies reinforced by the gamification of betting (the *illusion of control*, the *gambler's fallacy*). They had no interactive tools that could break down the math in their own language.
+* **Researchers had no data:** The mental health team had no standardized way to gather empirical field metrics — conversation patterns, emotional indicators, risk levels — without violating anonymity or the ethical guidelines of Argentina's data protection authority (AAIP). No data, no way to scale the intervention.
+
+---
+
+## 3. Key engineering decisions
 
 <div class="my-6 space-y-4 not-prose">
-  <!-- Card 1 -->
+  <!-- Tarjeta 1 -->
   <div class="border-3 border-black bg-bg-surface-light p-5 shadow-brutal dark:border-white dark:bg-bg-surface-dark">
     <div class="flex items-center gap-2.5 mb-3">
       <span class="border-2 border-black bg-accent-yellow px-2 py-0.5 font-mono text-xs font-bold text-black shadow-brutal-sm dark:border-white">
         01
       </span>
       <h3 class="font-display text-base sm:text-lg font-bold text-fg-primary-light dark:text-fg-primary-dark">
-        Decoupled Distributed Architecture: Next.js (Vercel) + Dedicated Python Server (UNSL)
+        Decoupled distributed architecture: Next.js (Vercel) + dedicated Python server (UNSL)
       </h3>
     </div>
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-pink block mb-1 font-mono">
-          Engineering Rationale
+          Why I did it this way
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          The conversational assistant requires sub-second latency and real-time streaming to retain youth engagement on mobile. Heavy NLP Transformer analysis (<code class="font-mono text-xs bg-black/5 dark:bg-white/10 px-1 py-0.5">pysentimiento</code>, emotion detection, risk scoring, and Excel reporting) is computationally intensive. Decoupling both workloads prevents heavy batch jobs from blocking the web event loop or inflating serverless compute costs.
+          The conversational assistant needs minimal latency and smooth streaming to hold a teenager's attention on mobile — if the response takes too long, they're gone. Text analysis with Transformers (<code class="font-mono text-xs bg-black/5 dark:bg-white/10 px-1 py-0.5">pysentimiento</code>, emotion detection, irony detection, and analytical Excel exports) is CPU-intensive. Mixing both in the same process meant heavy computations would either block the web event loop or drive up serverless costs. Splitting them was the right call.
         </p>
       </div>
       <div class="border-l-3 border-accent-pink bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -63,29 +63,29 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
           Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Unified Python Monolith (FastAPI/Streamlit) or Next.js synchronous processing:</strong> Discarded due to severe latency degradation in user chat during concurrent statistical batch calculations.
+          <strong>Python monolith (FastAPI/Streamlit) or unified processing in Next.js:</strong> Ruled out due to the risk of chat latency degradation during peaks of concurrent statistical computation.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Card 2 -->
+  <!-- Tarjeta 2 -->
   <div class="border-3 border-black bg-bg-surface-light p-5 shadow-brutal dark:border-white dark:bg-bg-surface-dark">
     <div class="flex items-center gap-2.5 mb-3">
       <span class="border-2 border-black bg-accent-cyan px-2 py-0.5 font-mono text-xs font-bold text-black shadow-brutal-sm dark:border-white">
         02
       </span>
       <h3 class="font-display text-base sm:text-lg font-bold text-fg-primary-light dark:text-fg-primary-dark">
-        Selection of Gemini 2.5 Flash with Native Reasoning
+        Choosing Gemini 2.5 Flash with native reasoning
       </h3>
     </div>
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-cyan block mb-1 font-mono">
-          Engineering Rationale
+          Why I did it this way
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Grounded in independent benchmarks from <em>Artificial Analysis</em> (August 2025), this model occupied the optimal Pareto frontier: highest output token generation speed to sustain fluent real-time dialogues, an intelligence index score of 58 with integrated reasoning to follow clinical boundaries, and sustainable operational costs for a public university.
+          According to independent benchmarks from <em>Artificial Analysis</em> (August 2025), Gemini 2.5 Flash sat in the optimal quadrant: top output speed (tokens/second) to keep conversations feeling instant, a 58-point intelligence index with built-in reasoning to follow clinical guidelines, and a cost that actually makes sense for a public university. It wasn't the most powerful model on the market, but it was the right one for this problem.
         </p>
       </div>
       <div class="border-l-3 border-accent-cyan bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -93,29 +93,29 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
           Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Self-hosted Local LLMs (Llama 3 / Mistral) or Heavy Frontier Models (GPT-4o / Claude Opus):</strong> Local deployment required cost-prohibitive GPU hardware for 50+ concurrent users; frontier models multiplied token costs with negligible benefits for short guidance sessions.
+          <strong>Local models (Llama 3 / Mistral) or frontier LLMs (GPT-4o / Claude Opus):</strong> Running models locally required GPU hardware well beyond what was feasible for 50+ concurrent users; frontier models drove up token costs without adding meaningful value for short guidance-oriented conversations.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Card 3 -->
+  <!-- Tarjeta 3 -->
   <div class="border-3 border-black bg-bg-surface-light p-5 shadow-brutal dark:border-white dark:bg-bg-surface-dark">
     <div class="flex items-center gap-2.5 mb-3">
       <span class="border-2 border-black bg-accent-lime px-2 py-0.5 font-mono text-xs font-bold text-black shadow-brutal-sm dark:border-white">
         03
       </span>
       <h3 class="font-display text-base sm:text-lg font-bold text-fg-primary-light dark:text-fg-primary-dark">
-        Pre-chunking Markdown Normalization + Adaptive Overlap (600 chars)
+        Markdown normalization before semantic chunking (600 chars + overlap)
       </h3>
     </div>
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-lime block mb-1 font-mono">
-          Engineering Rationale
+          Why I did it this way
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Clinical psychology manuals and regulatory PDFs feature complex structural elements (multi-columns, tables, repetitive headers) that corrupt embeddings if parsed naively. Normalizing documents to Markdown beforehand preserves structural hierarchy, while 600-character sentence-boundary chunking with overlap prevents severing key diagnostic definitions.
+          Psychology manuals and clinical guidelines in PDF come with complex layouts (two-column text, tables, footnotes) that corrupt the vectorization if ingested raw. Converting them to Markdown first preserves the document's semantic structure, and splitting into natural sentences with overlap prevents key clinical concepts from getting cut in half — which is exactly what you can't afford in a health system.
         </p>
       </div>
       <div class="border-l-3 border-accent-lime bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -123,29 +123,29 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
           Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Raw PDF text extraction or rigid fixed-size token chunking:</strong> Discarded due to semantic false positives and hallucination risks caused by split clinical concepts.
+          <strong>Direct plain-text extraction from PDFs or fixed-size chunking:</strong> Ruled out for producing semantic false positives and hallucinations when clinical definitions get split in the middle.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Card 4 -->
+  <!-- Tarjeta 4 -->
   <div class="border-3 border-black bg-bg-surface-light p-5 shadow-brutal dark:border-white dark:bg-bg-surface-dark">
     <div class="flex items-center gap-2.5 mb-3">
       <span class="border-2 border-black bg-accent-purple px-2 py-0.5 font-mono text-xs font-bold text-white shadow-brutal-sm dark:border-white">
         04
       </span>
       <h3 class="font-display text-base sm:text-lg font-bold text-fg-primary-light dark:text-fg-primary-dark">
-        Privacy by Design (AAIP) + At-Rest Encryption (AES-256-GCM)
+        Privacy by design (AAIP) and encryption at rest (AES-256-GCM)
       </h3>
     </div>
     <div class="space-y-3 text-sm leading-relaxed">
       <div>
         <span class="font-bold uppercase tracking-wider text-xs text-accent-purple block mb-1 font-mono">
-          Engineering Rationale
+          Why I did it this way
         </span>
         <p class="text-fg-muted-light dark:text-fg-muted-dark">
-          Compliant with Law 25.326 and AAIP Responsible AI guidelines, the system operates with anonymous public access (no registration required) and ephemeral credentials for school interventions. All stored messages and session telemetry are encrypted at rest using AES-256-GCM with segregated keys.
+          Under Argentina's Law 25.326 and the AAIP's recommendations for responsible AI, the system operates with anonymous public access — no registration of any kind — and short-lived ephemeral credentials for school-based sessions. All message and metric persistence is encrypted at rest using AES-256-GCM with segregated keys. If a teenager has to create an account with their email and national ID just to ask for help, they simply won't do it. It's that simple.
         </p>
       </div>
       <div class="border-l-3 border-accent-purple bg-black/[0.03] p-3 dark:bg-white/[0.04]">
@@ -153,7 +153,7 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
           Discarded Alternative & Trade-off
         </span>
         <p class="text-xs sm:text-sm text-fg-muted-light dark:text-fg-muted-dark">
-          <strong>Plaintext storage or mandatory registration via email/national ID:</strong> Discarded to adhere strictly to data minimization and prevent teenage apprehension when reporting gambling habits.
+          <strong>Plaintext storage or mandatory authentication with email/national ID:</strong> Ruled out to comply with the data minimization principle and avoid mistrust from minors sharing personal gambling situations.
         </p>
       </div>
     </div>
@@ -164,9 +164,9 @@ The widespread proliferation of virtual wallets, unauthorized digital casinos, a
 
 ## 4. System Architecture
 
-The solution operates as a distributed multi-node topology: a serverless web frontend on **Next.js** deployed on the **Vercel** Edge Network orchestrating conversational state and streaming via the **Vercel AI SDK**, connected to a serverless **PostgreSQL instance with the pgvector extension on NeonDB** co-located in the same region to minimize round-trip times (RTT). An on-premise **Python** backend server hosted within UNSL physical infrastructure performs asynchronous NLP and batch statistical processing.
+The system runs on a distributed multi-node topology: a serverless **Next.js** web app deployed on **Vercel**'s edge network, handling the interactive UI and message streaming via the **Vercel AI SDK**, connected to a **PostgreSQL database with the pgvector extension on NeonDB** in the same geographic region to minimize round-trip times. An on-premise **Python** backend server, hosted on UNSL's physical infrastructure, handles background analytical processing.
 
-### Physical Deployment Architecture
+### Infrastructure and physical deployment
 
 <div class="my-8 flex flex-col items-center not-prose">
   <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
@@ -175,13 +175,13 @@ The solution operates as a distributed multi-node topology: a serverless web fro
 
   </div>
   <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
-    Figure 1: Infrastructure Deployment Diagram (Next.js on Vercel, on-premise Python server at UNSL, PostgreSQL/pgvector on NeonDB, and third-party APIs).
+    Figure 1: Infrastructure deployment diagram (Next.js on Vercel, on-premise Python server at UNSL, PostgreSQL/pgvector on NeonDB, and external APIs).
   </span>
 </div>
 
 ---
 
-### RAG Inference Pipeline & Data Flow
+### RAG inference pipeline and data flow
 
 <div class="my-8 flex flex-col items-center not-prose">
   <div class="w-full max-w-xl border-3 border-black bg-white p-1 shadow-brutal dark:border-white">
@@ -190,43 +190,45 @@ The solution operates as a distributed multi-node topology: a serverless web fro
 
   </div>
   <span class="mt-2 block max-w-xl text-center font-mono text-xs text-fg-muted-light dark:text-fg-muted-dark">
-    Figure 2: Conversational assistant data flow (Ingestion, semantic vector retrieval, ethical guardrail injection, and real-time generation).
+    Figure 2: Conversational assistant data flow (ingestion, vector semantic retrieval, ethical guardrail injection, and real-time generation).
   </span>
 </div>
 
-#### 4-Phase Interaction Lifecycle:
-1. **Document Ingestion & Chunking:** Normalization of clinical literature to Markdown, adaptive 600-character chunking with semantic overlap, and high-dimensional embedding generation.
-2. **Contextual Retrieval:** Nearest-neighbor similarity search via pgvector to fetch the most relevant clinical fragments matching the student's query.
-3. **Guardrail Injection & Assisted Generation:** Dynamic prompt assembly (Ethical System Prompt + Dialogue History + Pre-session Form + Retrieved Chunks) and token streaming generation powered by Gemini 2.5 Flash.
-4. **Asynchronous NLP & Audit Trail:** AES-256-GCM symmetric encryption for database persistence and batch classification in the Python server using `pysentimiento` to track polarity, emotions, and risk markers for researchers.
+#### The full cycle in 4 phases:
+1. **Document ingestion and segmentation:** Converting clinical literature to Markdown, adaptive chunking into 600-character segments with overlap, and generating vector embeddings.
+2. **Contextual retrieval:** Nearest-neighbor search via pgvector to retrieve the document fragments most semantically similar to the student's query.
+3. **Guardrail injection and assisted generation:** Building the unified prompt (ethical System Prompt + conversation history + initial intake form + bibliographic chunks) and streaming the response via Gemini 2.5 Flash.
+4. **Asynchronous NLP analysis and auditing:** AES-256-GCM symmetric encryption for secure storage in NeonDB, and evaluation on the Python server with `pysentimiento` to classify polarity, emotions, and risk indicators for the research team.
 
 ---
 
-## 5. Core Technical Challenge & Trade-offs
+## 5. The challenge that made me think the hardest
 
-### Tension: Conversational Empathy with LLMs vs. Strict "No Clinical Diagnosis" Rule
+### An LLM that wants to diagnose vs. a non-negotiable "no clinical diagnosis" rule
 
-* **The Dilemma:** Large language models inherently tend to please users and offer unsolicited classifications ("you show symptoms of moderate gambling addiction"), which represented a critical ethical hazard when serving minors in mental health contexts.
-* **The Pragmatic Resolution:** Implemented a **context engineering architecture with strict ethical guardrails** within the System Prompt. The model is explicitly prevented from issuing psychiatric diagnoses or prescriptions; its scope is strictly restricted to non-judgmental active listening, probability debunking, and active referral to official healthcare networks and local support centers in San Luis.
-* **Accepted Trade-off:** Prioritized **clinical safety and ethical compliance** over unrestricted generation freedom, constraining the output space while ensuring a trusted, psychologist-approved environment.
+This was the most interesting design problem in the project, and the one that took the most hours to get right.
+
+* **The dilemma:** Language models naturally tend to please the person they're talking to and to make confident, definitive statements. "You show signs of moderate gambling disorder" is exactly the kind of thing an unrestricted LLM might say — and in a system that serves at-risk teenagers, that was a real and critical ethical problem.
+* **How I solved it:** I designed a **context engineering architecture with strict guardrails** in the System Prompt. The assistant is fully blocked from making diagnostic statements or prescriptions. Its role is limited to active and non-judgmental listening, clarifying mathematical probability myths, and guiding users toward support networks and official health centers (including geolocated resources in San Luis).
+* **Trade-off accepted:** I prioritized **ethical rigor and clinical safety** over the model's expressive freedom — constraining its response boundaries, but guaranteeing a trustworthy environment backed by psychology specialists. An LLM that diagnoses is a legal and human problem. One that listens and refers people to help is a useful tool.
 
 ---
 
-## 6. Quantitative Results & Real-World Impact
+## 6. Results: the numbers
 
-* **Academic Distinction (10/10):** Defended with maximum academic marks and special honors at UNSL.
-* **Stress-Tested in Production (50+ Concurrent Users):** Validated in real classroom interventions across high schools and university cohorts, handling **92 visitors, 125 sessions, and over 2,300 messages** without downtime or latency spikes.
-* **Web Performance Metrics (Vercel Speed Insights):**
-  * **Real Experience Score (RES):** 97 out of 100 points.
+* **Perfect grade:** Approved 10/10 by the UNSL evaluation committee.
+* **Stress validation (50+ concurrent users):** Held up under simultaneous load tests in school classrooms and university sessions, handling **92 visitors, 125 sessions, and over 2,300 messages** with no downtime or latency degradation.
+* **Measured web performance (Vercel Speed Insights):**
+  * **Real Experience Score (RES):** 97 out of 100.
   * **First Input Delay (FID):** 3 ms average (98% rated excellent).
   * **Time to First Byte (TTFB):** 0.23 seconds average (96% rated excellent).
   * **Interaction to Next Paint (INP):** 96 ms average (92% rated excellent).
-* **RAG Fidelity & Groundedness:** **95%** of the assistant's generated responses explicitly incorporated retrieved knowledge from the validated psychological repository.
-* **User Acceptance:** Rated **4.8/5 stars** in conceptual feedback and **4.4/5** on the Likert satisfaction scale regarding perceived utility.
-* **Scientific Research Transfer:** Publications and poster presentations at the **13th National Congress on Informatics Engineering (CoNaIISI 2025, Córdoba)**, the **Mendoza Mental Health Congress 2025**, and the **3rd University Problematic Consumption Conference (UNSL)**.
+* **RAG fidelity and usage:** **95%** of responses explicitly integrated content retrieved from the bibliographic knowledge base. The model didn't make things up.
+* **Acceptance and usability:** Average rating of **4.8/5 stars** in conceptual feedback and **4.4/5** on the Likert scale for perceived utility.
+* **Academic dissemination:** Papers and posters presented at the **13th National Congress of Computer Engineering (CoNaIISI 2025, Córdoba)**, the **Mental Health Congress (Mendoza 2025)**, and the **3rd University Conference on Health and Problematic Substance Use (UNSL)**.
 
 ---
 
-## 7. What I Would Do Differently Today
+## 7. What I'd do differently today
 
-If re-architecting the solution today, I would introduce an **automated continuous evaluation pipeline for RAG using frameworks like Ragas or TruLens**, continuously tracking *faithfulness*, *context recall*, and *answer relevancy* on each knowledge base update without manual lexical matching. Additionally, I would deploy an **alternative channel via WhatsApp Cloud API or an Offline-First Progressive Web App (PWA)**, eliminating browser barriers for students in rural schools or with constrained mobile data plans.
+If I were redesigning the solution today, I'd add a **continuous automated RAG evaluation pipeline using frameworks like Ragas or TruLens**, computing *faithfulness*, *context recall*, and *answer relevancy* metrics automatically on every content update. I'd also implement an **alternative channel via WhatsApp Cloud API or an offline-capable PWA**, to remove the connectivity barrier for teenagers in rural schools or with limited data plans. Because if the channel doesn't reach where the problem is, none of it matters.

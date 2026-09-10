@@ -43,7 +43,7 @@ La organización de atletismo escolar a nivel provincial abarca tres categorías
 
 ### Cómo funcionaba antes
 * **Un día entero perdido antes de que empezara cualquier carrera:** El administrador del torneo se la pasaba transcribiendo inscripciones a mano desde fuentes dispersas, verificando restricciones y confeccionando a mano las planillas de los jueces. Un día completo de trabajo antes de que arrancara un solo atleta.
-* **El torneo se dividía en 3 días por pura lentitud logística:** Como el cálculo manual de marcas, clasificaciones y puntos por escuela era tan lento, el torneo se partía por categoría (un día por categoría). Eso significaba triplicar los costos públicos en transporte de delegaciones, viandas y hospedaje. Plata del Estado desperdiciada en un problema que tenía solución.
+* **El torneo se dividía en 3 días por pura lentitud logística:** Como el cálculo manual de marcas, clasificaciones y puntos por escuela era tan lento, el torneo se partía por categoría (un día por categoría). Eso significaba triplicar los costos públicos en transporte de delegaciones, viandas y hospedaje. Plata desperdiciada en un problema que tenía solución.
 * **Dos realidades de inscripción que no hablaban entre sí:** Coexistían el sistema web provincial ("Juegos Intercolegiales") que exportaba CSVs, y planillas Excel enviadas por WhatsApp o mail —usadas por escuelas rurales sin conectividad o por docentes que, por lo que sea, no habían podido cargar las inscripciones en la plataforma oficial—. Alguien tenía que unificar ese desastre manualmente.
 
 ---
