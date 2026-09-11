@@ -81,7 +81,7 @@ export const ui = {
       'Ingeniero en Informática, Docente Universitario e Investigador en IA en\u00A0San\u00A0Luis,\u00A0Argentina.',
     'about.bio_title': 'Perfil Profesional & Académico',
     'about.bio_p1':
-      'Hola soy Fabri, Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial (IA) y arquitecturas complejas de alto impacto, con experiencia como autor y expositor en congresos científicos.',
+      'Hola soy Fabri, Ingeniero en Informática con capacidad para transformar requerimientos complejos en soluciones de software eficientes y escalables. Especializado en el desarrollo FullStack, la aplicación de Inteligencia Artificial, con foco en la colaboración, la mejora continua y el aprendizaje permanente de tecnologías que generan impacto real.',
     'about.bio_p2':
       'Combino mi trayectoria docente en la Universidad Nacional de San Luis (UNSL) en materias centrales de resolución de problemas, algoritmos y programación, con experiencia práctica en la industria y el sector público, participando activamente en todas las etapas del ciclo de vida del software.', 
     'about.experience_title': 'Experiencia Profesional & Laboral',
@@ -262,7 +262,7 @@ export const ui = {
       'Software Engineer, University Teacher, and AI Researcher in\u00A0San\u00A0Luis,\u00A0Argentina.',
     'about.bio_title': 'Professional & Academic Profile',
     'about.bio_p1':
-      "Hi, I'm Fabri, a Software Engineer with the ability to transform complex requirements into efficient and scalable software solutions. Specialized in FullStack development, applied Artificial Intelligence (AI), and complex high-impact architectures, with experience as an author and speaker at scientific conferences.",
+      "Hi, I'm Fabri, a Software Engineer with the ability to transform complex requirements into efficient and scalable software solutions. Specialized in FullStack development and applied Artificial Intelligence, focused on collaboration, continuous improvement, and the ongoing learning of technologies that drive real impact.",
     'about.bio_p2':
       'I blend my university teaching journey at Universidad Nacional de San Luis (UNSL) in core courses of problem solving, algorithms, and programming, with hands-on experience in the industry and public sector, actively participating in all stages of the software development lifecycle.',
     'about.experience_title': 'Professional & Industry Experience',
