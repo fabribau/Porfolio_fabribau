@@ -27,3 +27,4 @@ agent/
 
 # Cloudflare
 .wrangler/
+src/pages/avatar-preview.astro

@@ -1,0 +1,99 @@
+<svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 200 200" 
+  width="200" 
+  height="200"
+  id="face-svg"
+>
+  <!-- Background for standalone viewing -->
+  <rect width="200" height="200" rx="24" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+
+  <!-- Subtle grid texture -->
+  <defs>
+    <pattern id="grid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#000000" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" rx="24" fill="url(#grid)" />
+
+  <!-- ========================================== -->
+  <!-- [LAYER 1]: HAIR / HEAD ACCENT              -->
+  <!-- ========================================== -->
+  <g id="layer-hair">
+    <path 
+      d="M 38 52 C 45 32, 75 22, 100 22 C 125 22, 155 32, 162 52 C 150 48, 132 46, 120 54 C 110 46, 90 46, 80 54 C 68 46, 50 48, 38 52 Z" 
+      fill="#A47A3F" 
+      stroke="#18181B" 
+      stroke-width="2" 
+    />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 2]: EYEBROWS                        -->
+  <!-- ========================================== -->
+  <g id="layer-eyebrows">
+    <g id="brow-left-group">
+      <rect id="brow-left" x="42" y="65" width="36" height="7" rx="3.5" fill="#A47A3F" />
+    </g>
+    <g id="brow-right-group">
+      <rect id="brow-right" x="122" y="65" width="36" height="7" rx="3.5" fill="#A47A3F" />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 3]: EYES & PUPILS                   -->
+  <!-- ========================================== -->
+  <g id="layer-eyes">
+    <!-- Left Eye Socket -->
+    <g id="eye-socket-left">
+      <rect x="40" y="82" width="40" height="44" rx="20" fill="#FFFFFF" stroke="#18181B" stroke-width="4" />
+      <g id="pupil-left">
+        <circle cx="60" cy="104" r="11" fill="#4f7942" />
+        <circle cx="56" cy="100" r="3.5" fill="#FFFFFF" />
+        <circle cx="63" cy="107" r="1.5" fill="#FFFFFF" />
+      </g>
+    </g>
+
+    <!-- Right Eye Socket -->
+    <g id="eye-socket-right">
+      <rect x="120" y="82" width="40" height="44" rx="20" fill="#FFFFFF" stroke="#18181B" stroke-width="4" />
+      <g id="pupil-right">
+        <circle cx="140" cy="104" r="11" fill="#4f7942" />
+        <circle cx="136" cy="100" r="3.5" fill="#FFFFFF" />
+        <circle cx="143" cy="107" r="1.5" fill="#FFFFFF" />
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 4]: CHEEKS                          -->
+  <!-- ========================================== -->
+  <g id="layer-cheeks">
+    <ellipse id="cheek-left" cx="44" cy="132" rx="8" ry="4" fill="#FF3D8A" opacity="0.6"/>
+    <ellipse id="cheek-right" cx="156" cy="132" rx="8" ry="4" fill="#FF3D8A" opacity="0.6"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 5]: NOSE                            -->
+  <!-- ========================================== -->
+  <g id="layer-nose">
+    <path d="M 100 108 L 96 118 L 103 118" fill="none" stroke="#18181B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 6]: MOUTH                           -->
+  <!-- ========================================== -->
+  <g id="layer-mouth">
+    <path id="mouth-neutral" d="M 86 142 Q 100 148 114 142" fill="none" stroke="#18181B" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 7]: TECH ACCENTS                    -->
+  <!-- ========================================== -->
+  <g id="layer-tech-accent" opacity="0.4">
+    <rect x="16" y="16" width="6" height="6" fill="#18181B" />
+    <rect x="178" y="16" width="6" height="6" fill="#18181B" />
+    <line x1="16" y1="184" x2="32" y2="184" stroke="#18181B" stroke-width="2" />
+    <line x1="168" y1="184" x2="184" y2="184" stroke="#18181B" stroke-width="2" />
+  </g>
+</svg>

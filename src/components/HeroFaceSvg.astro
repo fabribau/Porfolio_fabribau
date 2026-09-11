@@ -1,0 +1,247 @@
+---
+/**
+ * HeroFaceSvg.astro
+ * 
+ * Componente modular con las capas vectoriales SVG del avatar neobrutalista.
+ * Diseñado para facilitar la iteración e ilustración de la cara de Fabrizio.
+ * 
+ * Capas disponibles e IDs reactivos:
+ * - #layer-hair: Cabello y peinado
+ * - #layer-eyebrows (#brow-left-group, #brow-right-group): Cejas expresivas
+ * - #layer-eyes (#eye-socket-left, #eye-socket-right, #pupil-left, #pupil-right, #eye-happy-*, #eye-annoyed-*): Ojos y pupilas
+ * - #layer-cheeks (#cheek-left, #cheek-right): Rubor de satisfacción
+ * - #layer-nose: Nariz neobrutalista
+ * - #layer-mouth (#mouth-neutral, #mouth-happy, #mouth-annoyed): Boca reactiva
+ * - #layer-tech-accent: Detalles geométricos neobrutalistas
+ */
+
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const {
+  class: className = "w-full h-full p-2 overflow-visible",
+  id = "face-svg"
+} = Astro.props;
+---
+
+<svg 
+  viewBox="0 0 200 200" 
+  class={className}
+  id={id}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- ========================================== -->
+  <!-- [LAYER 1]: HAIR / HEAD ACCENT              -->
+  <!-- ========================================== -->
+  <g id="layer-hair">
+    <!-- Geometric hair crop / fringe -->
+    <path 
+      d="M 38 52 C 45 32, 75 22, 100 22 C 125 22, 155 32, 162 52 C 150 48, 132 46, 120 54 C 110 46, 90 46, 80 54 C 68 46, 50 48, 38 52 Z" 
+      fill="#A47A3F" 
+      stroke="#18181B" 
+      stroke-width="2" 
+    />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 2]: EYEBROWS (Reactive & Expressive)-->
+  <!-- ========================================== -->
+  <g id="layer-eyebrows">
+    <!-- Left Eyebrow -->
+    <g id="brow-left-group" style="transform-origin: 60px 68px;">
+      <rect 
+        id="brow-left"
+        x="42" 
+        y="65" 
+        width="36" 
+        height="7" 
+        rx="3.5" 
+        fill="#A47A3F" 
+      />
+    </g>
+
+    <!-- Right Eyebrow -->
+    <g id="brow-right-group" style="transform-origin: 140px 68px;">
+      <rect 
+        id="brow-right"
+        x="122" 
+        y="65" 
+        width="36" 
+        height="7" 
+        rx="3.5" 
+        fill="#A47A3F" 
+      />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 3]: EYES & PUPILS (Mouse Tracking)  -->
+  <!-- ========================================== -->
+  <g id="layer-eyes">
+    <!-- Left Eye Socket -->
+    <g id="eye-socket-left" style="transform-box: fill-box; transform-origin: center;">
+      <rect 
+        x="40" 
+        y="82" 
+        width="40" 
+        height="44" 
+        rx="20" 
+        fill="#FFFFFF" 
+        stroke="#18181B" 
+        stroke-width="4" 
+      />
+      <!-- Left Pupil (Smoothly follows mouse) -->
+      <g id="pupil-left" class="will-change-transform">
+        <circle cx="60" cy="104" r="11" fill="#4f7942" />
+        <circle cx="56" cy="100" r="3.5" fill="#FFFFFF" />
+        <circle cx="63" cy="107" r="1.5" fill="#FFFFFF" />
+      </g>
+      <!-- Left Eye Wink / Happy Expression (Hidden by default) -->
+      <path 
+        id="eye-happy-left" 
+        d="M 44 104 Q 60 88 76 104" 
+        fill="none" 
+        stroke="#18181B" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        class="opacity-0 transition-opacity duration-150"
+      />
+      <!-- Left Eye Annoyed / Hit Expression (Hidden by default) -->
+      <path 
+        id="eye-annoyed-left" 
+        d="M 44 104 L 76 104" 
+        fill="none" 
+        stroke="#18181B" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        class="opacity-0 transition-opacity duration-150"
+      />
+    </g>
+
+    <!-- Right Eye Socket -->
+    <g id="eye-socket-right" style="transform-box: fill-box; transform-origin: center;">
+      <rect 
+        x="120" 
+        y="82" 
+        width="40" 
+        height="44" 
+        rx="20" 
+        fill="#FFFFFF" 
+        stroke="#18181B" 
+        stroke-width="4" 
+      />
+      <!-- Right Pupil (Smoothly follows mouse) -->
+      <g id="pupil-right" class="will-change-transform">
+        <circle cx="140" cy="104" r="11" fill="#4f7942" />
+        <circle cx="136" cy="100" r="3.5" fill="#FFFFFF" />
+        <circle cx="143" cy="107" r="1.5" fill="#FFFFFF" />
+      </g>
+      <!-- Right Eye Wink / Happy Expression (Hidden by default) -->
+      <path 
+        id="eye-happy-right" 
+        d="M 124 104 Q 140 88 156 104" 
+        fill="none" 
+        stroke="#18181B" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        class="opacity-0 transition-opacity duration-150"
+      />
+      <!-- Right Eye Annoyed / Hit Expression (Hidden by default) -->
+      <path 
+        id="eye-annoyed-right" 
+        d="M 124 104 L 156 104" 
+        fill="none" 
+        stroke="#18181B" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        class="opacity-0 transition-opacity duration-150"
+      />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 4]: CHEEKS (Subtle Approval Blush)  -->
+  <!-- ========================================== -->
+  <g id="layer-cheeks">
+    <ellipse 
+      id="cheek-left" 
+      cx="44" 
+      cy="132" 
+      rx="8" 
+      ry="4" 
+      fill="#FF3D8A" 
+      class="opacity-0 transition-opacity duration-200" 
+    />
+    <ellipse 
+      id="cheek-right" 
+      cx="156" 
+      cy="132" 
+      rx="8" 
+      ry="4" 
+      fill="#FF3D8A" 
+      class="opacity-0 transition-opacity duration-200" 
+    />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 5]: NOSE (Minimal Neobrutalist Mark)-->
+  <!-- ========================================== -->
+  <g id="layer-nose">
+    <path 
+      d="M 100 108 L 96 118 L 103 118" 
+      fill="none" 
+      stroke="#18181B" 
+      stroke-width="3.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+    />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 6]: MOUTH (Dynamic Morph / Reaction)-->
+  <!-- ========================================== -->
+  <g id="layer-mouth">
+    <!-- Neutral / Smirk Mouth -->
+    <path 
+      id="mouth-neutral" 
+      d="M 86 142 Q 100 148 114 142" 
+      fill="none" 
+      stroke="#18181B" 
+      stroke-width="4.5" 
+      stroke-linecap="round" 
+      class="transition-opacity duration-150" 
+    />
+    <!-- Happy Smile (Shown on like) -->
+    <path 
+      id="mouth-happy" 
+      d="M 82 139 Q 100 156 118 139" 
+      fill="none" 
+      stroke="#18181B" 
+      stroke-width="4.5" 
+      stroke-linecap="round" 
+      class="opacity-0 transition-opacity duration-150" 
+    />
+    <!-- Annoyed / Grumpy Mouth (Shown on hit) -->
+    <path 
+      id="mouth-annoyed" 
+      d="M 84 147 Q 100 139 116 147" 
+      fill="none" 
+      stroke="#18181B" 
+      stroke-width="4.5" 
+      stroke-linecap="round" 
+      class="opacity-0 transition-opacity duration-150" 
+    />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- [LAYER 7]: TECH DETAIL (Neobrutalist Accent)-->
+  <!-- ========================================== -->
+  <g id="layer-tech-accent" class="opacity-40">
+    <rect x="16" y="16" width="6" height="6" fill="#18181B" />
+    <rect x="178" y="16" width="6" height="6" fill="#18181B" />
+    <line x1="16" y1="184" x2="32" y2="184" stroke="#18181B" stroke-width="2" />
+    <line x1="168" y1="184" x2="184" y2="184" stroke="#18181B" stroke-width="2" />
+  </g>
+</svg>

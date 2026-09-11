@@ -95,6 +95,8 @@
 - **`Footer.astro`**: Pie de página con links de navegación rápida, redes, copyright y badges tecnológicos.
 - **`ThemeToggle.astro`**: Interruptor de tema claro/oscuro compatible con View Transitions.
 - **`LanguagePicker.astro`**: Selector de idioma ES/EN con mantenimiento de ruta actual.
+- **`HeroFace3D.astro`**: Avatar 3D interactivo para la sección Hero con seguimiento de cursor, física elástica, anime.js, partículas y gestos reactivos (+1 y enojo).
+- **`HeroFaceSvg.astro`**: Capas vectoriales SVG modulares del avatar neobrutalista, desacopladas para calibración visual e ilustración de rasgos.
 
 ### Nomenclatura
 
