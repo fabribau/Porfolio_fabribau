@@ -73,6 +73,7 @@
 │   │   └── index.astro         # Redirección raíz a /es/
 │   └── styles/                 # Estilos globales y tokens
 │       └── global.css          # Variables CSS, reset y utilidades neobrutalistas
+├── wrangler.jsonc              # Configuración de Cloudflare y observabilidad
 ├── astro.config.mjs            # Configuración principal de Astro, i18n y adaptadores
 ├── tailwind.config.mjs         # Tokens de diseño, sombras duras, paleta y extensiones
 ├── tsconfig.json               # Configuración estricta de TypeScript y path aliases
