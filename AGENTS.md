@@ -17,7 +17,7 @@
 
 ## 2. Stack Tecnológico
 
-- **Framework:** [Astro 5](https://astro.build/) (Static Site Generation con soporte para endpoints serverless).
+- **Framework:** [Astro 7.3](https://astro.build/) (Static Site Generation con soporte para endpoints serverless).
 - **Estilos:** [Tailwind CSS](https://tailwindcss.com/) + CSS Variables personalizadas para tokens neobrutalistas.
 - **Contenido:** Astro Content Collections con validación estricta vía **Zod**.
 - **Internacionalización (i18n):** Astro i18n nativo con prefijo de ruta (`/es/`, `/en/`) y diccionarios centralizados.
