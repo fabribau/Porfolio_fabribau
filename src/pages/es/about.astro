@@ -46,7 +46,7 @@ const skillCategories = [
   {
     title: t('about.skills_ai'),
     skills: [
-      'RAG (Retrieval-Augmented Generation)',
+      'RAG',
       'LLMs',
       'Vector DBs',
       'Embeddings',
@@ -220,18 +220,20 @@ const taughtCourses = [
 >
   <div class="space-y-14">
     <!-- Header Section -->
-    <SectionHeader
-      number="01"
-      title={t('about.title')}
-      subtitle={t('about.subtitle')}
-      highlightColor="lime"
-    />
+    <div class="reveal-on-scroll">
+      <SectionHeader
+        number="01"
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
+        highlightColor="lime"
+      />
+    </div>
 
     <!-- Profile Hero Card -->
     <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
       <!-- Photo / Profile Card (4 cols) -->
       <div
-        class="brutal-context-light flex flex-col items-center justify-between space-y-4 border-4 border-black bg-accent-yellow p-6 text-center shadow-brutal-lg dark:border-white lg:col-span-4"
+        class="reveal-on-scroll reveal-pop brutal-context-light flex flex-col items-center justify-between space-y-4 border-4 border-black bg-accent-yellow p-6 text-center shadow-brutal-lg dark:border-white lg:col-span-4"
       >
         <div
           class="relative h-56 w-56 overflow-hidden border-4 border-black bg-zinc-900 shadow-brutal transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-lg dark:border-white sm:h-64 sm:w-64"
@@ -265,7 +267,7 @@ const taughtCourses = [
 
       <!-- Bio Summary (8 cols) -->
       <div
-        class="flex flex-col justify-between space-y-6 border-4 border-black bg-bg-surface-light p-6 shadow-brutal-lg dark:border-white dark:bg-bg-surface-dark md:p-8 lg:col-span-8"
+        class="reveal-on-scroll reveal-pop reveal-delay-100 flex flex-col justify-between space-y-6 border-4 border-black bg-bg-surface-light p-6 shadow-brutal-lg dark:border-white dark:bg-bg-surface-dark md:p-8 lg:col-span-8"
       >
         <div class="space-y-4">
           <div class="flex items-center gap-2">
@@ -321,230 +323,316 @@ const taughtCourses = [
 
     <!-- Experience Timeline (Industry / Professional) -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-pink dark:border-white"
-        ></span>
-        {t('about.experience_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-pink dark:border-white"
+          ></span>
+          {t('about.experience_title')}
+        </h3>
+      </div>
 
       <div class="space-y-6">
         {
-          industryExperience.map((exp) => (
-            <Card variant="default" shadow="md">
-              <div class="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                <div>
-                  <h4 class="font-display text-xl font-black text-black dark:text-white">
-                    {exp.role}
-                  </h4>
-                  <p class="font-mono text-sm font-bold text-accent-pink dark:text-accent-yellow">
-                    {exp.org}
+          industryExperience.map((exp, index) => {
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass}`}>
+                <Card variant="default" shadow="md">
+                  <div class="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                    <div>
+                      <h4 class="font-display text-xl font-black text-black dark:text-white">
+                        {exp.role}
+                      </h4>
+                      <p class="font-mono text-sm font-bold text-accent-pink dark:text-accent-yellow">
+                        {exp.org}
+                      </p>
+                    </div>
+                    <Badge color="yellow" size="sm">
+                      {exp.period}
+                    </Badge>
+                  </div>
+
+                  <p class="mb-4 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                    {exp.desc}
                   </p>
-                </div>
-                <Badge color="yellow" size="sm">
-                  {exp.period}
-                </Badge>
-              </div>
 
-              <p class="mb-4 text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                {exp.desc}
-              </p>
-
-              <div class="flex flex-wrap gap-1.5">
-                {exp.tags.map((tag) => (
-                  <Tag>{tag}</Tag>
-                ))}
+                  <div class="flex flex-wrap gap-1.5">
+                    {exp.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
+                  </div>
+                </Card>
               </div>
-            </Card>
-          ))
+            );
+          })
         }
       </div>
     </section>
 
     <!-- University Teaching Experience -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-yellow dark:border-white"
-        ></span>
-        {t('about.teaching_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-yellow dark:border-white"
+          ></span>
+          {t('about.teaching_title')}
+        </h3>
+      </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
-          teachingExperience.map((teach) => (
-            <Card variant="default" shadow="md" class="flex flex-col justify-between">
-              <div>
-                <div class="mb-3 flex items-center justify-between gap-2">
-                  <Badge color="yellow" size="sm">
-                    {teach.period}
-                  </Badge>
-                </div>
-                <h4 class="mb-1 font-display text-lg font-black">{teach.role}</h4>
-                <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
-                  {teach.org}
-                </p>
-                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                  {teach.desc}
-                </p>
-              </div>
+          teachingExperience.map((teach, index) => {
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card variant="default" shadow="md" class="flex flex-1 flex-col justify-between">
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-2">
+                      <Badge color="yellow" size="sm">
+                        {teach.period}
+                      </Badge>
+                    </div>
+                    <h4 class="mb-1 font-display text-lg font-black">{teach.role}</h4>
+                    <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
+                      {teach.org}
+                    </p>
+                    <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                      {teach.desc}
+                    </p>
+                  </div>
 
-              <div class="flex flex-wrap gap-1.5 pt-4">
-                {teach.tags.map((tag) => (
-                  <Tag>{tag}</Tag>
-                ))}
+                  <div class="flex flex-wrap gap-1.5 pt-4">
+                    {teach.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
+                  </div>
+                </Card>
               </div>
-            </Card>
-          ))
+            );
+          })
         }
       </div>
     </section>
 
     <!-- Education & Achievements -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
-        ></span>
-        {t('about.education_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
+          ></span>
+          {t('about.education_title')}
+        </h3>
+      </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
-          educationList.map((edu) => (
-            <Card variant="default" shadow="md" class="flex flex-col justify-between">
-              <div>
-                <div class="mb-3 flex items-center justify-between gap-2">
-                  <Badge color="purple" size="sm">
-                    {edu.period}
-                  </Badge>
-                  <Badge color="cyan" size="sm">
-                    {edu.highlight}
-                  </Badge>
-                </div>
-                <h4 class="mb-1 font-display text-xl font-black">{edu.title}</h4>
-                <p class="mb-3 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                  {edu.institution}
-                </p>
-                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                  {edu.desc}
-                </p>
+          educationList.map((edu, index) => {
+            const delayClass = `reveal-delay-${((index % 2) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card variant="default" shadow="md" class="flex flex-1 flex-col justify-between">
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-2">
+                      <Badge color="purple" size="sm">
+                        {edu.period}
+                      </Badge>
+                      <Badge color="cyan" size="sm">
+                        {edu.highlight}
+                      </Badge>
+                    </div>
+                    <h4 class="mb-1 font-display text-xl font-black">{edu.title}</h4>
+                    <p class="mb-3 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                      {edu.institution}
+                    </p>
+                    <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                      {edu.desc}
+                    </p>
+                  </div>
+                </Card>
               </div>
-            </Card>
-          ))
+            );
+          })
         }
       </div>
     </section>
 
     <!-- Research, Publications & Congresses -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-purple dark:border-white"
-        ></span>
-        {t('about.research_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-purple dark:border-white"
+          ></span>
+          {t('about.research_title')}
+        </h3>
+      </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
-          researchPublications.map((item) => (
-            <Card variant="default" shadow="md" class="flex flex-col justify-between">
-              <div>
-                <div class="mb-3 flex items-center justify-between gap-2">
-                  <Badge color="pink" size="sm">
-                    {item.badge}
-                  </Badge>
-                  <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                    {item.year}
-                  </span>
-                </div>
-                <h4 class="mb-2 font-display text-lg font-black">{item.title}</h4>
-                <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
-                  {item.org}
-                </p>
-                <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                  {item.desc}
-                </p>
+          researchPublications.map((item, index) => {
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card variant="default" shadow="md" class="flex flex-1 flex-col justify-between">
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-2">
+                      <Badge color="pink" size="sm">
+                        {item.badge}
+                      </Badge>
+                      <span class="font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                        {item.year}
+                      </span>
+                    </div>
+                    <h4 class="mb-2 font-display text-lg font-black">{item.title}</h4>
+                    <p class="mb-3 font-mono text-xs font-bold text-accent-pink dark:text-accent-yellow">
+                      {item.org}
+                    </p>
+                    <p class="text-sm leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                      {item.desc}
+                    </p>
+                  </div>
+                </Card>
               </div>
-            </Card>
-          ))
+            );
+          })
         }
       </div>
     </section>
 
     <!-- Taught Extracurricular Courses -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-lime dark:border-white"
-        ></span>
-        {t('about.courses_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-lime dark:border-white"
+          ></span>
+          {t('about.courses_title')}
+        </h3>
+      </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
-          taughtCourses.map((course) => (
-            <Card variant="default" shadow="md">
-              <Badge color="lime" size="sm" class="mb-3">
-                {course.year}
-              </Badge>
-              <h4 class="mb-1 font-display text-base font-black">{course.title}</h4>
-              <p class="mb-2 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
-                {course.org}
-              </p>
-              <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
-                {course.desc}
-              </p>
-            </Card>
-          ))
+          taughtCourses.map((course, index) => {
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card variant="default" shadow="md">
+                  <Badge color="lime" size="sm" class="mb-3">
+                    {course.year}
+                  </Badge>
+                  <h4 class="mb-1 font-display text-base font-black">{course.title}</h4>
+                  <p class="mb-2 font-mono text-xs font-bold text-fg-muted-light dark:text-fg-muted-dark">
+                    {course.org}
+                  </p>
+                  <p class="text-xs leading-relaxed text-fg-muted-light dark:text-fg-muted-dark">
+                    {course.desc}
+                  </p>
+                </Card>
+              </div>
+            );
+          })
         }
       </div>
     </section>
 
     <!-- Skills Categorized -->
     <section class="space-y-6">
-      <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
-        <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
-        ></span>
-        {t('about.skills_title')}
-      </h3>
+      <div class="reveal-on-scroll">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-black md:text-3xl">
+          <span class="inline-block h-4 w-4 border-2 border-black bg-accent-cyan dark:border-white"
+          ></span>
+          {t('about.skills_title')}
+        </h3>
+      </div>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          skillCategories.map((cat) => (
-            <Card variant="default" shadow="md">
-              <h4 class="mb-4 flex items-center gap-2 font-display text-lg font-black">
-                <span class="inline-block h-2.5 w-2.5 bg-black dark:bg-white" />
-                {cat.title}
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <Tag>{skill}</Tag>
-                ))}
+          skillCategories.map((cat, index) => {
+            const delayClass = `reveal-delay-${((index % 3) + 1) * 100}`;
+            return (
+              <div class={`reveal-on-scroll ${delayClass} flex h-full`}>
+                <Card variant="default" shadow="md" class="flex flex-1 flex-col justify-between">
+                  <div>
+                    <h4 class="mb-4 flex items-center gap-2 font-display text-lg font-black">
+                      <span class="inline-block h-2.5 w-2.5 bg-black dark:bg-white" />
+                      {cat.title}
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                      {cat.skills.map((skill) => (
+                        <Tag>{skill}</Tag>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
               </div>
-            </Card>
-          ))
+            );
+          })
         }
       </div>
     </section>
 
     <!-- Languages & Location -->
     <section class="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <Card variant="yellow" shadow="md">
-        <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
-          <Icon name="ph:translate-bold" class="h-5 w-5 shrink-0" />
-          {t('about.languages_title')}
-        </h4>
-        <ul class="space-y-2 font-mono text-sm font-medium text-black">
-          <li>• <strong>{t('about.lang_es')}</strong></li>
-          <li>• <strong>{t('about.lang_en')}</strong></li>
-        </ul>
-      </Card>
+      <div class="reveal-on-scroll reveal-delay-100 flex h-full">
+        <Card variant="yellow" shadow="md" class="flex flex-1 flex-col justify-between">
+          <div>
+            <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
+              <Icon name="ph:translate-bold" class="h-5 w-5 shrink-0" />
+              {t('about.languages_title')}
+            </h4>
+            <ul class="space-y-2 font-mono text-sm font-medium text-black">
+              <li>• <strong>{t('about.lang_es')}</strong></li>
+              <li>• <strong>{t('about.lang_en')}</strong></li>
+            </ul>
+          </div>
+        </Card>
+      </div>
 
-      <Card variant="cyan" shadow="md">
-        <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
-          <Icon name="ph:map-pin-bold" class="h-5 w-5 shrink-0" />
-          {t('about.location_title')}
-        </h4>
-        <p class="text-sm font-medium leading-relaxed text-black">
-          {t('about.location_desc')}
-        </p>
-      </Card>
+      <div class="reveal-on-scroll reveal-delay-200 flex h-full">
+        <Card variant="cyan" shadow="md" class="flex flex-1 flex-col justify-between">
+          <div>
+            <h4 class="mb-3 flex items-center gap-2 font-display text-xl font-black text-black">
+              <Icon name="ph:map-pin-bold" class="h-5 w-5 shrink-0" />
+              {t('about.location_title')}
+            </h4>
+            <p class="text-sm font-medium leading-relaxed text-black">
+              {t('about.location_desc')}
+            </p>
+          </div>
+        </Card>
+      </div>
     </section>
   </div>
 </BaseLayout>
+
+<script>
+  function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)');
+    if (!reveals.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach((el) => el.classList.add('is-revealed'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  }
+
+  // Initialize on load and on Astro View Transitions
+  initScrollReveal();
+  document.addEventListener('astro:page-load', initScrollReveal);
+</script>
